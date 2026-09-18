@@ -191,13 +191,18 @@ create table if not exists public.model_change_log (
 );
 
 create index if not exists model_parameters_profit_model_idx on public.model_parameters(profit_model_id);
+create index if not exists model_parameters_source_document_idx on public.model_parameters(source_document_id);
 create index if not exists probability_assessments_company_active_idx on public.probability_assessments(company_id, scenario, effective_at desc) where superseded_at is null;
+create index if not exists probability_assessments_profit_model_idx on public.probability_assessments(profit_model_id);
 create index if not exists probability_changes_company_idx on public.probability_changes(company_id, changed_at desc);
 create index if not exists price_snapshots_company_date_idx on public.price_snapshots(company_id, trade_date desc);
 create index if not exists expected_return_company_date_idx on public.expected_return_snapshots(company_id, trade_date desc, calculated_at desc);
 create index if not exists sensitivity_company_idx on public.sensitivity_results(company_id, calculated_at desc);
+create index if not exists sensitivity_profit_model_idx on public.sensitivity_results(profit_model_id);
 create index if not exists prediction_validation_company_idx on public.prediction_validations(company_id, first_qualified_at desc);
+create index if not exists prediction_validation_entry_snapshot_idx on public.prediction_validations(entry_snapshot_id);
 create index if not exists model_change_log_company_idx on public.model_change_log(company_id, changed_at desc);
+create index if not exists model_change_log_profit_model_idx on public.model_change_log(profit_model_id);
 
 alter table public.model_parameters enable row level security;
 alter table public.probability_assessments enable row level security;
