@@ -14,8 +14,8 @@ async function readTable(path: string) {
 
 export async function GET() {
   try {
-    const [companyRows, signalRows, reportRows, opportunityRows, profitRows, valuationRows, sourceRows, snapshotRows, clueRows, sectorReviewRows, opportunityReviewRows, mappingRows, taskRows, parameterRows, probabilityRows, probabilityChangeRows, priceRows, expectedRows, reverseRows, sensitivityRows, validationRows, modelChangeRows, timelineRows, dailySnapshotRows] = await Promise.all([
-      readTable("companies?select=id,external_code,stock_code,name,status,odds_note,profit_note,rank,score,market_cap,pool_reason,industry_chain_position,core_business,key_assumptions,listing_status,accounting_status,accounting_blocker,metadata,updated_at,sectors(name)&order=score.desc.nullslast"),
+    const [companyRows, signalRows, reportRows, opportunityRows, profitRows, valuationRows, sourceRows, snapshotRows, clueRows, sectorReviewRows, opportunityReviewRows, mappingRows, taskRows, parameterRows, probabilityRows, probabilityChangeRows, priceRows, expectedRows, reverseRows, sensitivityRows, validationRows, modelChangeRows, timelineRows, dailySnapshotRows, thresholdRows, assessmentRows, transitionRows, validationEventRows] = await Promise.all([
+      readTable("companies?select=id,external_code,stock_code,name,status,odds_note,profit_note,rank,score,market_cap,pool_reason,industry_chain_position,core_business,key_assumptions,listing_status,accounting_status,accounting_blocker,company_role,research_pool_status,valuation_status,investment_assessment_status,shadow_reason,reactivation_condition,transition_reason,last_transition_at,last_validation_at,next_validation_at,metadata,updated_at,sectors(name)&order=score.desc.nullslast"),
       readTable("signals?select=external_id,signal_date,title,change_description,signal_type,company_name,source_url,source_grade,score,status,verification_needed,action,previous_status,traded_status,metadata,sectors(name)&order=signal_date.desc,score.desc&limit=500"),
       readTable("daily_reports?select=*&order=report_date.desc&limit=30"),
       readTable("opportunities?select=*,sectors(name)&order=composite_score.desc.nullslast"),
@@ -39,6 +39,10 @@ export async function GET() {
       readTable("model_change_log?select=*,companies(external_code,name)&order=changed_at.desc&limit=1000"),
       readTable("company_timeline_events?select=*,companies(external_code,name,stock_code)&order=event_at.desc&limit=1000"),
       readTable("company_daily_snapshots?select=*,companies(external_code,name,stock_code)&order=trade_date.desc,created_at.desc&limit=2000"),
+      readTable("investment_thresholds?select=*&is_active=eq.true&order=effective_from.desc"),
+      readTable("investment_assessments?select=*,companies(external_code,name,stock_code)&order=assessed_at.desc"),
+      readTable("company_state_transitions?select=*,companies(external_code,name,stock_code)&order=created_at.desc&limit=2000"),
+      readTable("company_validation_events?select=*,companies(external_code,name,stock_code)&order=validation_date.desc,created_at.desc&limit=2000"),
     ]);
     const firms = companyRows.map((row: any) => ({
       id: row.id,
@@ -59,6 +63,16 @@ export async function GET() {
       listingStatus: row.listing_status,
       accountingStatus: row.accounting_status,
       accountingBlocker: row.accounting_blocker,
+      companyRole: row.company_role,
+      researchPoolStatus: row.research_pool_status,
+      valuationStatus: row.valuation_status,
+      investmentAssessmentStatus: row.investment_assessment_status,
+      shadowReason: row.shadow_reason,
+      reactivationCondition: row.reactivation_condition,
+      transitionReason: row.transition_reason,
+      lastTransitionAt: row.last_transition_at,
+      lastValidationAt: row.last_validation_at,
+      nextValidationAt: row.next_validation_at,
       metadata: row.metadata || {},
       updatedAt: row.updated_at,
     }));
@@ -84,7 +98,7 @@ export async function GET() {
     const snapshots = snapshotRows.map((row: any) => ({ ...row, companyCode: row.companies?.external_code, companyName: row.companies?.name }));
     const rawClues = clueRows.map((row: any) => ({ ...row, track: row.sectors?.name || "待分类" }));
     const sectorReviews = sectorReviewRows.map((row: any) => ({ ...row, track: row.sectors?.name || "待分类" }));
-    return NextResponse.json({ firms, sigs, reports: reportRows, opportunities, profitModels, valuations, sources: sourceRows, snapshots, rawClues, sectorReviews, opportunityReviews: opportunityReviewRows, opportunityCompanies: mappingRows, researchTasks: taskRows, modelParameters: parameterRows, probabilities: probabilityRows, probabilityChanges: probabilityChangeRows, prices: priceRows, expectedReturns: expectedRows, reverseValuations: reverseRows, sensitivities: sensitivityRows, predictionValidations: validationRows, modelChanges: modelChangeRows, timelineEvents: timelineRows, dailySnapshots: dailySnapshotRows, updatedAt: new Date().toISOString() });
+    return NextResponse.json({ firms, sigs, reports: reportRows, opportunities, profitModels, valuations, sources: sourceRows, snapshots, rawClues, sectorReviews, opportunityReviews: opportunityReviewRows, opportunityCompanies: mappingRows, researchTasks: taskRows, modelParameters: parameterRows, probabilities: probabilityRows, probabilityChanges: probabilityChangeRows, prices: priceRows, expectedReturns: expectedRows, reverseValuations: reverseRows, sensitivities: sensitivityRows, predictionValidations: validationRows, modelChanges: modelChangeRows, timelineEvents: timelineRows, dailySnapshots: dailySnapshotRows, investmentThresholds: thresholdRows, investmentAssessments: assessmentRows, stateTransitions: transitionRows, validationEvents: validationEventRows, updatedAt: new Date().toISOString() });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Unknown error" }, { status: 503 });
   }

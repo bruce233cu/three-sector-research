@@ -10,7 +10,8 @@ export function useResearchData(initialFirms: any[], initialSigs: any[]) {
     probabilities: [] as any[], probabilityChanges: [] as any[], prices: [] as any[],
     expectedReturns: [] as any[], reverseValuations: [] as any[], sensitivities: [] as any[],
     predictionValidations: [] as any[], modelChanges: [] as any[], timelineEvents: [] as any[],
-    dailySnapshots: [] as any[], updatedAt: ""
+    dailySnapshots: [] as any[], investmentThresholds: [] as any[], investmentAssessments: [] as any[],
+    stateTransitions: [] as any[], validationEvents: [] as any[], updatedAt: ""
   });
   const [live, setLive] = useState(false);
   useEffect(() => {
