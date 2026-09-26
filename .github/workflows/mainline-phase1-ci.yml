@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   python-mainline:
@@ -33,19 +33,11 @@ jobs:
         with:
           node-version: "24"
           cache: npm
-          cache-dependency-path: package.json
-      - name: Rebuild corrupted baseline lockfile
-        if: github.event_name == 'push'
+          cache-dependency-path: package-lock.json
+      - name: Validate committed package lock
         run: |
-          rm -f package-lock.json
-          npm install --package-lock-only --ignore-scripts
-      - run: npm ci --package-lock=true
+          test -s package-lock.json
+          node -e "JSON.parse(require('fs').readFileSync('package-lock.json', 'utf8'))"
+      - run: npm ci
       - run: npm test
-      - name: Commit repaired lockfile
-        if: github.event_name == 'push' && success()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json
-          git diff --cached --quiet || git commit -m "fix: restore valid package lock"
-          git push
+      - run: npm run build
