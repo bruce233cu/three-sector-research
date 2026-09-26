@@ -1,151 +1,855 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Shell, Badge, firms as fallbackFirms, sigs as fallbackSigs, tracks } from "../../research-ui";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CircleHelp,
+  ExternalLink,
+  X,
+} from "lucide-react";
+import {
+  Shell,
+  Badge,
+  firms as fallbackFirms,
+  sigs as fallbackSigs,
+  tracks,
+} from "../../research-ui";
 import { useResearchData } from "../../../hooks/use-research-data";
+
 export default function Page() {
   const { code } = useParams<{ code: string }>();
   const data = useResearchData(fallbackFirms, fallbackSigs);
-  const { firms, profitModels, valuations, snapshots } = data;
-  const c = firms.find((x) => x.code === code);
+  const c = data.firms.find((x: any) => x.code === code);
+  const [tab, setTab] = useState("公司逻辑");
+  const [help, setHelp] = useState(false);
   if (!c) return null;
-  const companyModels = profitModels.filter((x:any)=>x.companyCode===c.code);
-  const companyValuations = valuations.filter((x:any)=>x.companyCode===c.code);
-  const companySnapshots = snapshots.filter((x:any)=>x.companyCode===c.code);
-  const companyParameters = data.modelParameters.filter((x:any)=>x.profit_models?.company_id===c.id);
-  const companyProbabilities = data.probabilities.filter((x:any)=>x.company_id===c.id);
-  const companyProbabilityChanges = data.probabilityChanges.filter((x:any)=>x.company_id===c.id);
-  const companyPrices = data.prices.filter((x:any)=>x.company_id===c.id);
-  const companyExpected = data.expectedReturns.filter((x:any)=>x.company_id===c.id);
-  const companyReverse = data.reverseValuations.filter((x:any)=>x.company_id===c.id);
-  const companySensitivities = data.sensitivities.filter((x:any)=>x.company_id===c.id);
-  const companyValidations = data.predictionValidations.filter((x:any)=>x.company_id===c.id);
-  const companyTimeline = data.timelineEvents.filter((x:any)=>x.company_id===c.id);
-  const companyTransitions = data.stateTransitions.filter((x:any)=>x.company_id===c.id);
-  const companyAssessments = data.investmentAssessments.filter((x:any)=>x.company_id===c.id);
-  const companyDaily = data.dailySnapshots.filter((x:any)=>x.company_id===c.id).slice().reverse().map((x:any)=>({...x,expected_return_pct:Number(x.expected_return)*100}));
-  const sections = [
-    ["01","公司业务",c.coreBusiness],
-    ["02","为什么现在在这里",c.transitionReason || c.reason],
-    ["03","产业链位置",c.chain],
-    ["04","已确认经营数据",c.metadata?.confirmed_data || "待补充可追溯经营数据"],
-    ["05","客户与验证",c.metadata?.customers || "待补充客户和订单验证"],
-    ["06","下一步需要什么",c.reactivationCondition || c.accountingBlocker || c.keyAssumptions],
-  ];
+  const models = data.profitModels.filter((x: any) => x.companyCode === c.code);
+  const expected = data.expectedReturns.filter(
+    (x: any) => x.company_id === c.id,
+  )[0];
+  const prices = data.prices.filter((x: any) => x.company_id === c.id);
+  const parameters = data.modelParameters.filter(
+    (x: any) => x.profit_models?.company_id === c.id,
+  );
+  const probabilities = data.probabilities.filter(
+    (x: any) => x.company_id === c.id,
+  );
+  const timeline = data.timelineEvents.filter(
+    (x: any) => x.company_id === c.id,
+  );
+  const transitions = data.stateTransitions.filter(
+    (x: any) => x.company_id === c.id,
+  );
+  const snapshots = data.dailySnapshots.filter(
+    (x: any) => x.company_id === c.id,
+  );
+  const validations = data.validationEvents.filter(
+    (x: any) => x.company_id === c.id,
+  );
+  const assessment = data.investmentAssessments.find(
+    (x: any) => x.company_id === c.id,
+  );
+  const mapping = data.opportunityCompanies.find(
+    (x: any) => x.company_id === c.id,
+  );
+  const opportunity = data.opportunities.find(
+    (x: any) => x.id === mapping?.opportunity_id,
+  );
+  const decisions = data.screeningDecisions.filter(
+    (x: any) =>
+      x.object_id === c.id ||
+      x.metadata?.company_id === c.id ||
+      x.object_id === opportunity?.id,
+  );
+  const scenarios = expected?.scenario_results || {};
+  const risk =
+    assessment?.failure_reasons?.join("；") ||
+    c.shadowReason ||
+    c.metadata?.gaps ||
+    c.accountingBlocker ||
+    "暂无新增风险";
+  const latest =
+    timeline[0]?.change_reason ||
+    timeline[0]?.title ||
+    transitions[0]?.transition_reason ||
+    c.transitionReason ||
+    "暂无变化";
   return (
     <Shell active="公司筛选">
-      <Link className="back" href="/companies">
-        <ArrowLeft size={14} />
-        返回公司列表
-      </Link>
-      <div className="record-head">
-        <div>
-          <Badge tone={tracks[c.track]}>{c.track}</Badge>
-          <Badge>{poolLabel(c)}</Badge>
+      <div className="company-detail-top">
+        <Link className="back" href="/companies">
+          <ArrowLeft size={14} />
+          返回公司筛选
+        </Link>
+        <div className="head-actions">
+          <Link className="help-button" href={`/timeline?company=${c.code}`}>
+            完整时间轴
+            <ArrowRight size={14} />
+          </Link>
+          <button className="help-button" onClick={() => setHelp(true)}>
+            <CircleHelp size={16} />
+            本页说明
+          </button>
+        </div>
+      </div>
+      <section className="company-decision-hero">
+        <div className="company-identity">
+          <div>
+            <Badge tone={tracks[c.track]}>{c.track}</Badge>
+            <Status value={frontStatus(c)} />
+          </div>
           <h1>
-          {c.name} <small>{c.stockCode || c.code}</small>
+            {c.name}
+            <small>{c.stockCode || c.code}</small>
           </h1>
-          <p>最后更新：{c.metadata?.profile_date || c.updatedAt?.slice(0,10) || "待确认"} · V4状态机持续验证中</p>
+          <p>
+            所属机会：{opportunity?.name || "待建立可追溯映射"}
+            <br />
+            {c.transitionReason || c.reason}
+          </p>
+          <div className="decision-sentence">
+            <span>当前结论</span>
+            <strong>{decision(c, expected)}</strong>
+          </div>
+        </div>
+        <div className="decision-numbers">
+          <Metric
+            label="最新价格"
+            value={
+              prices[0]?.close_price == null
+                ? "待核实"
+                : `${prices[0].close_price}元`
+            }
+          />
+          <Metric
+            label="当前市值"
+            value={
+              expected?.current_market_cap == null
+                ? c.marketCap
+                : `${Number(expected.current_market_cap).toFixed(1)}亿`
+            }
+          />
+          <Metric
+            label="综合期望收益"
+            value={pct(expected?.expected_return)}
+            accent
+          />
+          <Metric label="中性收益" value={pct(scenarios["中性"]?.return)} />
+          <Metric
+            label="最大假设下行"
+            value={pct(expected?.max_assumed_downside)}
+          />
+          <Metric
+            label="风险收益比"
+            value={
+              expected?.risk_reward_ratio == null
+                ? "待核实"
+                : Number(expected.risk_reward_ratio).toFixed(2)
+            }
+          />
+          <Metric
+            label="利润 / 概率可信度"
+            value={`${confidence(expected?.profit_confidence)} / ${confidence(expected?.probability_confidence)}`}
+          />
+          <Metric label="观察阶段" value={stageLabel(c.shadowStage)} />
+        </div>
+      </section>
+      <div className="company-conclusion-grid">
+        <Conclusion label="为什么" value={c.transitionReason || c.reason} />
+        <Conclusion label="最新变化" value={latest} />
+        <Conclusion label="主要风险" value={risk} />
+        <Conclusion
+          label="下一触发条件"
+          value={c.reactivationCondition || c.keyAssumptions}
+        />
+      </div>
+      <section className="company-research-path">
+        <div>
+          <b>查看研究路径</b>
+          <span>
+            机会确认 → 公司映射 → 公司建模 → 投资价值评估 → 高期望收益
+          </span>
         </div>
         <div>
-          <span>综合置信度</span>
-          <strong>
-            {Math.round((c.score || 0) * 10)}<small>/100</small>
-          </strong>
+          {[
+            "opportunity_confirmation",
+            "company_mapping",
+            "company_modeling",
+            "investment_value",
+            "high_expected_return",
+          ].map((x) => {
+            const d = decisions.find((v: any) => v.stage === x);
+            return (
+              <span key={x}>
+                {pathLabel(x)} {d ? (d.decision === "fail" ? "✕" : "✓") : "—"}
+              </span>
+            );
+          })}
         </div>
-        <div>
-          <span>当前赔率</span>
-          <strong>{c.odds}</strong>
-        </div>
+        <strong>当前：{frontStatus(c)}</strong>
+      </section>
+      <div className="detail-tabs company-tabs">
+        {["公司逻辑", "模型与估值", "证据", "时间轴"].map((x) => (
+          <button
+            className={tab === x ? "active" : ""}
+            onClick={() => setTab(x)}
+            key={x}
+          >
+            {x}
+          </button>
+        ))}
       </div>
-      <div className="decision-strip">
-        <div><span>当前池子</span><strong>{poolLabel(c)}</strong></div>
-        <div><span>变化强度</span><strong>{c.score.toFixed(1)} / 10</strong></div>
-        <div><span>为什么在这里</span><strong>{c.transitionReason||c.reason}</strong></div>
-        <div><span>重新升级条件</span><strong>{c.reactivationCondition||"持续验证核心假设"}</strong></div>
-      </div>
-      <div className="detail-layout">
-        <div className="detail-main">
-          {sections.map((x) => (
-            <section className="detail-section" key={x[0]}>
-              <div>
-                <span>{x[0]}</span>
-                <h2>{x[1]}</h2>
-              </div>
-              <p>{x[2]}</p>
-            </section>
-          ))}
-        </div>
-        <aside className="detail-side">
-          <section>
-            <h3>净利润与赔率</h3>
+      {tab === "公司逻辑" && <CompanyLogic c={c} validations={validations} />}
+      {tab === "模型与估值" && (
+        <ModelValuation
+          models={models}
+          expected={expected}
+          probabilities={probabilities}
+          prices={prices}
+          scenarios={scenarios}
+          data={data}
+          companyId={c.id}
+        />
+      )}
+      {tab === "证据" && <EvidenceView parameters={parameters} sourceRegistry={data.sourceRegistry || []} />}
+      {tab === "时间轴" && (
+        <TimelineView
+          timeline={timeline}
+          transitions={transitions}
+          snapshots={snapshots}
+          data={data}
+        />
+      )}
+      {help && (
+        <div className="help-backdrop" onClick={() => setHelp(false)}>
+          <aside className="help-drawer" onClick={(e) => e.stopPropagation()}>
+            <button className="help-close" onClick={() => setHelp(false)}>
+              <X size={18} />
+            </button>
+            <p className="eyebrow">PAGE GUIDE</p>
+            <h2>统一公司详情</h2>
             <dl>
               <div>
-                <dt>当前市值</dt>
-                <dd>{c.marketCap}</dd>
+                <dt>这个页面看什么</dt>
+                <dd>
+                  一家公司是否仍值得关注，以及理由、变化、风险和下一触发。
+                </dd>
               </div>
               <div>
-                <dt>目标净利润</dt>
-                <dd>{c.profit}</dd>
+                <dt>这个页面不看什么</dt>
+                <dd>不需要再去独立的利润、概率、估值和时间轴页面。</dd>
               </div>
               <div>
-                <dt>核算状态</dt>
-                <dd>{valuationLabel(c.valuationStatus)}</dd>
+                <dt>什么数据会出现</dt>
+                <dd>公司逻辑、模型与估值、分级证据、关键时间轴。</dd>
               </div>
               <div>
-                <dt>投资评估</dt>
-                <dd>{assessmentLabel(c.investmentAssessmentStatus)}</dd>
+                <dt>为什么公司在这里</dt>
+                <dd>已与产业机会建立映射，或作为产业验证对象持续跟踪。</dd>
+              </div>
+              <div>
+                <dt>下一步应该去哪</dt>
+                <dd>根据瓶颈等待价格、利润、概率或证据触发。</dd>
               </div>
             </dl>
-          </section>
-          {companyModels.length > 0 && <section><h3>利润模型状态</h3><dl>{companyModels.map((m:any)=><div key={m.id}><dt>{m.fiscal_year}E · {m.scenario}</dt><dd>{m.units ? `${Number(m.units).toLocaleString()}只` : "待核算"}</dd></div>)}</dl><p>缺失参数保持为空，不输出虚假利润。</p></section>}
-          <section><h3>模型可信度</h3><dl><div><dt>利润可信度</dt><dd>{confidenceLabel(companyModels[0]?.profit_confidence)}</dd></div><div><dt>概率可信度</dt><dd>{confidenceLabel(companyExpected[0]?.probability_confidence)}</dd></div><div><dt>最大不确定性</dt><dd>{companyModels[0]?.max_uncertainty||"待建立模型"}</dd></div><div><dt>最需要验证</dt><dd>{companyModels[0]?.most_needed_evidence||c.accountingBlocker||"待核实"}</dd></div></dl></section>
-        </aside>
-      </div>
-      {companyModels.length > 0 && <section className="compact-panel model-panel"><div className="section-title"><div><span>07</span><div><h2>净利润三情景</h2><p>销量、ASP、利润及关键缺口</p></div></div></div>
-        <div className="model-grid model-head"><span>年份/情景</span><span>销量</span><span>ASP</span><span>收入</span><span>净利润</span><span>状态</span></div>
-        {companyModels.map((m:any)=><div className="model-grid" key={m.id}><span>{m.fiscal_year}E · {m.scenario}</span><span>{m.units??"待核实"}</span><span>{m.asp??"待核实"}</span><span>{m.revenue??"待核实"}</span><span>{m.total_profit??m.net_profit??"待核实"}</span><span>{m.status}</span></div>)}
-      </section>}
-      {companyValuations.length > 0 && <section className="compact-panel model-panel"><div className="section-title"><div><span>08</span><div><h2>赔率历史快照</h2><p>每次价格变化保留记录，不覆盖历史</p></div></div></div>
-        <div className="model-grid model-head"><span>日期</span><span>股价</span><span>当前市值</span><span>2倍目标市值</span><span>上行倍数</span><span>结论</span></div>
-        {companyValuations.map((v:any)=><div className="model-grid" key={v.id}><span>{v.valuation_date}</span><span>{v.current_price??"—"}</span><span>{v.reference_market_cap??"—"}亿</span><span>{v.target_market_cap??"—"}亿</span><span>{v.upside_multiple?Number(v.upside_multiple).toFixed(2)+"x":"待核算"}</span><span>{v.conclusion}</span></div>)}
-      </section>}
-      <section className="compact-panel model-panel"><div className="section-title"><div><span>09</span><div><h2>投资时间轴</h2><p>关键节点默认展示；旧记录只追加，不覆盖</p></div></div></div>
-        {companyTimeline.length?companyTimeline.map((e:any)=><details className="investment-event" key={e.id}><summary><time>{e.event_at?.slice(0,10)}</time><span><b>{eventTypeLabel(e.event_type)}</b><strong>{e.title}</strong><small>{e.change_reason}</small></span><span><b>股价 / 市值</b><strong>{e.price==null?"—":`${e.price}元`} / {e.market_cap==null?"—":`${e.market_cap}亿`}</strong></span><span><b>中性概率</b><strong>{e.probability_base==null?"—":`${e.probability_base}%`}</strong></span><span><b>期望收益</b><strong>{returnPct(e.expected_return)}</strong></span><span><b>状态</b><strong>{e.system_status}</strong></span></summary><div className="event-detail"><DetailBlock label="事件摘要" value={e.description}/><DetailBlock label="变化前" value={jsonText(e.previous_state)}/><DetailBlock label="变化后" value={jsonText(e.current_state)}/><DetailBlock label="完整计算" value={jsonText(e.calculation_trace)}/><div><span>原始来源</span>{e.source_url?<a href={e.source_url} target="_blank" rel="noreferrer">打开原文 <ExternalLink size={12}/></a>:<p>本节点无外部来源</p>}</div></div></details>):<Empty text="尚未形成关键投资节点"/>}
-        {companySnapshots.length>0&&<details className="legacy-timeline"><summary>查看旧版研究快照（{companySnapshots.length}）</summary>{companySnapshots.map((s:any)=><div className="timeline-row" key={s.id}><time>{s.snapshot_date}</time><div><strong>{s.conclusion_status}</strong><p>{s.thesis}</p></div></div>)}</details>}
-        {companyTransitions.length>0&&<details className="legacy-timeline"><summary>查看V4状态流转（{companyTransitions.length}）</summary>{companyTransitions.map((s:any)=><div className="timeline-row" key={s.id}><time>{s.created_at?.slice(0,10)}</time><div><strong>{s.from_status||"首次分类"} → {s.to_status}</strong><p>{s.transition_reason}</p></div></div>)}</details>}
-      </section>
-      <section className="compact-panel model-panel"><div className="section-title"><div><span>10</span><div><h2>股价 vs 期望收益</h2><p>每日快照自动积累；价格变化不会改写基本面概率</p></div></div></div>
-        {companyDaily.length?<><div className="trend-chart"><ResponsiveContainer width="100%" height={280}><LineChart data={companyDaily} margin={{top:18,right:20,left:8,bottom:8}}><XAxis dataKey="trade_date" stroke="#657f8c"/><YAxis yAxisId="price" stroke="#65d7d0"/><YAxis yAxisId="return" orientation="right" stroke="#d7aa62" unit="%"/><Tooltip contentStyle={{background:"#0b1821",border:"1px solid #29424e"}}/><Line yAxisId="price" type="monotone" dataKey="close_price" name="股价（元）" stroke="#65d7d0" strokeWidth={2}/><Line yAxisId="return" type="monotone" dataKey="expected_return_pct" name="期望收益（%）" stroke="#d7aa62" strokeWidth={2}/></LineChart></ResponsiveContainer></div><div className="daily-snapshot-list">{companyDaily.map((d:any)=><span key={d.id}><b>{d.trade_date}</b> 收盘 {d.close_price}元 · 期望 {returnPct(d.expected_return)} · 概率 {d.bear_probability}/{d.base_probability}/{d.bull_probability} · {driverLabel(d.change_driver)}</span>)}</div></>:<Empty text="尚未保存每日模型快照"/>}
-      </section>
-      <section className="compact-panel model-panel"><div className="section-title"><div><span>10</span><div><h2>参数依据</h2><p>事实、预测、推算和人工假设分开显示</p></div></div></div>
-        {companyParameters.length?<div className="logic-scroll"><table className="logic-table evidence-table"><thead><tr><th>情景</th><th>参数</th><th>数值</th><th>类型</th><th>证据等级</th><th>来源</th><th>状态</th><th>推算逻辑</th></tr></thead><tbody>{companyParameters.map((p:any)=><tr key={p.id}><td>{p.profit_models?.scenario}</td><td><b>{p.parameter_name}</b><small>{p.parameter_key}</small></td><td>{p.parameter_value==null?"待核实":`${Number(p.parameter_value).toLocaleString("zh-CN")}${p.unit||""}`}</td><td>{dataTypeLabel(p.data_type)}</td><td><span className={`evidence-grade grade-${String(p.evidence_grade).toLowerCase()}`}>{p.evidence_grade}</span></td><td>{p.source_url?<a href={p.source_url} target="_blank" rel="noreferrer">{p.source_name||"原始来源"} <ExternalLink size={12}/></a>:(p.source_name||"待补来源")}</td><td>{p.is_confirmed?"已确认":"待核实"}</td><td>{p.derivation_logic||"—"}</td></tr>)}</tbody></table></div>:<Empty text="尚未建立参数级依据"/>}
-      </section>
-      <section className="compact-panel model-panel"><div className="section-title"><div><span>11</span><div><h2>概率与动态期望收益</h2><p>概率只随基本面证据变化；价格只改变收益空间</p></div></div></div>
-        {companyExpected.length?<>{companyExpected.map((e:any)=><div className="expectation-summary" key={e.id}><div><span>期望收益</span><strong>{returnPct(e.expected_return)}</strong></div><div><span>年化期望</span><strong>{returnPct(e.annualized_expected_return)}</strong></div><div><span>最大假设下行</span><strong>{returnPct(e.max_assumed_downside)}</strong></div><div><span>风险收益比</span><strong>{e.risk_reward_ratio==null?"待核实":Number(e.risk_reward_ratio).toFixed(2)}</strong></div><p>{e.change_reason}</p></div>)}<div className="logic-scroll"><table className="logic-table"><thead><tr><th>情景</th><th>概率</th><th>可信度</th><th>对应事件</th><th>依据</th><th>生效时间</th></tr></thead><tbody>{companyProbabilities.map((p:any)=><tr key={p.id}><td>{p.scenario}</td><td>{p.probability_pct}%</td><td>{confidenceLabel(p.probability_confidence)}</td><td>{p.target_event}</td><td>{p.rationale}</td><td>{p.effective_at?.slice(0,10)}</td></tr>)}</tbody></table></div></>:<Empty text="利润模型或三情景概率尚不完整，未生成正式期望收益"/>}
-        {companyProbabilityChanges.length>0&&<div className="history-mini"><h3>概率调整历史</h3>{companyProbabilityChanges.map((p:any)=><p key={p.id}><b>{p.changed_at?.slice(0,10)} · {p.scenario}</b> {p.previous_probability_pct??"—"}% → {p.new_probability_pct}% · {p.reason}</p>)}</div>}
-        {companyAssessments.length>0&&<div className="history-mini"><h3>V4投资价值分流</h3>{companyAssessments.map((a:any)=><p key={a.id}><b>{a.classification==="high_expected_return"?"高期望收益":"影子池"}</b> {a.failure_reasons?.length?`未通过：${a.failure_reasons.join("；")}`:"已通过当前配置门槛"}</p>)}</div>}
-      </section>
-      <section className="compact-panel model-panel"><div className="section-title"><div><span>12</span><div><h2>价格、反向估值与敏感性</h2><p>先问当前价格隐含了多少利润，再看模型最怕哪个变量</p></div></div></div>
-        {companyPrices.length?<div className="logic-scroll"><table className="logic-table"><thead><tr><th>交易日</th><th>收盘价</th><th>市值</th><th>来源</th><th>证据等级</th></tr></thead><tbody>{companyPrices.map((p:any)=><tr key={p.id}><td>{p.trade_date}</td><td>{p.close_price}元</td><td>{p.market_cap}亿元</td><td>{p.source_url?<a href={p.source_url} target="_blank" rel="noreferrer">{p.source_name} <ExternalLink size={12}/></a>:p.source_name}</td><td>{p.evidence_grade}</td></tr>)}</tbody></table></div>:<Empty text="尚未接入可追溯价格快照"/>}
-        {companyReverse.length>0&&<div className="reverse-grid">{companyReverse.map((r:any)=><article key={`${r.target_multiple}-${r.pe_multiple}`}><span>{r.target_multiple}倍市值 · {r.pe_multiple}倍PE</span><strong>需净利润 {Number(r.required_net_profit).toFixed(2)}亿</strong><small>目标市值 {Number(r.target_market_cap).toFixed(1)}亿</small></article>)}</div>}
-        {companySensitivities.length?<div className="logic-scroll"><table className="logic-table"><thead><tr><th>变量</th><th>基准</th><th>冲击后</th><th>净利润</th><th>目标市值</th><th>期望收益</th><th>风险提示</th></tr></thead><tbody>{companySensitivities.map((s:any)=><tr key={s.id}><td>{s.parameter_key}</td><td>{s.base_value}</td><td>{s.shocked_value}</td><td>{s.resulting_net_profit??"待核实"}</td><td>{s.resulting_target_market_cap??"待核实"}</td><td>{returnPct(s.resulting_expected_return)}</td><td>{s.risk_note}</td></tr>)}</tbody></table></div>:<Empty text="正式模型未完成，暂不输出敏感性结果"/>}
-      </section>
-      <section className="compact-panel model-panel"><div className="section-title"><div><span>13</span><div><h2>预测结果验证</h2><p>记录当时判断，30/90/180日及一年后反查对错</p></div></div></div>{companyValidations.length?<div className="logic-scroll"><table className="logic-table"><thead><tr><th>首次入选</th><th>入选价</th><th>当日期望收益</th><th>30日</th><th>90日</th><th>180日</th><th>一年</th><th>最大涨幅</th><th>最大回撤</th><th>结果</th></tr></thead><tbody>{companyValidations.map((v:any)=><tr key={v.id}><td>{v.first_qualified_at}</td><td>{v.entry_price}</td><td>{returnPct(v.entry_expected_return)}</td><td>{v.price_30d??"待验证"}</td><td>{v.price_90d??"待验证"}</td><td>{v.price_180d??"待验证"}</td><td>{v.price_1y??"待验证"}</td><td>{returnPct(v.max_gain)}</td><td>{returnPct(v.max_drawdown)}</td><td>{v.final_result||"pending"}</td></tr>)}</tbody></table></div>:<Empty text="尚未出现满足门槛的正式高期望收益候选"/>}</section>
+          </aside>
+        </div>
+      )}
     </Shell>
   );
 }
 
-function Empty({text}:{text:string}){return <div className="blocked-empty"><strong>{text}</strong><p>缺失项保持为空，不使用测试值或假设值冒充正式结果。</p></div>}
-function confidenceLabel(v:any){return ({high:"高",medium:"中",low:"低"} as any)[v]||"待核实"}
-function dataTypeLabel(v:any){return ({fact:"A 直接事实",reliable_reference:"B 可靠参考",external_forecast:"B 外部预测",model_inference:"C 模型推算",manual_assumption:"D 人工假设"} as any)[v]||v||"待核实"}
-function returnPct(v:any){return v==null?"待核实":`${Number(v)>=0?"+":""}${(Number(v)*100).toFixed(1)}%`}
-function eventTypeLabel(v:any){return ({first_discovery:"首次发现",focus_research:"重点研究",formal_pool:"正式入池",fundamental_change:"基本面变化",price_change:"价格变化",model_revision:"模型修正",validation:"结果验证",risk_deterioration:"风险恶化",downgrade:"降级",exit:"退出",current:"当前节点"} as any)[v]||v}
-function driverLabel(v:any){return ({initial:"首次建立",price:"价格驱动",fundamental:"基本面驱动",model_revision:"模型修正",validation:"结果验证",risk:"风险变化"} as any)[v]||v||"待核实"}
-function jsonText(v:any){if(!v||Object.keys(v).length===0)return "—";return JSON.stringify(v,null,2)}
-function DetailBlock({label,value}:{label:string;value:any}){return <div><span>{label}</span><pre>{value||"—"}</pre></div>}
-function poolLabel(c:any){return c.companyRole==="industry_validator"?"产业验证对象":({research:"研究池",shadow:"影子池",filtered:"筛除",archived:"淘汰/归档"} as any)[c.researchPoolStatus]||c.stage||"待分类"}
-function valuationLabel(v:any){return ({not_started:"未开始",in_progress:"核算中",completed:"已完成",insufficient_data:"数据不足"} as any)[v]||"待分类"}
-function assessmentLabel(v:any){return ({not_evaluated:"未评估",evaluated:"已完成评估",high_expected_return:"高期望收益",shadow:"影子池",failed:"不通过"} as any)[v]||"待分类"}
+function CompanyLogic({ c, validations }: { c: any; validations: any[] }) {
+  return (
+    <div className="company-tab-grid">
+      <section className="tab-panel">
+        <h2>业务与产业链位置</h2>
+        <Detail
+          items={[
+            ["核心业务", c.coreBusiness],
+            ["产业链位置", c.chain],
+            ["与机会的关系", c.reason],
+            ["已确认经营数据", c.metadata?.confirmed_data],
+            ["客户与验证", c.metadata?.customers],
+          ]}
+        />
+      </section>
+      <section className="tab-panel">
+        <h2>当前研究判断</h2>
+        <Detail
+          items={[
+            ["当前状态", frontStatus(c)],
+            ["为什么在这里", c.transitionReason],
+            ["关键假设", c.keyAssumptions],
+            ["暂未通过原因", c.shadowReason || c.accountingBlocker],
+            ["重新激活条件", c.reactivationCondition],
+          ]}
+        />
+      </section>
+      {validations.length > 0 && (
+        <section className="tab-panel full">
+          <h2>最近验证</h2>
+          {validations.map((v) => (
+            <article className="validation-note" key={v.id}>
+              <time>{v.validation_date}</time>
+              <b>{v.title}</b>
+              <p>{v.conclusion}</p>
+              <Status value={effectLabel(v.effect)} />
+            </article>
+          ))}
+        </section>
+      )}
+    </div>
+  );
+}
+function ModelValuation({
+  models,
+  expected,
+  probabilities,
+  prices,
+  scenarios,
+  data,
+  companyId,
+}: {
+  models: any[];
+  expected: any;
+  probabilities: any[];
+  prices: any[];
+  scenarios: any;
+  data: any;
+  companyId: string;
+}) {
+  const reverse = data.reverseValuations.filter(
+    (x: any) => x.company_id === companyId,
+  );
+  const sens = data.sensitivities.filter(
+    (x: any) => x.company_id === companyId,
+  );
+  return (
+    <>
+      <section className="model-results">
+        <Metric
+          label="综合期望收益"
+          value={pct(expected?.expected_return)}
+          accent
+        />
+        <Metric
+          label="年化期望"
+          value={pct(expected?.annualized_expected_return)}
+        />
+        <Metric
+          label="最大假设下行"
+          value={pct(expected?.max_assumed_downside)}
+        />
+        <Metric
+          label="风险收益比"
+          value={
+            expected?.risk_reward_ratio == null
+              ? "待核实"
+              : Number(expected.risk_reward_ratio).toFixed(2)
+          }
+        />
+      </section>
+      <section className="scenario-cards">
+        {["悲观", "中性", "乐观"].map((name) => {
+          const s = scenarios[name];
+          const m = models.find((x: any) => x.scenario === name);
+          return (
+            <article key={name}>
+              <span>{name}情景</span>
+              <strong>{pct(s?.return)}</strong>
+              <dl>
+                <div>
+                  <dt>概率</dt>
+                  <dd>
+                    {s?.probability_pct == null
+                      ? "待核实"
+                      : `${s.probability_pct}%`}
+                  </dd>
+                </div>
+                <div>
+                  <dt>净利润</dt>
+                  <dd>{money(s?.net_profit, "亿")}</dd>
+                </div>
+                <div>
+                  <dt>目标市值</dt>
+                  <dd>{money(s?.target_market_cap, "亿")}</dd>
+                </div>
+                <div>
+                  <dt>利润可信度</dt>
+                  <dd>{confidence(m?.profit_confidence)}</dd>
+                </div>
+              </dl>
+            </article>
+          );
+        })}
+      </section>
+      <details className="model-details">
+        <summary>查看变量、概率、公式与来源</summary>
+        <div className="logic-scroll">
+          <table className="logic-table">
+            <thead>
+              <tr>
+                <th>情景</th>
+                <th>销量</th>
+                <th>ASP</th>
+                <th>收入</th>
+                <th>总净利润</th>
+                <th>估值倍数</th>
+                <th>模型状态</th>
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((m: any) => (
+                <tr key={m.id}>
+                  <td>{m.scenario}</td>
+                  <td>{m.units ?? "待核实"}</td>
+                  <td>{m.asp ?? "待核实"}</td>
+                  <td>{money(m.revenue, "亿")}</td>
+                  <td>{money(m.total_profit, "亿")}</td>
+                  <td>
+                    {m.pe_multiple == null ? "待核实" : `${m.pe_multiple}x`}
+                  </td>
+                  <td>{m.model_status || m.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="formula-block">
+          {models.map((m: any) => (
+            <article key={m.id}>
+              <b>{m.scenario}情景公式</b>
+              <pre>{m.calculation_trace?.formula || "尚未形成完整公式"}</pre>
+              <p>最大不确定性：{m.max_uncertainty || "待核实"}</p>
+            </article>
+          ))}
+        </div>
+      </details>
+      <details className="model-details">
+        <summary>查看价格、反向估值与敏感性</summary>
+        <div className="logic-scroll">
+          <table className="logic-table">
+            <thead>
+              <tr>
+                <th>交易日</th>
+                <th>收盘价</th>
+                <th>市值</th>
+                <th>来源</th>
+              </tr>
+            </thead>
+            <tbody>
+              {prices.map((p: any) => (
+                <tr key={p.id}>
+                  <td>{p.trade_date}</td>
+                  <td>{p.close_price}元</td>
+                  <td>{p.market_cap}亿</td>
+                  <td>
+                    {p.source_url ? (
+                      <a href={p.source_url} target="_blank" rel="noreferrer">
+                        {p.source_name}
+                        <ExternalLink size={12} />
+                      </a>
+                    ) : (
+                      p.source_name
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {reverse.length > 0 && (
+          <div className="reverse-grid">
+            {reverse.map((r: any) => (
+              <article key={r.id || `${r.target_multiple}-${r.pe_multiple}`}>
+                <span>
+                  {r.target_multiple}倍市值 · {r.pe_multiple}倍PE
+                </span>
+                <strong>
+                  需净利润 {Number(r.required_net_profit).toFixed(2)}亿
+                </strong>
+              </article>
+            ))}
+          </div>
+        )}
+        {sens.length > 0 && (
+          <div className="logic-scroll">
+            <table className="logic-table">
+              <thead>
+                <tr>
+                  <th>变量</th>
+                  <th>基准</th>
+                  <th>冲击后</th>
+                  <th>期望收益</th>
+                  <th>风险提示</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sens.map((s: any) => (
+                  <tr key={s.id}>
+                    <td>{s.parameter_key}</td>
+                    <td>{s.base_value}</td>
+                    <td>{s.shocked_value}</td>
+                    <td>{pct(s.resulting_expected_return)}</td>
+                    <td>{s.risk_note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </details>
+    </>
+  );
+}
+function EvidenceView({ parameters, sourceRegistry }: { parameters: any[]; sourceRegistry: any[] }) {
+  const grades = ["S", "A", "B", "C", "D"];
+  return (
+    <div className="evidence-groups">
+      {grades.map((g) => {
+        const rows = parameters.filter(
+          (p: any) => String(p.evidence_grade || "D").toUpperCase() === g,
+        );
+        return (
+          <section key={g}>
+            <header>
+              <Evidence value={g} />
+              <div>
+                <h2>{gradeLabel(g)}</h2>
+                <p>{rows.length} 条参数依据</p>
+              </div>
+            </header>
+            {rows.length ? (
+              rows.map((p: any) => (
+                <article key={p.id}>
+                  <div>
+                    <b>{p.parameter_name}</b>
+                    <small>
+                      {p.profit_models?.scenario} · {p.parameter_key}
+                    </small>
+                  </div>
+                  <strong>
+                    {p.parameter_value == null
+                      ? "待核实"
+                      : `${Number(p.parameter_value).toLocaleString("zh-CN")}${p.unit || ""}`}
+                  </strong>
+                  <span>{typeLabel(p.data_type)}</span>
+                  <p>{p.derivation_logic || "直接引用原始来源"}</p>
+                  <em>{p.is_confirmed ? "已进入模型" : "尚未进入模型"}</em>
+                  <small>
+                    来源类型：{sourceRegistry.find((source: any) =>
+                      source.source_name === p.source_name ||
+                      (p.source_url && String(p.source_url).startsWith(String(source.source_url)))
+                    )?.source_type || "现有记录中无法确认"} ·
+                    时间：{p.source_published_at?.slice?.(0, 10) || p.effective_at?.slice?.(0, 10) || "待补"} ·
+                    等级：{p.evidence_grade || "D"}
+                  </small>
+                  {p.source_url ? (
+                    <a href={p.source_url} target="_blank" rel="noreferrer">
+                      {p.source_name || "原始来源"}
+                      <ExternalLink size={12} />
+                    </a>
+                  ) : (
+                    <span>{p.source_name || "待补来源"}</span>
+                  )}
+                </article>
+              ))
+            ) : (
+              <div className="grade-empty">暂无该等级证据</div>
+            )}
+          </section>
+        );
+      })}
+    </div>
+  );
+}
+function TimelineView({
+  timeline,
+  transitions,
+  snapshots,
+  data,
+}: {
+  timeline: any[];
+  transitions: any[];
+  snapshots: any[];
+  data: any;
+}) {
+  return (
+    <>
+      <section className="key-timeline">
+        <h2>关键事件</h2>
+        {timeline.length ? (
+          timeline.map((e: any) => (
+            <article key={e.id}>
+              <time>{e.event_at?.slice(0, 10)}</time>
+              <div>
+                <Status value={eventLabel(e.event_type)} />
+                <h3>{e.title}</h3>
+                <p>{e.change_reason || e.description}</p>
+                <small>
+                  期望收益 {pct(e.expected_return)} · 状态{" "}
+                  {e.system_status || "—"}
+                </small>
+              </div>
+              {e.source_url && (
+                <a href={e.source_url} target="_blank" rel="noreferrer">
+                  来源
+                  <ExternalLink size={12} />
+                </a>
+              )}
+            </article>
+          ))
+        ) : (
+          <Empty text="尚未形成关键投资节点" />
+        )}
+      </section>
+      {transitions.length > 0 && (
+        <details className="model-details">
+          <summary>查看状态流转（{transitions.length}）</summary>
+          {transitions.map((t: any) => (
+            <div className="timeline-row" key={t.id}>
+              <time>{t.created_at?.slice(0, 10)}</time>
+              <div>
+                <b>
+                  {t.from_status || "首次分类"} → {t.to_status}
+                </b>
+                <p>{t.transition_reason}</p>
+              </div>
+            </div>
+          ))}
+        </details>
+      )}
+      <details className="model-details">
+        <summary>查看每日快照（{snapshots.length}）</summary>
+        {snapshots.length ? (
+          <div className="logic-scroll">
+            <table className="logic-table">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>收盘价</th>
+                  <th>期望收益</th>
+                  <th>概率</th>
+                  <th>变化驱动</th>
+                </tr>
+              </thead>
+              <tbody>
+                {snapshots.map((s: any) => (
+                  <tr key={s.id}>
+                    <td>{s.trade_date}</td>
+                    <td>{s.close_price}元</td>
+                    <td>{pct(s.expected_return)}</td>
+                    <td>
+                      {s.bear_probability}/{s.base_probability}/
+                      {s.bull_probability}
+                    </td>
+                    <td>{driverLabel(s.change_driver)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <Empty text="尚未保存每日快照" />
+        )}
+      </details>
+    </>
+  );
+}
+
+function Metric({
+  label,
+  value,
+  accent = false,
+}: {
+  label: string;
+  value: any;
+  accent?: boolean;
+}) {
+  return (
+    <div className={accent ? "accent" : ""}>
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+function Conclusion({ label, value }: { label: string; value: any }) {
+  return (
+    <article>
+      <span>{label}</span>
+      <p>{value || "暂无数据"}</p>
+    </article>
+  );
+}
+function Detail({ items }: { items: any[][] }) {
+  return (
+    <dl className="company-logic-list">
+      {items
+        .filter((x) => x[1])
+        .map(([a, b]) => (
+          <div key={a}>
+            <dt>{a}</dt>
+            <dd>{b}</dd>
+          </div>
+        ))}
+    </dl>
+  );
+}
+function Status({ value }: { value: any }) {
+  return (
+    <span
+      className={`status ${String(value).includes("高期望") || String(value).includes("重点") ? "good" : String(value).includes("不通过") ? "bad" : ""}`}
+    >
+      {value || "待确认"}
+    </span>
+  );
+}
+function Evidence({ value }: { value: any }) {
+  return (
+    <span
+      className={`evidence-grade grade-${String(value || "D").toLowerCase()}`}
+    >
+      {value || "D"}
+    </span>
+  );
+}
+function Empty({ text }: { text: string }) {
+  return (
+    <div className="blocked-empty">
+      <strong>{text}</strong>
+      <p>缺失项保持为空，不使用测试值冒充正式结果。</p>
+    </div>
+  );
+}
+function frontStatus(c: any) {
+  if (c.companyRole === "industry_validator") return "产业验证";
+  if (c.investmentAssessmentStatus === "high_expected_return")
+    return "高期望收益";
+  if (c.researchPoolStatus === "research") return "重点研究";
+  if (c.researchPoolStatus === "shadow") return "观察";
+  if (c.researchPoolStatus === "archived") return "归档";
+  return "不通过";
+}
+function decision(c: any, e: any) {
+  if (frontStatus(c) === "观察")
+    return `继续观察：${c.shadowReason || "等待关键条件改善"}`;
+  if (frontStatus(c) === "重点研究")
+    return "值得继续投入研究，尚待模型或证据完成";
+  if (frontStatus(c) === "高期望收益")
+    return `当前投资价值较高，期望收益 ${pct(e?.expected_return)}`;
+  if (frontStatus(c) === "产业验证")
+    return "用于验证产业需求或技术路线，不直接做股票投资判断";
+  return "当前不进入重点研究";
+}
+function confidence(v: any) {
+  return ({ high: "高", medium: "中", low: "低" } as any)[v] || "待核实";
+}
+function pct(v: any) {
+  return v == null
+    ? "待核实"
+    : `${Number(v) >= 0 ? "+" : ""}${(Number(v) * 100).toFixed(1)}%`;
+}
+function money(v: any, u: string) {
+  return v == null
+    ? "待核实"
+    : `${Number(v).toLocaleString("zh-CN", { maximumFractionDigits: 2 })}${u}`;
+}
+function stageLabel(v: any) {
+  return (
+    (
+      {
+        mapping: "公司映射",
+        modeling: "公司建模",
+        investment_value: "投资价值",
+      } as any
+    )[v] || "—"
+  );
+}
+function gradeLabel(v: string) {
+  return (
+    {
+      S: "核心直接证据",
+      A: "高质量事实",
+      B: "可靠参考",
+      C: "模型推算",
+      D: "人工假设",
+    } as any
+  )[v];
+}
+function typeLabel(v: any) {
+  return (
+    (
+      {
+        fact: "事实",
+        reliable_reference: "可靠参考",
+        external_forecast: "外部预测",
+        model_inference: "模型推算",
+        manual_assumption: "人工假设",
+      } as any
+    )[v] || "待分类"
+  );
+}
+function effectLabel(v: any) {
+  return (
+    (
+      {
+        strengthen: "逻辑增强",
+        weaken: "逻辑减弱",
+        neutral: "中性",
+        revalue: "重新估值",
+        recalculate_profit: "重算模型",
+      } as any
+    )[v] || "继续观察"
+  );
+}
+function eventLabel(v: any) {
+  return (
+    (
+      {
+        first_discovery: "首次发现",
+        focus_research: "重点研究",
+        formal_pool: "正式入池",
+        fundamental_change: "基本面变化",
+        price_change: "价格变化",
+        model_revision: "模型修正",
+        validation: "结果验证",
+        risk_deterioration: "风险恶化",
+        downgrade: "降级",
+        exit: "退出",
+        current: "当前节点",
+      } as any
+    )[v] || v
+  );
+}
+function driverLabel(v: any) {
+  return (
+    (
+      {
+        initial: "首次建立",
+        price: "价格驱动",
+        fundamental: "基本面驱动",
+        model_revision: "模型修正",
+        validation: "结果验证",
+        risk: "风险变化",
+      } as any
+    )[v] ||
+    v ||
+    "待核实"
+  );
+}
+function pathLabel(v: any) {
+  return (
+    (
+      {
+        opportunity_confirmation: "机会",
+        company_mapping: "映射",
+        company_modeling: "建模",
+        investment_value: "评估",
+        high_expected_return: "高期望",
+      } as any
+    )[v] || v
+  );
+}

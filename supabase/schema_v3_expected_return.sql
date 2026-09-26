@@ -380,7 +380,7 @@ begin
 
   select jsonb_agg(to_jsonb(x) order by case x.scenario when '悲观' then 1 when '中性' then 2 else 3 end), max(target_date), min(profit_confidence)
     into v_models,v_target_date,v_profit_conf
-  from (select distinct on (scenario) id,scenario,total_profit,pe_multiple,target_market_cap,target_date,profit_confidence,model_version,updated_at
+  from (select distinct on (scenario) id,scenario,total_profit,pe_multiple,target_market_cap,target_date,profit_confidence,model_version
         from public.profit_models where company_id=p_company_id and model_status='complete' and scenario in ('悲观','中性','乐观')
         order by scenario,model_date desc,model_version desc,updated_at desc) x;
   if v_models is null or jsonb_array_length(v_models)<>3 then return null; end if;

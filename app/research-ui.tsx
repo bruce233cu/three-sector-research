@@ -2,17 +2,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Activity,
   BarChart3,
   Building2,
-  Calculator,
-  FileClock,
   LayoutDashboard,
-  Map,
   Search,
   Target,
-  RefreshCw,
+  ShieldCheck,
   CircleHelp,
+  BookOpenText,
+  History,
+  Database,
 } from "lucide-react";
 export const tracks: Record<string, string> = {
   机器人: "blue",
@@ -360,25 +359,31 @@ export function Badge({
   return <span className={`badge ${tone}`}>{children}</span>;
 }
 const groups = [
-  ["工作台", [["日报", "/", LayoutDashboard],["系统说明", "/guide", CircleHelp]]],
   [
-    "发现变化",
+    "研究",
     [
-      ["变化发现", "/signals", Activity],
+      ["研究总览", "/", LayoutDashboard],
+      ["每日研究日报", "/daily", BarChart3],
+    ],
+  ],
+  [
+    "筛选流程",
+    [
+      ["变化发现", "/signals", Search],
       ["机会池", "/opportunities", Target],
-    ],
-  ],
-  [
-    "深度研究",
-    [
       ["公司筛选", "/companies", Building2],
-      ["利润估值", "/profit", Calculator],
+      ["公司建模", "/modeling", BarChart3],
       ["投资价值", "/odds", BarChart3],
-      ["持续验证", "/validation", RefreshCw],
-      ["产业链地图", "/industry", Map],
     ],
   ],
-  ["资料归档", [["日报归档", "/daily", FileClock]]],
+  ["研究对象", [["公司时间轴", "/timeline", Building2]]],
+  [
+    "验证",
+    [
+      ["验证中心", "/validation", ShieldCheck],
+      ["历史验证", "/historical-validation", History],
+    ],
+  ],
 ] as const;
 export function Shell({
   active,
@@ -414,17 +419,47 @@ export function Shell({
                 >
                   <I size={16} />
                   {n}
-                  {n === "变化发现" && <em>35</em>}
                 </Link>
               ))}
             </div>
           ))}
         </nav>
         <div className="sidebar-foot">
+          <Link
+            className={
+              path.startsWith("/sources")
+                ? "system-link active"
+                : "system-link"
+            }
+            href="/sources"
+          >
+            <Database size={16} />
+            信息源
+          </Link>
+          <Link
+            className={
+              path.startsWith("/system-log")
+                ? "system-link active"
+                : "system-link"
+            }
+            href="/system-log"
+          >
+            <BookOpenText size={16} />
+            系统优化记录
+          </Link>
+          <Link
+            className={
+              path.startsWith("/guide") ? "system-link active" : "system-link"
+            }
+            href="/guide"
+          >
+            <CircleHelp size={16} />
+            系统说明
+          </Link>
           <div className="sync">
             <i /> 今日扫描已完成
           </div>
-          <p>研究框架 V4 · 状态机</p>
+          <p>研究框架 V4.2 · 五阶段筛选链</p>
         </div>
       </aside>
       <main className="main">
