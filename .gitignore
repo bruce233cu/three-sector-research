@@ -41,3 +41,9 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+# Python / mainline data tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv*/

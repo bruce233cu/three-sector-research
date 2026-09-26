@@ -1,0 +1,19 @@
+{
+  "version": "provider_priority_v1",
+  "retry_backoff_seconds": [2, 5, 15],
+  "datasets": {
+    "trading_calendar": {"primary": "tushare", "backup": "akshare", "grade": "A"},
+    "security_master": {"primary": "tushare", "backup": "akshare", "grade": "A"},
+    "daily_bars": {"primary": "tushare", "backup": "akshare", "grade": "A"},
+    "daily_valuation": {"primary": "tushare", "backup": null, "grade": "A", "backup_unavailable": true},
+    "taxonomies": {"primary": "tushare", "backup": "akshare", "grade": "A"},
+    "membership_history": {"primary": "tushare", "backup": null, "grade": "A", "backup_unavailable": true},
+    "index_daily": {"primary": "tushare", "backup": "akshare", "grade": "A"}
+  },
+  "conflict_tolerance": {
+    "price_absolute": 0.01,
+    "price_relative_bps": 5,
+    "amount_relative_bps": 50,
+    "market_cap_relative_bps": 100
+  }
+}
