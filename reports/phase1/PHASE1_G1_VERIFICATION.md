@@ -8,12 +8,17 @@
 
 - GitHub 共同祖先：`938fa5b8e4ed6ea7336617b1067ab2e5a9876743`（GitHub `main`）。
 - Sites 来源审计 SHA：`67b8f9563da3449c6d1c1d123895e5a5cb2d108e`，未迁移该仓库历史。
-- GitHub 谱系 baseline：`e48b6ca863175dd601436b1eef10c2e0c4fa0388`。
+- GitHub remote baseline：`35b00e09039817b4a9d94c85903a42fb1c39f561`（相对 `main` ahead 1、behind 0，merge-base 为 `938fa5b8e4ed6ea7336617b1067ab2e5a9876743`）。
+- 本地内容谱系 SHA：`e48b6ca863175dd601436b1eef10c2e0c4fa0388`，仅用于导入前内容审计，不是 GitHub remote baseline。
 - Supabase 项目：`pdtlzleqsoftuxdnbdey`；`mainline` 私有 schema 已创建。
 - 17 张 `mainline` 表全部启用 RLS；`anon`、`authenticated` 无 schema usage；`service_role` 有 usage。
 - 已真实写入：AKShare 1.18.97 交易日历 18 行（2026-09-01 至 2026-09-24）、1 条 source snapshot、1 条 run manifest、1 条 provider fetch audit。
 - 未写入静态业务假数据；`security_master`、`taxonomy_definitions`、`membership_history`、`stock_daily`、`float_market_cap_daily`、`benchmark_daily` 均为 0 行。
 - Python Phase 1：16/16 PASS；现有 Sites：11/11 PASS；构建成功。
+
+## 审计修正说明
+
+原记录混用了“本地 GitHub 谱系 worktree commit”和“通过 GitHub Git Data API 形成的正式远程 commit”。两者承载的 baseline 文件树一致，但父提交/提交元数据与对象创建路径不同，因此 SHA 不同。正式交付与外部验收一律以远程 `35b00e09039817b4a9d94c85903a42fb1c39f561` 为准；未修改、重写或替换任何既有 Git 历史。
 
 ## Provider 实测
 

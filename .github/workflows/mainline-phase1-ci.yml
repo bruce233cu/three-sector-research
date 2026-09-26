@@ -1,0 +1,46 @@
+name: Mainline Phase 1 CI
+
+on:
+  push:
+    branches:
+      - "mainline-phase1-*"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src/mainline/**"
+      - "tests/mainline/**"
+      - "supabase/migrations/**"
+      - "config/**"
+      - "requirements-mainline.txt"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/mainline-phase1-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  python-mainline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-mainline.txt
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements-mainline.txt
+      - run: python -m unittest discover -s tests/mainline -p "test_*.py" -v
+
+  node-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - run: npm test
