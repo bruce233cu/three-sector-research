@@ -40,7 +40,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
           cache: npm
-      - run: npm ci
+      - name: Validate lockfile
+        run: |
+          test -f package-lock.json
+          node -e "JSON.parse(require('node:fs').readFileSync('package-lock.json','utf8'))"
+      - run: npm ci --package-lock=true
       - run: npm test
