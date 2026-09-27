@@ -81,6 +81,10 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     if not backup_bars.empty:
         bars = pd.concat([bars, backup_bars], ignore_index=True).drop_duplicates(["security_id", "trade_date"], keep="first")
     bar_errors = backup_errors
+    member_circ_mv_coverage = (
+        float(pd.to_numeric(bars.get("circ_mv"), errors="coerce").notna().mean())
+        if not bars.empty and "circ_mv" in bars.columns else 0.0
+    )
     bars_artifact = cache.put(
         "stock_window", "phase1d-20190301-20250630-selected-members", bars,
         source_id=f"{market.source_id}+{backup.source_id}",
@@ -171,7 +175,11 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         "full_a_history_persisted": False,
         "stock_rows_cached_only": len(bars),
         "stock_rows_written_to_supabase": 0,
-        "missing_circ_mv": True,
+        "primary_failed_security_count": len(primary_errors),
+        "backup_recovered_security_count": len(primary_errors) - len(backup_errors),
+        "unrecovered_security_count": len(backup_errors),
+        "derived_member_circ_mv_coverage": member_circ_mv_coverage,
+        "missing_all_a_circ_mv": True,
         "failures": failures,
         "cache_artifacts": [membership_artifact.__dict__, bars_artifact.__dict__, benchmark_artifact.__dict__],
     }
