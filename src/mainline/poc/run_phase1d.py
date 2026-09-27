@@ -74,19 +74,38 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         source_id=membership_provider.source_id, source_version=membership_provider.source_version, fetched_at=fetched_at,
     )
 
-    unique_ids = sorted(all_members["security_id"].unique()) if not all_members.empty else []
-    bars, primary_errors = market.get_many(unique_ids, date(2019, 3, 1), date(2025, 6, 30))
-    backup = BaostockWindowProvider()
-    backup_bars, backup_errors = backup.get_many(sorted(primary_errors), date(2019, 3, 1), date(2025, 6, 30))
-    if not backup_bars.empty:
-        bars = pd.concat([bars, backup_bars], ignore_index=True).drop_duplicates(["security_id", "trade_date"], keep="first")
-    bar_errors = backup_errors
+    # Fetch only the 120-calendar-day windows needed by the five target dates.
+    # Raw stock rows remain an ephemeral cache, not a full-A history warehouse.
+    backup = BaostockWindowProvider(workers=4)
+    bar_frames: list[pd.DataFrame] = []
+    primary_errors_all: dict[str, str] = {}
+    backup_errors_all: dict[str, str] = {}
+    backup_recovered: set[str] = set()
+    for trade_date in DATES:
+        date_members = sorted(all_members.loc[all_members["snapshot_date"] == trade_date, "security_id"].unique())
+        window_start = trade_date - timedelta(days=120)
+        primary_bars, primary_errors = market.get_many(date_members, window_start, trade_date)
+        if not primary_bars.empty:
+            bar_frames.append(primary_bars)
+        primary_errors_all.update({f"{trade_date}:{key}": value for key, value in primary_errors.items()})
+        backup_bars, backup_errors = backup.get_many(sorted(primary_errors), window_start, trade_date)
+        if not backup_bars.empty:
+            bar_frames.append(backup_bars)
+            backup_recovered.update(set(primary_errors).difference(backup_errors))
+        backup_errors_all.update({f"{trade_date}:{key}": value for key, value in backup_errors.items()})
+    bars = (
+        pd.concat(bar_frames, ignore_index=True).drop_duplicates(["security_id", "trade_date"], keep="first")
+        if bar_frames else pd.DataFrame()
+    )
+    primary_errors = primary_errors_all
+    backup_errors = backup_errors_all
+    bar_errors = backup_errors_all
     member_circ_mv_coverage = (
         float(pd.to_numeric(bars.get("circ_mv"), errors="coerce").notna().mean())
         if not bars.empty and "circ_mv" in bars.columns else 0.0
     )
     bars_artifact = cache.put(
-        "stock_window", "phase1d-20190301-20250630-selected-members", bars,
+        "stock_window", "phase1d-five-dates-120-day-selected-member-windows", bars,
         source_id=f"{market.source_id}+{backup.source_id}",
         source_version=f"{market.source_version}+{backup.source_version}", fetched_at=fetched_at,
     )
@@ -176,7 +195,7 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         "stock_rows_cached_only": len(bars),
         "stock_rows_written_to_supabase": 0,
         "primary_failed_security_count": len(primary_errors),
-        "backup_recovered_security_count": len(primary_errors) - len(backup_errors),
+        "backup_recovered_security_count": len(backup_recovered),
         "unrecovered_security_count": len(backup_errors),
         "derived_member_circ_mv_coverage": member_circ_mv_coverage,
         "missing_all_a_circ_mv": True,
