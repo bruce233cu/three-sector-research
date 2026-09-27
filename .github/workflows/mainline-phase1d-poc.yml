@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: mainline-phase1d-poc
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   real-data-poc:
