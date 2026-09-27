@@ -98,6 +98,32 @@ class Phase1DPocTests(unittest.TestCase):
         result = provider.get_one("830001.BJ", date(2025, 1, 1), date(2025, 6, 30))
         self.assertTrue(result.empty)
 
+    def test_baostock_free_float_market_cap_derivation_preserves_units(self):
+        class Result:
+            error_code = "0"
+            error_msg = ""
+
+            def __init__(self):
+                self.done = False
+
+            def next(self):
+                if self.done:
+                    return False
+                self.done = True
+                return True
+
+            def get_row_data(self):
+                return ["2025-06-30", "sz.000001", "10", "11", "9", "10", "1000000", "10000000", "1", "2", "1"]
+
+        class Client:
+            def query_history_k_data_plus(self, *args, **kwargs):
+                return Result()
+
+        provider = object.__new__(BaostockWindowProvider)
+        provider.bs = Client()
+        result = provider.get_one("000001.SZ", date(2025, 6, 30), date(2025, 6, 30))
+        self.assertEqual(float(result.iloc[0]["circ_mv"]), 500_000_000.0)
+
 
 if __name__ == "__main__":
     unittest.main()
