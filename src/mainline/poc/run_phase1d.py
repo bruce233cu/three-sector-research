@@ -13,6 +13,7 @@ from mainline.cache import ParquetDuckDBCache
 from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
 from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.eastmoney_window import EastmoneyWindowProvider
+from mainline.providers.netease_window import NeteaseWindowProvider
 from mainline.providers.sws_history import SwsEffectivePitProvider
 
 
@@ -81,10 +82,13 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
 
     # Fetch only the 120-calendar-day windows needed by the five target dates.
     # Raw stock rows remain an ephemeral cache, not a full-A history warehouse.
+    secondary = NeteaseWindowProvider(workers=4, retries=2)
     backup = BaostockWindowProvider(workers=1)
     bar_frames: list[pd.DataFrame] = []
     primary_errors_all: dict[str, str] = {}
+    secondary_errors_all: dict[str, str] = {}
     backup_errors_all: dict[str, str] = {}
+    secondary_recovered: set[str] = set()
     backup_recovered: set[str] = set()
     for trade_date in DATES:
         date_members = sorted(all_members.loc[all_members["snapshot_date"] == trade_date, "security_id"].unique())
@@ -96,14 +100,20 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         else:
             primary_errors = {security_id: f"circuit_open:{primary_health_reason}" for security_id in date_members}
         primary_errors_all.update({f"{trade_date}:{key}": value for key, value in primary_errors.items()})
-        backup_bars, backup_errors = backup.get_many(sorted(primary_errors), window_start, trade_date)
+        secondary_bars, secondary_errors = secondary.get_many(sorted(primary_errors), window_start, trade_date)
+        if not secondary_bars.empty:
+            bar_frames.append(secondary_bars)
+            secondary_recovered.update(set(primary_errors).difference(secondary_errors))
+        secondary_errors_all.update({f"{trade_date}:{key}": value for key, value in secondary_errors.items()})
+        backup_bars, backup_errors = backup.get_many(sorted(secondary_errors), window_start, trade_date)
         if not backup_bars.empty:
             bar_frames.append(backup_bars)
-            backup_recovered.update(set(primary_errors).difference(backup_errors))
+            backup_recovered.update(set(secondary_errors).difference(backup_errors))
         backup_errors_all.update({f"{trade_date}:{key}": value for key, value in backup_errors.items()})
+    empty_bar_columns = ["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate", "circ_mv", "circ_mv_derivation", "source_id", "source_version"]
     bars = (
         pd.concat(bar_frames, ignore_index=True).drop_duplicates(["security_id", "trade_date"], keep="first")
-        if bar_frames else pd.DataFrame()
+        if bar_frames else pd.DataFrame(columns=empty_bar_columns)
     )
     primary_errors = primary_errors_all
     backup_errors = backup_errors_all
@@ -114,8 +124,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     )
     bars_artifact = cache.put(
         "stock_window", "phase1d-five-dates-120-day-selected-member-windows", bars,
-        source_id=f"{market.source_id}+{backup.source_id}",
-        source_version=f"{market.source_version}+{backup.source_version}", fetched_at=fetched_at,
+        source_id=f"{market.source_id}+{secondary.source_id}+{backup.source_id}",
+        source_version=f"{market.source_version}+{secondary.source_version}+{backup.source_version}", fetched_at=fetched_at,
     )
     if bar_errors:
         failures.append({"stage": "stock_window", "failed_security_count": len(bar_errors), "examples": dict(list(sorted(bar_errors.items()))[:20])})
@@ -159,8 +169,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         result.update({
             "pit_level": membership.pit_level,
             "knowledge_time_unverified": membership.knowledge_time_unverified,
-            "source_ids": [membership_provider.source_id, market.source_id, backup.source_id, "sws_official_index_api"],
-            "source_versions": [membership.source_version, market.source_version, backup.source_version, "sws-index-publish-trend-v1"],
+            "source_ids": [membership_provider.source_id, market.source_id, secondary.source_id, backup.source_id, "sws_official_index_api"],
+            "source_versions": [membership.source_version, market.source_version, secondary.source_version, backup.source_version, "sws-index-publish-trend-v1"],
             "source_checksums": [membership_artifact.checksum_sha256, bars_artifact.checksum_sha256, benchmark_artifact.checksum_sha256],
             "run_id": run_id,
             "rule_version": "mainline_v2.2.0",
@@ -206,6 +216,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         "primary_probe_success_ratio": primary_success_ratio,
         "primary_health_reason": primary_health_reason,
         "primary_failed_security_count": len(primary_errors),
+        "secondary_recovered_security_count": len(secondary_recovered),
+        "secondary_unrecovered_security_count": len(secondary_errors_all),
         "backup_recovered_security_count": len(backup_recovered),
         "unrecovered_security_count": len(backup_errors),
         "derived_member_circ_mv_coverage": member_circ_mv_coverage,
