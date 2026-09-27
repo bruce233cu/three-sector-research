@@ -166,6 +166,18 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     }
     _write_json(output_dir / "poc_summary.json", summary)
     _write_json(output_dir / "sector_snapshots.json", snapshots)
+    _write_json(output_dir / "membership_evidence.json", all_members.to_dict(orient="records"))
+    _write_json(output_dir / "taxonomy_definitions.json", [
+        {
+            "taxonomy_type": "sw1", "taxonomy_code": code, "taxonomy_name": name,
+            "taxonomy_version": version,
+            "effective_from": "2021-12-13" if version == "SW2021" else "2014-01-01",
+            "effective_to": None if version == "SW2021" else "2021-12-12",
+            "source_id": membership_provider.source_id,
+            "source_version": membership_provider.source_version,
+        }
+        for version in ("SW2014", "SW2021") for code, name in INDUSTRIES.items()
+    ])
     _write_json(output_dir / "calculation_traces.json", traces)
     _write_json(output_dir / "run_manifest.json", {**run_basis, **summary})
     return summary
