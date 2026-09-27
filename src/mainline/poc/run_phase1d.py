@@ -11,6 +11,7 @@ import pandas as pd
 
 from mainline.cache import ParquetDuckDBCache
 from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
+from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.eastmoney_window import EastmoneyWindowProvider
 from mainline.providers.sws_history import SwsEffectivePitProvider
 
@@ -23,6 +24,7 @@ INDUSTRIES = {
     "801050": "有色金属",  # 周期
     "801890": "机械设备",  # 制造
 }
+EARLY_FINANCIAL_FALLBACK = ("801790", "非银金融")
 RUN_NAMESPACE = UUID("f80b56da-9062-4b84-9e83-afef08cae930")
 
 
@@ -52,14 +54,17 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     for trade_date in DATES:
         for code, name in INDUSTRIES.items():
             snapshot = membership_provider.snapshot(trade_date, code, name)
+            if snapshot.frame.empty and code == "801780" and trade_date < date(2021, 12, 13):
+                fallback_code, fallback_name = EARLY_FINANCIAL_FALLBACK
+                snapshot = membership_provider.snapshot(trade_date, fallback_code, fallback_name)
             membership_snapshots.append(snapshot)
             if snapshot.frame.empty:
-                failures.append({"stage": "membership", "trade_date": trade_date.isoformat(), "taxonomy_code": code, "reason": "no effective members returned"})
+                failures.append({"stage": "membership", "trade_date": trade_date.isoformat(), "taxonomy_code": snapshot.taxonomy_code, "reason": "no effective members returned"})
             else:
                 tagged = snapshot.frame.copy()
                 tagged["snapshot_date"] = trade_date
-                tagged["taxonomy_code"] = code
-                tagged["taxonomy_name"] = name
+                tagged["taxonomy_code"] = snapshot.taxonomy_code
+                tagged["taxonomy_name"] = snapshot.taxonomy_name
                 tagged["taxonomy_version"] = snapshot.taxonomy_version
                 member_frames.append(tagged)
 
@@ -70,10 +75,16 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     )
 
     unique_ids = sorted(all_members["security_id"].unique()) if not all_members.empty else []
-    bars, bar_errors = market.get_many(unique_ids, date(2019, 3, 1), date(2025, 6, 30))
+    bars, primary_errors = market.get_many(unique_ids, date(2019, 3, 1), date(2025, 6, 30))
+    backup = BaostockWindowProvider()
+    backup_bars, backup_errors = backup.get_many(sorted(primary_errors), date(2019, 3, 1), date(2025, 6, 30))
+    if not backup_bars.empty:
+        bars = pd.concat([bars, backup_bars], ignore_index=True).drop_duplicates(["security_id", "trade_date"], keep="first")
+    bar_errors = backup_errors
     bars_artifact = cache.put(
         "stock_window", "phase1d-20190301-20250630-selected-members", bars,
-        source_id=market.source_id, source_version=market.source_version, fetched_at=fetched_at,
+        source_id=f"{market.source_id}+{backup.source_id}",
+        source_version=f"{market.source_version}+{backup.source_version}", fetched_at=fetched_at,
     )
     if bar_errors:
         failures.append({"stage": "stock_window", "failed_security_count": len(bar_errors), "examples": dict(list(sorted(bar_errors.items()))[:20])})
@@ -117,8 +128,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         result.update({
             "pit_level": membership.pit_level,
             "knowledge_time_unverified": membership.knowledge_time_unverified,
-            "source_ids": [membership_provider.source_id, market.source_id, "sws_official_index_api"],
-            "source_versions": [membership.source_version, market.source_version, "sws-index-publish-trend-v1"],
+            "source_ids": [membership_provider.source_id, market.source_id, backup.source_id, "sws_official_index_api"],
+            "source_versions": [membership.source_version, market.source_version, backup.source_version, "sws-index-publish-trend-v1"],
             "source_checksums": [membership_artifact.checksum_sha256, bars_artifact.checksum_sha256, benchmark_artifact.checksum_sha256],
             "run_id": run_id,
             "rule_version": "mainline_v2.2.0",
@@ -176,7 +187,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
             "source_id": membership_provider.source_id,
             "source_version": membership_provider.source_version,
         }
-        for version in ("SW2014", "SW2021") for code, name in INDUSTRIES.items()
+        for version in ("SW2014", "SW2021")
+        for code, name in ({**INDUSTRIES, **({EARLY_FINANCIAL_FALLBACK[0]: EARLY_FINANCIAL_FALLBACK[1]} if version == "SW2014" else {})}).items()
     ])
     _write_json(output_dir / "calculation_traces.json", traces)
     _write_json(output_dir / "run_manifest.json", {**run_basis, **summary})
