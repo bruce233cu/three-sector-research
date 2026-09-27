@@ -48,13 +48,11 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     failures: list[dict] = []
     membership_provider = SwsEffectivePitProvider()
     market = EastmoneyWindowProvider(retries=1)
-    try:
-        probe = market.get_one("000001.SZ", DATES[-1] - timedelta(days=7), DATES[-1])
-        primary_healthy = not probe.empty
-        primary_health_reason = None if primary_healthy else "probe_empty"
-    except Exception as error:
-        primary_healthy = False
-        primary_health_reason = f"{type(error).__name__}:{error}"
+    probe_ids = sorted(all_members["security_id"].unique())[:12] if not all_members.empty else []
+    probe_rows, probe_errors = market.get_many(probe_ids, DATES[-1] - timedelta(days=7), DATES[-1])
+    primary_success_ratio = (len(probe_ids) - len(probe_errors)) / len(probe_ids) if probe_ids else 0.0
+    primary_healthy = primary_success_ratio >= 0.80
+    primary_health_reason = None if primary_healthy else f"batch_probe_success_ratio={primary_success_ratio:.4f}<0.8000"
 
     membership_snapshots = []
     member_frames = []
@@ -83,7 +81,7 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
 
     # Fetch only the 120-calendar-day windows needed by the five target dates.
     # Raw stock rows remain an ephemeral cache, not a full-A history warehouse.
-    backup = BaostockWindowProvider(workers=4)
+    backup = BaostockWindowProvider(workers=1)
     bar_frames: list[pd.DataFrame] = []
     primary_errors_all: dict[str, str] = {}
     backup_errors_all: dict[str, str] = {}
@@ -205,6 +203,7 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         "stock_rows_cached_only": len(bars),
         "stock_rows_written_to_supabase": 0,
         "primary_healthy": primary_healthy,
+        "primary_probe_success_ratio": primary_success_ratio,
         "primary_health_reason": primary_health_reason,
         "primary_failed_security_count": len(primary_errors),
         "backup_recovered_security_count": len(backup_recovered),
