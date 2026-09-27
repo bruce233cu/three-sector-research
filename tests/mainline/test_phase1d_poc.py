@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from mainline.cache import ParquetDuckDBCache
 from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
+from mainline.providers.baostock_window import BaostockWindowProvider
 
 
 def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
@@ -91,6 +92,11 @@ class Phase1DPocTests(unittest.TestCase):
         self.assertIn("hard_status drop not null", sql)
         self.assertIn("pit_level", sql)
         self.assertNotIn("update mainline.daily_mainline_snapshot set hard_status", sql.lower())
+
+    def test_baostock_backup_rejects_unsupported_exchange_without_fabricating_rows(self):
+        provider = object.__new__(BaostockWindowProvider)
+        result = provider.get_one("830001.BJ", date(2025, 1, 1), date(2025, 6, 30))
+        self.assertTrue(result.empty)
 
 
 if __name__ == "__main__":
