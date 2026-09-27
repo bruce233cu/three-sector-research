@@ -57,7 +57,9 @@ class EastmoneyWindowProvider:
         frame["trade_date"] = pd.to_datetime(frame["trade_date"]).dt.date
         for column in ["open", "close", "high", "low", "volume", "amount", "pct_chg", "turnover_rate"]:
             frame[column] = pd.to_numeric(frame[column], errors="coerce")
-        return frame[["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate"]]
+        frame["source_id"] = self.source_id
+        frame["source_version"] = self.source_version
+        return frame[["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate", "source_id", "source_version"]]
 
     def get_sw_index(self, code: str) -> pd.DataFrame:
         payload = self._json(
