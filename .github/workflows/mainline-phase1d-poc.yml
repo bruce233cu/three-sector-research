@@ -37,8 +37,9 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
+          rm -rf reports/phase1d/runtime
           mkdir -p reports/phase1d/runtime
-          ./scripts/run-mainline-phase1d-poc.sh 2>&1 | tee reports/phase1d/runtime/execution.log
+          bash scripts/run-mainline-phase1d-poc.sh 2>&1 | tee reports/phase1d/runtime/execution.log
       - name: Record runner failure without inventing data
         if: steps.poc.outcome != 'success'
         run: |
