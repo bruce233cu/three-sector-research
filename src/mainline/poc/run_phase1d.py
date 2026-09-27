@@ -48,11 +48,6 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     failures: list[dict] = []
     membership_provider = SwsEffectivePitProvider()
     market = EastmoneyWindowProvider(retries=1)
-    probe_ids = sorted(all_members["security_id"].unique())[:12] if not all_members.empty else []
-    probe_rows, probe_errors = market.get_many(probe_ids, DATES[-1] - timedelta(days=7), DATES[-1])
-    primary_success_ratio = (len(probe_ids) - len(probe_errors)) / len(probe_ids) if probe_ids else 0.0
-    primary_healthy = primary_success_ratio >= 0.80
-    primary_health_reason = None if primary_healthy else f"batch_probe_success_ratio={primary_success_ratio:.4f}<0.8000"
 
     membership_snapshots = []
     member_frames = []
@@ -74,6 +69,11 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
                 member_frames.append(tagged)
 
     all_members = pd.concat(member_frames, ignore_index=True) if member_frames else pd.DataFrame()
+    probe_ids = sorted(all_members["security_id"].unique())[:12] if not all_members.empty else []
+    _probe_rows, probe_errors = market.get_many(probe_ids, DATES[-1] - timedelta(days=7), DATES[-1])
+    primary_success_ratio = (len(probe_ids) - len(probe_errors)) / len(probe_ids) if probe_ids else 0.0
+    primary_healthy = primary_success_ratio >= 0.80
+    primary_health_reason = None if primary_healthy else f"batch_probe_success_ratio={primary_success_ratio:.4f}<0.8000"
     membership_artifact = cache.put(
         "membership_snapshot", "phase1d-five-dates-five-industries", all_members,
         source_id=membership_provider.source_id, source_version=membership_provider.source_version, fetched_at=fetched_at,
