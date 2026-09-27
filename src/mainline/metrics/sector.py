@@ -82,8 +82,14 @@ def calculate_sector_snapshot(value: SectorMetricInput) -> dict[str, Any]:
     valid_amount = latest[latest["amount"].gt(0)]
     sector_amount = float(valid_amount["amount"].sum()) if not valid_amount.empty else None
     turnover_share = None
+    turnover_intensity = None
     if value.all_a_amount is not None and value.trade_date in value.all_a_amount.index and sector_amount is not None:
         turnover_share = _ratio(sector_amount, float(value.all_a_amount.loc[value.trade_date]))
+        daily_amount = bars[bars["amount"].gt(0)].groupby("trade_date")["amount"].sum()
+        shares = daily_amount.div(pd.to_numeric(value.all_a_amount, errors="coerce")).replace([np.inf, -np.inf], np.nan).dropna().loc[: value.trade_date].tail(60)
+        median_share = float(shares.median()) if len(shares) >= 40 else None
+        if turnover_share is not None and median_share is not None and median_share > 0:
+            turnover_intensity = float(turnover_share / median_share)
 
     up_ratio = None
     if sector_return_coverage >= 0.70 and valid_member_count:
@@ -166,7 +172,7 @@ def calculate_sector_snapshot(value: SectorMetricInput) -> dict[str, Any]:
         "rs_10": rs_values[10][0],
         "rs_20": rs_values[20][0],
         "turnover_share": turnover_share,
-        "turnover_intensity": None,
+        "turnover_intensity": turnover_intensity,
         "turnover_cap_deviation": turnover_cap_deviation,
         "up_ratio": up_ratio,
         **breadth_values,
