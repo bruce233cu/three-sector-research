@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from mainline.cache import ParquetDuckDBCache
 from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
 from mainline.providers.baostock_window import BaostockWindowProvider
+from mainline.providers.netease_window import NeteaseWindowProvider
 
 
 def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
@@ -97,6 +98,17 @@ class Phase1DPocTests(unittest.TestCase):
         provider = object.__new__(BaostockWindowProvider)
         result = provider.get_one("830001.BJ", date(2025, 1, 1), date(2025, 6, 30))
         self.assertTrue(result.empty)
+
+    def test_netease_normalization_keeps_amount_and_derives_cap(self):
+        provider = NeteaseWindowProvider()
+        raw = pd.DataFrame([{
+            "日期": "2025-06-30", "开盘价": "10", "最高价": "11", "最低价": "9",
+            "收盘价": "10", "成交量": "1000000", "成交金额": "10000000",
+            "涨跌幅": "1", "换手率": "2",
+        }])
+        result = provider._normalize(raw, "000001.SZ")
+        self.assertEqual(float(result.iloc[0]["amount"]), 10_000_000.0)
+        self.assertEqual(float(result.iloc[0]["circ_mv"]), 500_000_000.0)
 
     def test_baostock_free_float_market_cap_derivation_preserves_units(self):
         class Result:
