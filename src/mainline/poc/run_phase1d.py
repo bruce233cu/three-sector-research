@@ -47,7 +47,14 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     fetched_at = datetime.now(timezone.utc)
     failures: list[dict] = []
     membership_provider = SwsEffectivePitProvider()
-    market = EastmoneyWindowProvider()
+    market = EastmoneyWindowProvider(retries=1)
+    try:
+        probe = market.get_one("000001.SZ", DATES[-1] - timedelta(days=7), DATES[-1])
+        primary_healthy = not probe.empty
+        primary_health_reason = None if primary_healthy else "probe_empty"
+    except Exception as error:
+        primary_healthy = False
+        primary_health_reason = f"{type(error).__name__}:{error}"
 
     membership_snapshots = []
     member_frames = []
@@ -84,9 +91,12 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     for trade_date in DATES:
         date_members = sorted(all_members.loc[all_members["snapshot_date"] == trade_date, "security_id"].unique())
         window_start = trade_date - timedelta(days=120)
-        primary_bars, primary_errors = market.get_many(date_members, window_start, trade_date)
-        if not primary_bars.empty:
-            bar_frames.append(primary_bars)
+        if primary_healthy:
+            primary_bars, primary_errors = market.get_many(date_members, window_start, trade_date)
+            if not primary_bars.empty:
+                bar_frames.append(primary_bars)
+        else:
+            primary_errors = {security_id: f"circuit_open:{primary_health_reason}" for security_id in date_members}
         primary_errors_all.update({f"{trade_date}:{key}": value for key, value in primary_errors.items()})
         backup_bars, backup_errors = backup.get_many(sorted(primary_errors), window_start, trade_date)
         if not backup_bars.empty:
@@ -194,6 +204,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         "full_a_history_persisted": False,
         "stock_rows_cached_only": len(bars),
         "stock_rows_written_to_supabase": 0,
+        "primary_healthy": primary_healthy,
+        "primary_health_reason": primary_health_reason,
         "primary_failed_security_count": len(primary_errors),
         "backup_recovered_security_count": len(backup_recovered),
         "unrecovered_security_count": len(backup_errors),
