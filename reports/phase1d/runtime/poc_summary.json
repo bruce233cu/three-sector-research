@@ -1,42 +1,55 @@
-/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'www.swsresearch.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'www.swsresearch.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'www.swsresearch.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
 {
-  "phase": "Phase 1D",
-  "run_id": "1815e752-7c3e-5a65-909a-7007ab1cdf11",
-  "run_fingerprint": "91a147f6e4e0ef5440d985aa408151411c6842acc0cac3fd85f9cb3879dc9db9",
-  "started_or_fetched_at": "2026-09-27T00:25:12.289712Z",
-  "target_snapshot_count": 25,
   "actual_snapshot_count": 23,
-  "frozen_snapshot_count": 23,
+  "cache_artifacts": [
+    {
+      "cache_key": "phase1d-five-dates-five-industries",
+      "checksum_sha256": "7415539690a268cf48f1a2d85ce516d653a60c2792c3307c3f954b372b009456",
+      "dataset": "membership_snapshot",
+      "fetched_at": "2026-09-27T00:25:12.289712Z",
+      "metadata_path": ".cache/mainline/phase1d/membership_snapshot/26d625654d833c5f346b5fd0.json",
+      "parquet_path": ".cache/mainline/phase1d/membership_snapshot/26d625654d833c5f346b5fd0.parquet",
+      "row_count": 5047,
+      "source_id": "sws_official_stock_classification",
+      "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+    },
+    {
+      "cache_key": "phase1d-20190301-20250630-selected-members",
+      "checksum_sha256": "bf11413fd06859fb254e14c712a5a62c6dbdecefefdb83053b4643c53b097d64",
+      "dataset": "stock_window",
+      "fetched_at": "2026-09-27T00:25:12.289712Z",
+      "metadata_path": ".cache/mainline/phase1d/stock_window/3fe4a54fe1ca4dcd212debca.json",
+      "parquet_path": ".cache/mainline/phase1d/stock_window/3fe4a54fe1ca4dcd212debca.parquet",
+      "row_count": 1521,
+      "source_id": "eastmoney_kline",
+      "source_version": "eastmoney-push2his-kline-v1"
+    },
+    {
+      "cache_key": "sw-801003-all-a",
+      "checksum_sha256": "230a330b3efac0145275300a1dffc1aefbe9c7fa487b3f9f16b58e0e69d81f02",
+      "dataset": "benchmark_window",
+      "fetched_at": "2026-09-27T00:25:12.289712Z",
+      "metadata_path": ".cache/mainline/phase1d/benchmark_window/39f90c59d62fd0b34e2ae645.json",
+      "parquet_path": ".cache/mainline/phase1d/benchmark_window/39f90c59d62fd0b34e2ae645.parquet",
+      "row_count": 6462,
+      "source_id": "sws_official_index_api",
+      "source_version": "sws-index-publish-trend-v1"
+    }
+  ],
   "effective_pit_count": 23,
-  "strict_knowledge_pit_count": 0,
-  "result_checksum": "7c3ea9512baad4811d0f43f4224b609a803d256271fd6a5a08c068967a065790",
-  "rerun_checksum": "7c3ea9512baad4811d0f43f4224b609a803d256271fd6a5a08c068967a065790",
-  "rerun_identical": true,
-  "full_a_history_persisted": false,
-  "stock_rows_cached_only": 1521,
-  "stock_rows_written_to_supabase": 0,
-  "missing_circ_mv": true,
   "failures": [
     {
+      "reason": "no effective members returned",
       "stage": "membership",
-      "trade_date": "2019-06-28",
       "taxonomy_code": "801780",
-      "reason": "no effective members returned"
+      "trade_date": "2019-06-28"
     },
     {
+      "reason": "no effective members returned",
       "stage": "membership",
-      "trade_date": "2020-06-30",
       "taxonomy_code": "801780",
-      "reason": "no effective members returned"
+      "trade_date": "2020-06-30"
     },
     {
-      "stage": "stock_window",
-      "failed_security_count": 1590,
       "examples": {
         "000001.SZ": "RuntimeError:fetch failed 014fd1f5acac: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
         "000008.SZ": "RuntimeError:fetch failed aacbd1c64cb8: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
@@ -58,42 +71,23 @@
         "000425.SZ": "RuntimeError:fetch failed c08daa0a735b: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
         "000426.SZ": "RuntimeError:fetch failed b15d3affa019: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
         "000506.SZ": "RuntimeError:fetch failed aece21a5bf36: ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-      }
+      },
+      "failed_security_count": 1590,
+      "stage": "stock_window"
     }
   ],
-  "cache_artifacts": [
-    {
-      "dataset": "membership_snapshot",
-      "cache_key": "phase1d-five-dates-five-industries",
-      "parquet_path": ".cache/mainline/phase1d/membership_snapshot/26d625654d833c5f346b5fd0.parquet",
-      "metadata_path": ".cache/mainline/phase1d/membership_snapshot/26d625654d833c5f346b5fd0.json",
-      "source_id": "sws_official_stock_classification",
-      "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
-      "fetched_at": "2026-09-27T00:25:12.289712Z",
-      "checksum_sha256": "7415539690a268cf48f1a2d85ce516d653a60c2792c3307c3f954b372b009456",
-      "row_count": 5047
-    },
-    {
-      "dataset": "stock_window",
-      "cache_key": "phase1d-20190301-20250630-selected-members",
-      "parquet_path": ".cache/mainline/phase1d/stock_window/3fe4a54fe1ca4dcd212debca.parquet",
-      "metadata_path": ".cache/mainline/phase1d/stock_window/3fe4a54fe1ca4dcd212debca.json",
-      "source_id": "eastmoney_kline",
-      "source_version": "eastmoney-push2his-kline-v1",
-      "fetched_at": "2026-09-27T00:25:12.289712Z",
-      "checksum_sha256": "bf11413fd06859fb254e14c712a5a62c6dbdecefefdb83053b4643c53b097d64",
-      "row_count": 1521
-    },
-    {
-      "dataset": "benchmark_window",
-      "cache_key": "sw-801003-all-a",
-      "parquet_path": ".cache/mainline/phase1d/benchmark_window/39f90c59d62fd0b34e2ae645.parquet",
-      "metadata_path": ".cache/mainline/phase1d/benchmark_window/39f90c59d62fd0b34e2ae645.json",
-      "source_id": "sws_official_index_api",
-      "source_version": "sws-index-publish-trend-v1",
-      "fetched_at": "2026-09-27T00:25:12.289712Z",
-      "checksum_sha256": "230a330b3efac0145275300a1dffc1aefbe9c7fa487b3f9f16b58e0e69d81f02",
-      "row_count": 6462
-    }
-  ]
+  "frozen_snapshot_count": 23,
+  "full_a_history_persisted": false,
+  "missing_circ_mv": true,
+  "phase": "Phase 1D",
+  "rerun_checksum": "7c3ea9512baad4811d0f43f4224b609a803d256271fd6a5a08c068967a065790",
+  "rerun_identical": true,
+  "result_checksum": "7c3ea9512baad4811d0f43f4224b609a803d256271fd6a5a08c068967a065790",
+  "run_fingerprint": "91a147f6e4e0ef5440d985aa408151411c6842acc0cac3fd85f9cb3879dc9db9",
+  "run_id": "1815e752-7c3e-5a65-909a-7007ab1cdf11",
+  "started_or_fetched_at": "2026-09-27T00:25:12.289712Z",
+  "stock_rows_cached_only": 1521,
+  "stock_rows_written_to_supabase": 0,
+  "strict_knowledge_pit_count": 0,
+  "target_snapshot_count": 25
 }

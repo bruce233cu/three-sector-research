@@ -1,0 +1,102 @@
+[
+  {
+    "effective_from": "2014-01-01",
+    "effective_to": "2021-12-12",
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801080",
+    "taxonomy_name": "电子",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2014"
+  },
+  {
+    "effective_from": "2014-01-01",
+    "effective_to": "2021-12-12",
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801120",
+    "taxonomy_name": "食品饮料",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2014"
+  },
+  {
+    "effective_from": "2014-01-01",
+    "effective_to": "2021-12-12",
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801780",
+    "taxonomy_name": "银行",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2014"
+  },
+  {
+    "effective_from": "2014-01-01",
+    "effective_to": "2021-12-12",
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801050",
+    "taxonomy_name": "有色金属",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2014"
+  },
+  {
+    "effective_from": "2014-01-01",
+    "effective_to": "2021-12-12",
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801890",
+    "taxonomy_name": "机械设备",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2014"
+  },
+  {
+    "effective_from": "2021-12-13",
+    "effective_to": null,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801080",
+    "taxonomy_name": "电子",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2021"
+  },
+  {
+    "effective_from": "2021-12-13",
+    "effective_to": null,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801120",
+    "taxonomy_name": "食品饮料",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2021"
+  },
+  {
+    "effective_from": "2021-12-13",
+    "effective_to": null,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801780",
+    "taxonomy_name": "银行",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2021"
+  },
+  {
+    "effective_from": "2021-12-13",
+    "effective_to": null,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801050",
+    "taxonomy_name": "有色金属",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2021"
+  },
+  {
+    "effective_from": "2021-12-13",
+    "effective_to": null,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+    "taxonomy_code": "801890",
+    "taxonomy_name": "机械设备",
+    "taxonomy_type": "sw1",
+    "taxonomy_version": "SW2021"
+  }
+]
