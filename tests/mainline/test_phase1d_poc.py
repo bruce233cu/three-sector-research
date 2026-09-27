@@ -42,6 +42,7 @@ class Phase1DPocTests(unittest.TestCase):
         self.assertAlmostEqual(result["sector_return"], 0.004, places=9)
         self.assertEqual(result["up_ratio"], 0.6)
         self.assertIsNotNone(result["rs_20"])
+        self.assertIsNotNone(result["turnover_intensity"])
         self.assertFalse(result["stage_frozen"])
 
     def test_suspended_member_is_excluded_not_zeroed(self):
