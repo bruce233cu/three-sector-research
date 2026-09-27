@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import date
 
 import pandas as pd
+
+
+def _fetch_chunk(security_ids: list[str], start_date: date, end_date: date) -> tuple[pd.DataFrame, dict[str, str]]:
+    """Run one independent BaoStock session in a worker process."""
+    provider = BaostockWindowProvider(workers=1)
+    return provider._get_many_serial(security_ids, start_date, end_date)
 
 
 class BaostockWindowProvider:
@@ -11,11 +18,29 @@ class BaostockWindowProvider:
     source_id = "baostock_history_k"
     source_version = "baostock:0.8.9:query_history_k_data_plus"
 
-    def __init__(self) -> None:
+    def __init__(self, *, workers: int = 4) -> None:
         import baostock as bs
         self.bs = bs
+        self.workers = max(1, workers)
 
     def get_many(self, security_ids: list[str], start_date: date, end_date: date) -> tuple[pd.DataFrame, dict[str, str]]:
+        if not security_ids:
+            return pd.DataFrame(), {}
+        if self.workers == 1 or len(security_ids) < 8:
+            return self._get_many_serial(security_ids, start_date, end_date)
+        chunks = [security_ids[index:: self.workers] for index in range(self.workers)]
+        frames: list[pd.DataFrame] = []
+        errors: dict[str, str] = {}
+        with ProcessPoolExecutor(max_workers=self.workers) as pool:
+            futures = [pool.submit(_fetch_chunk, chunk, start_date, end_date) for chunk in chunks if chunk]
+            for future in as_completed(futures):
+                frame, chunk_errors = future.result()
+                if not frame.empty:
+                    frames.append(frame)
+                errors.update(chunk_errors)
+        return (pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()), errors
+
+    def _get_many_serial(self, security_ids: list[str], start_date: date, end_date: date) -> tuple[pd.DataFrame, dict[str, str]]:
         login = self.bs.login()
         if login.error_code != "0":
             return pd.DataFrame(), {sid: f"login:{login.error_code}:{login.error_msg}" for sid in security_ids}
