@@ -1,3 +1,7 @@
 pandas==2.2.3
 # Optional backup provider; install in the production ingestion environment.
 akshare==1.18.97
+duckdb==1.4.3
+pyarrow==19.0.1
+xlrd==2.0.1
+requests==2.32.5
