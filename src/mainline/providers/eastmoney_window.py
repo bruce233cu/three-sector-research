@@ -57,9 +57,21 @@ class EastmoneyWindowProvider:
         frame["trade_date"] = pd.to_datetime(frame["trade_date"]).dt.date
         for column in ["open", "close", "high", "low", "volume", "amount", "pct_chg", "turnover_rate"]:
             frame[column] = pd.to_numeric(frame[column], errors="coerce")
+        # Eastmoney volume is reported in 100-share lots.  Derive the
+        # point-in-time free-float market value only where turnover is known;
+        # an unknown/zero turnover rate remains NULL rather than being filled.
+        valid_turnover = frame["turnover_rate"].gt(0) & frame["volume"].ge(0) & frame["close"].gt(0)
+        frame["circ_mv"] = pd.NA
+        frame.loc[valid_turnover, "circ_mv"] = (
+            frame.loc[valid_turnover, "close"]
+            * frame.loc[valid_turnover, "volume"]
+            * 100.0
+            / (frame.loc[valid_turnover, "turnover_rate"] / 100.0)
+        )
+        frame["circ_mv_derivation"] = "close*volume_lots*100/(turnover_rate/100)"
         frame["source_id"] = self.source_id
         frame["source_version"] = self.source_version
-        return frame[["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate", "source_id", "source_version"]]
+        return frame[["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate", "circ_mv", "circ_mv_derivation", "source_id", "source_version"]]
 
     def get_sw_index(self, code: str) -> pd.DataFrame:
         payload = self._json(
