@@ -105,12 +105,7 @@ class SwsEffectivePitProvider:
 
 
 class SwsCachedEvidenceProvider:
-    """Previously fetched official-SWS membership evidence used fail-closed.
-
-    This is not a second independent provider. It is an immutable audit snapshot
-    of the official workbook and is only used after the live official download
-    has exhausted its bounded retry budget.
-    """
+    """Immutable official-SWS evidence, used only after bounded live failure."""
 
     source_id = "sws_official_cached_membership_evidence"
 
@@ -130,10 +125,7 @@ class SwsCachedEvidenceProvider:
             & (self.history["taxonomy_name"] == taxonomy_name)
         ].copy()
         keep = ["security_id", "security_code", "effective_from", "effective_to", "industry_code"]
-        if frame.empty:
-            frame = pd.DataFrame(columns=keep)
-        else:
-            frame = frame[keep].drop_duplicates("security_id")
+        frame = frame[keep].drop_duplicates("security_id") if not frame.empty else pd.DataFrame(columns=keep)
         taxonomy_version = "SW2021" if trade_date >= date(2021, 12, 13) else "SW2014"
         return MembershipSnapshot(
             trade_date, taxonomy_code, taxonomy_name, taxonomy_version, frame,

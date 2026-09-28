@@ -12,6 +12,7 @@ import {
   BookOpenText,
   History,
   Database,
+  Radar,
 } from "lucide-react";
 export const tracks: Record<string, string> = {
   机器人: "blue",
@@ -366,6 +367,7 @@ const groups = [
       ["每日研究日报", "/daily", BarChart3],
     ],
   ],
+  ["市场", [["A股主线", "/mainline", Radar]]],
   [
     "筛选流程",
     [

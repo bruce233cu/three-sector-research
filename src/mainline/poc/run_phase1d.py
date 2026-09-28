@@ -143,7 +143,7 @@ def run(
             membership_fallback_used = True
         else:
             raise
-    market = EastmoneyWindowProvider(workers=8, retries=2, timeout_seconds=15)
+    market = EastmoneyWindowProvider(workers=6, retries=2, timeout_seconds=15)
     selected_indices = sample_indices or tuple(range(len(SAMPLE_MATRIX)))
     selected_matrix = [SAMPLE_MATRIX[index] for index in selected_indices]
 
@@ -165,8 +165,7 @@ def run(
     all_members = pd.concat(member_frames, ignore_index=True) if member_frames else pd.DataFrame()
     _write_json(output_dir / "membership_evidence.json", all_members.to_dict(orient="records"))
     _write_json(output_dir / "progress.json", {
-        "stage": "membership_complete",
-        "sample_indices": list(selected_indices),
+        "stage": "membership_complete", "sample_indices": list(selected_indices),
         "membership_source_failed": membership_source_failed,
         "membership_source_error": membership_source_error,
         "membership_fallback_used": membership_fallback_used,

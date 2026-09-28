@@ -15,6 +15,7 @@ from mainline.cache import ParquetDuckDBCache
 from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
 from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.netease_window import NeteaseWindowProvider
+from mainline.providers.sws_history import SwsCachedEvidenceProvider
 from mainline.poc.run_phase1d import DATES, SAMPLE_MATRIX
 
 
@@ -110,6 +111,21 @@ class Phase1DPocTests(unittest.TestCase):
         self.assertIn("hard_status drop not null", sql)
         self.assertIn("pit_level", sql)
         self.assertNotIn("update mainline.daily_mainline_snapshot set hard_status", sql.lower())
+
+    def test_phase1d_sample_audit_table_has_no_state_machine_fields(self):
+        sql = (ROOT / "supabase/migrations/202609280001_mainline_phase1d_sample_runs.sql").read_text()
+        self.assertIn("mainline.phase1d_sample_runs", sql)
+        self.assertIn("SUCCESS','PARTIAL','FAIL','RUNNING", sql)
+        self.assertNotIn("hard_status", sql)
+        self.assertNotIn("candidate_flag", sql)
+
+    def test_cached_membership_is_audited_official_evidence(self):
+        provider = SwsCachedEvidenceProvider(ROOT / "reports/phase1d/fallback/sws_official_cached_membership.json")
+        snapshot = provider.snapshot(date(2023, 6, 30), "801050", "有色金属")
+        self.assertFalse(snapshot.frame.empty)
+        self.assertEqual(snapshot.taxonomy_version, "SW2021")
+        self.assertEqual(snapshot.pit_level, "effective_pit")
+        self.assertTrue(snapshot.knowledge_time_unverified)
 
     def test_baostock_backup_rejects_unsupported_exchange_without_fabricating_rows(self):
         provider = object.__new__(BaostockWindowProvider)
