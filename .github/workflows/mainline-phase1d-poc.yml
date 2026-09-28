@@ -13,7 +13,9 @@ permissions:
 
 concurrency:
   group: mainline-phase1d-poc
-  cancel-in-progress: false
+  # A newer source revision invalidates older in-flight audit output. Cancel
+  # superseded runs so stale results cannot race and overwrite the branch.
+  cancel-in-progress: true
 
 jobs:
   real-data-poc-shard:
