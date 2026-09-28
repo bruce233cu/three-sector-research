@@ -79,8 +79,16 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
             member_frames.append(tagged)
 
     all_members = pd.concat(member_frames, ignore_index=True) if member_frames else pd.DataFrame()
-    probe_ids = sorted(all_members["security_id"].unique())[:12] if not all_members.empty else []
-    _probe_rows, probe_errors = market.get_many(probe_ids, DATES[-1] - timedelta(days=7), DATES[-1])
+    # Probe members against the date on which they are supposed to exist.
+    # Probing historical constituents only against 2025 can falsely mark the
+    # provider unhealthy after a security has delisted or changed status.
+    probe_date = selected_matrix[0][0]
+    probe_ids = sorted(
+        all_members.loc[all_members["snapshot_date"] == probe_date, "security_id"].unique()
+    )[:12] if not all_members.empty else []
+    _probe_rows, probe_errors = market.get_many(
+        probe_ids, probe_date - timedelta(days=14), probe_date
+    )
     primary_success_ratio = (len(probe_ids) - len(probe_errors)) / len(probe_ids) if probe_ids else 0.0
     primary_healthy = primary_success_ratio >= 0.80
     primary_health_reason = None if primary_healthy else f"batch_probe_success_ratio={primary_success_ratio:.4f}<0.8000"
@@ -258,9 +266,12 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
         "primary_healthy": primary_healthy,
         "primary_probe_success_ratio": primary_success_ratio,
         "primary_health_reason": primary_health_reason,
+        "primary_probe_date": probe_date.isoformat(),
+        "primary_probe_errors": dict(list(sorted(probe_errors.items()))[:12]),
         "primary_failed_security_count": len(primary_errors),
         "secondary_recovered_security_count": len(secondary_recovered),
         "secondary_unrecovered_security_count": len(secondary_errors_all),
+        "secondary_error_examples": dict(list(sorted(secondary_errors_all.items()))[:20]),
         "backup_recovered_security_count": len(backup_recovered),
         "backup_available": backup_available,
         "backup_health_reason": backup_health_reason,

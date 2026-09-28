@@ -44,7 +44,10 @@ class EastmoneyWindowProvider:
         params = {
             "fields1": "f1,f2,f3,f4,f5,f6",
             "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
-            "ut": "7eea3edcaed734bea9cbfc24409ed989",
+            # push2his uses a different public client token from the quote-list
+            # endpoint. The former quote-list token produced empty historical
+            # payloads for every security in the real-data runner.
+            "ut": "fa5fd1943c7b386f172d6893dbfba10b",
             "klt": "101", "fqt": "0", "secid": f"{market}.{code}",
             "beg": start_date.strftime("%Y%m%d"), "end": end_date.strftime("%Y%m%d"),
         }
