@@ -42,6 +42,7 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
     memberships: list[dict] = []
     taxonomies: list[dict] = []
     traces: list[dict] = []
+    anomaly_tests: list[dict] = []
     failures: list[dict] = []
     source_snapshots: list[dict] = []
     rerun_samples: list[dict] = []
@@ -52,6 +53,7 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
         memberships.extend(_read(folder / "membership_evidence.json"))
         taxonomies.extend(_read(folder / "taxonomy_definitions.json"))
         traces.extend(_read(folder / "calculation_traces.json"))
+        anomaly_tests.extend(_read(folder / "anomaly_tests.json"))
         failures.extend(summary.get("failures") or [])
         rerun_samples.extend(summary.get("rerun_samples") or [])
         for artifact in summary.get("cache_artifacts") or []:
@@ -108,6 +110,8 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
         "stock_rows_written_to_supabase": 0,
         "source_snapshot_count": len(source_snapshots),
         "failures": failures,
+        "anomaly_test_count": len(anomaly_tests),
+        "anomaly_tests_passed": sum(bool(row.get("pass")) for row in anomaly_tests),
         "gate_ready_for_database_write": (
             len(snapshots) == 15
             and len(dates) == 5
@@ -122,6 +126,7 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
     _write(output_dir / "membership_evidence.json", _dedupe(memberships, ("snapshot_date", "taxonomy_code", "security_id")))
     _write(output_dir / "taxonomy_definitions.json", _dedupe(taxonomies, ("taxonomy_version", "taxonomy_code")))
     _write(output_dir / "calculation_traces.json", traces[:3])
+    _write(output_dir / "anomaly_tests.json", anomaly_tests)
     _write(output_dir / "source_snapshots.json", source_snapshots)
     _write(output_dir / "run_manifest.json", {**global_basis, **summary})
     return summary

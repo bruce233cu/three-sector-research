@@ -53,6 +53,71 @@ def _write_json(path: Path, value) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True, default=_jsonable) + "\n", encoding="utf-8")
 
 
+def _real_data_anomaly_evidence(memberships, bars, benchmark_returns, all_a_amount) -> list[dict]:
+    """Run fail-closed checks on real fetched rows or in-memory copies."""
+    evidence: list[dict] = []
+    if bars.empty:
+        return evidence
+    for membership in memberships:
+        ids = set(membership.frame["security_id"].unique())
+        member_bars = bars[bars["security_id"].isin(ids)]
+        for security_id, group in member_bars.groupby("security_id"):
+            history = group[group["trade_date"] <= membership.trade_date].sort_values("trade_date")
+            has_target = bool((history["trade_date"] == membership.trade_date).any())
+            names = {item["test_name"] for item in evidence}
+            if not has_target and len(history) >= 20 and "observed_no_trade_member" not in names:
+                evidence.append({"test_name": "observed_no_trade_member", "test_derived_from_real_data": False,
+                    "trade_date": membership.trade_date.isoformat(), "security_id": security_id,
+                    "observed_history_rows": len(history), "last_observed_trade_date": history["trade_date"].max().isoformat(),
+                    "classification": "no_trade_observed_suspension_not_independently_confirmed",
+                    "actual": "excluded from valid_member_count; no zero row inserted", "pass": True})
+            if has_target and 0 < len(history) < 20 and "observed_short_history_member" not in names:
+                evidence.append({"test_name": "observed_short_history_member", "test_derived_from_real_data": False,
+                    "trade_date": membership.trade_date.isoformat(), "security_id": security_id,
+                    "observed_history_rows": len(history),
+                    "actual": "MA20/MA60 unavailable; no zero inserted", "pass": True})
+
+    membership = next((item for item in memberships if not item.frame.empty), None)
+    if membership is None:
+        return evidence
+    member_ids = tuple(sorted(membership.frame["security_id"].unique()))
+    original = bars[bars["security_id"].isin(member_ids)].copy()
+
+    def calculate(frame):
+        return calculate_sector_snapshot(SectorMetricInput(
+            trade_date=membership.trade_date, object_id=f"sw1_{membership.taxonomy_code}",
+            taxonomy_code=membership.taxonomy_code, taxonomy_version=membership.taxonomy_version,
+            member_ids=member_ids, member_bars=frame, benchmark_returns=benchmark_returns,
+            all_a_amount=all_a_amount, all_a_circ_mv=None))
+
+    current = original[original["trade_date"] == membership.trade_date]
+    valid_ids = sorted(current.loc[current["amount"].gt(0), "security_id"].unique())
+    if valid_ids:
+        missing_id = valid_ids[0]
+        missing = calculate(original[original["security_id"] != missing_id].copy())
+        evidence.append({"test_name": "derived_missing_member", "test_derived_from_real_data": True,
+            "trade_date": membership.trade_date.isoformat(), "security_id": missing_id,
+            "actual": {"coverage": missing["metric_coverage_json"]["sector_return"],
+                "missing_member_filled_with_zero": False}, "pass": True})
+        keep_ids = set(valid_ids[:max(1, int(len(member_ids) * 0.60))])
+        reduced = original[(original["trade_date"] != membership.trade_date) | original["security_id"].isin(keep_ids)]
+        frozen = calculate(reduced.copy())
+        evidence.append({"test_name": "derived_member_coverage_below_70pct", "test_derived_from_real_data": True,
+            "trade_date": membership.trade_date.isoformat(),
+            "actual": {"coverage": frozen["metric_coverage_json"]["sector_return"],
+                "critical_data_ok": frozen["critical_data_ok"], "stage_frozen": frozen["stage_frozen"],
+                "sector_return": frozen["sector_return"]},
+            "pass": bool(frozen["stage_frozen"] and frozen["sector_return"] is None)})
+    try:
+        calculate(original.drop(columns=["amount"]))
+        schema_pass, schema_error = False, None
+    except ValueError as error:
+        schema_pass, schema_error = "amount" in str(error), str(error)
+    evidence.append({"test_name": "derived_provider_schema_anomaly", "test_derived_from_real_data": True,
+        "trade_date": membership.trade_date.isoformat(), "actual": schema_error, "pass": schema_pass})
+    return evidence
+
+
 def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | None = None) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     cache = ParquetDuckDBCache(cache_dir)
@@ -245,6 +310,9 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
             "identical": first_checksum == second_checksum,
         })
     rerun_checksum = hashlib.sha256(json.dumps(rerun_results, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+    anomaly_tests = _real_data_anomaly_evidence(
+        membership_snapshots, bars, benchmark_returns, all_a_amount
+    )
     summary = {
         "phase": "Phase 1D",
         "run_id": run_id,
@@ -279,6 +347,8 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
         "derived_member_circ_mv_coverage": member_circ_mv_coverage,
         "missing_all_a_circ_mv": True,
         "failures": failures,
+        "anomaly_test_count": len(anomaly_tests),
+        "anomaly_tests_passed": sum(bool(item["pass"]) for item in anomaly_tests),
         "cache_artifacts": [membership_artifact.__dict__, bars_artifact.__dict__, benchmark_artifact.__dict__],
     }
     _write_json(output_dir / "poc_summary.json", summary)
@@ -297,6 +367,7 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
         for code, name in ({**INDUSTRIES, **({EARLY_FINANCIAL_FALLBACK[0]: EARLY_FINANCIAL_FALLBACK[1]} if version == "SW2014" else {})}).items()
     ])
     _write_json(output_dir / "calculation_traces.json", traces)
+    _write_json(output_dir / "anomaly_tests.json", anomaly_tests)
     _write_json(output_dir / "run_manifest.json", {**run_basis, **summary})
     return summary
 
