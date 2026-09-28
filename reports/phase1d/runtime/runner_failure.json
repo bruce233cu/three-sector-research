@@ -1,7 +1,0 @@
-{
-  "status": "failed",
-  "reason": "real-data POC command failed; inspect execution.log",
-  "workflow_run_id": "36300499647",
-  "commit_sha": "a9f470528a1e99c3b77958e464d792be10c95b73",
-  "recorded_at": "2026-09-27T06:46:39.681096+00:00"
-}

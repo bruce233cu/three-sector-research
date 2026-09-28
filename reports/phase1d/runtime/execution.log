@@ -2,37 +2,3 @@
   warnings.warn(
 /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'www.swsresearch.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(
-/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'www.swsresearch.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/home/runner/work/three-sector-research/three-sector-research/src/mainline/poc/run_phase1d.py", line 245, in <module>
-    main()
-  File "/home/runner/work/three-sector-research/three-sector-research/src/mainline/poc/run_phase1d.py", line 241, in main
-    print(json.dumps(run(args.output_dir, args.cache_dir), ensure_ascii=False, indent=2, default=_jsonable))
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/three-sector-research/three-sector-research/src/mainline/poc/run_phase1d.py", line 147, in run
-    inputs = bars[bars["security_id"].isin(member_ids)].copy()
-                  ~~~~^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/frame.py", line 4102, in __getitem__
-    indexer = self.columns.get_loc(key)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/pandas/core/indexes/range.py", line 417, in get_loc
-    raise KeyError(key)
-KeyError: 'security_id'
-服务器连接失败，请稍后再试。
-[Errno 32] Broken pipe
-接收数据异常，请稍后再试。
-服务器连接失败，请稍后再试。
-[Errno 32] Broken pipe
-接收数据异常，请稍后再试。
-服务器连接失败，请稍后再试。
-[Errno 32] Broken pipe
-接收数据异常，请稍后再试。
-服务器连接失败，请稍后再试。
-[Errno 32] Broken pipe
-接收数据异常，请稍后再试。
-服务器连接失败，请稍后再试。
-[Errno 32] Broken pipe
-接收数据异常，请稍后再试。
