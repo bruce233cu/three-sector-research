@@ -1,9 +1,9 @@
 {
-  "actual_snapshot_count": 12,
+  "actual_snapshot_count": 14,
   "anomaly_test_count": 17,
   "anomaly_tests_passed": 17,
-  "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
-  "effective_pit_count": 12,
+  "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
+  "effective_pit_count": 14,
   "failures": [
     {
       "examples": {
@@ -252,16 +252,69 @@
       },
       "failed_security_count": 125,
       "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:000060.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000426.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000506.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000603.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000612.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000630.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000633.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000657.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000688.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000737.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000751.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000758.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000762.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000795.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000807.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000831.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000878.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000933.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000960.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000962.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 141,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:000008.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000039.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000157.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000410.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000425.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000528.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000530.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000584.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000595.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000680.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000777.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000811.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000821.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000837.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000852.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000856.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000890.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000925.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000976.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000988.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 472,
+      "stage": "stock_window"
     }
   ],
-  "frozen_snapshot_count": 9,
+  "frozen_snapshot_count": 11,
   "full_a_history_persisted": false,
   "gate_ready_for_database_write": false,
+  "minimum_12_sample_closure_met": true,
   "per_date_snapshot_counts": {
     "2019-06-28": 3,
     "2020-06-30": 2,
-    "2021-12-31": 2,
-    "2023-06-30": 2,
+    "2021-12-31": 3,
+    "2023-06-30": 3,
     "2025-06-30": 3
   },
   "phase": "Phase 1D",
@@ -289,10 +342,10 @@
       "trade_date": "2023-06-30"
     }
   ],
-  "result_checksum": "72789b14cc583cdbd3e9c60295d9fa6a62c8c9c19fbb32444a4492c0e67e6147",
-  "run_fingerprint": "a61d1e12fb1abd1f8f1c2bbf0dae4283f1a1f94cf763b26ea881bbcde98174a5",
-  "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
-  "source_snapshot_count": 19,
+  "result_checksum": "af0236db78468fc9571952ec9b4982145a87df82b86d5c90999dd3cf81c63d9b",
+  "run_fingerprint": "1ac4e01f8a6d7817e7b7865bc129730fac163b495aff3d4103c96f713fba14db",
+  "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
+  "source_snapshot_count": 4,
   "stock_rows_cached_only": 28238,
   "stock_rows_written_to_supabase": 0,
   "strict_knowledge_pit_count": 0,

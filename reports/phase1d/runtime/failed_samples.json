@@ -1,0 +1,14 @@
+[
+  {
+    "status": "PARTIAL",
+    "sample_index": 3,
+    "reason": "bounded retry failed or exceeded 290 seconds; inspect execution.log",
+    "duration_seconds": 199,
+    "membership_source_failed": true,
+    "membership_source_error": "RuntimeError: download failed: https://www.swsresearch.com/swindex/pdf/SwClass2021/StockClassifyUse_stock.xls: ReadTimeout: HTTPSConnectionPool(host='www.swsresearch.com', port=443): Read timed out. (read timeout=30)",
+    "last_completed_stage": "membership_complete",
+    "workflow_run_id": "36383315509",
+    "commit_sha": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
+    "recorded_at": "2026-09-28T05:49:27.006222+00:00"
+  }
+]

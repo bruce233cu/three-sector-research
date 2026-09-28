@@ -5,7 +5,7 @@
     "as_of_date": "2019-06-28",
     "benchmark_return": -0.007359026619726983,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -36,7 +36,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "78824e7166bc50ee84101545af10455ba9f18c2302afecf0752c33a0c0f911ca",
@@ -51,7 +51,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "9defdda0-426a-5df5-9218-8bf333c0cc33",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -79,7 +78,7 @@
     "as_of_date": "2019-06-28",
     "benchmark_return": -0.007359026619726983,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": true,
     "freeze_reason": null,
@@ -110,7 +109,7 @@
     "rs_20": -0.014982222398208123,
     "rs_5": 0.0083047003601876,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": -0.00566875,
     "source_checksums": [
       "d48c8fa32c107216b4f45bc5c8449dfc786325262121a677e682b644624a1d79",
@@ -125,8 +124,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "f8de4fb0-691e-5700-8458-023d9eb3dcee",
-      "2bc768a1-5d66-57fe-ba9a-1d172751d996",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
     "source_versions": [
@@ -153,7 +150,7 @@
     "as_of_date": "2019-06-28",
     "benchmark_return": -0.007359026619726983,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -184,7 +181,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "9e320d2672422f59b5827f1d991ac01a36c0da68ca6df1d109c6021eb52a5ea1",
@@ -199,7 +196,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "c5ebabfe-d2aa-5ecb-b0c3-e2b440c8862c",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -227,7 +223,7 @@
     "as_of_date": "2020-06-30",
     "benchmark_return": 0.015383206666056193,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -258,7 +254,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "7d81d287c65e2f7b0a7e92b74a27daf8b8cf15b8ccbbc5047e64faa6b99c4ade",
@@ -273,7 +269,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "9f5c286b-fe4b-5a6d-882a-292a557760f0",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -301,7 +296,7 @@
     "as_of_date": "2020-06-30",
     "benchmark_return": 0.015383206666056193,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.2075<0.7000;breadth_coverage<0.7000",
@@ -332,7 +327,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "2a44729efacebdf7f7f4bc7e438f0f8f0ebb4d14233b64989f8a2dcfebbdc548",
@@ -347,8 +342,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "ed7eac02-2a93-543c-af4d-a5b847d2329d",
-      "ff630b6e-c750-5c27-ad2c-f3072de02998",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
     "source_versions": [
@@ -375,7 +368,7 @@
     "as_of_date": "2021-12-31",
     "benchmark_return": 0.005726879929542017,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -406,7 +399,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "1c83b17af8d037bfb449ccd6b9c8b2232759bd753a6f4fa7b7bceddec16e470e",
@@ -421,7 +414,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "d5cbf8fd-c9ce-5c62-a427-e2511bc0c093",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -449,7 +441,7 @@
     "as_of_date": "2021-12-31",
     "benchmark_return": 0.005726879929542017,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": true,
     "freeze_reason": null,
@@ -480,7 +472,7 @@
     "rs_20": -0.01116509772015628,
     "rs_5": -0.014906336920055385,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": 0.001168292682926829,
     "source_checksums": [
       "9c3fdd3c51e53ce57b0d1ec35220a07a767f1c28da32538f82511468ca5c1590",
@@ -495,8 +487,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "0fad25d3-a56f-55c4-86f0-97076ade6b76",
-      "ab0c1648-2718-52c8-9f08-592e54576fe4",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
     "source_versions": [
@@ -520,10 +510,158 @@
   {
     "above_ma20": null,
     "above_ma60": null,
+    "as_of_date": "2021-12-31",
+    "benchmark_return": 0.005726879929542017,
+    "candidate_flag": false,
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
+    "confirmed_flag": false,
+    "critical_data_ok": false,
+    "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
+    "hard_status": null,
+    "knowledge_time_unverified": true,
+    "member_count": 472,
+    "metric_coverage_json": {
+      "above_ma20": 0.0,
+      "above_ma60": 0.0,
+      "member": 1.0,
+      "new_high_60": 0.0,
+      "rs_10": 0.0,
+      "rs_20": 0.0,
+      "rs_5": 0.0,
+      "sector_return": 0.0,
+      "top3_return_contribution": 0.0,
+      "top3_turnover_share": 0.0,
+      "turnover_cap_deviation": 0.0,
+      "turnover_share": 0.0,
+      "up_ratio": 0.0
+    },
+    "new_high_60": null,
+    "object_id": "sw1_801890",
+    "object_type": "industry",
+    "pit_level": "effective_pit",
+    "profile_id": "industry_trend_v2_2_1",
+    "rs_10": null,
+    "rs_20": null,
+    "rs_5": null,
+    "rule_version": "mainline_v2.2.0",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
+    "sector_return": null,
+    "source_checksums": [
+      "aaaf90d8ef75772478b35bba6e2befff2e178b87509b1126a9421400a04111cc",
+      "043f5ae498c20fd484600c86edf2dcf98a07098b2e71821fd0d0b87194fe16de",
+      "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d"
+    ],
+    "source_ids": [
+      "sws_official_stock_classification",
+      "eastmoney_kline",
+      "netease_chddata",
+      "baostock_history_k",
+      "sws_official_index_api"
+    ],
+    "source_snapshot_ids": [
+      "7fc1a826-c934-5a51-bff0-98cbdb1110b0",
+      "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+      "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+    ],
+    "source_versions": [
+      "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+      "eastmoney-push2his-kline-v1",
+      "netease-money-163-chddata-v1",
+      "baostock:0.8.9:query_history_k_data_plus",
+      "sws-index-publish-trend-v2-cny"
+    ],
+    "stage_frozen": true,
+    "taxonomy_code": "801890",
+    "taxonomy_version": "SW2021",
+    "top3_return_contribution": null,
+    "top3_turnover_share": null,
+    "turnover_cap_deviation": null,
+    "turnover_intensity": null,
+    "turnover_share": null,
+    "up_ratio": null,
+    "valid_member_count": 0
+  },
+  {
+    "above_ma20": null,
+    "above_ma60": null,
     "as_of_date": "2023-06-30",
     "benchmark_return": 0.008693176782745837,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
+    "confirmed_flag": false,
+    "critical_data_ok": false,
+    "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
+    "hard_status": null,
+    "knowledge_time_unverified": true,
+    "member_count": 141,
+    "metric_coverage_json": {
+      "above_ma20": 0.0,
+      "above_ma60": 0.0,
+      "member": 1.0,
+      "new_high_60": 0.0,
+      "rs_10": 0.0,
+      "rs_20": 0.0,
+      "rs_5": 0.0,
+      "sector_return": 0.0,
+      "top3_return_contribution": 0.0,
+      "top3_turnover_share": 0.0,
+      "turnover_cap_deviation": 0.0,
+      "turnover_share": 0.0,
+      "up_ratio": 0.0
+    },
+    "new_high_60": null,
+    "object_id": "sw1_801050",
+    "object_type": "industry",
+    "pit_level": "effective_pit",
+    "profile_id": "industry_trend_v2_2_1",
+    "rs_10": null,
+    "rs_20": null,
+    "rs_5": null,
+    "rule_version": "mainline_v2.2.0",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
+    "sector_return": null,
+    "source_checksums": [
+      "ed99ffa57307c1ffd55cdd1b14f08db09c4fec23b1dc8df145276d13c98551b3",
+      "043f5ae498c20fd484600c86edf2dcf98a07098b2e71821fd0d0b87194fe16de",
+      "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d"
+    ],
+    "source_ids": [
+      "sws_official_stock_classification",
+      "eastmoney_kline",
+      "netease_chddata",
+      "baostock_history_k",
+      "sws_official_index_api"
+    ],
+    "source_snapshot_ids": [
+      "e04ccf00-600b-5057-9320-d01c4b9b5074",
+      "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+      "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+    ],
+    "source_versions": [
+      "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2",
+      "eastmoney-push2his-kline-v1",
+      "netease-money-163-chddata-v1",
+      "baostock:0.8.9:query_history_k_data_plus",
+      "sws-index-publish-trend-v2-cny"
+    ],
+    "stage_frozen": true,
+    "taxonomy_code": "801050",
+    "taxonomy_version": "SW2021",
+    "top3_return_contribution": null,
+    "top3_turnover_share": null,
+    "turnover_cap_deviation": null,
+    "turnover_intensity": null,
+    "turnover_share": null,
+    "up_ratio": null,
+    "valid_member_count": 0
+  },
+  {
+    "above_ma20": null,
+    "above_ma60": null,
+    "as_of_date": "2023-06-30",
+    "benchmark_return": 0.008693176782745837,
+    "candidate_flag": false,
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -554,7 +692,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "9736612723ad576d739bde564c2fa6a422c93f5ac19060968c9c907ecb4b76d8",
@@ -569,7 +707,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "33be5223-7283-5dc0-b26f-2df2a3e60a8f",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -597,7 +734,7 @@
     "as_of_date": "2023-06-30",
     "benchmark_return": 0.008693176782745837,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -628,7 +765,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "b37b4e455f441180b8c29de5f0a9be33a05336c5d9bd14ed3bdccec717b621fb",
@@ -643,7 +780,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "7c562127-80ce-5006-ba8c-3d7f33837c29",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -671,7 +807,7 @@
     "as_of_date": "2025-06-30",
     "benchmark_return": 0.008638613213228785,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.0000<0.7000;breadth_coverage<0.7000",
@@ -702,7 +838,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "968388db67f0a88d99f437b2efa6832f6dfe62e4acf4020c6224d31dc41402a2",
@@ -717,7 +853,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "fc82b144-5ab0-518c-b870-3cd3e886fb57",
       "3afba42f-8fd0-57f7-902e-9c22f69fa936",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
@@ -745,7 +880,7 @@
     "as_of_date": "2025-06-30",
     "benchmark_return": 0.008638613213228785,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": true,
     "freeze_reason": null,
@@ -776,7 +911,7 @@
     "rs_20": -0.009054022217040991,
     "rs_5": -0.0532314816805739,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": -0.007223809523809524,
     "source_checksums": [
       "bd89fa2a29b4cda7610bc26e6ccfdaf7feb6ace71f835bd18c315ac40620a600",
@@ -791,8 +926,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "9e3e5cee-c10e-5beb-8fb8-3a73de0716b9",
-      "4dd635f3-1037-5280-b449-ebab97f44a1c",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
     "source_versions": [
@@ -819,7 +952,7 @@
     "as_of_date": "2025-06-30",
     "benchmark_return": 0.008638613213228785,
     "candidate_flag": false,
-    "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
+    "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
     "confirmed_flag": false,
     "critical_data_ok": false,
     "freeze_reason": "sector_return_coverage=0.3767<0.7000;breadth_coverage<0.7000",
@@ -850,7 +983,7 @@
     "rs_20": null,
     "rs_5": null,
     "rule_version": "mainline_v2.2.0",
-    "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+    "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
     "sector_return": null,
     "source_checksums": [
       "806cebf2d3caeb61b514c74246d03dd99a779ae09afa7c510869098f7c7669f5",
@@ -865,8 +998,6 @@
       "sws_official_index_api"
     ],
     "source_snapshot_ids": [
-      "0652adf2-42d1-50cb-a308-6b559c34068b",
-      "b197f36a-7403-58e4-a199-e5fb206b80b3",
       "b7b15772-396e-56f3-a8e0-867938d9d0f0"
     ],
     "source_versions": [

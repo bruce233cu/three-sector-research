@@ -1,9 +1,9 @@
 {
-  "actual_snapshot_count": 12,
+  "actual_snapshot_count": 14,
   "anomaly_test_count": 17,
   "anomaly_tests_passed": 17,
-  "code_commit": "ada41b3b9e70a5c54991761800bc29faeaa1c9b3",
-  "effective_pit_count": 12,
+  "code_commit": "9479a62f784aa71390805d6a8b4af4b5c46c0a91",
+  "effective_pit_count": 14,
   "failures": [
     {
       "examples": {
@@ -252,18 +252,71 @@
       },
       "failed_security_count": 125,
       "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:000060.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000426.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000506.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000603.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000612.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000630.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000633.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000657.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000688.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000737.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000751.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000758.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000762.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000795.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000807.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000831.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000878.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000933.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000960.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000962.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 141,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:000008.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000039.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000157.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000410.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000425.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000528.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000530.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000584.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000595.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000680.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000777.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000811.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000821.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000837.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000852.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000856.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000890.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000925.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000976.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000988.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 472,
+      "stage": "stock_window"
     }
   ],
-  "frozen_snapshot_count": 9,
+  "frozen_snapshot_count": 11,
   "full_a_history_persisted": false,
   "gate_ready_for_database_write": false,
   "metric_contract": "V2.2-section-6",
+  "minimum_12_sample_closure_met": true,
   "parameter_profile": "industry_trend_v2_2_1",
   "per_date_snapshot_counts": {
     "2019-06-28": 3,
     "2020-06-30": 2,
-    "2021-12-31": 2,
-    "2023-06-30": 2,
+    "2021-12-31": 3,
+    "2023-06-30": 3,
     "2025-06-30": 3
   },
   "phase": "Phase 1D",
@@ -291,9 +344,9 @@
       "trade_date": "2023-06-30"
     }
   ],
-  "result_checksum": "72789b14cc583cdbd3e9c60295d9fa6a62c8c9c19fbb32444a4492c0e67e6147",
-  "run_fingerprint": "a61d1e12fb1abd1f8f1c2bbf0dae4283f1a1f94cf763b26ea881bbcde98174a5",
-  "run_id": "871cc3a5-d861-5259-bd00-9c90122d0311",
+  "result_checksum": "af0236db78468fc9571952ec9b4982145a87df82b86d5c90999dd3cf81c63d9b",
+  "run_fingerprint": "1ac4e01f8a6d7817e7b7865bc129730fac163b495aff3d4103c96f713fba14db",
+  "run_id": "35d0a97d-d90a-547c-8333-f00138b6ca27",
   "samples": [
     [
       "2019-06-28",
@@ -324,6 +377,14 @@
       "801780"
     ],
     [
+      "2021-12-31",
+      "801890"
+    ],
+    [
+      "2023-06-30",
+      "801050"
+    ],
+    [
       "2023-06-30",
       "801120"
     ],
@@ -346,26 +407,11 @@
   ],
   "source_checksums": [
     "043f5ae498c20fd484600c86edf2dcf98a07098b2e71821fd0d0b87194fe16de",
-    "1c83b17af8d037bfb449ccd6b9c8b2232759bd753a6f4fa7b7bceddec16e470e",
-    "264c737580e62601a64d92d8da0e79c79988952ac759331cee3dafbff6ff088d",
-    "2a44729efacebdf7f7f4bc7e438f0f8f0ebb4d14233b64989f8a2dcfebbdc548",
-    "78824e7166bc50ee84101545af10455ba9f18c2302afecf0752c33a0c0f911ca",
-    "7c918a4c57fc37bf0e302dd9e4cb30cc64ae635dcc659a1c113ea01ba2afdd73",
-    "7d81d287c65e2f7b0a7e92b74a27daf8b8cf15b8ccbbc5047e64faa6b99c4ade",
-    "806cebf2d3caeb61b514c74246d03dd99a779ae09afa7c510869098f7c7669f5",
-    "8fe497f70a05bab481b7965e753a82dcbee93d514f8073aea9fd684f97996ad3",
-    "968388db67f0a88d99f437b2efa6832f6dfe62e4acf4020c6224d31dc41402a2",
-    "9736612723ad576d739bde564c2fa6a422c93f5ac19060968c9c907ecb4b76d8",
-    "97715f929dfdf9bd77fdbab1c14293e0dc6c0486fb372f1baa70f1beda19c1ae",
-    "9c3fdd3c51e53ce57b0d1ec35220a07a767f1c28da32538f82511468ca5c1590",
-    "9e320d2672422f59b5827f1d991ac01a36c0da68ca6df1d109c6021eb52a5ea1",
+    "aaaf90d8ef75772478b35bba6e2befff2e178b87509b1126a9421400a04111cc",
     "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d",
-    "b37b4e455f441180b8c29de5f0a9be33a05336c5d9bd14ed3bdccec717b621fb",
-    "bd89fa2a29b4cda7610bc26e6ccfdaf7feb6ace71f835bd18c315ac40620a600",
-    "c731204b14c2d8d11a75acee9b0f1c2cb4662fdad14bdd5006ea8c5c8306f5c7",
-    "d48c8fa32c107216b4f45bc5c8449dfc786325262121a677e682b644624a1d79"
+    "ed99ffa57307c1ffd55cdd1b14f08db09c4fec23b1dc8df145276d13c98551b3"
   ],
-  "source_snapshot_count": 19,
+  "source_snapshot_count": 4,
   "stock_rows_cached_only": 28238,
   "stock_rows_written_to_supabase": 0,
   "strict_knowledge_pit_count": 0,
