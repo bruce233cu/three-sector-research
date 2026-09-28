@@ -1,0 +1,192 @@
+[
+  {
+    "cache_key": "phase1d-samples-0",
+    "checksum_sha256": "78824e7166bc50ee84101545af10455ba9f18c2302afecf0752c33a0c0f911ca",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:18:26.514020Z",
+    "id": "9defdda0-426a-5df5-9218-8bf333c0cc33",
+    "row_count": 189,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-120-day-samples-0",
+    "checksum_sha256": "043f5ae498c20fd484600c86edf2dcf98a07098b2e71821fd0d0b87194fe16de",
+    "dataset": "stock_window",
+    "fetched_at": "2026-09-28T05:18:26.514020Z",
+    "id": "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+    "row_count": 0,
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+  },
+  {
+    "cache_key": "sw-801003-all-a",
+    "checksum_sha256": "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d",
+    "dataset": "benchmark_window",
+    "fetched_at": "2026-09-28T05:18:26.514020Z",
+    "id": "b7b15772-396e-56f3-a8e0-867938d9d0f0",
+    "row_count": 6462,
+    "source_id": "sws_official_index_api",
+    "source_version": "sws-index-publish-trend-v2-cny"
+  },
+  {
+    "cache_key": "phase1d-samples-1",
+    "checksum_sha256": "d48c8fa32c107216b4f45bc5c8449dfc786325262121a677e682b644624a1d79",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:18:30.424371Z",
+    "id": "f8de4fb0-691e-5700-8458-023d9eb3dcee",
+    "row_count": 33,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-120-day-samples-1",
+    "checksum_sha256": "7c918a4c57fc37bf0e302dd9e4cb30cc64ae635dcc659a1c113ea01ba2afdd73",
+    "dataset": "stock_window",
+    "fetched_at": "2026-09-28T05:18:30.424371Z",
+    "id": "2bc768a1-5d66-57fe-ba9a-1d172751d996",
+    "row_count": 2504,
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+  },
+  {
+    "cache_key": "phase1d-samples-11",
+    "checksum_sha256": "b37b4e455f441180b8c29de5f0a9be33a05336c5d9bd14ed3bdccec717b621fb",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:30:40.132883Z",
+    "id": "7c562127-80ce-5006-ba8c-3d7f33837c29",
+    "row_count": 550,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-samples-12",
+    "checksum_sha256": "968388db67f0a88d99f437b2efa6832f6dfe62e4acf4020c6224d31dc41402a2",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:30:47.957183Z",
+    "id": "fc82b144-5ab0-518c-b870-3cd3e886fb57",
+    "row_count": 491,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-samples-13",
+    "checksum_sha256": "bd89fa2a29b4cda7610bc26e6ccfdaf7feb6ace71f835bd18c315ac40620a600",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:32:53.527110Z",
+    "id": "9e3e5cee-c10e-5beb-8fb8-3a73de0716b9",
+    "row_count": 42,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-120-day-samples-13",
+    "checksum_sha256": "97715f929dfdf9bd77fdbab1c14293e0dc6c0486fb372f1baa70f1beda19c1ae",
+    "dataset": "stock_window",
+    "fetched_at": "2026-09-28T05:32:53.527110Z",
+    "id": "4dd635f3-1037-5280-b449-ebab97f44a1c",
+    "row_count": 3402,
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+  },
+  {
+    "cache_key": "phase1d-samples-14",
+    "checksum_sha256": "806cebf2d3caeb61b514c74246d03dd99a779ae09afa7c510869098f7c7669f5",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:34:26.795702Z",
+    "id": "0652adf2-42d1-50cb-a308-6b559c34068b",
+    "row_count": 600,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-120-day-samples-14",
+    "checksum_sha256": "c731204b14c2d8d11a75acee9b0f1c2cb4662fdad14bdd5006ea8c5c8306f5c7",
+    "dataset": "stock_window",
+    "fetched_at": "2026-09-28T05:34:26.795702Z",
+    "id": "b197f36a-7403-58e4-a199-e5fb206b80b3",
+    "row_count": 18173,
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+  },
+  {
+    "cache_key": "phase1d-samples-2",
+    "checksum_sha256": "9e320d2672422f59b5827f1d991ac01a36c0da68ca6df1d109c6021eb52a5ea1",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:18:27.031604Z",
+    "id": "c5ebabfe-d2aa-5ecb-b0c3-e2b440c8862c",
+    "row_count": 50,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-samples-4",
+    "checksum_sha256": "2a44729efacebdf7f7f4bc7e438f0f8f0ebb4d14233b64989f8a2dcfebbdc548",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:21:30.880589Z",
+    "id": "ed7eac02-2a93-543c-af4d-a5b847d2329d",
+    "row_count": 53,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-120-day-samples-4",
+    "checksum_sha256": "8fe497f70a05bab481b7965e753a82dcbee93d514f8073aea9fd684f97996ad3",
+    "dataset": "stock_window",
+    "fetched_at": "2026-09-28T05:21:30.880589Z",
+    "id": "ff630b6e-c750-5c27-ad2c-f3072de02998",
+    "row_count": 885,
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+  },
+  {
+    "cache_key": "phase1d-samples-5",
+    "checksum_sha256": "7d81d287c65e2f7b0a7e92b74a27daf8b8cf15b8ccbbc5047e64faa6b99c4ade",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:21:33.847856Z",
+    "id": "9f5c286b-fe4b-5a6d-882a-292a557760f0",
+    "row_count": 118,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-samples-6",
+    "checksum_sha256": "1c83b17af8d037bfb449ccd6b9c8b2232759bd753a6f4fa7b7bceddec16e470e",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:24:46.036361Z",
+    "id": "d5cbf8fd-c9ce-5c62-a427-e2511bc0c093",
+    "row_count": 361,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-samples-7",
+    "checksum_sha256": "9c3fdd3c51e53ce57b0d1ec35220a07a767f1c28da32538f82511468ca5c1590",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:24:45.442717Z",
+    "id": "0fad25d3-a56f-55c4-86f0-97076ade6b76",
+    "row_count": 42,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  },
+  {
+    "cache_key": "phase1d-120-day-samples-7",
+    "checksum_sha256": "264c737580e62601a64d92d8da0e79c79988952ac759331cee3dafbff6ff088d",
+    "dataset": "stock_window",
+    "fetched_at": "2026-09-28T05:24:45.442717Z",
+    "id": "ab0c1648-2718-52c8-9f08-592e54576fe4",
+    "row_count": 3274,
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+  },
+  {
+    "cache_key": "phase1d-samples-9",
+    "checksum_sha256": "9736612723ad576d739bde564c2fa6a422c93f5ac19060968c9c907ecb4b76d8",
+    "dataset": "membership_snapshot",
+    "fetched_at": "2026-09-28T05:27:44.318992Z",
+    "id": "33be5223-7283-5dc0-b26f-2df2a3e60a8f",
+    "row_count": 125,
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:559f5374bfe611a47ae0a72ff5d12449dbede96a1622925d0390725dbbb4c0a2"
+  }
+]

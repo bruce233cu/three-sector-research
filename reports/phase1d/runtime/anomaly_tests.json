@@ -1,0 +1,170 @@
+[
+  {
+    "actual": "MA20/MA60 unavailable; no zero inserted",
+    "observed_history_rows": 8,
+    "pass": true,
+    "security_id": "002956.SZ",
+    "test_derived_from_real_data": false,
+    "test_name": "observed_short_history_member",
+    "trade_date": "2019-06-28"
+  },
+  {
+    "actual": {
+      "coverage": 0.9393939393939394,
+      "missing_member_filled_with_zero": false
+    },
+    "pass": true,
+    "security_id": "000716.SZ",
+    "test_derived_from_real_data": true,
+    "test_name": "derived_missing_member",
+    "trade_date": "2019-06-28"
+  },
+  {
+    "actual": {
+      "coverage": 0.5757575757575758,
+      "critical_data_ok": false,
+      "sector_return": null,
+      "stage_frozen": true
+    },
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_member_coverage_below_70pct",
+    "trade_date": "2019-06-28"
+  },
+  {
+    "actual": "member_bars missing columns: amount",
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_provider_schema_anomaly",
+    "trade_date": "2019-06-28"
+  },
+  {
+    "actual": {
+      "coverage": 0.9761904761904762,
+      "missing_member_filled_with_zero": false
+    },
+    "pass": true,
+    "security_id": "000001.SZ",
+    "test_derived_from_real_data": true,
+    "test_name": "derived_missing_member",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": {
+      "coverage": 0.5952380952380952,
+      "critical_data_ok": false,
+      "sector_return": null,
+      "stage_frozen": true
+    },
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_member_coverage_below_70pct",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": "member_bars missing columns: amount",
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_provider_schema_anomaly",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": "MA20/MA60 unavailable; no zero inserted",
+    "observed_history_rows": 7,
+    "pass": true,
+    "security_id": "603400.SH",
+    "test_derived_from_real_data": false,
+    "test_name": "observed_short_history_member",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": {
+      "coverage": 0.375,
+      "missing_member_filled_with_zero": false
+    },
+    "pass": true,
+    "security_id": "000039.SZ",
+    "test_derived_from_real_data": true,
+    "test_name": "derived_missing_member",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": {
+      "coverage": 0.37666666666666665,
+      "critical_data_ok": false,
+      "sector_return": null,
+      "stage_frozen": true
+    },
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_member_coverage_below_70pct",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": "member_bars missing columns: amount",
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_provider_schema_anomaly",
+    "trade_date": "2025-06-30"
+  },
+  {
+    "actual": {
+      "coverage": 0.18867924528301888,
+      "missing_member_filled_with_zero": false
+    },
+    "pass": true,
+    "security_id": "601319.SH",
+    "test_derived_from_real_data": true,
+    "test_name": "derived_missing_member",
+    "trade_date": "2020-06-30"
+  },
+  {
+    "actual": {
+      "coverage": 0.20754716981132076,
+      "critical_data_ok": false,
+      "sector_return": null,
+      "stage_frozen": true
+    },
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_member_coverage_below_70pct",
+    "trade_date": "2020-06-30"
+  },
+  {
+    "actual": "member_bars missing columns: amount",
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_provider_schema_anomaly",
+    "trade_date": "2020-06-30"
+  },
+  {
+    "actual": {
+      "coverage": 0.9523809523809523,
+      "missing_member_filled_with_zero": false
+    },
+    "pass": true,
+    "security_id": "000001.SZ",
+    "test_derived_from_real_data": true,
+    "test_name": "derived_missing_member",
+    "trade_date": "2021-12-31"
+  },
+  {
+    "actual": {
+      "coverage": 0.5952380952380952,
+      "critical_data_ok": false,
+      "sector_return": null,
+      "stage_frozen": true
+    },
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_member_coverage_below_70pct",
+    "trade_date": "2021-12-31"
+  },
+  {
+    "actual": "member_bars missing columns: amount",
+    "pass": true,
+    "test_derived_from_real_data": true,
+    "test_name": "derived_provider_schema_anomaly",
+    "trade_date": "2021-12-31"
+  }
+]
