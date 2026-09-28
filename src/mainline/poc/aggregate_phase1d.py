@@ -71,10 +71,19 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
 
     source_snapshots = _dedupe(source_snapshots, ("id",))
     source_ids_by_checksum = {row["checksum_sha256"]: row["id"] for row in source_snapshots}
-    # Inputs are ordered base first, retries last. A bounded retry replaces the
-    # same sector-day while untouched successful samples remain byte-for-byte.
-    snapshots = _dedupe(list(reversed(snapshots)), ("as_of_date", "taxonomy_code"))
-    snapshots = sorted(reversed(snapshots), key=lambda row: (row["as_of_date"], row["taxonomy_code"]))
+    # Never let a degraded retry overwrite stronger real evidence. For each
+    # sector-day prefer: critical data OK, then not frozen, then higher valid
+    # member coverage. Missing samples can still be filled by a bounded retry.
+    best: dict[tuple, dict] = {}
+    for row in snapshots:
+        key = (row["as_of_date"], row["taxonomy_code"])
+        member_count = int(row.get("member_count") or 0)
+        coverage = (int(row.get("valid_member_count") or 0) / member_count) if member_count else 0.0
+        quality = (bool(row.get("critical_data_ok")), not bool(row.get("stage_frozen")), coverage)
+        current = best.get(key)
+        if current is None or quality > current[0]:
+            best[key] = (quality, row)
+    snapshots = sorted((value[1] for value in best.values()), key=lambda row: (row["as_of_date"], row["taxonomy_code"]))
     global_basis = {
         "metric_contract": "V2.2-section-6",
         "samples": [(row["as_of_date"], row["taxonomy_code"]) for row in snapshots],
@@ -122,8 +131,10 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
             and len(rerun_samples) >= 3
             and all(row.get("identical") for row in rerun_samples)
         ),
+        "success_snapshot_count": sum(bool(row.get("critical_data_ok")) and not bool(row.get("stage_frozen")) for row in snapshots),
+        "partial_snapshot_count": sum(not (bool(row.get("critical_data_ok")) and not bool(row.get("stage_frozen"))) for row in snapshots),
         "minimum_12_sample_closure_met": (
-            len(snapshots) >= 12
+            sum(bool(row.get("critical_data_ok")) and not bool(row.get("stage_frozen")) for row in snapshots) >= 12
             and len(dates) == 5
             and len(rerun_samples) >= 3
             and all(row.get("identical") for row in rerun_samples)

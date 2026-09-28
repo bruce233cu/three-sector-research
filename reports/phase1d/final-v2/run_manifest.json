@@ -1,0 +1,613 @@
+{
+  "actual_snapshot_count": 15,
+  "anomaly_test_count": 21,
+  "anomaly_tests_passed": 21,
+  "code_commit": "af530d0e95fbf7ee902bf8391d51c5b860b1c2cb",
+  "effective_pit_count": 15,
+  "failures": [
+    {
+      "examples": {
+        "2019-06-28:000045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000049.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000050.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000058.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000062.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000070.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000100.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000413.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000532.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000536.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000541.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000636.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000701.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000725.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000727.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000733.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000823.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000988.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000991.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 189,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2019-06-28:300783.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 1,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:000008.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000039.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000157.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000410.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000425.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000528.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000530.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000584.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000595.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000680.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000777.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000811.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000837.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000852.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000856.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000925.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000927.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000976.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000988.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:001223.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 550,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2025-06-30:000020.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000021.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000050.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000062.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000100.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000413.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000509.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000536.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000636.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000725.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000727.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000823.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000991.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001287.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001298.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001308.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001309.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001314.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 491,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2025-06-30:000008.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000410.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000425.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000528.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000680.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000811.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000837.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000852.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000856.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000925.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000927.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000976.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000988.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001223.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001225.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001226.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001239.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001256.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001266.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001277.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 374,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2019-06-28:000166.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000562.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000627.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000686.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000712.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000728.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000750.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000776.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000783.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:000987.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002500.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002673.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002736.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002797.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002926.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002939.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:002945.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:600030.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2019-06-28:600061.SH": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 50,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2020-06-30:000166.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000562.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000627.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000686.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000712.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000728.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000750.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000776.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000783.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000987.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002500.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002673.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002736.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002797.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002926.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002939.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002945.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:600030.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:600061.SH": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 42,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2020-06-30:000060.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000426.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000603.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000612.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000630.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000633.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000657.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000688.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000751.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000758.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000795.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000807.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000831.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000878.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000933.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000960.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000962.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000969.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000970.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000975.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 118,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:000020.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000021.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000050.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000062.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000100.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000413.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000536.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000636.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000701.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000725.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000727.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000823.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000991.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002036.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002049.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002055.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002077.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 361,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:001227.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 1,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:000529.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000568.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000596.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000716.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000729.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000752.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000799.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000848.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000858.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000860.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000869.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000895.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000929.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000995.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:001215.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:001219.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:001318.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:002216.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:002304.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:002329.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 125,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:000060.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000426.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000506.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000603.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000612.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000630.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000633.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000657.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000688.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000737.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000751.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000758.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000762.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000795.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000807.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000831.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000878.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000933.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000960.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000962.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 141,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:000008.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000039.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000157.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000410.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000425.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000528.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000530.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000584.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000595.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000680.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000777.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000811.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000821.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000837.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000852.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000856.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000890.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000925.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000976.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000988.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 472,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:000060.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000426.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000506.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000603.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000612.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000630.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000633.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000657.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000688.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000737.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000751.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000758.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000762.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000795.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000807.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000831.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000878.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000933.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000960.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:000962.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 141,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2025-06-30:000020.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000021.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000050.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000062.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000100.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000413.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000509.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000536.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000636.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000725.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000727.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000823.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:000991.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001287.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001298.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001308.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001309.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2025-06-30:001314.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 491,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2020-06-30:000639.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000716.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000796.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000895.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002216.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002330.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002481.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002507.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002515.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002557.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002568.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002582.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002661.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002695.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002702.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002719.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002726.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002820.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002840.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002847.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 38,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2020-06-30:000166.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000562.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000627.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000686.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000712.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000728.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000750.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000776.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000783.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:000987.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002500.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002673.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002736.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002797.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002926.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002939.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:002945.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:600030.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2020-06-30:600061.SH": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 53,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:000020.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000021.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000050.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000062.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000100.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000413.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000536.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000636.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000670.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000701.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000725.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000727.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000823.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000991.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002036.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002045.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002049.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002055.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:002077.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 361,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2021-12-31:000008.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000039.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000157.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000410.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000425.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000528.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000530.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000584.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000595.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000680.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000777.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000811.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000821.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000837.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000852.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000856.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000890.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000925.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000976.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2021-12-31:000988.SZ": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 472,
+      "stage": "stock_window"
+    },
+    {
+      "examples": {
+        "2023-06-30:002770.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:300892.SZ": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603517.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603536.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603589.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603711.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603719.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603755.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603777.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603779.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603866.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603886.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:603919.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605089.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605179.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605300.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605337.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605338.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605339.SH": "circuit_open:login:10002007:网络接收错误。",
+        "2023-06-30:605388.SH": "circuit_open:login:10002007:网络接收错误。"
+      },
+      "failed_security_count": 25,
+      "stage": "stock_window"
+    }
+  ],
+  "frozen_snapshot_count": 11,
+  "full_a_history_persisted": false,
+  "gate_ready_for_database_write": true,
+  "metric_contract": "V2.2-section-6",
+  "minimum_12_sample_closure_met": false,
+  "parameter_profile": "industry_trend_v2_2_1",
+  "partial_snapshot_count": 11,
+  "per_date_snapshot_counts": {
+    "2019-06-28": 3,
+    "2020-06-30": 3,
+    "2021-12-31": 3,
+    "2023-06-30": 3,
+    "2025-06-30": 3
+  },
+  "phase": "Phase 1D",
+  "rerun_identical": true,
+  "rerun_samples": [
+    {
+      "first_checksum": "fa3aa248eea41a7ecfbe80caec3fdf13055a6b9c1af696ec2c3de7b1500cdb6a",
+      "identical": true,
+      "second_checksum": "fa3aa248eea41a7ecfbe80caec3fdf13055a6b9c1af696ec2c3de7b1500cdb6a",
+      "taxonomy_code": "801080",
+      "trade_date": "2019-06-28"
+    },
+    {
+      "first_checksum": "03948e6b6764d1a596c11783a39b7a8c6dcf875c578c8cf99a57b7dc20969a41",
+      "identical": true,
+      "second_checksum": "03948e6b6764d1a596c11783a39b7a8c6dcf875c578c8cf99a57b7dc20969a41",
+      "taxonomy_code": "801120",
+      "trade_date": "2019-06-28"
+    },
+    {
+      "first_checksum": "1ecd57cfb7157037759bd797d0a1d94f17945708fae39a590ad59b6dc33d68c6",
+      "identical": true,
+      "second_checksum": "1ecd57cfb7157037759bd797d0a1d94f17945708fae39a590ad59b6dc33d68c6",
+      "taxonomy_code": "801890",
+      "trade_date": "2023-06-30"
+    }
+  ],
+  "result_checksum": "a082dc8d24a3eb08b28bf64b77807a6886cd2ca12b8396706d968cf00b6a1980",
+  "run_fingerprint": "1665dee626383222c8aa6e0d9d7c62ad9c264c937db3eadcae2df75bf701e551",
+  "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+  "samples": [
+    [
+      "2019-06-28",
+      "801080"
+    ],
+    [
+      "2019-06-28",
+      "801120"
+    ],
+    [
+      "2019-06-28",
+      "801790"
+    ],
+    [
+      "2020-06-30",
+      "801050"
+    ],
+    [
+      "2020-06-30",
+      "801120"
+    ],
+    [
+      "2020-06-30",
+      "801790"
+    ],
+    [
+      "2021-12-31",
+      "801080"
+    ],
+    [
+      "2021-12-31",
+      "801780"
+    ],
+    [
+      "2021-12-31",
+      "801890"
+    ],
+    [
+      "2023-06-30",
+      "801050"
+    ],
+    [
+      "2023-06-30",
+      "801120"
+    ],
+    [
+      "2023-06-30",
+      "801890"
+    ],
+    [
+      "2025-06-30",
+      "801080"
+    ],
+    [
+      "2025-06-30",
+      "801780"
+    ],
+    [
+      "2025-06-30",
+      "801890"
+    ]
+  ],
+  "source_checksums": [
+    "043f5ae498c20fd484600c86edf2dcf98a07098b2e71821fd0d0b87194fe16de",
+    "1b9b75e3ae07133e1384a367eb62738dbecf117194610dc986e6e3c7417cb0b6",
+    "1c83b17af8d037bfb449ccd6b9c8b2232759bd753a6f4fa7b7bceddec16e470e",
+    "2a44729efacebdf7f7f4bc7e438f0f8f0ebb4d14233b64989f8a2dcfebbdc548",
+    "529c3e72511e9252a1baf846df81ef0265563e314a731793f6718593b3ef4766",
+    "968388db67f0a88d99f437b2efa6832f6dfe62e4acf4020c6224d31dc41402a2",
+    "9736612723ad576d739bde564c2fa6a422c93f5ac19060968c9c907ecb4b76d8",
+    "aaaf90d8ef75772478b35bba6e2befff2e178b87509b1126a9421400a04111cc",
+    "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d",
+    "ed99ffa57307c1ffd55cdd1b14f08db09c4fec23b1dc8df145276d13c98551b3"
+  ],
+  "source_snapshot_count": 10,
+  "stock_rows_cached_only": 36297,
+  "stock_rows_written_to_supabase": 0,
+  "strict_knowledge_pit_count": 0,
+  "success_snapshot_count": 4,
+  "target_snapshot_count": 15
+}

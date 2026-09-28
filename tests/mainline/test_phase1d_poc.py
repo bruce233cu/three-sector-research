@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 import tempfile
 import unittest
+import json
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -17,6 +18,7 @@ from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.netease_window import NeteaseWindowProvider
 from mainline.providers.sws_history import SwsCachedEvidenceProvider
 from mainline.poc.run_phase1d import DATES, SAMPLE_MATRIX
+from mainline.poc.aggregate_phase1d import aggregate
 
 
 def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
@@ -126,6 +128,29 @@ class Phase1DPocTests(unittest.TestCase):
         self.assertEqual(snapshot.taxonomy_version, "SW2021")
         self.assertEqual(snapshot.pit_level, "effective_pit")
         self.assertTrue(snapshot.knowledge_time_unverified)
+
+    def test_aggregation_keeps_stronger_real_snapshot(self):
+        def shard(root, name, snapshot):
+            folder = root / name
+            folder.mkdir()
+            payloads = {
+                "poc_summary.json": {"cache_artifacts": [], "rerun_samples": [], "failures": [], "stock_rows_cached_only": 0},
+                "sector_snapshots.json": [snapshot], "membership_evidence.json": [],
+                "taxonomy_definitions.json": [], "calculation_traces.json": [], "anomaly_tests.json": [],
+            }
+            for filename, payload in payloads.items():
+                (folder / filename).write_text(json.dumps(payload), encoding="utf-8")
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            common = {"as_of_date": "2025-06-30", "taxonomy_code": "801780", "member_count": 42,
+                      "source_checksums": [], "pit_level": "effective_pit"}
+            shard(root, "base", {**common, "valid_member_count": 41, "critical_data_ok": True, "stage_frozen": False})
+            shard(root, "retry", {**common, "valid_member_count": 0, "critical_data_ok": False, "stage_frozen": True})
+            result = aggregate(root, root / "out", "test")
+            rows = json.loads((root / "out" / "sector_snapshots.json").read_text())
+            self.assertEqual(rows[0]["valid_member_count"], 41)
+            self.assertEqual(result["success_snapshot_count"], 1)
 
     def test_baostock_backup_rejects_unsupported_exchange_without_fabricating_rows(self):
         provider = object.__new__(BaostockWindowProvider)
