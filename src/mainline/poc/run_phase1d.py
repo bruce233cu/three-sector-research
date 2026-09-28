@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from uuid import UUID, uuid5
@@ -14,7 +15,7 @@ from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
 from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.eastmoney_window import EastmoneyWindowProvider
 from mainline.providers.netease_window import NeteaseWindowProvider
-from mainline.providers.sws_history import SwsEffectivePitProvider
+from mainline.providers.sws_history import SwsCachedEvidenceProvider, SwsEffectivePitProvider
 
 
 DATES = tuple(date.fromisoformat(v) for v in ("2019-06-28", "2020-06-30", "2021-12-31", "2023-06-30", "2025-06-30"))
@@ -118,12 +119,30 @@ def _real_data_anomaly_evidence(memberships, bars, benchmark_returns, all_a_amou
     return evidence
 
 
-def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | None = None) -> dict:
+def run(
+    output_dir: Path,
+    cache_dir: Path,
+    sample_indices: tuple[int, ...] | None = None,
+    membership_fallback_path: Path | None = None,
+) -> dict:
+    started = time.monotonic()
     output_dir.mkdir(parents=True, exist_ok=True)
     cache = ParquetDuckDBCache(cache_dir)
     fetched_at = datetime.now(timezone.utc)
     failures: list[dict] = []
-    membership_provider = SwsEffectivePitProvider()
+    membership_source_failed = False
+    membership_source_error = None
+    membership_fallback_used = False
+    try:
+        membership_provider = SwsEffectivePitProvider()
+    except Exception as error:
+        membership_source_failed = True
+        membership_source_error = f"{type(error).__name__}: {error}"
+        if membership_fallback_path and membership_fallback_path.exists():
+            membership_provider = SwsCachedEvidenceProvider(membership_fallback_path)
+            membership_fallback_used = True
+        else:
+            raise
     market = EastmoneyWindowProvider(workers=8, retries=2, timeout_seconds=15)
     selected_indices = sample_indices or tuple(range(len(SAMPLE_MATRIX)))
     selected_matrix = [SAMPLE_MATRIX[index] for index in selected_indices]
@@ -144,6 +163,16 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
             member_frames.append(tagged)
 
     all_members = pd.concat(member_frames, ignore_index=True) if member_frames else pd.DataFrame()
+    _write_json(output_dir / "membership_evidence.json", all_members.to_dict(orient="records"))
+    _write_json(output_dir / "progress.json", {
+        "stage": "membership_complete",
+        "sample_indices": list(selected_indices),
+        "membership_source_failed": membership_source_failed,
+        "membership_source_error": membership_source_error,
+        "membership_fallback_used": membership_fallback_used,
+        "member_rows": len(all_members),
+        "elapsed_seconds": round(time.monotonic() - started, 3),
+    })
     # Probe members against the date on which they are supposed to exist.
     # Probing historical constituents only against 2025 can falsely mark the
     # provider unhealthy after a security has delisted or changed status.
@@ -319,6 +348,10 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
         "run_fingerprint": run_fingerprint,
         "started_or_fetched_at": fetched_at.isoformat().replace("+00:00", "Z"),
         "sample_indices": list(selected_indices),
+        "duration_seconds": round(time.monotonic() - started, 3),
+        "membership_source_failed": membership_source_failed,
+        "membership_source_error": membership_source_error,
+        "membership_fallback_used": membership_fallback_used,
         "target_snapshot_count": len(selected_matrix),
         "actual_snapshot_count": len(snapshots),
         "frozen_snapshot_count": sum(bool(x["stage_frozen"]) for x in snapshots),
@@ -377,9 +410,10 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("reports/phase1d/runtime"))
     parser.add_argument("--cache-dir", type=Path, default=Path(".cache/mainline/phase1d"))
     parser.add_argument("--sample-index", type=int, action="append", choices=range(len(SAMPLE_MATRIX)))
+    parser.add_argument("--membership-fallback", type=Path)
     args = parser.parse_args()
     selected = tuple(args.sample_index) if args.sample_index else None
-    print(json.dumps(run(args.output_dir, args.cache_dir, selected), ensure_ascii=False, indent=2, default=_jsonable))
+    print(json.dumps(run(args.output_dir, args.cache_dir, selected, args.membership_fallback), ensure_ascii=False, indent=2, default=_jsonable))
 
 
 if __name__ == "__main__":

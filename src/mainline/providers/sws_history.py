@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import json
 import time
 from dataclasses import dataclass
 from datetime import date, timedelta
@@ -27,12 +28,12 @@ class MembershipSnapshot:
     knowledge_time_unverified: bool
 
 
-def _download(url: str, retries: int = 4) -> bytes:
+def _download(url: str, retries: int = 2, timeout_seconds: int = 30) -> bytes:
     headers = {"User-Agent": "Mozilla/5.0 phase1d-audit/1.0"}
     last: Exception | None = None
     for attempt in range(retries):
         try:
-            response = requests.get(url, headers=headers, timeout=90, verify=False)
+            response = requests.get(url, headers=headers, timeout=timeout_seconds, verify=False)
             response.raise_for_status()
             if len(response.content) < 1024:
                 raise RuntimeError(f"short response: {len(response.content)} bytes")
@@ -96,6 +97,43 @@ class SwsEffectivePitProvider:
             & (self.history["effective_to"].isna() | (self.history["effective_to"] >= trade_date))
         ].copy()
         frame = frame[["security_id", "security_code", "effective_from", "effective_to", "industry_code"]].drop_duplicates("security_id")
+        taxonomy_version = "SW2021" if trade_date >= date(2021, 12, 13) else "SW2014"
+        return MembershipSnapshot(
+            trade_date, taxonomy_code, taxonomy_name, taxonomy_version, frame,
+            self.source_version, "effective_pit", True,
+        )
+
+
+class SwsCachedEvidenceProvider:
+    """Previously fetched official-SWS membership evidence used fail-closed.
+
+    This is not a second independent provider. It is an immutable audit snapshot
+    of the official workbook and is only used after the live official download
+    has exhausted its bounded retry budget.
+    """
+
+    source_id = "sws_official_cached_membership_evidence"
+
+    def __init__(self, path) -> None:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        self.source_version = payload["source_version"]
+        self.audit_commit = payload["audit_commit"]
+        self.history = pd.DataFrame(payload["rows"])
+        if not self.history.empty:
+            for column in ("effective_from", "effective_to", "snapshot_date"):
+                self.history[column] = pd.to_datetime(self.history[column], errors="coerce").dt.date
+
+    def snapshot(self, trade_date: date, taxonomy_code: str, taxonomy_name: str) -> MembershipSnapshot:
+        frame = self.history[
+            (self.history["snapshot_date"] == trade_date)
+            & (self.history["taxonomy_code"] == taxonomy_code)
+            & (self.history["taxonomy_name"] == taxonomy_name)
+        ].copy()
+        keep = ["security_id", "security_code", "effective_from", "effective_to", "industry_code"]
+        if frame.empty:
+            frame = pd.DataFrame(columns=keep)
+        else:
+            frame = frame[keep].drop_duplicates("security_id")
         taxonomy_version = "SW2021" if trade_date >= date(2021, 12, 13) else "SW2014"
         return MembershipSnapshot(
             trade_date, taxonomy_code, taxonomy_name, taxonomy_version, frame,

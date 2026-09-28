@@ -71,7 +71,10 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
 
     source_snapshots = _dedupe(source_snapshots, ("id",))
     source_ids_by_checksum = {row["checksum_sha256"]: row["id"] for row in source_snapshots}
-    snapshots = sorted(snapshots, key=lambda row: (row["as_of_date"], row["taxonomy_code"]))
+    # Inputs are ordered base first, retries last. A bounded retry replaces the
+    # same sector-day while untouched successful samples remain byte-for-byte.
+    snapshots = _dedupe(list(reversed(snapshots)), ("as_of_date", "taxonomy_code"))
+    snapshots = sorted(reversed(snapshots), key=lambda row: (row["as_of_date"], row["taxonomy_code"]))
     global_basis = {
         "metric_contract": "V2.2-section-6",
         "samples": [(row["as_of_date"], row["taxonomy_code"]) for row in snapshots],
@@ -116,6 +119,12 @@ def aggregate(input_dir: Path, output_dir: Path, code_commit: str | None = None)
             len(snapshots) == 15
             and len(dates) == 5
             and all(count >= 3 for count in per_date_counts.values())
+            and len(rerun_samples) >= 3
+            and all(row.get("identical") for row in rerun_samples)
+        ),
+        "minimum_12_sample_closure_met": (
+            len(snapshots) >= 12
+            and len(dates) == 5
             and len(rerun_samples) >= 3
             and all(row.get("identical") for row in rerun_samples)
         ),

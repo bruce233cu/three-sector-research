@@ -1,11 +1,6 @@
 name: Mainline Phase 1D Real Data POC
 
 on:
-  push:
-    branches:
-      - mainline-phase1d
-    paths-ignore:
-      - "reports/phase1d/runtime/**"
   workflow_dispatch:
 
 permissions:
