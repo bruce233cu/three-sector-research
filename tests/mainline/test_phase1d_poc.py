@@ -15,6 +15,7 @@ from mainline.cache import ParquetDuckDBCache
 from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
 from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.netease_window import NeteaseWindowProvider
+from mainline.poc.run_phase1d import DATES, SAMPLE_MATRIX
 
 
 def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
@@ -32,6 +33,12 @@ def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
 
 
 class Phase1DPocTests(unittest.TestCase):
+    def test_poc_matrix_has_three_sectors_per_date_and_all_required_styles(self):
+        self.assertEqual(len(SAMPLE_MATRIX), 15)
+        self.assertEqual({trade_date: sum(row[0] == trade_date for row in SAMPLE_MATRIX) for trade_date in DATES}, {trade_date: 3 for trade_date in DATES})
+        codes = {row[1] for row in SAMPLE_MATRIX}
+        self.assertTrue({"801080", "801120", "801050", "801890"}.issubset(codes))
+        self.assertTrue(bool({"801780", "801790"}.intersection(codes)))
     def metric_input(self, frame: pd.DataFrame | None = None) -> SectorMetricInput:
         frame = bars() if frame is None else frame
         benchmark = pd.Series(0.001, index=pd.bdate_range(end="2025-06-30", periods=65).date)

@@ -23,6 +23,22 @@ class BaostockWindowProvider:
         self.bs = bs
         self.workers = max(1, workers)
 
+    def healthcheck(self) -> tuple[bool, str | None]:
+        """Probe the data server once before a batch.
+
+        BaoStock failures observed in CI happen at login.  Repeating the same
+        failed login for every security only burns the POC timeout and does not
+        improve coverage, so the batch is failed closed when this probe fails.
+        """
+        login = self.bs.login()
+        try:
+            if login.error_code != "0":
+                return False, f"login:{login.error_code}:{login.error_msg}"
+            return True, None
+        finally:
+            if login.error_code == "0":
+                self.bs.logout()
+
     def get_many(self, security_ids: list[str], start_date: date, end_date: date) -> tuple[pd.DataFrame, dict[str, str]]:
         if not security_ids:
             return pd.DataFrame(), {}

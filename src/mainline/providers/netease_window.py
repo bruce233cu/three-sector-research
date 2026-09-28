@@ -15,9 +15,10 @@ class NeteaseWindowProvider:
     source_id = "netease_chddata"
     source_version = "netease-money-163-chddata-v1"
 
-    def __init__(self, *, workers: int = 4, retries: int = 3) -> None:
+    def __init__(self, *, workers: int = 12, retries: int = 1, timeout_seconds: int = 15) -> None:
         self.workers = workers
         self.retries = retries
+        self.timeout_seconds = timeout_seconds
 
     def get_many(self, security_ids: list[str], start_date: date, end_date: date) -> tuple[pd.DataFrame, dict[str, str]]:
         frames: list[pd.DataFrame] = []
@@ -57,7 +58,7 @@ class NeteaseWindowProvider:
                 response = requests.get(
                     "https://quotes.money.163.com/service/chddata.html",
                     params=params,
-                    timeout=45,
+                    timeout=self.timeout_seconds,
                     headers={"User-Agent": "Mozilla/5.0 phase1d-poc/1.0"},
                 )
                 response.raise_for_status()

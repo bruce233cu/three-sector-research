@@ -13,13 +13,17 @@ permissions:
 
 concurrency:
   group: mainline-phase1d-poc
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  real-data-poc:
+  real-data-poc-shard:
     if: ${{ !contains(github.event.head_commit.message || '', '[phase1d-data]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        sample_index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,9 +41,14 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          rm -rf reports/phase1d/runtime
-          mkdir -p reports/phase1d/runtime
-          bash scripts/run-mainline-phase1d-poc.sh 2>&1 | tee reports/phase1d/runtime/execution.log
+          shard_dir="reports/phase1d/shards/${{ matrix.sample_index }}"
+          rm -rf "$shard_dir"
+          mkdir -p "$shard_dir"
+          PYTHONPATH="$(pwd)/src" python -m mainline.poc.run_phase1d \
+            --sample-index "${{ matrix.sample_index }}" \
+            --output-dir "$shard_dir" \
+            --cache-dir ".cache/mainline/phase1d/${{ matrix.sample_index }}" \
+            2>&1 | tee "$shard_dir/execution.log"
       - name: Record runner failure without inventing data
         if: steps.poc.outcome != 'success'
         run: |
@@ -47,13 +56,14 @@ jobs:
           import json, os
           from datetime import datetime, timezone
           from pathlib import Path
-          path = Path("reports/phase1d/runtime/runner_failure.json")
+          path = Path("reports/phase1d/shards/${{ matrix.sample_index }}/runner_failure.json")
           path.parent.mkdir(parents=True, exist_ok=True)
           path.write_text(json.dumps({
               "status": "failed",
               "reason": "real-data POC command failed; inspect execution.log",
               "workflow_run_id": os.environ.get("GITHUB_RUN_ID"),
               "commit_sha": os.environ.get("GITHUB_SHA"),
+              "sample_index": ${{ matrix.sample_index }},
               "recorded_at": datetime.now(timezone.utc).isoformat(),
           }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
@@ -61,12 +71,54 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
+          name: mainline-phase1d-shard-${{ matrix.sample_index }}
+          path: reports/phase1d/shards/${{ matrix.sample_index }}/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Fail shard when POC failed
+        if: steps.poc.outcome != 'success'
+        run: exit 1
+
+  aggregate-real-data-poc:
+    if: always() && !contains(github.event.head_commit.message || '', '[phase1d-data]')
+    needs: real-data-poc-shard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: mainline-phase1d
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mainline-phase1d-shard-*
+          path: reports/phase1d/downloaded
+      - name: Aggregate objective sector POC
+        id: aggregate
+        continue-on-error: true
+        run: |
+          rm -rf reports/phase1d/runtime
+          PYTHONPATH="$(pwd)/src" python -m mainline.poc.aggregate_phase1d \
+            --input-dir reports/phase1d/downloaded \
+            --output-dir reports/phase1d/runtime \
+            --code-commit "$GITHUB_SHA" \
+            2>&1 | tee reports/phase1d/aggregate.log
+      - name: Upload aggregate audit outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
           name: mainline-phase1d-poc-${{ github.run_id }}
-          path: reports/phase1d/runtime/
+          path: |
+            reports/phase1d/runtime/
+            reports/phase1d/aggregate.log
           if-no-files-found: error
           retention-days: 30
       - name: Commit compact audit outputs
-        if: always()
+        if: steps.aggregate.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -76,6 +128,6 @@ jobs:
           fi
           git commit -m "data: record Phase 1D real-data POC [phase1d-data]"
           git push origin HEAD:mainline-phase1d
-      - name: Fail workflow when POC failed
-        if: steps.poc.outcome != 'success'
+      - name: Fail workflow when aggregation failed
+        if: steps.aggregate.outcome != 'success'
         run: exit 1

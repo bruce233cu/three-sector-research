@@ -28,6 +28,17 @@ INDUSTRIES = {
 EARLY_FINANCIAL_FALLBACK = ("801790", "非银金融")
 RUN_NAMESPACE = UUID("f80b56da-9062-4b84-9e83-afef08cae930")
 
+# Exactly fifteen sector-days: three per frozen historical date.  Across the
+# matrix we cover technology, consumption, finance, cyclicals and manufacturing
+# without turning the POC into a full-market history load.
+SAMPLE_MATRIX = (
+    (DATES[0], "801080", "电子"), (DATES[0], "801120", "食品饮料"), (DATES[0], "801790", "非银金融"),
+    (DATES[1], "801120", "食品饮料"), (DATES[1], "801790", "非银金融"), (DATES[1], "801050", "有色金属"),
+    (DATES[2], "801080", "电子"), (DATES[2], "801780", "银行"), (DATES[2], "801890", "机械设备"),
+    (DATES[3], "801120", "食品饮料"), (DATES[3], "801050", "有色金属"), (DATES[3], "801890", "机械设备"),
+    (DATES[4], "801080", "电子"), (DATES[4], "801780", "银行"), (DATES[4], "801890", "机械设备"),
+)
+
 
 def _jsonable(value):
     if isinstance(value, (date, datetime)):
@@ -42,32 +53,30 @@ def _write_json(path: Path, value) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True, default=_jsonable) + "\n", encoding="utf-8")
 
 
-def run(output_dir: Path, cache_dir: Path) -> dict:
+def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | None = None) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     cache = ParquetDuckDBCache(cache_dir)
     fetched_at = datetime.now(timezone.utc)
     failures: list[dict] = []
     membership_provider = SwsEffectivePitProvider()
-    market = EastmoneyWindowProvider(retries=1)
+    market = EastmoneyWindowProvider(workers=8, retries=2, timeout_seconds=15)
+    selected_indices = sample_indices or tuple(range(len(SAMPLE_MATRIX)))
+    selected_matrix = [SAMPLE_MATRIX[index] for index in selected_indices]
 
     membership_snapshots = []
     member_frames = []
-    for trade_date in DATES:
-        for code, name in INDUSTRIES.items():
-            snapshot = membership_provider.snapshot(trade_date, code, name)
-            if snapshot.frame.empty and code == "801780" and trade_date < date(2021, 12, 13):
-                fallback_code, fallback_name = EARLY_FINANCIAL_FALLBACK
-                snapshot = membership_provider.snapshot(trade_date, fallback_code, fallback_name)
-            membership_snapshots.append(snapshot)
-            if snapshot.frame.empty:
-                failures.append({"stage": "membership", "trade_date": trade_date.isoformat(), "taxonomy_code": snapshot.taxonomy_code, "reason": "no effective members returned"})
-            else:
-                tagged = snapshot.frame.copy()
-                tagged["snapshot_date"] = trade_date
-                tagged["taxonomy_code"] = snapshot.taxonomy_code
-                tagged["taxonomy_name"] = snapshot.taxonomy_name
-                tagged["taxonomy_version"] = snapshot.taxonomy_version
-                member_frames.append(tagged)
+    for trade_date, code, name in selected_matrix:
+        snapshot = membership_provider.snapshot(trade_date, code, name)
+        membership_snapshots.append(snapshot)
+        if snapshot.frame.empty:
+            failures.append({"stage": "membership", "trade_date": trade_date.isoformat(), "taxonomy_code": snapshot.taxonomy_code, "reason": "no effective members returned"})
+        else:
+            tagged = snapshot.frame.copy()
+            tagged["snapshot_date"] = trade_date
+            tagged["taxonomy_code"] = snapshot.taxonomy_code
+            tagged["taxonomy_name"] = snapshot.taxonomy_name
+            tagged["taxonomy_version"] = snapshot.taxonomy_version
+            member_frames.append(tagged)
 
     all_members = pd.concat(member_frames, ignore_index=True) if member_frames else pd.DataFrame()
     probe_ids = sorted(all_members["security_id"].unique())[:12] if not all_members.empty else []
@@ -76,21 +85,23 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     primary_healthy = primary_success_ratio >= 0.80
     primary_health_reason = None if primary_healthy else f"batch_probe_success_ratio={primary_success_ratio:.4f}<0.8000"
     membership_artifact = cache.put(
-        "membership_snapshot", "phase1d-five-dates-five-industries", all_members,
+        "membership_snapshot", "phase1d-samples-" + "-".join(map(str, selected_indices)), all_members,
         source_id=membership_provider.source_id, source_version=membership_provider.source_version, fetched_at=fetched_at,
     )
 
     # Fetch only the 120-calendar-day windows needed by the five target dates.
     # Raw stock rows remain an ephemeral cache, not a full-A history warehouse.
-    secondary = NeteaseWindowProvider(workers=4, retries=2)
+    secondary = NeteaseWindowProvider(workers=12, retries=1, timeout_seconds=15)
     backup = BaostockWindowProvider(workers=1)
+    backup_available, backup_health_reason = backup.healthcheck()
+    empty_bar_columns = ["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate", "circ_mv", "circ_mv_derivation", "source_id", "source_version"]
     bar_frames: list[pd.DataFrame] = []
     primary_errors_all: dict[str, str] = {}
     secondary_errors_all: dict[str, str] = {}
     backup_errors_all: dict[str, str] = {}
     secondary_recovered: set[str] = set()
     backup_recovered: set[str] = set()
-    for trade_date in DATES:
+    for trade_date in sorted({row[0] for row in selected_matrix}):
         date_members = sorted(all_members.loc[all_members["snapshot_date"] == trade_date, "security_id"].unique())
         window_start = trade_date - timedelta(days=120)
         if primary_healthy:
@@ -105,12 +116,15 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
             bar_frames.append(secondary_bars)
             secondary_recovered.update(set(primary_errors).difference(secondary_errors))
         secondary_errors_all.update({f"{trade_date}:{key}": value for key, value in secondary_errors.items()})
-        backup_bars, backup_errors = backup.get_many(sorted(secondary_errors), window_start, trade_date)
+        if backup_available:
+            backup_bars, backup_errors = backup.get_many(sorted(secondary_errors), window_start, trade_date)
+        else:
+            backup_bars = pd.DataFrame(columns=empty_bar_columns)
+            backup_errors = {security_id: f"circuit_open:{backup_health_reason}" for security_id in secondary_errors}
         if not backup_bars.empty:
             bar_frames.append(backup_bars)
             backup_recovered.update(set(secondary_errors).difference(backup_errors))
         backup_errors_all.update({f"{trade_date}:{key}": value for key, value in backup_errors.items()})
-    empty_bar_columns = ["security_id", "trade_date", "open", "high", "low", "close", "volume", "amount", "pct_chg", "turnover_rate", "circ_mv", "circ_mv_derivation", "source_id", "source_version"]
     bars = (
         pd.concat(bar_frames, ignore_index=True).drop_duplicates(["security_id", "trade_date"], keep="first")
         if bar_frames else pd.DataFrame(columns=empty_bar_columns)
@@ -123,7 +137,7 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         if not bars.empty and "circ_mv" in bars.columns else 0.0
     )
     bars_artifact = cache.put(
-        "stock_window", "phase1d-five-dates-120-day-selected-member-windows", bars,
+        "stock_window", "phase1d-120-day-samples-" + "-".join(map(str, selected_indices)), bars,
         source_id=f"{market.source_id}+{secondary.source_id}+{backup.source_id}",
         source_version=f"{market.source_version}+{secondary.source_version}+{backup.source_version}", fetched_at=fetched_at,
     )
@@ -139,7 +153,7 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
     all_a_amount = benchmark.set_index("trade_date")["amount"]
 
     run_basis = {
-        "dates": [d.isoformat() for d in DATES], "industries": INDUSTRIES,
+        "samples": [(d.isoformat(), code, name) for d, code, name in selected_matrix],
         "membership_checksum": membership_artifact.checksum_sha256,
         "bars_checksum": bars_artifact.checksum_sha256,
         "benchmark_checksum": benchmark_artifact.checksum_sha256,
@@ -195,20 +209,49 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
 
     canonical = json.dumps(snapshots, ensure_ascii=False, sort_keys=True, default=_jsonable)
     result_checksum = hashlib.sha256(canonical.encode()).hexdigest()
-    rerun_checksum = hashlib.sha256(json.dumps(snapshots, ensure_ascii=False, sort_keys=True, default=_jsonable).encode()).hexdigest()
+    rerun_results = []
+    for membership in membership_snapshots[:3]:
+        if membership.frame.empty:
+            continue
+        member_ids = tuple(sorted(membership.frame["security_id"].unique()))
+        metric_input = SectorMetricInput(
+            trade_date=membership.trade_date,
+            object_id=f"sw1_{membership.taxonomy_code}",
+            taxonomy_code=membership.taxonomy_code,
+            taxonomy_version=membership.taxonomy_version,
+            member_ids=member_ids,
+            member_bars=bars[bars["security_id"].isin(member_ids)].copy(),
+            benchmark_returns=benchmark_returns,
+            all_a_amount=all_a_amount,
+            all_a_circ_mv=None,
+        )
+        first = calculate_sector_snapshot(metric_input)
+        second = calculate_sector_snapshot(metric_input)
+        first_checksum = hashlib.sha256(json.dumps(first, ensure_ascii=False, sort_keys=True, default=_jsonable).encode()).hexdigest()
+        second_checksum = hashlib.sha256(json.dumps(second, ensure_ascii=False, sort_keys=True, default=_jsonable).encode()).hexdigest()
+        rerun_results.append({
+            "trade_date": membership.trade_date.isoformat(),
+            "taxonomy_code": membership.taxonomy_code,
+            "first_checksum": first_checksum,
+            "second_checksum": second_checksum,
+            "identical": first_checksum == second_checksum,
+        })
+    rerun_checksum = hashlib.sha256(json.dumps(rerun_results, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
     summary = {
         "phase": "Phase 1D",
         "run_id": run_id,
         "run_fingerprint": run_fingerprint,
         "started_or_fetched_at": fetched_at.isoformat().replace("+00:00", "Z"),
-        "target_snapshot_count": len(DATES) * len(INDUSTRIES),
+        "sample_indices": list(selected_indices),
+        "target_snapshot_count": len(selected_matrix),
         "actual_snapshot_count": len(snapshots),
         "frozen_snapshot_count": sum(bool(x["stage_frozen"]) for x in snapshots),
         "effective_pit_count": sum(x["pit_level"] == "effective_pit" for x in snapshots),
         "strict_knowledge_pit_count": sum(x["pit_level"] == "strict_knowledge_pit" for x in snapshots),
         "result_checksum": result_checksum,
         "rerun_checksum": rerun_checksum,
-        "rerun_identical": result_checksum == rerun_checksum,
+        "rerun_identical": bool(rerun_results) and all(item["identical"] for item in rerun_results),
+        "rerun_samples": rerun_results,
         "full_a_history_persisted": False,
         "stock_rows_cached_only": len(bars),
         "stock_rows_written_to_supabase": 0,
@@ -219,6 +262,8 @@ def run(output_dir: Path, cache_dir: Path) -> dict:
         "secondary_recovered_security_count": len(secondary_recovered),
         "secondary_unrecovered_security_count": len(secondary_errors_all),
         "backup_recovered_security_count": len(backup_recovered),
+        "backup_available": backup_available,
+        "backup_health_reason": backup_health_reason,
         "unrecovered_security_count": len(backup_errors),
         "derived_member_circ_mv_coverage": member_circ_mv_coverage,
         "missing_all_a_circ_mv": True,
@@ -249,8 +294,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", type=Path, default=Path("reports/phase1d/runtime"))
     parser.add_argument("--cache-dir", type=Path, default=Path(".cache/mainline/phase1d"))
+    parser.add_argument("--sample-index", type=int, action="append", choices=range(len(SAMPLE_MATRIX)))
     args = parser.parse_args()
-    print(json.dumps(run(args.output_dir, args.cache_dir), ensure_ascii=False, indent=2, default=_jsonable))
+    selected = tuple(args.sample_index) if args.sample_index else None
+    print(json.dumps(run(args.output_dir, args.cache_dir, selected), ensure_ascii=False, indent=2, default=_jsonable))
 
 
 if __name__ == "__main__":

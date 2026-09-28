@@ -14,9 +14,10 @@ class EastmoneyWindowProvider:
     source_id = "eastmoney_kline"
     source_version = "eastmoney-push2his-kline-v1"
 
-    def __init__(self, *, workers: int = 6, retries: int = 4) -> None:
+    def __init__(self, *, workers: int = 8, retries: int = 2, timeout_seconds: int = 15) -> None:
         self.workers = workers
         self.retries = retries
+        self.timeout_seconds = timeout_seconds
 
     def get_many(self, security_ids: list[str], start_date: date, end_date: date) -> tuple[pd.DataFrame, dict[str, str]]:
         frames: list[pd.DataFrame] = []
@@ -92,7 +93,13 @@ class EastmoneyWindowProvider:
         last: Exception | None = None
         for attempt in range(self.retries):
             try:
-                response = requests.get(url, params=params, timeout=45, verify=verify, headers={"User-Agent": "Mozilla/5.0 phase1d-poc/1.0"})
+                response = requests.get(
+                    url,
+                    params=params,
+                    timeout=self.timeout_seconds,
+                    verify=verify,
+                    headers={"User-Agent": "Mozilla/5.0 phase1d-poc/1.0"},
+                )
                 response.raise_for_status()
                 return response.json()
             except Exception as error:
