@@ -88,7 +88,10 @@ class EastmoneyWindowProvider:
         frame = frame.rename(columns={"bargaindate": "trade_date", "closeindex": "close", "bargainsum": "amount"})
         frame["trade_date"] = pd.to_datetime(frame["trade_date"], errors="coerce").dt.date
         frame["close"] = pd.to_numeric(frame["close"], errors="coerce")
-        frame["amount"] = pd.to_numeric(frame["amount"], errors="coerce")
+        # The SWS trend contract reports bargain sum in CNY 100 million,
+        # whereas constituent providers report amount in CNY. Normalize before
+        # calculating TURNOVER_SHARE so numerator and denominator share units.
+        frame["amount"] = pd.to_numeric(frame["amount"], errors="coerce") * 100_000_000.0
         frame["pct_chg"] = frame["close"].pct_change() * 100
         return frame[["trade_date", "close", "amount", "pct_chg"]].sort_values("trade_date")
 

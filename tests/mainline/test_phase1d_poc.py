@@ -39,6 +39,10 @@ class Phase1DPocTests(unittest.TestCase):
         self.assertIn('"ut": "fa5fd1943c7b386f172d6893dbfba10b"', source)
         self.assertNotIn('"ut": "7eea3edcaed734bea9cbfc24409ed989"', source)
 
+    def test_sws_benchmark_amount_is_normalized_to_cny(self):
+        source = Path("src/mainline/providers/eastmoney_window.py").read_text(encoding="utf-8")
+        self.assertIn('frame["amount"] = pd.to_numeric(frame["amount"], errors="coerce") * 100_000_000.0', source)
+
     def test_poc_matrix_has_three_sectors_per_date_and_all_required_styles(self):
         self.assertEqual(len(SAMPLE_MATRIX), 15)
         self.assertEqual({trade_date: sum(row[0] == trade_date for row in SAMPLE_MATRIX) for trade_date in DATES}, {trade_date: 3 for trade_date in DATES})

@@ -155,7 +155,7 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
     benchmark = market.get_sw_index("801003")
     benchmark_artifact = cache.put(
         "benchmark_window", "sw-801003-all-a", benchmark,
-        source_id="sws_official_index_api", source_version="sws-index-publish-trend-v1", fetched_at=fetched_at,
+        source_id="sws_official_index_api", source_version="sws-index-publish-trend-v2-cny", fetched_at=fetched_at,
     )
     benchmark_returns = benchmark.set_index("trade_date")["pct_chg"] / 100.0
     all_a_amount = benchmark.set_index("trade_date")["amount"]
@@ -192,7 +192,7 @@ def run(output_dir: Path, cache_dir: Path, sample_indices: tuple[int, ...] | Non
             "pit_level": membership.pit_level,
             "knowledge_time_unverified": membership.knowledge_time_unverified,
             "source_ids": [membership_provider.source_id, market.source_id, secondary.source_id, backup.source_id, "sws_official_index_api"],
-            "source_versions": [membership.source_version, market.source_version, secondary.source_version, backup.source_version, "sws-index-publish-trend-v1"],
+            "source_versions": [membership.source_version, market.source_version, secondary.source_version, backup.source_version, "sws-index-publish-trend-v2-cny"],
             "source_checksums": [membership_artifact.checksum_sha256, bars_artifact.checksum_sha256, benchmark_artifact.checksum_sha256],
             "run_id": run_id,
             "rule_version": "mainline_v2.2.0",
