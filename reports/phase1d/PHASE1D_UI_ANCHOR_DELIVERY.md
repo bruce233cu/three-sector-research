@@ -108,9 +108,10 @@ Gate：G1
 - 仓库：`bruce233cu/three-sector-research`
 - 分支：`mainline-phase1d`
 - UI/重试基线Commit：`af530d0e95fbf7ee902bf8391d51c5b860b1c2cb`
-- 本报告、最终审计结果和“保留更强真实快照”的聚合修正将由本次最终提交承载；以交付消息中的最终 SHA 为准。
+- 最终审计结果和“保留更强真实快照”的聚合修正已提交；交付Commit为 `7af4b4e331d427559c32e3d10867f6813ad140a7`。
 - 失败补跑Workflow：<https://github.com/bruce233cu/three-sector-research/actions/runs/36411633805>
 - 基线CI：<https://github.com/bruce233cu/three-sector-research/actions/runs/36411633812>（通过）
+- 最终CI：<https://github.com/bruce233cu/three-sector-research/actions/runs/36496910031>（通过）
 
 ### 24. 测试与CI
 
@@ -123,7 +124,9 @@ Gate：G1
 
 - 现有站点项目：`appgprj_6a9fc01749888191aa90eb53087f13de`
 - 现有地址：<https://sanda-saidao-research.zdrzdrzdr233cu.chatgpt.site>
-- 本报告完成时将部署同一站点、保留现有访问控制，并实际访问 `/mainline` 验证；最终版本号与线上验证结果以交付消息为准。
+- 已部署同一站点 **Sites v37**，状态 `succeeded`，并保留现有仅所有者访问控制。
+- 自动部署截图已确认左侧“市场”分组中真实出现“A股主线”入口；`/mainline` 线上路由已到达站点的所有者登录门槛。
+- 页面内容级线上核验未完成：安全登录请求被取消，因此没有声称已在登录后看到页面数据。代码构建、部署产物、数据库状态接口和导航截图均已分别验证。
 
 ### 26. Supabase
 
