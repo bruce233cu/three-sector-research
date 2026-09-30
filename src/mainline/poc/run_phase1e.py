@@ -16,7 +16,7 @@ from mainline.metrics import SectorMetricInput, calculate_sector_snapshot
 from mainline.providers.baostock_window import BaostockWindowProvider
 from mainline.providers.eastmoney_window import EastmoneyWindowProvider
 from mainline.providers.netease_window import NeteaseWindowProvider
-from mainline.providers.sws_history import SwsCachedEvidenceProvider
+from mainline.providers.sws_history import SwsCachedEvidenceProvider, SwsEffectivePitProvider
 
 
 RUN_NAMESPACE = UUID("2b66a24b-cdd7-4ab0-b281-f083f1ed9b88")
@@ -121,6 +121,12 @@ def run_one(sample: dict, output_dir: Path, cache_dir: Path, membership_path: Pa
 
     membership_provider = SwsCachedEvidenceProvider(membership_path)
     membership = membership_provider.snapshot(trade_date, code, name)
+    if membership.frame.empty:
+        # Phase 1D's immutable fallback contains only the shards that completed
+        # its bounded run.  Reuse it first, then use the existing official SWS
+        # adapter for database-selected PARTIAL samples absent from that cache.
+        membership_provider = SwsEffectivePitProvider()
+        membership = membership_provider.snapshot(trade_date, code, name)
     if membership.frame.empty:
         raise RuntimeError(f"database-selected sample has no cached audited membership: {sample['sample_id']}")
     member_ids = sorted(membership.frame["security_id"].unique())
