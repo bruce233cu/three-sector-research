@@ -1,0 +1,121 @@
+name: Mainline Phase 1E Partial Window Backfill
+
+on:
+  push:
+    branches: [mainline-phase1e]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mainline-phase1e-window-backfill
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: ${{ contains(github.event.head_commit.message || '', '[phase1e-run]') }}
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.samples.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: mainline-phase1e }
+      - id: samples
+        shell: bash
+        run: |
+          matrix=$(python - <<'PY'
+          import json
+          rows=json.load(open('reports/phase1e/input/partial_samples.json', encoding='utf-8'))['samples']
+          print(json.dumps({'position': list(range(len(rows)))}, separators=(',', ':')))
+          PY
+          )
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  backfill:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: mainline-phase1e, fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-mainline.txt
+      - run: python -m pip install --upgrade pip && pip install -r requirements-mainline.txt
+      - uses: actions/cache@v4
+        with:
+          path: .cache/mainline/phase1e
+          key: phase1e-${{ hashFiles('reports/phase1e/input/partial_samples.json') }}-${{ matrix.position }}
+      - name: Backfill one database-selected PARTIAL sample
+        id: runner
+        continue-on-error: true
+        shell: bash
+        run: |
+          shard="reports/phase1e/shards/${{ matrix.position }}"
+          mkdir -p "$shard"
+          timeout --signal=TERM --kill-after=15s 1800s \
+            env PYTHONPATH="$(pwd)/src" python -m mainline.poc.run_phase1e \
+              --sample-file reports/phase1e/input/partial_samples.json \
+              --sample-position "${{ matrix.position }}" \
+              --membership-file reports/phase1d/fallback/sws_official_cached_membership.json \
+              --output-dir "$shard" \
+              --cache-dir ".cache/mainline/phase1e/${{ matrix.position }}" \
+              2>&1 | tee "$shard/execution.log"
+      - name: Record bounded runner failure
+        if: steps.runner.outcome != 'success'
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          folder=Path('reports/phase1e/shards/${{ matrix.position }}')
+          folder.mkdir(parents=True, exist_ok=True)
+          (folder/'runner_failure.json').write_text(json.dumps({
+            'sample_position': ${{ matrix.position }},
+            'reason': 'bounded Phase 1E runner failed or exceeded 1800 seconds',
+            'workflow_run_id': os.getenv('GITHUB_RUN_ID'),
+            'commit_sha': os.getenv('GITHUB_SHA'),
+            'recorded_at': datetime.now(timezone.utc).isoformat(),
+          }, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-phase1e-${{ matrix.position }}
+          path: reports/phase1e/shards/${{ matrix.position }}/
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    if: always() && needs.prepare.result == 'success'
+    needs: [prepare, backfill]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: mainline-phase1e, fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mainline-phase1e-*
+          path: reports/phase1e/downloaded
+      - name: Aggregate the eleven bounded results
+        run: |
+          rm -rf reports/phase1e/final
+          PYTHONPATH="$(pwd)/src" python -m mainline.poc.aggregate_phase1e \
+            --sample-file reports/phase1e/input/partial_samples.json \
+            --input-dir reports/phase1e/downloaded \
+            --output-dir reports/phase1e/final
+      - name: Commit Phase 1E evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/phase1e/final
+          git commit -m "data: record Phase 1E window backfill [phase1e-data]"
+          git push origin HEAD:mainline-phase1e

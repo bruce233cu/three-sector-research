@@ -1,0 +1,144 @@
+{
+  "source_tables": [
+    "mainline.phase1d_sample_runs",
+    "mainline.daily_mainline_snapshot"
+  ],
+  "source_filter": "phase1d_sample_runs.status = 'PARTIAL'",
+  "extracted_at": "2026-09-30T15:09:40Z",
+  "source_row_count": 11,
+  "samples": [
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801080",
+      "sample_id": "2019-06-28:801080",
+      "trade_date": "2019-06-28",
+      "member_count": 189,
+      "industry_name": "电子",
+      "taxonomy_code": "801080",
+      "taxonomy_version": "SW2014",
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801790",
+      "sample_id": "2019-06-28:801790",
+      "trade_date": "2019-06-28",
+      "member_count": 50,
+      "industry_name": "非银金融",
+      "taxonomy_code": "801790",
+      "taxonomy_version": "SW2014",
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801050",
+      "sample_id": "2020-06-30:801050",
+      "trade_date": "2020-06-30",
+      "member_count": 118,
+      "industry_name": "有色金属",
+      "taxonomy_code": "801050",
+      "taxonomy_version": "SW2014",
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801120",
+      "sample_id": "2020-06-30:801120",
+      "trade_date": "2020-06-30",
+      "member_count": 38,
+      "industry_name": "食品饮料",
+      "taxonomy_code": "801120",
+      "taxonomy_version": null,
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0.20754716981132076,
+      "object_id": "sw1_801790",
+      "sample_id": "2020-06-30:801790",
+      "trade_date": "2020-06-30",
+      "member_count": 53,
+      "industry_name": "非银金融",
+      "taxonomy_code": "801790",
+      "taxonomy_version": "SW2014",
+      "valid_member_count": 11
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801080",
+      "sample_id": "2021-12-31:801080",
+      "trade_date": "2021-12-31",
+      "member_count": 361,
+      "industry_name": "电子",
+      "taxonomy_code": "801080",
+      "taxonomy_version": "SW2021",
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801890",
+      "sample_id": "2021-12-31:801890",
+      "trade_date": "2021-12-31",
+      "member_count": 472,
+      "industry_name": "机械设备",
+      "taxonomy_code": "801890",
+      "taxonomy_version": null,
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801050",
+      "sample_id": "2023-06-30:801050",
+      "trade_date": "2023-06-30",
+      "member_count": 141,
+      "industry_name": "有色金属",
+      "taxonomy_code": "801050",
+      "taxonomy_version": null,
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801890",
+      "sample_id": "2023-06-30:801890",
+      "trade_date": "2023-06-30",
+      "member_count": 550,
+      "industry_name": "机械设备",
+      "taxonomy_code": "801890",
+      "taxonomy_version": "SW2021",
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0,
+      "object_id": "sw1_801080",
+      "sample_id": "2025-06-30:801080",
+      "trade_date": "2025-06-30",
+      "member_count": 491,
+      "industry_name": "电子",
+      "taxonomy_code": "801080",
+      "taxonomy_version": "SW2021",
+      "valid_member_count": 0
+    },
+    {
+      "status": "PARTIAL",
+      "coverage": 0.37666666666666665,
+      "object_id": "sw1_801890",
+      "sample_id": "2025-06-30:801890",
+      "trade_date": "2025-06-30",
+      "member_count": 600,
+      "industry_name": "机械设备",
+      "taxonomy_code": "801890",
+      "taxonomy_version": "SW2021",
+      "valid_member_count": 226
+    }
+  ],
+  "published_fields_note": "Database-internal run/source UUIDs intentionally omitted from Git; complete audit identifiers remain in Supabase."
+}

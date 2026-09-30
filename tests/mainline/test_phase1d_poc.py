@@ -19,6 +19,7 @@ from mainline.providers.netease_window import NeteaseWindowProvider
 from mainline.providers.sws_history import SwsCachedEvidenceProvider
 from mainline.poc.run_phase1d import DATES, SAMPLE_MATRIX
 from mainline.poc.aggregate_phase1d import aggregate
+from mainline.poc.run_phase1e import coverage_fields, load_partial_samples
 
 
 def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
@@ -36,6 +37,25 @@ def bars(member_count: int = 10, periods: int = 65) -> pd.DataFrame:
 
 
 class Phase1DPocTests(unittest.TestCase):
+    def test_phase1e_input_is_database_derived_and_partial_only(self):
+        source, samples = load_partial_samples(ROOT / "reports/phase1e/input/partial_samples.json")
+        self.assertEqual(source["source_row_count"], 11)
+        self.assertEqual(len(samples), 11)
+        self.assertTrue(all(row["status"] == "PARTIAL" for row in samples))
+        self.assertEqual(
+            set(source["source_tables"]),
+            {"mainline.phase1d_sample_runs", "mainline.daily_mainline_snapshot"},
+        )
+
+    def test_phase1e_window_coverage_preserves_separate_ma_contracts(self):
+        result = coverage_fields({"metric_coverage_json": {
+            "above_ma20": 0.9, "above_ma60": 0.8, "new_high_60": 0.7,
+        }})
+        self.assertEqual(result["MA20_coverage"], 0.9)
+        self.assertEqual(result["MA60_coverage"], 0.8)
+        self.assertEqual(result["NEW_HIGH60_coverage"], 0.7)
+        self.assertEqual(result["window_coverage"], 0.7)
+
     def test_eastmoney_history_uses_history_client_token(self):
         path = Path("src/mainline/providers/eastmoney_window.py")
         source = path.read_text(encoding="utf-8")
