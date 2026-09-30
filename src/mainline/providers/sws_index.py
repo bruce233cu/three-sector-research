@@ -48,6 +48,10 @@ class SwsIndexProvider:
                     params={"swindexcode": code, "period": "DAY"},
                     headers={"User-Agent": "Mozilla/5.0 mainline-phase2a/1.0"},
                     timeout=self.timeout_seconds,
+                    # The official SWS host currently serves an incomplete CA
+                    # chain.  Keep the hostname fixed and fingerprint every
+                    # response; this mirrors the audited Phase 1D adapter.
+                    verify=False,
                 )
                 response.raise_for_status()
                 payload = response.json()
