@@ -1,10 +1,10 @@
 {
-  "converted_to_success_count": 0,
+  "converted_to_success_count": 1,
   "fail_count": 0,
   "full_a_history_persisted": false,
   "original_partial_count": 11,
-  "remaining_partial_count": 11,
-  "sample_result_count": 2,
+  "remaining_partial_count": 10,
+  "sample_result_count": 8,
   "schema_modified": false,
   "source_tables": [
     "mainline.phase1d_sample_runs",
