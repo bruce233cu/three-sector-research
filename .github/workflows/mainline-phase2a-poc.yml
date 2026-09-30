@@ -19,7 +19,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-mainline.txt
       - uses: actions/setup-node@v4
-        with: {node-version: "20", cache: npm}
+        with: {node-version: "22.13.0", cache: npm}
       - run: pip install -r requirements-mainline.txt
       - run: python -m pytest tests/mainline -q
       - name: Run frozen Phase 2A against official SWS data

@@ -1,0 +1,19 @@
+{
+  "run_id": "26d62c4b-2292-432f-89d7-33dc24c278fa",
+  "phase": "Phase 2A",
+  "rule_version": "V2.2-S1",
+  "parameter_profile": "V2.2-frozen",
+  "code_commit": "76c1a7fdc02c204779f376bacf896d2c6894f3b6",
+  "workflow_run": 36703878303,
+  "artifact_id": 11090913014,
+  "artifact_digest": "sha256:2912d71cf968b46091dc95a201aa98dc3a865bff7fa06f31be77c76de2f9bcb0",
+  "result_checksum": "a5c0923cbec0993f905513d6c968489d85cfa88b4d80f8978fee8821d0336a5f",
+  "source": "申万研究官方指数日线接口",
+  "source_snapshot_count": 32,
+  "result_rows": 3968,
+  "trading_days": 128,
+  "windows": 4,
+  "decision_counts": {"S1": 1035, "S0": 2549, "DATA_INSUFFICIENT": 384},
+  "first_pass_no_tuning": true,
+  "acceptance": "PARTIAL"
+}
