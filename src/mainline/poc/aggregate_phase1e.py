@@ -4,11 +4,16 @@ import argparse
 import json
 from pathlib import Path
 
-from mainline.poc.run_phase1e import load_partial_samples
-
-
 def _read(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _load_partial_samples(path: Path) -> tuple[dict, list[dict]]:
+    payload = _read(path)
+    samples = payload.get("samples")
+    if not isinstance(samples, list):
+        raise ValueError("sample file must contain a samples list")
+    return payload, samples
 
 
 def _write(path: Path, value) -> None:
@@ -17,7 +22,7 @@ def _write(path: Path, value) -> None:
 
 
 def aggregate(sample_file: Path, input_dir: Path, output_dir: Path) -> dict:
-    source, expected = load_partial_samples(sample_file)
+    source, expected = _load_partial_samples(sample_file)
     expected_by_id = {row["sample_id"]: row for row in expected}
     results = {}
     snapshots = {}
