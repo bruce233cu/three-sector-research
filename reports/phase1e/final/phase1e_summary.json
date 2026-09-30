@@ -1,14 +1,20 @@
 {
-  "converted_to_success_count": 1,
-  "fail_count": 0,
-  "full_a_history_persisted": false,
+  "title": "A股主线识别系统 V2.2 — Phase 1E 交付结果",
   "original_partial_count": 11,
+  "converted_to_success_count": 1,
   "remaining_partial_count": 10,
-  "sample_result_count": 8,
-  "schema_modified": false,
+  "fail_count": 0,
   "source_tables": [
     "mainline.phase1d_sample_runs",
     "mainline.daily_mainline_snapshot"
   ],
-  "title": "A股主线识别系统 V2.2 — Phase 1E 交付结果"
+  "schema_modified": false,
+  "full_a_history_persisted": false,
+  "selected_phase1e_result_count": 9,
+  "preserved_baseline_count": 2,
+  "supabase_data_verified": true,
+  "workflow_run_id": 36740765040,
+  "evidence_commit": "46dc776243feaf3935cff8e58758541a691fa8cf",
+  "branch": "mainline-phase1e",
+  "gate_recommendation": "暂不建议进入下一Gate"
 }
