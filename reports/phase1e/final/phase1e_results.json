@@ -1,0 +1,325 @@
+[
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 189,
+    "run_id": null,
+    "sample_id": "2019-06-28:801080",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801080",
+      "name": "电子",
+      "version": "SW2014"
+    },
+    "trade_date": "2019-06-28",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 50,
+    "run_id": null,
+    "sample_id": "2019-06-28:801790",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801790",
+      "name": "非银金融",
+      "version": "SW2014"
+    },
+    "trade_date": "2019-06-28",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 118,
+    "run_id": null,
+    "sample_id": "2020-06-30:801050",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801050",
+      "name": "有色金属",
+      "version": "SW2014"
+    },
+    "trade_date": "2020-06-30",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 38,
+    "run_id": null,
+    "sample_id": "2020-06-30:801120",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801120",
+      "name": "食品饮料",
+      "version": null
+    },
+    "trade_date": "2020-06-30",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 53,
+    "run_id": null,
+    "sample_id": "2020-06-30:801790",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801790",
+      "name": "非银金融",
+      "version": "SW2014"
+    },
+    "trade_date": "2020-06-30",
+    "unresolved_security_count": null,
+    "valid_member_count": 11,
+    "window_coverage": 0.20754716981132076
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 361,
+    "run_id": null,
+    "sample_id": "2021-12-31:801080",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801080",
+      "name": "电子",
+      "version": "SW2021"
+    },
+    "trade_date": "2021-12-31",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": 0.09110169491525423,
+    "MA60_coverage": 0.09110169491525423,
+    "NEW_HIGH60_coverage": 0.09110169491525423,
+    "cache_status": "parquet_duckdb_audited",
+    "code_commit": "12dd49e6ff8b3556487c206d5ebc142234af542c",
+    "critical_data_ok": false,
+    "duration_seconds": 235.865,
+    "failure_class": "historical_market_window_insufficient",
+    "final_status": "PARTIAL",
+    "freeze_reason": "sector_return_coverage=0.0911<0.7000;breadth_coverage<0.7000",
+    "member_count": 472,
+    "provider_audit": [
+      {
+        "circuit_open": false,
+        "probe_count": 12,
+        "probe_success_ratio": 1.0,
+        "requested_security_count": 472,
+        "returned_security_count": 43,
+        "source_id": "eastmoney_kline",
+        "unresolved_count": 429
+      },
+      {
+        "circuit_open": true,
+        "probe_count": 12,
+        "probe_success_ratio": 0.0,
+        "requested_security_count": 429,
+        "returned_security_count": 0,
+        "source_id": "netease_chddata",
+        "unresolved_count": 429
+      },
+      {
+        "healthcheck_ok": false,
+        "healthcheck_reason": "login:10002007:网络接收错误。",
+        "requested_security_count": 429,
+        "returned_security_count": 0,
+        "source_id": "baostock_history_k",
+        "unresolved_count": 429
+      }
+    ],
+    "run_id": "2429ba2d-2031-5eaf-8fb1-0968200bcd90",
+    "sample_id": "2021-12-31:801890",
+    "source_snapshot_ids": [
+      "7fc1a826-c934-5a51-bff0-98cbdb1110b0",
+      "75074638-f4f5-5fb6-82df-4df4e42350e8",
+      "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+    ],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801890",
+      "name": "机械设备",
+      "version": "SW2021"
+    },
+    "trade_date": "2021-12-31",
+    "unresolved_security_count": 429,
+    "valid_member_count": 43,
+    "window_coverage": 0.09110169491525423
+  },
+  {
+    "MA20_coverage": 0.2765957446808511,
+    "MA60_coverage": 0.2765957446808511,
+    "NEW_HIGH60_coverage": 0.2765957446808511,
+    "cache_status": "parquet_duckdb_audited",
+    "code_commit": "12dd49e6ff8b3556487c206d5ebc142234af542c",
+    "critical_data_ok": false,
+    "duration_seconds": 181.882,
+    "failure_class": "historical_market_window_insufficient",
+    "final_status": "PARTIAL",
+    "freeze_reason": "sector_return_coverage=0.2766<0.7000;breadth_coverage<0.7000",
+    "member_count": 141,
+    "provider_audit": [
+      {
+        "circuit_open": false,
+        "probe_count": 12,
+        "probe_success_ratio": 1.0,
+        "requested_security_count": 141,
+        "returned_security_count": 39,
+        "source_id": "eastmoney_kline",
+        "unresolved_count": 102
+      },
+      {
+        "circuit_open": true,
+        "probe_count": 12,
+        "probe_success_ratio": 0.0,
+        "requested_security_count": 102,
+        "returned_security_count": 0,
+        "source_id": "netease_chddata",
+        "unresolved_count": 102
+      },
+      {
+        "healthcheck_ok": false,
+        "healthcheck_reason": "login:10002007:网络接收错误。",
+        "requested_security_count": 102,
+        "returned_security_count": 0,
+        "source_id": "baostock_history_k",
+        "unresolved_count": 102
+      }
+    ],
+    "run_id": "0bcbc17a-812c-5711-b115-eec41ab175e5",
+    "sample_id": "2023-06-30:801050",
+    "source_snapshot_ids": [
+      "e04ccf00-600b-5057-9320-d01c4b9b5074",
+      "1a7bf87d-df72-54ab-b5f0-9137f6679a95",
+      "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+    ],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801050",
+      "name": "有色金属",
+      "version": "SW2021"
+    },
+    "trade_date": "2023-06-30",
+    "unresolved_security_count": 102,
+    "valid_member_count": 39,
+    "window_coverage": 0.2765957446808511
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 550,
+    "run_id": null,
+    "sample_id": "2023-06-30:801890",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801890",
+      "name": "机械设备",
+      "version": "SW2021"
+    },
+    "trade_date": "2023-06-30",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 491,
+    "run_id": null,
+    "sample_id": "2025-06-30:801080",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801080",
+      "name": "电子",
+      "version": "SW2021"
+    },
+    "trade_date": "2025-06-30",
+    "unresolved_security_count": null,
+    "valid_member_count": 0,
+    "window_coverage": 0.0
+  },
+  {
+    "MA20_coverage": null,
+    "MA60_coverage": null,
+    "NEW_HIGH60_coverage": null,
+    "critical_data_ok": false,
+    "failure_class": "bounded_runner_failure",
+    "final_status": "PARTIAL",
+    "freeze_reason": "Phase 1E bounded runner did not produce a result",
+    "member_count": 600,
+    "run_id": null,
+    "sample_id": "2025-06-30:801890",
+    "source_snapshot_ids": [],
+    "stage_frozen": true,
+    "taxonomy": {
+      "code": "801890",
+      "name": "机械设备",
+      "version": "SW2021"
+    },
+    "trade_date": "2025-06-30",
+    "unresolved_security_count": null,
+    "valid_member_count": 226,
+    "window_coverage": 0.37666666666666665
+  }
+]

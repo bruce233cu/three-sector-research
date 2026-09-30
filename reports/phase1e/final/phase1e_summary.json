@@ -1,0 +1,14 @@
+{
+  "converted_to_success_count": 0,
+  "fail_count": 0,
+  "full_a_history_persisted": false,
+  "original_partial_count": 11,
+  "remaining_partial_count": 11,
+  "sample_result_count": 2,
+  "schema_modified": false,
+  "source_tables": [
+    "mainline.phase1d_sample_runs",
+    "mainline.daily_mainline_snapshot"
+  ],
+  "title": "A股主线识别系统 V2.2 — Phase 1E 交付结果"
+}
