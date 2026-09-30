@@ -4,6 +4,9 @@ on:
     branches: [mainline-phase2a]
   pull_request:
     branches: [mainline-phase1d]
+concurrency:
+  group: mainline-phase2a-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test-and-real-poc:
     runs-on: ubuntu-latest

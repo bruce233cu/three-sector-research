@@ -37,20 +37,22 @@ def run(config_path: Path, output_dir: Path, cache_dir: Path) -> dict:
     all_rows: list[dict] = []
     snapshots: list[dict] = []
 
-    for window in config["windows"]:
-        start, end = date.fromisoformat(window["start"]), date.fromisoformat(window["end"])
-        fetch_start = start - timedelta(days=110)
-        benchmark = provider.fetch("801003", "申万A股指数", fetch_start, end)
-        benchmark_frame = benchmark.frame.set_index("trade_date")
-        benchmark_artifact = cache.put("phase2a_index", f"801003:{fetch_start}:{end}", benchmark.frame, source_id=benchmark.source_id, source_version=benchmark.source_version)
-        snapshots.append(benchmark_artifact.__dict__)
-        sectors = {}
-        for code, name in SW2021_LEVEL1.items():
-            series = provider.fetch(code, name, fetch_start, end)
-            sectors[code] = series
-            artifact = cache.put("phase2a_index", f"{code}:{fetch_start}:{end}", series.frame, source_id=series.source_id, source_version=series.source_version)
-            snapshots.append(artifact.__dict__)
+    windows = config["windows"]
+    global_start = min(date.fromisoformat(item["start"]) for item in windows) - timedelta(days=110)
+    global_end = max(date.fromisoformat(item["end"]) for item in windows)
+    benchmark = provider.fetch("801003", "申万A股指数", global_start, global_end)
+    benchmark_frame = benchmark.frame.set_index("trade_date")
+    benchmark_artifact = cache.put("phase2a_index", f"801003:{global_start}:{global_end}", benchmark.frame, source_id=benchmark.source_id, source_version=benchmark.source_version)
+    snapshots.append(benchmark_artifact.__dict__)
+    sectors = {}
+    for code, name in SW2021_LEVEL1.items():
+        series = provider.fetch(code, name, global_start, global_end)
+        sectors[code] = series
+        artifact = cache.put("phase2a_index", f"{code}:{global_start}:{global_end}", series.frame, source_id=series.source_id, source_version=series.source_version)
+        snapshots.append(artifact.__dict__)
 
+    for window in windows:
+        start, end = date.fromisoformat(window["start"]), date.fromisoformat(window["end"])
         trade_dates = [d for d in benchmark_frame.index if start <= d <= end]
         for trade_date in trade_dates:
             day_metrics: dict[str, dict[str, MetricValue]] = {}
