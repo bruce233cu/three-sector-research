@@ -1,0 +1,11 @@
+{
+  "rule_version": "V2.2-S1",
+  "parameter_profile": "V2.2-frozen",
+  "first_pass_no_tuning": true,
+  "windows": [
+    {"id":"known_tmt_2023","kind":"known_mainline","start":"2023-02-01","end":"2023-03-31","reference":"2023 AI/TMT"},
+    {"id":"known_bank_2024","kind":"known_mainline","start":"2024-01-15","end":"2024-03-08","reference":"2024 银行/高股息"},
+    {"id":"fast_rotation_2024","kind":"fast_rotation","start":"2024-09-24","end":"2024-10-31","reference":"快速轮动"},
+    {"id":"quiet_2022","kind":"no_clear_mainline","start":"2022-03-01","end":"2022-04-15","reference":"无明显持续主线"}
+  ]
+}

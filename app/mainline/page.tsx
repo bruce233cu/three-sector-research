@@ -17,11 +17,23 @@ type Sample = {
   status: "SUCCESS" | "PARTIAL" | "FAIL" | "RUNNING";
 };
 
+type CandidateCondition = { valid: boolean; passed: boolean | null; value: unknown; reason?: string | null };
+type CandidateCheck = {
+  trade_date: string;
+  industry_name: string;
+  taxonomy_code: string;
+  conditions: Record<"C1" | "C2" | "C3" | "C4" | "C5", CandidateCondition>;
+  valid_condition_count: number;
+  pass_condition_count: number;
+  final_decision: "S1" | "S0" | "DATA_INSUFFICIENT";
+};
+
 type MainlineStatus = {
   phase: { version: string; phase: string; gate: string; status: string };
   counts: { total: number; success: number; partial: number; fail: number; running: number };
   health: Record<string, string | null>;
   recent_samples: Sample[];
+  candidate_poc?: CandidateCheck[];
   updated_at: string | null;
 };
 
@@ -30,6 +42,7 @@ const empty: MainlineStatus = {
   counts: { total: 15, success: 0, partial: 0, fail: 0, running: 0 },
   health: {},
   recent_samples: [],
+  candidate_poc: [],
   updated_at: null,
 };
 
@@ -88,7 +101,7 @@ export default function MainlinePage() {
           <div><span>当前 Phase</span><strong>{data.phase.phase}</strong></div>
           <div><span>当前 Gate</span><strong>{data.phase.gate}</strong></div>
           <div><span>当前状态</span><strong className="amber">{data.phase.status}</strong></div>
-          <p><AlertTriangle size={16} />当前只验收板块级客观数据闭环，尚未进入 S1–S4 与主线状态判断。</p>
+          <p><AlertTriangle size={16} />当前只验证 S0→S1 候选规则；尚未进入 S2、S3、S4、完整状态机与主线最终判断。</p>
         </section>
 
         <section>
@@ -120,6 +133,15 @@ export default function MainlinePage() {
             <div className="mainline-table-wrap"><table><thead><tr><th>日期 / 行业</th><th>代码</th><th>成员</th><th>有效</th><th>覆盖率</th><th>板块收益</th><th>RS 10</th><th>质量状态</th></tr></thead>
             <tbody>{data.recent_samples.map((row) => <tr key={`${row.trade_date}-${row.taxonomy_code}`}><td><strong>{row.industry_name}</strong><small>{row.trade_date}</small></td><td>{row.taxonomy_code}</td><td>{value(row.member_count)}</td><td>{value(row.valid_member_count)}</td><td>{pct(row.coverage)}</td><td>{row.sector_return == null ? "待计算" : `${num(row.sector_return)}%`}</td><td>{row.rs_10 == null ? "待计算" : num(row.rs_10)}</td><td><span className={`sample-status ${row.status.toLowerCase()}`}>{row.status}</span></td></tr>)}</tbody></table></div>
           ) : <div className="empty-state">暂无可展示的真实板块样本；页面不会使用静态假数据替代。</div>}
+        </section>
+
+        <section className="mainline-panel candidate-panel">
+          <div className="mainline-section-head"><div><span>03</span><h2>候选板块 POC</h2></div><small>V2.2 冻结规则 · 无综合评分</small></div>
+          {(data.candidate_poc ?? []).length ? (
+            <div className="mainline-table-wrap"><table><thead><tr><th>日期 / 行业</th>{["C1", "C2", "C3", "C4", "C5"].map(key => <th key={key}>{key}</th>)}<th>有效 / 通过</th><th>结果</th></tr></thead>
+              <tbody>{(data.candidate_poc ?? []).map(row => <tr key={`${row.trade_date}-${row.taxonomy_code}`}><td><strong>{row.industry_name}</strong><small>{row.trade_date}</small></td>{(["C1", "C2", "C3", "C4", "C5"] as const).map(key => { const c = row.conditions[key]; return <td key={key}><span className={`condition-mark ${!c.valid ? "invalid" : c.passed ? "pass" : "miss"}`}>{!c.valid ? "无效" : c.passed ? "通过" : "未通过"}</span></td>; })}<td>{row.valid_condition_count} / {row.pass_condition_count}</td><td><span className={`candidate-decision ${row.final_decision.toLowerCase()}`}>{row.final_decision === "S1" ? "S1候选" : row.final_decision === "S0" ? "S0" : "数据不足"}</span></td></tr>)}</tbody>
+            </table></div>
+          ) : <div className="empty-state">暂无真实 S1 POC 结果；不会用静态示例或分数替代。</div>}
         </section>
 
         <section className="mainline-coming"><h2>后续入口</h2><div>{["市场雷达 /mainline/radar", "历史回放 /mainline/history", "数据健康 /mainline/health", "规则说明 /mainline/rules"].map(x => <span key={x}>{x}<small>建设中 · 尚未开放</small></span>)}</div></section>

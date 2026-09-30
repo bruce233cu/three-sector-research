@@ -19,3 +19,11 @@ test("mainline anchor states the company-research boundary", () => {
   assert.match(page, /公司利润、估值、赔率和投资价值/);
   assert.doesNotMatch(page, /S2主线|15\s*\/\s*15成功/);
 });
+
+test("mainline shows auditable S1 candidate evidence without scores or S2", () => {
+  assert.match(page, /候选板块 POC/);
+  assert.match(page, /C1/);
+  assert.match(page, /C5/);
+  assert.match(page, /DATA_INSUFFICIENT|数据不足/);
+  assert.doesNotMatch(page, /candidate_score|综合分字段|heat_score/);
+});

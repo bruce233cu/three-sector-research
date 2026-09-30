@@ -20,7 +20,7 @@ Deno.serve(async (req: Request) => {
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     { auth: { persistSession: false } },
   );
-  const { data, error } = await supabase.rpc("get_mainline_phase1d_status");
+  const { data, error } = await supabase.rpc("get_mainline_status_v2");
   if (error) return json({ error: "mainline_query_failed" }, 500);
   return json(data);
 });

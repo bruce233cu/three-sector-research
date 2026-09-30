@@ -1,0 +1,29 @@
+name: mainline-phase2a-poc
+on:
+  push:
+    branches: [mainline-phase2a]
+  pull_request:
+    branches: [mainline-phase1d]
+jobs:
+  test-and-real-poc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - uses: actions/setup-node@v4
+        with: {node-version: "20", cache: npm}
+      - run: pip install -r requirements-mainline.txt
+      - run: python -m pytest tests/mainline -q
+      - name: Run frozen Phase 2A against official SWS data
+        run: python -m src.mainline.poc.run_phase2a
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase2a-real-poc
+          path: reports/phase2a/runtime/
+          if-no-files-found: warn
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
