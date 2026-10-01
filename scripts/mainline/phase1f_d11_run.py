@@ -116,19 +116,107 @@ def special(out,config,snaps):
     c.write(out/'summary.json',{'phase':'1F-D1.1','status':'SPECIAL_CHECK_COMPLETE','production_writes':False,'gate':'UNCHANGED'})
 
 
+def classify(sid,reason):
+    known={'833994.BJ':'delisted_or_changed:transfer_to_301321_no_alias_substitution',
+           '920245.BJ':'security_no_history_pre_listing:2022-01-06',
+           '600806.SH':'delisted_or_changed:delisted_2018-07-13',
+           '601299.SH':'delisted_or_changed:absorbed_2015',
+           '600898.SH':'delisted_or_changed:delisted_2025-02-10'}
+    if reason=='empty':return known.get(sid,'provider_empty_unclassified')
+    if 'UNSUPPORTED' in reason:return 'adapter_unsupported'
+    if 'timeout' in reason.lower():return 'timeout'
+    return 'request_error:'+reason
+
+
+def full(out,config,snaps,integrity,env):
+    import pandas as pd
+    from collections import Counter
+    import uuid
+    benchmark,evidence=c.get_benchmark(ROOT/'scripts/mainline/phase1f_d11/benchmark.json')
+    health=[];metrics=[];errors=[];sources=[evidence];batches=[]
+    client=c.IsolatedClient('Sina',config)
+    summary={'phase':'1F-D1.1','status':'PARTIAL','gate':'UNCHANGED','mainline_job':'pending_provider',
+             'production_write_allowed':False,'recommend_phase1f_d2':False,
+             'circ_mv_policy':'unaccepted historical share candidates remain NULL; no asof filling',
+             'circ_mv_rejection':'daily effective-date completeness unverified; 600183 source disagreement; all-A denominator missing'}
+    try:
+        h=c.health_check(client,config,snaps);health.append(h)
+        if not h['health_pass']:raise RuntimeError('Sina health did not pass; no sector requests')
+        deadline=time.monotonic()+config['provider_budget_seconds']
+        for rep in (1,2):
+            batch=[]
+            for sample,membership in zip(config['samples'],snaps):
+                result,err,source=c.run_sample(client,config,sample,membership,benchmark,out,deadline,rep)
+                for e in err:e['category']=classify(e['security_id'],e['reason'])
+                result['error_categories']=dict(Counter(e['category'] for e in err))
+                result['membership_listing_universe_warning']=sample['sample_id']=='2021-12-31:801890'
+                member_source=str(uuid.uuid5(uuid.NAMESPACE_URL,c.digest(c.frame_records(membership.frame))))
+                benchmark_source=str(uuid.uuid5(uuid.NAMESPACE_URL,evidence['checksum']))
+                result['source_snapshot_ids'] += [member_source,benchmark_source]
+                result['run_id']=str(uuid.uuid5(uuid.NAMESPACE_URL,'phase1fd11:'+result['run_id']))
+                batch.append(result);metrics.append(result);sources.append(source)
+                errors.extend({'sample_id':sample['sample_id'],**e} for e in err)
+            batches.append(batch)
+        repeats=[{'sample_id':a['sample_id'],**c.compare(a,b)} for a,b in zip(*batches)]
+        summary.update(market_window_pass=all(m['market_window_pass'] for m in metrics),
+                       repeatability_pass=all(x['identical'] for x in repeats),
+                       reason='Historical shares and all-A circulating capitalization not accepted; full PASS blocked')
+        c.write(out/'repeatability_report.json',{'executed':True,'samples':repeats})
+        # Audit real missing-session cases; missing records alone cannot prove suspension.
+        cases=[]
+        for sample,source in zip(config['samples'],[x for x in sources if x.get('repetition')==1]):
+            wanted=list(benchmark.loc[benchmark.trade_date<=date.fromisoformat(sample['trade_date']),'trade_date'].tail(60))
+            for row in source['securities']:
+                file=out/'cache/Sina/1'/sample['sample_id'].replace(':','_')/(row['security_id']+'.json')
+                bars=json.loads(file.read_text());available={x['trade_date'] for x in bars if x['close'] is not None}
+                gaps=[str(d) for d in wanted if str(d) not in available]
+                if gaps and len(available)>=60 and row['security_id'] not in {x['security_id'] for x in cases}:
+                    cases.append({'sample_id':sample['sample_id'],'security_id':row['security_id'],
+                        'market_window':list(map(str,wanted)),'missing_dates':gaps,
+                        'zero_trade_dates':row['audit'].get('no_trade_dates',[]),
+                        'classification':'missing_or_no_trade; suspension announcement unverified',
+                        'MA20_valid':not any(str(d) not in available for d in wanted[-20:]),
+                        'MA60_valid':False,'older_observations_available':len(available),
+                        'older_records_borrowed':False})
+                if len(cases)>=5:break
+            if len(cases)>=5:break
+        c.write(out/'suspension_report.json',{'cases':cases,'confirmed_suspension_count':0,
+            'status':'window semantics verified; suspension cause requires announcements'})
+    finally:
+        client.close()
+        for sample,snap in zip(config['samples'],snaps):
+            sources.append({'source_id':'sws_official_cached_membership_evidence',
+                'source_snapshot_id':str(uuid.uuid5(uuid.NAMESPACE_URL,c.digest(c.frame_records(snap.frame)))),
+                'sample_id':sample['sample_id'],'row_count':len(snap.frame),
+                'response_checksum':c.digest(c.frame_records(snap.frame)),
+                'pit_level':snap.pit_level,'knowledge_time_unverified':True})
+        c.write(out/'circ_mv_health.json',json.loads((ROOT/'scripts/mainline/phase1f_d11/circ_mv_probe_evidence.json').read_text()))
+        c.write(out/'calendar_manifest.json',{'source':'existing SWS official 801003 index dates',
+            'checksum':evidence['checksum'],'parent_checksum':evidence.get('parent_evidence_checksum'),
+            'pit':'effective_pit; knowledge_time_unverified','tls_authenticity':'legacy verify=False unverified',
+            'production_calendar_written':False})
+        c.finalize(out,summary,metrics,health,errors,sources,env,integrity)
+        manifest=json.loads((out/'run_manifest.json').read_text());manifest['job_name']='phase1fd11_gap_poc'
+        manifest['window_semantics']='last N market sessions inclusive target; no valid-record substitution'
+        c.write(out/'run_manifest.json',manifest)
+        c.write(out/'checksums.json',{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir() if p.suffix in ('.json','.csv') and p.name!='checksums.json'})
+        print(json.dumps(summary),flush=True)
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--special-only',action='store_true');args=parser.parse_args()
     config,snaps,integrity=c.preflight(ROOT,ROOT/'scripts/mainline/phase1f_c')
-    out=ROOT/'artifacts/phase1f_d11_special';out.mkdir(parents=True,exist_ok=True)
-    c.write(out/'environment.json',{'OS':platform.platform(),'Python':sys.version,'git_sha':os.getenv('GITHUB_SHA'),
-             'git_branch':os.getenv('GITHUB_REF_NAME'),'timezone':'UTC','execution_time':datetime.now(timezone.utc),
-             'dependencies':{d.metadata['Name']:d.version for d in importlib.metadata.distributions()}})
-    try:special(out,config,snaps)
-    except Exception as e:
-        c.write(out/'summary.json',{'phase':'1F-D1.1','status':'BLOCKED','reason':f'{type(e).__name__}:{e}','production_writes':False})
-        raise
-    finally:
+    out=ROOT/'artifacts'/('phase1f_d11_special' if args.special_only else 'phase1f_d11')
+    out.mkdir(parents=True,exist_ok=True)
+    env={'OS':platform.platform(),'Python':sys.version,'git_sha':os.getenv('GITHUB_SHA'),
+        'git_branch':os.getenv('GITHUB_REF_NAME'),'timezone':'UTC','business_timezone':'Asia/Shanghai',
+        'execution_time':datetime.now(timezone.utc),'runner':os.getenv('RUNNER_ENVIRONMENT'),
+        'dependencies':{d.metadata['Name']:d.version for d in importlib.metadata.distributions()}}
+    c.write(out/'environment.json',env)
+    if args.special_only:
+        special(out,config,snaps)
         c.write(out/'checksums.json',{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.glob('*.json') if p.name!='checksums.json'})
+    else:full(out,config,snaps,integrity,env)
 
 
 if __name__=='__main__':main()

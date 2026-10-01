@@ -38,6 +38,7 @@ def normalize(raw, sid, start, end, volume_scale=1):
     # Zero-volume bars may be suspension placeholders. Keep audit counts but
     # never forward-fill them into a price history or label suspension confirmed.
     no_trade = f.volume.le(0) | f.amount.le(0)
+    no_trade_dates = [str(d) for d in f.loc[no_trade & f.trade_date.between(start,end), "trade_date"]]
     f = f[~no_trade & (f.trade_date <= end)].copy()
     f["pct_chg"] = (f.close / f.close.shift(1) - 1) * 100
     f["security_id"] = sid
@@ -52,7 +53,7 @@ def normalize(raw, sid, start, end, volume_scale=1):
     if invalid.any():
         raise ValueError("OHLC relationship invalid")
     return f[FIELDS], {"raw_rows": len(raw), "raw_order_valid": bool(raw_ordered),
-        "no_trade_rows": int(no_trade.sum()), "unit_check_ok": unit_ok,
+        "no_trade_rows": int(no_trade.sum()), "no_trade_dates": no_trade_dates, "unit_check_ok": unit_ok,
         "volume_unit": "shares", "amount_unit": "CNY", "adjust": "unadjusted",
         "return_basis": "adjacent_observed_close; corporate_action_not_adjusted",
         "suspension_confirmed": False}

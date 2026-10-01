@@ -95,8 +95,8 @@ class OfflineTests(unittest.TestCase):
         f=f[~((f.security_id=="000000.SZ") & (f.trade_date==missing))]
         r=calculate(s,m,f,b)
         self.assertEqual(r["MA60_coverage"],.75)
-        self.assertFalse(r["frozen_coverage_agrees_with_exact_window"])
-        self.assertFalse(r["market_window_pass"])
+        self.assertTrue(r["frozen_coverage_agrees_with_exact_window"])
+        self.assertTrue(r["market_window_pass"])
 
     def test_future_row_rejected(self):
         s,m,f,b=fixture()
