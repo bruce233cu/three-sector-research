@@ -1,0 +1,4 @@
+akshare==1.18.97
+pandas==2.2.3
+requests==2.32.5
+py-mini-racer==0.6.0
