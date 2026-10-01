@@ -1,0 +1,25 @@
+name: Mainline V2.2.1 real input final close
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths: ['scripts/mainline/v221_real_close.py', '.github/workflows/mainline-v221-real-close.yml']
+permissions:
+  contents: read
+jobs:
+  real-close:
+    if: contains(github.event.head_commit.message, '[v221-real-close]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements-mainline.txt py-mini-racer==0.6.0
+      - run: PYTHONPATH=src python -m unittest discover -s tests/mainline -p test_v221_benchmark.py -v
+      - run: python scripts/mainline/v221_real_close.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-v221-real-close
+          path: reports/milestone-a-final-close/
+          retention-days: 30

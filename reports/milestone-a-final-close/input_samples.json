@@ -1,0 +1,92 @@
+[
+  {
+    "trade_date": "2019-06-28",
+    "taxonomy_code": "801080",
+    "industry_name": "电子",
+    "member_count": 189
+  },
+  {
+    "trade_date": "2019-06-28",
+    "taxonomy_code": "801120",
+    "industry_name": "食品饮料",
+    "member_count": 33
+  },
+  {
+    "trade_date": "2019-06-28",
+    "taxonomy_code": "801790",
+    "industry_name": "非银金融",
+    "member_count": 50
+  },
+  {
+    "trade_date": "2020-06-30",
+    "taxonomy_code": "801050",
+    "industry_name": "有色金属",
+    "member_count": 118
+  },
+  {
+    "trade_date": "2020-06-30",
+    "taxonomy_code": "801120",
+    "industry_name": "食品饮料",
+    "member_count": 38
+  },
+  {
+    "trade_date": "2020-06-30",
+    "taxonomy_code": "801790",
+    "industry_name": "非银金融",
+    "member_count": 53
+  },
+  {
+    "trade_date": "2021-12-31",
+    "taxonomy_code": "801080",
+    "industry_name": "电子",
+    "member_count": 361
+  },
+  {
+    "trade_date": "2021-12-31",
+    "taxonomy_code": "801780",
+    "industry_name": "银行",
+    "member_count": 42
+  },
+  {
+    "trade_date": "2021-12-31",
+    "taxonomy_code": "801890",
+    "industry_name": "机械设备",
+    "member_count": 472
+  },
+  {
+    "trade_date": "2023-06-30",
+    "taxonomy_code": "801050",
+    "industry_name": "有色金属",
+    "member_count": 141
+  },
+  {
+    "trade_date": "2023-06-30",
+    "taxonomy_code": "801120",
+    "industry_name": "食品饮料",
+    "member_count": 125
+  },
+  {
+    "trade_date": "2023-06-30",
+    "taxonomy_code": "801890",
+    "industry_name": "机械设备",
+    "member_count": 550
+  },
+  {
+    "trade_date": "2025-06-30",
+    "taxonomy_code": "801080",
+    "industry_name": "电子",
+    "member_count": 491
+  },
+  {
+    "trade_date": "2025-06-30",
+    "taxonomy_code": "801780",
+    "industry_name": "银行",
+    "member_count": 42
+  },
+  {
+    "trade_date": "2025-06-30",
+    "taxonomy_code": "801890",
+    "industry_name": "机械设备",
+    "member_count": 600
+  }
+]
