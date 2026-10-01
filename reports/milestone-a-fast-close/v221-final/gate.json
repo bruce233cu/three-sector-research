@@ -1,0 +1,28 @@
+{
+  "G1": "FAIL",
+  "READY_FOR_PRODUCTION_ENABLEMENT": false,
+  "sample_count": 15,
+  "formal_frozen_count": 15,
+  "repeatability_check_passed": true,
+  "real_data_repeatability_accepted": false,
+  "membership_effective_pit_checks": 14,
+  "benchmark_coverage_certified_samples": 0,
+  "complete_new_source_chains": 0,
+  "blocking_issues": [
+    "Historical ALL_A universe and valid individual return/amount windows are absent or uncertified.",
+    "No complete stock+ALL_A source chain exists for the 15 new formal snapshots."
+  ],
+  "run_id": "62c078a6-7033-444b-a868-7f593dc54c3d",
+  "recompute_run_id": "1de58258-5808-486f-b694-d9271c27aabc",
+  "code_commit": "20c0edc910fc45f5e472d421da8df3563ec11e44",
+  "parameter_hash": "2275d533acc156f7817d09f22f738e130a048e0b2cfc0a2110d64ac675eedc73",
+  "parameters": {
+    "benchmark": "ALL_A_EQUAL_WEIGHT",
+    "benchmark_daily_coverage": 0.95,
+    "rs_window_coverage": 0.9,
+    "sector_internal_coverage": 0.7,
+    "circ_mv": "deferred",
+    "calendar": "existing_supabase_SSE",
+    "stock_input": "absent"
+  }
+}

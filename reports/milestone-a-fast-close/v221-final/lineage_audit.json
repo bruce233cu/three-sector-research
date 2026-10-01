@@ -1,0 +1,229 @@
+{
+  "stats": {
+    "samples": 15,
+    "complete_legacy_chain": 5,
+    "restoration_affected_samples": 6,
+    "incomplete_legacy_chain": 10,
+    "empty_stock_source_samples": 6,
+    "benchmark_only_samples": 4
+  },
+  "legacy_samples": [
+    {
+      "trade_date": "2019-06-28",
+      "taxonomy_code": "801080",
+      "source_snapshot_ids": [
+        "9defdda0-426a-5df5-9218-8bf333c0cc33",
+        "d6eebd21-a022-5a6c-8ff2-8c82a06b129f",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 1,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2019-06-28",
+      "taxonomy_code": "801120",
+      "source_snapshot_ids": [
+        "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+      ],
+      "refs": 1,
+      "membership_refs": 0,
+      "stock_refs": 0,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": true
+    },
+    {
+      "trade_date": "2019-06-28",
+      "taxonomy_code": "801790",
+      "source_snapshot_ids": [
+        "c5ebabfe-d2aa-5ecb-b0c3-e2b440c8862c",
+        "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 0,
+      "empty_stock_refs": 1,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2020-06-30",
+      "taxonomy_code": "801050",
+      "source_snapshot_ids": [
+        "9f5c286b-fe4b-5a6d-882a-292a557760f0",
+        "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 0,
+      "empty_stock_refs": 1,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2020-06-30",
+      "taxonomy_code": "801120",
+      "source_snapshot_ids": [
+        "ae1dcef9-5bf0-50e5-b5f9-e9c24392b5d6",
+        "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+        "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 0,
+      "empty_stock_refs": 1,
+      "benchmark_refs": 1,
+      "restored": true
+    },
+    {
+      "trade_date": "2020-06-30",
+      "taxonomy_code": "801790",
+      "source_snapshot_ids": [
+        "ed7eac02-2a93-543c-af4d-a5b847d2329d",
+        "8a676b08-5435-5922-b5e2-1af1e967ad43",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 1,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2021-12-31",
+      "taxonomy_code": "801080",
+      "source_snapshot_ids": [
+        "d5cbf8fd-c9ce-5c62-a427-e2511bc0c093",
+        "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 0,
+      "empty_stock_refs": 1,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2021-12-31",
+      "taxonomy_code": "801780",
+      "source_snapshot_ids": [
+        "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+      ],
+      "refs": 1,
+      "membership_refs": 0,
+      "stock_refs": 0,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": true
+    },
+    {
+      "trade_date": "2021-12-31",
+      "taxonomy_code": "801890",
+      "source_snapshot_ids": [
+        "7fc1a826-c934-5a51-bff0-98cbdb1110b0",
+        "75074638-f4f5-5fb6-82df-4df4e42350e8",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 1,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2023-06-30",
+      "taxonomy_code": "801050",
+      "source_snapshot_ids": [
+        "e04ccf00-600b-5057-9320-d01c4b9b5074",
+        "1a7bf87d-df72-54ab-b5f0-9137f6679a95",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 1,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2023-06-30",
+      "taxonomy_code": "801120",
+      "source_snapshot_ids": [
+        "33be5223-7283-5dc0-b26f-2df2a3e60a8f",
+        "fd9f2a97-2741-5329-9f7e-01a280414aac",
+        "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 1,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": true
+    },
+    {
+      "trade_date": "2023-06-30",
+      "taxonomy_code": "801890",
+      "source_snapshot_ids": [
+        "7c562127-80ce-5006-ba8c-3d7f33837c29",
+        "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 0,
+      "empty_stock_refs": 1,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2025-06-30",
+      "taxonomy_code": "801080",
+      "source_snapshot_ids": [
+        "fc82b144-5ab0-518c-b870-3cd3e886fb57",
+        "3afba42f-8fd0-57f7-902e-9c22f69fa936",
+        "504343f5-20ea-5f18-8a53-e7da0d21f7a4"
+      ],
+      "refs": 3,
+      "membership_refs": 1,
+      "stock_refs": 0,
+      "empty_stock_refs": 1,
+      "benchmark_refs": 1,
+      "restored": null
+    },
+    {
+      "trade_date": "2025-06-30",
+      "taxonomy_code": "801780",
+      "source_snapshot_ids": [
+        "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+      ],
+      "refs": 1,
+      "membership_refs": 0,
+      "stock_refs": 0,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": true
+    },
+    {
+      "trade_date": "2025-06-30",
+      "taxonomy_code": "801890",
+      "source_snapshot_ids": [
+        "b7b15772-396e-56f3-a8e0-867938d9d0f0"
+      ],
+      "refs": 1,
+      "membership_refs": 0,
+      "stock_refs": 0,
+      "empty_stock_refs": 0,
+      "benchmark_refs": 1,
+      "restored": true
+    }
+  ]
+}

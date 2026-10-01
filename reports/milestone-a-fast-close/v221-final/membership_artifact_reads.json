@@ -1,0 +1,22 @@
+[
+  {
+    "path": "reports/phase1d/final-v2/membership_evidence.json",
+    "status": "unavailable",
+    "error": "'utf-8' codec can't decode byte 0xbc in position 393218: invalid start byte"
+  },
+  {
+    "path": "reports/phase1d/runtime/membership_evidence.json",
+    "status": "read",
+    "rows": 3267
+  },
+  {
+    "path": "scripts/mainline/phase1f_c/membership.json",
+    "status": "read",
+    "rows": 1152
+  },
+  {
+    "path": "reports/phase1d/fallback/sws_official_cached_membership.json",
+    "status": "read",
+    "rows": 613
+  }
+]

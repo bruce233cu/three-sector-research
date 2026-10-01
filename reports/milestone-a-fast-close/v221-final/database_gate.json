@@ -1,0 +1,14 @@
+{
+  "G1": "FAIL",
+  "READY_FOR_PRODUCTION_ENABLEMENT": false,
+  "formal_count": 15,
+  "frozen_count": 15,
+  "critical_ok_count": 0,
+  "benchmark_available_count": 0,
+  "null_propagation_count": 15,
+  "deferred_null_count": 15,
+  "lineage_claim_count": 0,
+  "membership_effective_date_count": 14,
+  "complete_chain_count": 0,
+  "dangling_count": "0"
+}
