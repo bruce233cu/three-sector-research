@@ -2,6 +2,7 @@
 from pathlib import Path
 from datetime import datetime,timezone
 import requests,json,hashlib
+from concurrent.futures import ThreadPoolExecutor
 P=Path('reports/v221-benchmark-universe');P.mkdir(parents=True,exist_ok=True)
 audit=json.loads((P/'probe.json').read_text()) if (P/'probe.json').exists() else []
 def fetch(label,url,params=None):
@@ -16,12 +17,11 @@ def fetch(label,url,params=None):
     except Exception as e:
         audit.append({'label':label,'url':url,'error':type(e).__name__+':'+str(e)})
         print(label,type(e).__name__,flush=True)
-fetch('sz_full_xlsx','https://fund.szse.cn/api/report/ShowReport',{'SHOWTYPE':'xlsx','CATALOGID':'1110','TABKEY':'tab1'})
-fetch('bj_2021_count','https://www.bse.cn/important_news/200011669.html')
-fetch('bj_guandian_exit','https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php',{'id':'8062882'})
-fetch('bj_taixiang_exit','https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php',{'id':'8365150','stockid':'301192'})
-fetch('bj_guangdao_exit','https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php',{'id':'11894718','stockid':'920680'})
-fetch('bj_hanbo_report','https://vip.stock.finance.sina.com.cn/corp/view/vISSUE_MarketBulletinDetail.php',{'id':'8426680','stockid':'301321'})
-fetch('bj_pilot_names','https://www.bse.cn/important_news/200025487.html')
-fetch('bj_full_switch','https://www.bse.cn/important_news/200026735.html')
+fetch('sz_http_full_xlsx','http://www.szse.cn/api/report/ShowReport',{'SHOWTYPE':'xlsx','CATALOGID':'1110','TABKEY':'tab1'})
+if not (P/'sz_http_full_xlsx.raw').exists() or (P/'sz_http_full_xlsx.raw').read_bytes()[:2]!=b'PK':
+    template=next(x for x in audit if x['label']=='sz_fund_backend')['json'][0]
+    def page(n):
+        return fetch('sz_page_'+str(n),'https://fund.szse.cn/api/report/ShowReport/data',{'SHOWTYPE':'JSON','CATALOGID':'1110','TABKEY':'tab1','PAGENO':str(n)})
+    with ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(page,range(1,template['metadata']['pagecount']+1)))
+fetch('bj_yunchuang_exit','https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php',{'id':'12467916','stockid':'920305'})
 (P/'probe.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2))
