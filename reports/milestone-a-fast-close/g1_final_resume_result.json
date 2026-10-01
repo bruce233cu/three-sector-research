@@ -1,0 +1,326 @@
+{
+  "summary": {
+    "gate": "G1 DATA GATE — V2.2.1 FINAL",
+    "G1": "FAIL",
+    "READY_FOR_PRODUCTION_ENABLEMENT": false,
+    "milestone_a_closed": false,
+    "blocking_issues": [
+      "FROZEN_BENCHMARK_AND_ALL_A_AMOUNT_NOT_IMPLEMENTED_OR_CERTIFIED",
+      "SOURCE_LINEAGE_RAW_REPLAY_INCOMPLETE",
+      "V221_15_SAMPLE_ACCEPTANCE_ABSENT"
+    ],
+    "baseline_commit": "ce3c57d8b5a4f6864239683dd4eeac75b6a0bb28",
+    "source_restoration_repeated": false,
+    "provider_test_runs": 0,
+    "calendar_rebuilt": false,
+    "phase2_started": false
+  },
+  "database_audit": {
+    "audited_at": "2026-10-01 15:02:41.360856+00",
+    "gate": "G1 DATA GATE — V2.2.1 FINAL",
+    "result": "FAIL",
+    "READY_FOR_PRODUCTION_ENABLEMENT": false,
+    "milestone_a_status": "open",
+    "samples": 15,
+    "samples_with_restored_refs": 6,
+    "restored_ref_occurrences": "9",
+    "dangling_refs": "0",
+    "complete_nonempty_registered_chains": 5,
+    "incomplete_or_empty_registered_chains": 10,
+    "v221_snapshots": 0,
+    "frozen_old_snapshots": 10,
+    "benchmark_only_chains": 4,
+    "old_status_counts": {
+      "PARTIAL": 10,
+      "SUCCESS": 5
+    },
+    "frozen_benchmark": {
+      "primary": "ALL_A_EQUAL_WEIGHT",
+      "secondary": [
+        "ALL_A_CAP_WEIGHT"
+      ]
+    },
+    "deferred_policy": {
+      "circ_mv_status": "deferred",
+      "deferred_metrics": {
+        "turnover_cap_deviation": {
+          "role": "optional_enhancement",
+          "status": "deferred_due_to_unproven_historical_circ_mv",
+          "g1_required": false,
+          "value_policy": "NULL_ONLY",
+          "state_rule_policy": "inactive_when_unavailable"
+        },
+        "top3_return_contribution": {
+          "role": "optional_enhancement",
+          "status": "deferred_due_to_unproven_historical_circ_mv",
+          "g1_required": false,
+          "value_policy": "NULL_ONLY",
+          "state_rule_policy": "inactive_when_unavailable"
+        }
+      },
+      "restore_requires": [
+        "new_rule_version",
+        "new_parameter_profile",
+        "new_metric_availability_version",
+        "source_PIT_and_denominator_acceptance"
+      ],
+      "historical_rewrite": false
+    },
+    "calendar": {
+      "max": "2026-12-31",
+      "min": "2018-09-01",
+      "rows": 3044,
+      "open_days": 2020
+    },
+    "evidence_checks": {
+      "benchmark_identity": "FAIL_NOT_CERTIFIED",
+      "raw_payload_replay": "FAIL_NOT_VERIFIED",
+      "all_a_amount_semantics": "FAIL_NOT_CERTIFIED",
+      "v221_15_sample_acceptance": "FAIL_NO_V221_SNAPSHOTS"
+    }
+  },
+  "manifest": {
+    "run_id": "ba5a33ff-aae7-4052-b430-b8af9b8f2872",
+    "job_name": "mainline_v221_g1_final_resume_audit",
+    "status": "failed",
+    "error_summary": {
+      "G1": "FAIL",
+      "gate": "G1 DATA GATE — V2.2.1 FINAL",
+      "phase2_started": false,
+      "baseline_commit": "ce3c57d8b5a4f6864239683dd4eeac75b6a0bb28",
+      "blocking_issues": [
+        "FROZEN_BENCHMARK_AND_ALL_A_AMOUNT_NOT_IMPLEMENTED_OR_CERTIFIED",
+        "SOURCE_LINEAGE_RAW_REPLAY_INCOMPLETE",
+        "V221_15_SAMPLE_ACCEPTANCE_ABSENT"
+      ],
+      "calendar_rebuilt": false,
+      "milestone_a_closed": false,
+      "provider_test_runs": 0,
+      "source_restoration_repeated": false,
+      "READY_FOR_PRODUCTION_ENABLEMENT": false
+    }
+  },
+  "lineage": [
+    {
+      "as_of_date": "2019-06-28",
+      "object_id": "sw1_801080",
+      "run_id": "edb6a3d5-2acf-5286-977e-b0acd6b12640",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": true,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2019-06-28",
+      "object_id": "sw1_801120",
+      "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+      "refs": 1,
+      "missing_refs": 0,
+      "restored_refs": 1,
+      "membership_ref": false,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 0,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2019-06-28",
+      "object_id": "sw1_801790",
+      "run_id": "36303d35-fcd5-58db-9612-42fb8ee7154a",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2020-06-30",
+      "object_id": "sw1_801050",
+      "run_id": "aa3d364c-d790-5008-b599-15aeb17497f5",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2020-06-30",
+      "object_id": "sw1_801120",
+      "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 2,
+      "membership_ref": true,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 1,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2020-06-30",
+      "object_id": "sw1_801790",
+      "run_id": "b3dae19d-9a5d-56df-a177-92bfe4749d41",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": true,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2021-12-31",
+      "object_id": "sw1_801080",
+      "run_id": "a0184f80-86ee-5e67-9613-962ad5543259",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2021-12-31",
+      "object_id": "sw1_801780",
+      "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+      "refs": 1,
+      "missing_refs": 0,
+      "restored_refs": 1,
+      "membership_ref": false,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 0,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2021-12-31",
+      "object_id": "sw1_801890",
+      "run_id": "2429ba2d-2031-5eaf-8fb1-0968200bcd90",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": true,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2023-06-30",
+      "object_id": "sw1_801050",
+      "run_id": "0bcbc17a-812c-5711-b115-eec41ab175e5",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": true,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2023-06-30",
+      "object_id": "sw1_801120",
+      "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 3,
+      "membership_ref": true,
+      "nonempty_stock_ref": true,
+      "benchmark_ref": true,
+      "local_cache_refs": 0,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2023-06-30",
+      "object_id": "sw1_801890",
+      "run_id": "760635a0-d510-59a8-97bc-7596570916f5",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2025-06-30",
+      "object_id": "sw1_801080",
+      "run_id": "a4c17177-a413-53ae-a396-ebcc1a7dc665",
+      "refs": 3,
+      "missing_refs": 0,
+      "restored_refs": 0,
+      "membership_ref": true,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 3,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2025-06-30",
+      "object_id": "sw1_801780",
+      "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+      "refs": 1,
+      "missing_refs": 0,
+      "restored_refs": 1,
+      "membership_ref": false,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 0,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    },
+    {
+      "as_of_date": "2025-06-30",
+      "object_id": "sw1_801890",
+      "run_id": "8e59047b-0346-547e-a036-db09b21377ce",
+      "refs": 1,
+      "missing_refs": 0,
+      "restored_refs": 1,
+      "membership_ref": false,
+      "nonempty_stock_ref": false,
+      "benchmark_ref": true,
+      "local_cache_refs": 0,
+      "reverified_refs": 0,
+      "manifest_exists": true
+    }
+  ],
+  "limitations": {
+    "raw_payloads_reverified": false,
+    "benchmark_exact_target_date_methodology_obtained": false,
+    "formal_v221_calculation_replay_performed": false
+  },
+  "evidence_artifact": {
+    "run": 36857658882,
+    "id": 11161435899,
+    "sha256": "afcdbcf3297ed434fe8d2b730c6751f1d09ee6642b1b5944ff2c16f68a2b7825",
+    "raw_sina_rows_present": false
+  }
+}
