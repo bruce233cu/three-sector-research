@@ -1,0 +1,13 @@
+{
+  "15_samples_baseline_audit.csv": "298827521e1cc79fbfa8009a81b3f28b886235340ac2377a541f70055c783c18",
+  "FAST_CLOSE_DELIVERY.md": "6d2da22d44b208017c3676fc713c7bde19d5dfb8ee9d36d174dc08667c70b48d",
+  "MILESTONE_B_START_CHECKLIST.md": "030b270012a4919cea2883e3f6c1d6a156ab0932544d0fe41b3a05f4e8dcf64e",
+  "baseline_db_read.json": "34475c7e604f6c5f24c38d7bb2639628f0c95143e386a3a8db226c7ebca0c4e9",
+  "calendar_manifest.json": "1f383e8338526ee8ba128b1672662b2dacf888b06ea13f05134a08fc5893ff5e",
+  "g1_gate_result.json": "7e579208493794c68a3b48ed31a8362b691e4b3d65f4ba24165fd97a5f30d305",
+  "sina_calendar.raw": "d5112e08726ecc435092fb63547a34fc514b071b1a4a84f9e2c29fb9023726a9",
+  "source_registry_restoration.json": "028eb61a8ec106ab32e72533ed2719ccc3a047aa774b72ea136e12804648245f",
+  "supabase_final_verification.json": "9944733437e1339c86f4aac37f1f75ea2a5778faa219c4cfe8745d525d1a98fc",
+  "trading_calendar.csv": "1ccb62c28b7f66df11ec117ff7ebd11e2a3b0636ccbda132995af74cf35180b6",
+  "verification.json": "1fca136477c19a8f3aec918dda251168ac165f0892507355d552997414f29da0"
+}

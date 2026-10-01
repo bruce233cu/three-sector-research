@@ -1,0 +1,11 @@
+{
+  "calendar_exact_rows": 3044,
+  "old_snapshots_unchanged": true,
+  "old_profile_unchanged": true,
+  "source_registry_metadata_only": true,
+  "tests": "2/2 passed; synthetic regression fixtures, not live Provider replay",
+  "rule_version": "mainline_v2.2.1",
+  "parameter_profile": "industry_trend_v2_2_1_fast_close",
+  "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv",
+  "new_snapshots": 0
+}

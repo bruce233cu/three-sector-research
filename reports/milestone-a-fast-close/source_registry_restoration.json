@@ -1,0 +1,126 @@
+[
+  {
+    "source_snapshot_id": "b7b15772-396e-56f3-a8e0-867938d9d0f0",
+    "source_id": "sws_official_index_api",
+    "dataset_code": "benchmark_window",
+    "source_version": "sws-index-publish-trend-v2-cny",
+    "fetched_at": "2026-09-28T11:14:41.471178Z",
+    "available_at": null,
+    "response_checksum": "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d",
+    "row_count": 6462,
+    "raw_location": "github://bruce233cu/three-sector-research/0336635ca36657e7c3420a6b30b0c55bf24a87be/reports/phase1d/final-v2/source_snapshots.json#b7b15772-396e-56f3-a8e0-867938d9d0f0",
+    "historical_capability": "historical_partial",
+    "metadata": {
+      "restored_from_immutable_artifact": true,
+      "original_cache_key": "sw-801003-all-a",
+      "restoration_kind": "source_registry_metadata_only",
+      "raw_payload_reverified": false,
+      "original_checksum_status": "declared_in_original_artifact",
+      "pit_level": "effective_pit",
+      "knowledge_time_unverified": true,
+      "original_entry": {
+        "cache_key": "sw-801003-all-a",
+        "checksum_sha256": "ab69ff09eecc22861038144c972b0dfdfd1bbc5d0c884f74e2b59cc1dd559c2d",
+        "dataset": "benchmark_window",
+        "fetched_at": "2026-09-28T11:14:41.471178Z",
+        "id": "b7b15772-396e-56f3-a8e0-867938d9d0f0",
+        "row_count": 6462,
+        "source_id": "sws_official_index_api",
+        "source_version": "sws-index-publish-trend-v2-cny"
+      }
+    }
+  },
+  {
+    "source_snapshot_id": "ae1dcef9-5bf0-50e5-b5f9-e9c24392b5d6",
+    "source_id": "sws_official_stock_classification",
+    "dataset_code": "membership_snapshot",
+    "source_version": "sws-official:55c442b9c1f00dc6f5f1c401628218e11e85226f40c5527f5a516f46715655d4",
+    "fetched_at": "2026-09-28T10:53:41.846093Z",
+    "available_at": null,
+    "response_checksum": "1b9b75e3ae07133e1384a367eb62738dbecf117194610dc986e6e3c7417cb0b6",
+    "row_count": 38,
+    "raw_location": "github://bruce233cu/three-sector-research/0336635ca36657e7c3420a6b30b0c55bf24a87be/reports/phase1d/final-v2/source_snapshots.json#ae1dcef9-5bf0-50e5-b5f9-e9c24392b5d6",
+    "historical_capability": "historical_partial",
+    "metadata": {
+      "restored_from_immutable_artifact": true,
+      "original_cache_key": "phase1d-samples-3",
+      "restoration_kind": "source_registry_metadata_only",
+      "raw_payload_reverified": false,
+      "original_checksum_status": "declared_in_original_artifact",
+      "pit_level": "effective_pit",
+      "knowledge_time_unverified": true,
+      "original_entry": {
+        "cache_key": "phase1d-samples-3",
+        "checksum_sha256": "1b9b75e3ae07133e1384a367eb62738dbecf117194610dc986e6e3c7417cb0b6",
+        "dataset": "membership_snapshot",
+        "fetched_at": "2026-09-28T10:53:41.846093Z",
+        "id": "ae1dcef9-5bf0-50e5-b5f9-e9c24392b5d6",
+        "row_count": 38,
+        "source_id": "sws_official_stock_classification",
+        "source_version": "sws-official:55c442b9c1f00dc6f5f1c401628218e11e85226f40c5527f5a516f46715655d4"
+      }
+    }
+  },
+  {
+    "source_snapshot_id": "33be5223-7283-5dc0-b26f-2df2a3e60a8f",
+    "source_id": "sws_official_stock_classification",
+    "dataset_code": "membership_snapshot",
+    "source_version": "sws-official:55c442b9c1f00dc6f5f1c401628218e11e85226f40c5527f5a516f46715655d4",
+    "fetched_at": "2026-09-28T11:11:15.229122Z",
+    "available_at": null,
+    "response_checksum": "9736612723ad576d739bde564c2fa6a422c93f5ac19060968c9c907ecb4b76d8",
+    "row_count": 125,
+    "raw_location": "github://bruce233cu/three-sector-research/0336635ca36657e7c3420a6b30b0c55bf24a87be/reports/phase1d/final-v2/source_snapshots.json#33be5223-7283-5dc0-b26f-2df2a3e60a8f",
+    "historical_capability": "historical_partial",
+    "metadata": {
+      "restored_from_immutable_artifact": true,
+      "original_cache_key": "phase1d-samples-9",
+      "restoration_kind": "source_registry_metadata_only",
+      "raw_payload_reverified": false,
+      "original_checksum_status": "declared_in_original_artifact",
+      "pit_level": "effective_pit",
+      "knowledge_time_unverified": true,
+      "original_entry": {
+        "cache_key": "phase1d-samples-9",
+        "checksum_sha256": "9736612723ad576d739bde564c2fa6a422c93f5ac19060968c9c907ecb4b76d8",
+        "dataset": "membership_snapshot",
+        "fetched_at": "2026-09-28T11:11:15.229122Z",
+        "id": "33be5223-7283-5dc0-b26f-2df2a3e60a8f",
+        "row_count": 125,
+        "source_id": "sws_official_stock_classification",
+        "source_version": "sws-official:55c442b9c1f00dc6f5f1c401628218e11e85226f40c5527f5a516f46715655d4"
+      }
+    }
+  },
+  {
+    "source_snapshot_id": "fd9f2a97-2741-5329-9f7e-01a280414aac",
+    "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+    "dataset_code": "stock_window",
+    "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus",
+    "fetched_at": "2026-09-28T11:11:15.229122Z",
+    "available_at": null,
+    "response_checksum": "529c3e72511e9252a1baf846df81ef0265563e314a731793f6718593b3ef4766",
+    "row_count": 8059,
+    "raw_location": "github://bruce233cu/three-sector-research/0336635ca36657e7c3420a6b30b0c55bf24a87be/reports/phase1d/final-v2/source_snapshots.json#fd9f2a97-2741-5329-9f7e-01a280414aac",
+    "historical_capability": "historical_partial",
+    "metadata": {
+      "restored_from_immutable_artifact": true,
+      "original_cache_key": "phase1d-120-day-samples-9",
+      "restoration_kind": "source_registry_metadata_only",
+      "raw_payload_reverified": false,
+      "original_checksum_status": "declared_in_original_artifact",
+      "pit_level": "effective_pit",
+      "knowledge_time_unverified": true,
+      "original_entry": {
+        "cache_key": "phase1d-120-day-samples-9",
+        "checksum_sha256": "529c3e72511e9252a1baf846df81ef0265563e314a731793f6718593b3ef4766",
+        "dataset": "stock_window",
+        "fetched_at": "2026-09-28T11:11:15.229122Z",
+        "id": "fd9f2a97-2741-5329-9f7e-01a280414aac",
+        "row_count": 8059,
+        "source_id": "eastmoney_kline+netease_chddata+baostock_history_k",
+        "source_version": "eastmoney-push2his-kline-v1+netease-money-163-chddata-v1+baostock:0.8.9:query_history_k_data_plus"
+      }
+    }
+  }
+]

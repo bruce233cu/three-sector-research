@@ -1,0 +1,66 @@
+{
+  "manifest": {
+    "run_id": "07209fc5-9cc4-46bf-a82a-5a2d5568886a",
+    "status": "failed",
+    "job_name": "mainline_v221_fast_close_g1_audit",
+    "as_of_date": "2026-10-01",
+    "created_at": "2026-10-01T14:50:46.742645+00:00",
+    "profile_id": "industry_trend_v2_2_1_fast_close",
+    "row_counts": {
+      "samples_read": 15,
+      "PARTIAL_before": 10,
+      "SUCCESS_before": 5,
+      "profiles_added": 1,
+      "calendar_open_rows": 2020,
+      "calendar_dense_rows": 3044,
+      "new_daily_snapshots": 0,
+      "source_snapshots_added": 5,
+      "partial_samples_replayed": 0
+    },
+    "started_at": "2026-10-01T14:41:32.129785+00:00",
+    "code_commit": "942e71c2139b9de8ff34781af802c3ea24a98fb7",
+    "finished_at": "2026-10-01T14:50:46.742645+00:00",
+    "rule_version": "mainline_v2.2.1",
+    "stage_frozen": true,
+    "error_summary": {
+      "G1": "FAIL",
+      "phase2": "not_started",
+      "circ_mv_status": "deferred",
+      "blocking_issues": [
+        "CORE_BENCHMARK_AND_ALL_A_AMOUNT_SEMANTICS_UNPROVEN"
+      ],
+      "partial_backfill": "not_executed_due_to_core_semantic_conflict",
+      "new_snapshot_writes": 0,
+      "raw_checksum_revalidation": "not_performed_for_old_restored_sources",
+      "READY_FOR_PRODUCTION_ENABLEMENT": false
+    },
+    "freeze_reason": [
+      "CORE_BENCHMARK_AND_ALL_A_AMOUNT_SEMANTICS_UNPROVEN"
+    ],
+    "parent_run_id": null,
+    "parameter_hash": "4ced6ee56df791bdbb893634cfbcb64de104a155466af30ca8ecdbca0681722d",
+    "critical_data_ok": false,
+    "recompute_run_id": null,
+    "provider_versions": {
+      "Sina": "unchanged; no OHLCV replay in this run",
+      "calendar": "sina-klc-td-sh:akshare-1.18.97:fast-close-v1",
+      "restored_source_registry": "metadata-only; original declared checksum retained",
+      "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv"
+    },
+    "source_snapshot_ids": [
+      "243f49a9-32cb-4b72-8205-d91b03498625",
+      "b7b15772-396e-56f3-a8e0-867938d9d0f0",
+      "ae1dcef9-5bf0-50e5-b5f9-e9c24392b5d6",
+      "33be5223-7283-5dc0-b26f-2df2a3e60a8f",
+      "fd9f2a97-2741-5329-9f7e-01a280414aac"
+    ]
+  },
+  "statuses": {
+    "PARTIAL": 10,
+    "SUCCESS": 5
+  },
+  "calendar_count": 3044,
+  "snapshot_count": 15,
+  "new_snapshot_count": 0,
+  "missing_source_refs": 0
+}

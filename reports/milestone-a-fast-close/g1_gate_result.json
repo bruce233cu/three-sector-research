@@ -1,0 +1,50 @@
+{
+  "gate": "G1 DATA GATE — V2.2.1",
+  "result": "FAIL",
+  "READY_FOR_PRODUCTION_ENABLEMENT": false,
+  "circ_mv_status": "deferred",
+  "scope": "current evidence audit; core semantic conflict stops backfill before invalid results are written",
+  "checks": {
+    "v221_policy": "PASS",
+    "v22_preserved": "PASS",
+    "core_thresholds_unchanged": "PASS",
+    "calendar_reference_sse": "PASS",
+    "calendar_two_fetch_consistency": "PASS",
+    "calendar_DB_artifact_exact_match": "PASS",
+    "source_reference_integrity_after_restoration": "PASS",
+    "benchmark_ALL_A_EQUAL_WEIGHT_equivalence": "FAIL_UNPROVEN",
+    "all_A_historical_amount_denominator": "FAIL_UNPROVEN",
+    "v221_15_sample_replay": "NOT_EVALUATED_BLOCKED",
+    "v221_core_metric_coverage": "NOT_EVALUATED_BLOCKED",
+    "v221_full_replay_repeatability": "NOT_EVALUATED_BLOCKED",
+    "old_raw_payload_checksums": "NOT_REVERIFIED_METADATA_RESTORE_ONLY",
+    "S0_S4_implementation": "OUT_OF_PHASE1_SCOPE",
+    "circ_mv": "DEFERRED_NON_BLOCKING"
+  },
+  "blocking_issues": [
+    {
+      "id": "CORE_BENCHMARK_AND_ALL_A_AMOUNT_SEMANTICS_UNPROVEN",
+      "why": "Frozen profile primary ALL_A_EQUAL_WEIGHT is not proven equivalent to existing SWS 801003, whose amount is also not proven to equal full historical A-share market amount. RS and turnover inputs cannot be certified.",
+      "minimum_fix": "Prove equivalence and historical universe/amount semantics with source methodology; otherwise implement original frozen benchmark and denominator, or separately authorize a new benchmark definition. Then complete remaining PARTIAL replay and new-version 15-sample verification.",
+      "user_action": "Only needed if changing benchmark definition; no credential or purchase request."
+    }
+  ],
+  "baseline_counts": {
+    "SUCCESS": 5,
+    "PARTIAL": 10,
+    "FAIL": 0
+  },
+  "new_v221_snapshots_written": 0,
+  "source_registry_records_restored": 4,
+  "missing_source_references_before": 9,
+  "missing_source_references_after": 0,
+  "source_restoration_checksum_scope": "Original declared checksums preserved; raw payloads not reverified. Must not certify them as fresh checksum validation.",
+  "run_id": "07209fc5-9cc4-46bf-a82a-5a2d5568886a",
+  "calendar_source_snapshot_id": "243f49a9-32cb-4b72-8205-d91b03498625",
+  "technical_debt": [
+    "circ_mv deferred",
+    "BJ and suspension/delisting identity evidence remains classified, not filled",
+    "Calendar verified future horizon ends 2026-12-31; refresh published 2027 sessions before use",
+    "Existing historical raw cache availability needs confirmation when replaying"
+  ]
+}
