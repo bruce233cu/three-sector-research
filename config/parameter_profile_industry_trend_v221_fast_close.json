@@ -1,0 +1,79 @@
+{
+  "profile_id": "industry_trend_v2_2_1_fast_close",
+  "mainline_type": "B_industry_trend",
+  "rule_version": "mainline_v2.2.1",
+  "benchmark": {
+    "primary": "ALL_A_EQUAL_WEIGHT",
+    "secondary": [
+      "ALL_A_CAP_WEIGHT"
+    ]
+  },
+  "coverage": {
+    "min_sector_return": 0.7,
+    "min_breadth": 0.7,
+    "min_rs_window": 0.9
+  },
+  "candidate": {
+    "rs5_cross_section_pct_max": 0.2,
+    "rs10_min": 0.0,
+    "win5_min": 0.6,
+    "turnover_intensity_min": 1.0,
+    "candidate_min_pass_count": 3
+  },
+  "confirm": {
+    "rs10_cross_section_pct_max": 0.3,
+    "rs10_min": 0.0,
+    "win5_min": 0.8,
+    "win10_min": 0.7,
+    "turnover_pct60_min": 0.6,
+    "above_ma20_min": 0.6,
+    "breadth_min_pass_count": 2,
+    "enhancer_min_pass_count": 2,
+    "confirm_consecutive_days": 2
+  },
+  "weaken": {
+    "deterioration_group_min": 2,
+    "consecutive_days": 2,
+    "min_dwell_days_after_confirm": 3
+  },
+  "retire": {
+    "core_deterioration_group_min": 2,
+    "consecutive_days": 3,
+    "rs10_cross_section_pct_exit": 0.5,
+    "enhancer_min_pass_count": 1
+  },
+  "freeze": {
+    "critical_dataset_failure": true,
+    "source_conflict_freeze": true
+  },
+  "labels": {
+    "enabled": false
+  },
+  "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv",
+  "metric_availability": {
+    "circ_mv_status": "deferred",
+    "deferred_metrics": {
+      "turnover_cap_deviation": {
+        "status": "deferred_due_to_unproven_historical_circ_mv",
+        "role": "optional_enhancement",
+        "state_rule_policy": "inactive_when_unavailable",
+        "value_policy": "NULL_ONLY",
+        "g1_required": false
+      },
+      "top3_return_contribution": {
+        "status": "deferred_due_to_unproven_historical_circ_mv",
+        "role": "optional_enhancement",
+        "state_rule_policy": "inactive_when_unavailable",
+        "value_policy": "NULL_ONLY",
+        "g1_required": false
+      }
+    },
+    "restore_requires": [
+      "new_rule_version",
+      "new_parameter_profile",
+      "new_metric_availability_version",
+      "source_PIT_and_denominator_acceptance"
+    ],
+    "historical_rewrite": false
+  }
+}
