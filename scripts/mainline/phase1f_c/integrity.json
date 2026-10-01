@@ -4,12 +4,13 @@
   "files": {
     "config/parameter_profile_industry_trend_v1.json": "1c88c3241940fbfe857d53a7ae4034810ddc212e146a7867ebd7813c6f5243ff",
     "scripts/mainline/phase1f_c/README_PHASE1F_C.md": "fea1f6ef2fedf3514260ff989eda7698dffc000b212d488d4e53cdbc0efa3649",
-    "scripts/mainline/phase1f_c/build.py": "450d60fedb5d3469910932a3bca6916fc6a6b9a7eda9fb866322eae3fd5ef58b",
+    "scripts/mainline/phase1f_c/build.py": "4234fb5e2a9d371f91b6778fa989e7e14b45e113b94762a8856c2d8a5ab62fd0",
     "scripts/mainline/phase1f_c/config.json": "475c6cdfe7e3a118782ae8cbb819fadeb638b58bce4f94b4a275f54cc13d81f7",
     "scripts/mainline/phase1f_c/membership.json": "d4c030d14261d3076b4107b12d3ab949d246d09fd083fb052bb9339672b761a4",
     "scripts/mainline/phase1f_c/requirements-poc.txt": "d538b6d69ff58004b0e599dacd944b70e6ae214c2c95309a7468b6cab71d9780",
     "scripts/mainline/phase1f_c/requirements-sina.txt": "1b60387d3dd5fae2e7d69a069ba6922d8e023122b1d19c3427e5d41293ee22d8",
     "scripts/mainline/phase1f_c/run.py": "ab87ec4cbda03e367fdbd8c2667f02a117c7049a87dbd6533c8b5ce4030e1345",
+    "scripts/mainline/phase1f_d1_run.py": "7879c5086885233f6c8fbae545edddc883d7388386dea98754f404972d9fb3eb",
     "src/mainline/__init__.py": "09fcb73471cfc248c12789850036ebc2dd008130ed53884ebaffa2a9369000f4",
     "src/mainline/metrics/__init__.py": "57c4d49b09c19e0159b2d4d86352556f9ee903e893504e8906f93e0762e8707e",
     "src/mainline/metrics/sector.py": "de70271459a5c98e3649a379910062c4730b4e313312c2c3a74ed79c2eb8b775",
@@ -20,7 +21,7 @@
     "src/mainline/providers/base.py": "8fd7266d2dd801712f90a648580f7f2ee3b5fd167a198bad88d78d55a6c1d523",
     "src/mainline/providers/eastmoney_window.py": "812ad4ec3e06e11ec8481eebdd685c94222d29ba58b04ff190212ff8ef5e45da",
     "src/mainline/providers/fallback.py": "c60a83ab5c695904f7299be26196b9b0709f57fb48cd4ebdc83a6bf90cdeb9ee",
-    "src/mainline/providers/phase1f_free.py": "259d1b3fad7c984a7f164fbe81b8f6458160ec60551ab5b9abe54264e1408d60",
+    "src/mainline/providers/phase1f_free.py": "ef13bc366b3b7b0f1869d1e6185682cc02395929b0a47d857147895f96c4dfaa",
     "src/mainline/providers/sws_history.py": "6035ad510659df64f04e77daa1a62f9a7de4075f2e836a741ce279b7e1a0f22a",
     "src/mainline/providers/tushare.py": "26d337ca57b472fdf93d3c5c871c5093f6b4c3be9ca67b9f55f07d9d870a3ee0",
     "tests/mainline/test_phase1f_c.py": "4ee75c82c6dabd703dbfb35161acd885266ace0aedfe2afd376d70a661405bc8"

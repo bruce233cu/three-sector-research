@@ -85,19 +85,21 @@ class TdxWindow:
                 candidates.append((elapsed, h))
                 self.server_audit.append({**h, "ok": True, "elapsed_time": elapsed})
             except Exception as e:
-                self.server_audit.append({**h, "ok": False, "reason": str(e)})
+                self.server_audit.append({**h, "ok": False, "reason": str(e), "elapsed_time": time.monotonic()-started})
             finally:
                 api.disconnect()
         if not candidates:
             raise RuntimeError("TDX_SERVERS_UNREACHABLE:" + json.dumps(self.server_audit))
         self.endpoint = min(candidates, key=lambda x: x[0])[1]
+        self.candidates = [h for _, h in sorted(candidates, key=lambda x: x[0])]
         self.api = None
 
     def connect(self):
         if self.api is not None:
             return
         errors = []
-        for _ in range(self.config["connection_attempts"]):
+        for attempt in range(self.config["connection_attempts"]):
+            self.endpoint = self.candidates[attempt % len(self.candidates)]
             api = self.factory(raise_exception=True, auto_retry=False)
             try:
                 if not api.connect(self.endpoint["host"], int(self.endpoint["port"]), time_out=3):

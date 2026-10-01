@@ -1,0 +1,36 @@
+name: Mainline Phase 1F-D1 isolated Provider POC
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths:
+      - scripts/mainline/phase1f_d1_run.py
+      - .github/workflows/mainline-phase1fd1-poc.yml
+permissions:
+  contents: read
+jobs:
+  provider-poc:
+    if: contains(github.event.head_commit.message, '[phase1fd1-run]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Phase C dependencies
+        run: pip install -r scripts/mainline/phase1f_c/requirements-poc.txt
+      - name: Run offline integrity preflight
+        run: python scripts/mainline/phase1f_c/run.py --preflight
+      - name: Health first; exactly three samples, two fresh rounds
+        run: python scripts/mainline/phase1f_d1_run.py
+      - name: Upload evidence only (no ephemeral stock cache)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase1f-d1-provider-evidence
+          path: |
+            artifacts/phase1f_d1/*.json
+            artifacts/phase1f_d1/*.csv
+          retention-days: 7

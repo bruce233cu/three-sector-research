@@ -16,6 +16,7 @@ SOURCE_FILES = [
     "src/mainline/poc/__init__.py", "src/mainline/poc/phase1f_c.py",
     "config/parameter_profile_industry_trend_v1.json",
     "tests/mainline/test_phase1f_c.py",
+    "scripts/mainline/phase1f_d1_run.py",
 ]
 
 
