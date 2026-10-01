@@ -1,0 +1,63 @@
+{
+  "verdict": "PARTIAL",
+  "market_data_capability": "WINDOW_COVERAGE_AND_REPEATABILITY_PASS",
+  "formal_provider_poc_pass": false,
+  "recommend_phase1f_d2": false,
+  "execution_sha": "9c9c7e4d576975573fc5750a9dee426d5d458907",
+  "artifact_id": 11155722709,
+  "original_artifact_sha256": "f50d0b018e331728076207e296ebe4af36cea852f3671e2ecb2fb78676bcf8fe",
+  "original_checksums_verified": true,
+  "calculator_sha256": "de70271459a5c98e3649a379910062c4730b4e313312c2c3a74ed79c2eb8b775",
+  "blockers": [
+    "Strict market-session MA20 coverage differs from frozen calculator observed-close coverage",
+    "Historical circ_mv unavailable; dependent metrics remain NULL"
+  ],
+  "limitations": [
+    "Suspension classification and delisted-specific availability not independently established",
+    "No raw stock cache in returned evidence; row-level price replay not performed in Work",
+    "Inherited Phase C run_manifest job_name label; actual Phase D1 execution identified by summary and Git SHA",
+    "Price source IDs exist; membership/benchmark dependencies traceable by integrity and source checksums, not linked IDs in each metric row",
+    "Existing SWS benchmark transport uses verify=False; authenticity unverified"
+  ],
+  "samples": [
+    {
+      "sample_id": "2019-06-28:801080",
+      "strict_ma20_coverage": 0.9735449735449735,
+      "frozen_ma20_coverage": 0.9894179894179894,
+      "window_coverage": 0.9047619047619048,
+      "valid_member_count": 187,
+      "run_id": "17d73d4f-67ac-5b11-ae45-27561dfc2780",
+      "price_source_snapshot_ids": [
+        "02eeaa25-e258-5757-b278-020bfb55075c"
+      ],
+      "window_checksum": "cdc26e832e11daea969c3d5ebfa54d9e9ab06409c5de83400e187f0196e03c0d"
+    },
+    {
+      "sample_id": "2021-12-31:801890",
+      "strict_ma20_coverage": 0.934322033898305,
+      "frozen_ma20_coverage": 0.9449152542372882,
+      "window_coverage": 0.8940677966101694,
+      "valid_member_count": 449,
+      "run_id": "51ac6ecd-23bd-5efa-8bc8-920457399627",
+      "price_source_snapshot_ids": [
+        "04d87ebb-25fe-5c4d-8c8b-7b26f35d1ad4"
+      ],
+      "window_checksum": "5c91cd1785ba0636755c54ba8e64261ae97863e173f86c10355f6d2201130121"
+    },
+    {
+      "sample_id": "2025-06-30:801080",
+      "strict_ma20_coverage": 0.9226069246435845,
+      "frozen_ma20_coverage": 0.9389002036659878,
+      "window_coverage": 0.9083503054989817,
+      "valid_member_count": 463,
+      "run_id": "2952eb7c-4ae8-5991-9c63-2f6223481d6f",
+      "price_source_snapshot_ids": [
+        "41a040e1-19af-5b8c-8f19-5d07a1505503"
+      ],
+      "window_checksum": "5ddd8d3843843725d2520b7e47bc2496d2951265135db7a044fc0b6442d6de25"
+    }
+  ],
+  "production_writes": false,
+  "mainline_job": "pending_provider",
+  "gate": "UNCHANGED"
+}
