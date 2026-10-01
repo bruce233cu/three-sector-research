@@ -24,7 +24,7 @@ jobs:
       - name: Run offline integrity preflight
         run: python scripts/mainline/phase1f_c/run.py --preflight
       - name: Health first; exactly three samples, two fresh rounds
-        run: python scripts/mainline/phase1f_d1_run.py
+        run: python scripts/mainline/phase1f_d1_run.py --prior-tdx-evidence reports/phase1f_d1/tdx_health_evidence.json
       - name: Upload evidence only (no ephemeral stock cache)
         if: always()
         uses: actions/upload-artifact@v4

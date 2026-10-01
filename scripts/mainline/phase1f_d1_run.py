@@ -1,5 +1,7 @@
 """One-shot external runner; reuse Phase C inputs, calculator and bounded clients."""
 import importlib.metadata
+import argparse
+import hashlib
 import json
 import os
 import platform
@@ -15,6 +17,9 @@ from mainline.poc import phase1f_c as c
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--prior-tdx-evidence", type=Path)
+    args = parser.parse_args()
     config, snapshots, integrity = c.preflight(ROOT, ROOT / "scripts/mainline/phase1f_c")
     out = ROOT / "artifacts/phase1f_d1"
     out.mkdir(parents=True, exist_ok=True)
@@ -28,7 +33,22 @@ def main():
                "circ_mv_gap": ["turnover_cap_deviation", "top3_return_contribution"]}
     health, metrics, errors, sources, repeats = [], [], [], [], []
     try:
-        for name in config["provider_order"]:
+        provider_order = config["provider_order"]
+        if args.prior_tdx_evidence:
+            raw = args.prior_tdx_evidence.read_bytes()
+            if hashlib.sha256(raw).hexdigest() != "9be1917cb110dc62323def2920e24dcc80e3cf1d764b7c21409bafba97ca0db1":
+                raise ValueError("prior TDX evidence checksum mismatch")
+            prior = json.loads(raw)[0]
+            calls = [call for p in prior["probes"] for call in p["calls"]]
+            hosts = {call.get("endpoint", {}).get("host") for call in calls}
+            if len(hosts-{None}) < 2 or not all(call.get("original_exception") == "error:unpack requires a buffer of 4 bytes" for call in calls):
+                raise ValueError("prior evidence does not establish multi-node parser failure")
+            prior["reviewed_verdict"] = "FAIL"
+            prior["reviewed_reason"] = "locked pytdx implementation cannot decode daily bars on two protocol-responsive nodes"
+            prior["original_evidence_sha256"] = hashlib.sha256(raw).hexdigest()
+            health.append(prior)
+            provider_order = ["Sina"]
+        for name in provider_order:
             if name == "Sina":
                 install = subprocess.run([sys.executable, "-m", "pip", "install", "akshare==1.18.97"], timeout=600)
                 if install.returncode:
