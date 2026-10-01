@@ -12,7 +12,7 @@
     "scripts/mainline/phase1f_c/run.py": "ab87ec4cbda03e367fdbd8c2667f02a117c7049a87dbd6533c8b5ce4030e1345",
     "scripts/mainline/phase1f_d11/benchmark.json": "f40f332a05fb87ef8dea1496568e005ee27c8c8655c3fda0b383fd71d00a9511",
     "scripts/mainline/phase1f_d11/circ_mv_probe_evidence.json": "6185d0c5b39badf224fdae16061403d0df5f9fc5ffa843626f11d219fad9e8a8",
-    "scripts/mainline/phase1f_d11_run.py": "635c00d20f27045123cff5fc2d6a5df83e0774e585b3d54558323b654593a565",
+    "scripts/mainline/phase1f_d11_run.py": "465872ff3ea8d3932dbccfe6ce3f5b7d0ef17af0e7b9ff1655c98531ffdb51ab",
     "scripts/mainline/phase1f_d1_run.py": "6f23c26d5c62d9fe7c9397f21742f9721ae2a88990a291717bd25dc97aac951c",
     "src/mainline/__init__.py": "09fcb73471cfc248c12789850036ebc2dd008130ed53884ebaffa2a9369000f4",
     "src/mainline/metrics/__init__.py": "57c4d49b09c19e0159b2d4d86352556f9ee903e893504e8906f93e0762e8707e",
@@ -28,7 +28,7 @@
     "src/mainline/providers/sws_history.py": "6035ad510659df64f04e77daa1a62f9a7de4075f2e836a741ce279b7e1a0f22a",
     "src/mainline/providers/tushare.py": "26d337ca57b472fdf93d3c5c871c5093f6b4c3be9ca67b9f55f07d9d870a3ee0",
     "tests/mainline/test_phase1f_c.py": "6b67a1f82c9d8855ffac7962f3c01a6cda1a47c940c962865477471db450c8a7",
-    "tests/mainline/test_phase1f_d11.py": "1a73ec77a29e7020d8c6db0c449ebf9c183ebdb3545346af4c6e6a478c37d5cf"
+    "tests/mainline/test_phase1f_d11.py": "05c2097dcfa49cd2daa9812d38b389427cb3b3e731712e8c8daa6db504e9ea3f"
   },
   "status": "execution_package_only; real_provider_POC_NOT_STARTED",
   "note": "source files copied verbatim, frozen formulas unchanged"

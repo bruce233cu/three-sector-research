@@ -49,3 +49,25 @@ class ExactCalendarTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class FullRunnerOfflineTest(unittest.TestCase):
+    def test_three_sample_finalization_and_membership_hashes(self):
+        import importlib.util
+        import json
+        from pathlib import Path
+        import tempfile
+        from unittest.mock import patch
+        root=Path(__file__).resolve().parents[2]
+        spec=importlib.util.spec_from_file_location('d11',root/'scripts/mainline/phase1f_d11_run.py')
+        runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(runner)
+        config,snaps,integrity=runner.c.preflight(root,root/'scripts/mainline/phase1f_c')
+        fixture_results=[{'sample_id':x['sample_id'],'trade_date':x['trade_date'],'repetition':rep,'run_id':'synthetic:'+x['sample_id'],'source_snapshot_ids':['synthetic'],'market_window_pass':False,'valid_member_count':None} for rep in (1,2) for x in config['samples']]
+        def result(client,config,sample,membership,benchmark,out,deadline,rep):
+            value=dict(next(x for x in fixture_results if x['sample_id']==sample['sample_id'] and x['repetition']==rep))
+            return value,[],{'repetition':rep,'sample_id':sample['sample_id'],'securities':[]}
+        with tempfile.TemporaryDirectory() as tmp, patch.object(runner.c,'health_check',return_value={'health_pass':True}),patch.object(runner.c,'run_sample',side_effect=result),patch.object(runner.c.IsolatedClient,'close'):
+            out=Path(tmp);runner.full(out,config,snaps,integrity,{'git_sha':'OFFLINE_TEST'})
+            rows=json.loads((out/'metrics_output.json').read_text())
+            self.assertEqual(len(rows),6)
+            self.assertEqual(len({x['run_id'] for x in rows}),3)
+            self.assertTrue(runner.c.verify_results(out)['checksums_ok'])

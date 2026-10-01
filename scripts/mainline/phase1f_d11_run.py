@@ -133,6 +133,7 @@ def full(out,config,snaps,integrity,env):
     from collections import Counter
     import uuid
     benchmark,evidence=c.get_benchmark(ROOT/'scripts/mainline/phase1f_d11/benchmark.json')
+    evidence['source_snapshot_id']=str(uuid.uuid5(uuid.NAMESPACE_URL,evidence['checksum']))
     health=[];metrics=[];errors=[];sources=[evidence];batches=[]
     client=c.IsolatedClient('Sina',config)
     summary={'phase':'1F-D1.1','status':'PARTIAL','gate':'UNCHANGED','mainline_job':'pending_provider',
@@ -150,7 +151,7 @@ def full(out,config,snaps,integrity,env):
                 for e in err:e['category']=classify(e['security_id'],e['reason'])
                 result['error_categories']=dict(Counter(e['category'] for e in err))
                 result['membership_listing_universe_warning']=sample['sample_id']=='2021-12-31:801890'
-                member_source=str(uuid.uuid5(uuid.NAMESPACE_URL,c.digest(c.frame_records(membership.frame))))
+                member_source=str(uuid.uuid5(uuid.NAMESPACE_URL,c.digest(c.clean(membership.frame.sort_values('security_id').to_dict('records')))))
                 benchmark_source=str(uuid.uuid5(uuid.NAMESPACE_URL,evidence['checksum']))
                 result['source_snapshot_ids'] += [member_source,benchmark_source]
                 result['run_id']=str(uuid.uuid5(uuid.NAMESPACE_URL,'phase1fd11:'+result['run_id']))
@@ -186,9 +187,9 @@ def full(out,config,snaps,integrity,env):
         client.close()
         for sample,snap in zip(config['samples'],snaps):
             sources.append({'source_id':'sws_official_cached_membership_evidence',
-                'source_snapshot_id':str(uuid.uuid5(uuid.NAMESPACE_URL,c.digest(c.frame_records(snap.frame)))),
+                'source_snapshot_id':str(uuid.uuid5(uuid.NAMESPACE_URL,c.digest(c.clean(snap.frame.sort_values('security_id').to_dict('records'))))),
                 'sample_id':sample['sample_id'],'row_count':len(snap.frame),
-                'response_checksum':c.digest(c.frame_records(snap.frame)),
+                'response_checksum':c.digest(c.clean(snap.frame.sort_values('security_id').to_dict('records'))),
                 'pit_level':snap.pit_level,'knowledge_time_unverified':True})
         c.write(out/'circ_mv_health.json',json.loads((ROOT/'scripts/mainline/phase1f_d11/circ_mv_probe_evidence.json').read_text()))
         c.write(out/'calendar_manifest.json',{'source':'existing SWS official 801003 index dates',
