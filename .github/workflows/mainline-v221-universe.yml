@@ -36,3 +36,22 @@ jobs:
           name: v221-benchmark-universe
           path: reports/v221-benchmark-universe/
           retention-days: 30
+
+  aggregate-export:
+    if: contains(github.event.head_commit.message, '[v221-export]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: v221-benchmark-universe
+          run-id: 36942748135
+          github-token: ${{ github.token }}
+          path: input/
+      - run: |
+          mkdir aggregate
+          cp input/{gate,checks,snapshots,source_snapshots,universe_validation,all_a_equal_weight_benchmark}.json aggregate/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v221-benchmark-aggregate
+          path: aggregate/
+          retention-days: 30
