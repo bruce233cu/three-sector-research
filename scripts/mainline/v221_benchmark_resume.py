@@ -29,7 +29,12 @@ def source(dataset,rows,provider,upstream,params,**more):
 def main():
     audit=json.loads((P/'probe.json').read_text())
     url='https://www.bse.cn/disclosure/2022/2022-07-22/1658483683_879987.pdf'
-    response=requests.get(url,timeout=20);response.raise_for_status();(P/'bj_hanbo_exit.pdf').write_bytes(response.content)
+    response=requests.get(url,timeout=20,headers={'User-Agent':'Mozilla/5.0','Referer':'https://www.bse.cn/'})
+    if response.status_code!=200:
+        audit.append(dict(label='bj_hanbo_primary_http_failure',url=url,status=response.status_code,fetched_at=now(),checksum=hashlib.sha256(response.content).hexdigest()))
+        url=url.replace('www.bse.cn','www.bseinfo.net')
+        response=requests.get(url,timeout=20,headers={'User-Agent':'Mozilla/5.0','Referer':'https://www.bseinfo.net/'})
+    response.raise_for_status();(P/'bj_hanbo_exit.pdf').write_bytes(response.content)
     audit.append(dict(label='bj_hanbo_exit_pdf',url=url,status=response.status_code,fetched_at=now(),
                       checksum=hashlib.sha256(response.content).hexdigest(),bytes=len(response.content)))
     write('probe.json',audit)
@@ -55,6 +60,7 @@ def main():
         'reused SSE/SZSE ledgers + official SZ full pages + official BSE mapping/listing/exit documents',
         {'fixed_dates':list(map(str,dates))},evidence_grade='official_event_intervals_plus_response_checksums',
         upstream_audit=[{k:v for k,v in a.items() if k not in ['json','text_prefix']} for a in audit],
+        input_source_ids=[s['source_snapshot_id'] for s in json.loads((OLD/'source_snapshots.json').read_text()) if s['dataset_code']=='historical_universe_component'],
         reused_artifact_run=36889897269,certificate=certificate,coverage=1.0)
     windows={d:tuple(x for x in calendar if x<=d)[-60:] for d in dates}
     days=sorted(set().union(*map(set,windows.values())))
