@@ -1,4 +1,6 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { AsyncLocalStorage } from "node:async_hooks";
+import { businessDate, windowFor, mainlineDecision, independently, overallStatus, stampPayload } from "./policy.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 type ResearchCompany = {
@@ -62,6 +64,17 @@ type ExternalRecord = {
   publishedAt: string;
   rawText: string;
 };
+
+
+const execution = new AsyncLocalStorage<any>();
+async function fetch(input: any, init: any = {}) {
+  const context = execution.getStore();
+  const signal = AbortSignal.any([AbortSignal.timeout(20000), ...(init.signal ? [init.signal] : []), ...(context?.signal ? [context.signal] : [])]);
+  if (context && String(input).includes("/rest/v1/raw_clues") && ["POST","PATCH"].includes(init.method) && typeof init.body === "string") {
+    init = {...init, body:JSON.stringify(stampPayload(JSON.parse(init.body),context))};
+  }
+  return globalThis.fetch(input,{...init,signal});
+}
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -1137,8 +1150,7 @@ async function writeSourceCoverage(
   const categories = [
     "company", "policy", "demand", "industry", "supply_chain", "market", "negative_counterevidence",
   ];
-  const dayStart = `${runDate}T00:00:00.000Z`;
-  const dayEnd = `${dateOffset(runDate, 1)}T00:00:00.000Z`;
+  const {start_at:dayStart,end_at:dayEnd} = windowFor(runDate);
   const [{ data: registry, error: registryError }, { data: health, error: healthError }, { data: raw, error: rawError }, { data: signals, error: signalError }] = await Promise.all([
     client.from("source_registry").select("source_code,source_category,sector_scope,automation_enabled,operational_status,historical_strict_available"),
     client.from("source_health").select("source_code,status,last_checked_at"),
@@ -1265,35 +1277,8 @@ async function fetchQuote(stockCode: string): Promise<Quote> {
   throw new Error(`${lastError}；重试3次仍失败`);
 }
 
-Deno.serve(async (request) => {
-  if (request.method !== "POST") return json({ error: "只接受POST请求" }, 405);
-  const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  if (!supabaseUrl || !serviceKey) return json({ error: "运行环境缺少数据库配置" }, 500);
 
-  const client = createClient(supabaseUrl, serviceKey, { auth: { persistSession: false } });
-  const body = await request.json().catch(() => ({}));
-  const runDate = typeof body.run_date === "string"
-    ? body.run_date
-    : new Date().toISOString().slice(0, 10);
-  const triggerType = body.trigger_type === "scheduled" ? "scheduled" : "manual";
-  let runId: string | null = null;
-  try {
-    await client.rpc("close_stale_automation_runs", { p_timeout: "30 minutes" });
-    const { data: run, error: runError } = await client
-      .from("automation_runs")
-      .insert({
-        job_code: "daily_research_pipeline",
-        run_date: runDate,
-        trigger_type: triggerType,
-        status: "running",
-        metadata: { executor: "v43-daily-pipeline-edge-function", version: "V4.4.2" },
-      })
-      .select("id")
-      .single();
-    if (runError) return json({ error: runError.message }, 500);
-    runId = run.id;
-
+async function threeSectorJob(client: any, run: any, runDate: string) {
     const { data: companies, error: companyError } = await client
       .from("companies")
       .select("id,name,stock_code,company_role,sector_id")
@@ -1443,25 +1428,78 @@ Deno.serve(async (request) => {
       },
     );
     if (pipelineError) throw pipelineError;
-    return json({
-      run_id: run.id,
-      signal_collection: signalResult,
-      source_coverage_rows: coverageRows.length,
-      price_success: priceSuccess,
-      price_failed: priceFailed,
-      price_warnings: priceWarnings.length,
-      result,
-    });
-  } catch (error) {
-    const message = errorMessage(error);
-    if (runId) {
-      await client.from("automation_runs").update({
-        status: "failed",
-        finished_at: new Date().toISOString(),
-        failed_count: 1,
-        error_message: message,
-      }).eq("id", runId).eq("status", "running");
-    }
-    return json({ run_id: runId, error: message }, 500);
+
+    return {status: result?.status || "failed", result, signal_collection:signalResult, price_success:priceSuccess, price_failed:priceFailed};
+}
+async function checked(query: any) {
+  const {data,error}=await query;
+  if(error) throw new Error(error.message);
+  return data;
+}
+Deno.serve(async (request) => {
+  if(request.method !== "POST") return json({error:"只接受POST请求"},405);
+  const supabaseUrl=Deno.env.get("SUPABASE_URL");
+  const serviceKey=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if(!supabaseUrl || !serviceKey) return json({error:"运行环境缺少数据库配置"},500);
+  const client=createClient(supabaseUrl,serviceKey,{auth:{persistSession:false},global:{fetch}});
+  const body=await request.json().catch(()=>({}));
+  const runDate=typeof body.run_date==="string" ? body.run_date : businessDate();
+  let window;
+  try {window=windowFor(runDate);} catch(error) {return json({error:String(error)},400);}
+  const triggerType=body.trigger_type==="scheduled" ? "scheduled" : "manual";
+  let runId: string|null=null;
+  const loggingErrors: any[]=[];
+  let previousSuccessAt: string|null=null;
+  const recordStep=async (row: any) => {
+    try {await checked(client.from("automation_run_steps").insert(row));}
+    catch(error) {loggingErrors.push({job:row.step_code,error:String(error)});}
+  };
+  try {
+    await checked(client.rpc("close_stale_automation_runs",{p_timeout:"30 minutes"}));
+    const existing=await checked(client.from("automation_runs").select("id,status").eq("job_code","daily_research_pipeline").eq("run_date",runDate).contains("metadata",{daily_pipeline_version:"17:00-v1"}).in("status",["running","succeeded"]).limit(1));
+    if(existing.length) return json({status:"skipped",reason:"already_running_or_completed",pipeline_run_id:existing[0].id});
+    const run=await checked(client.from("automation_runs").insert({job_code:"daily_research_pipeline",run_date:runDate,trigger_type:triggerType,status:"running",metadata:{daily_pipeline_version:"17:00-v1",...window}}).select("id").single());
+    runId=run.id;
+    const context={...window,pipeline_run_id:run.id};
+    const jobs: any={};
+    // Business modules never share a transaction. Failure is contained per job.
+    jobs.mainline_job=await independently("mainline_job",async(signal)=>{
+      let calendar: boolean|null=null;
+      try {
+        const status=await execution.run({...context,signal},()=>checked(client.rpc("get_mainline_status_v2")));
+        previousSuccessAt=status?.daily_pipeline?.three_sector?.latest_success_at || null;
+        if(status?.daily_pipeline?.trading_calendar?.business_date===runDate) calendar=status.daily_pipeline.trading_calendar.is_open;
+      } catch(error) {
+        return {...mainlineDecision(null),calendar_error:String(error),provider_status:"pending_provider"};
+      }
+      return {...mainlineDecision(calendar),provider_status:"pending_provider"};
+    },10000);
+    // Persist immediately; later three-sector failure cannot erase this result.
+    await recordStep({run_id:run.id,step_code:"mainline_job",step_name:"A股主线每日任务（禁用占位）",status:jobs.mainline_job.status,started_at:jobs.mainline_job.started_at,finished_at:jobs.mainline_job.finished_at,message:jobs.mainline_job.reason || jobs.mainline_job.error,metadata:jobs.mainline_job});
+    jobs.three_sector_daily_job=await independently("three_sector_daily_job",async(signal)=>execution.run({...context,signal},()=>threeSectorJob(client,run,runDate)),90000);
+    const sector=jobs.three_sector_daily_job;
+    await recordStep({run_id:run.id,step_code:"three_sector_daily_job",step_name:"三大赛道日终研究",status:sector.status==="succeeded" ? "succeeded" : "failed",started_at:sector.started_at,finished_at:sector.finished_at,message:sector.error || sector.status,metadata:{module_status:sector.status,result:sector.result,signal_collection:sector.signal_collection}});
+    let successful_report: any=null;
+    jobs.publish_job=await independently("publish_job",async(signal)=>execution.run({...context,signal},async()=>{
+      if(sector.status!=="succeeded") return {status:"skipped",reason:"retain_previous_success"};
+      const version=await checked(client.from("daily_report_versions").select("*").eq("report_date",runDate).eq("version_number",sector.result.report_version).single());
+      const row=await checked(client.from("daily_reports").select("*").eq("id",version.report_id).single());
+      successful_report={...row,frozen_snapshot:{...version.frozen_snapshot,report_definition:window.definition,information_window:window,pipeline_run_id:run.id},generated_at:version.generated_at,report_version:version.report_version};
+      return {status:"succeeded",report_id:row.id,report_version_id:version.id,latest_success_at:version.generated_at};
+    }),10000);
+    await recordStep({run_id:run.id,step_code:"publish_job",step_name:"发布最近成功业务结果",status:jobs.publish_job.status,started_at:jobs.publish_job.started_at,finished_at:jobs.publish_job.finished_at,message:jobs.publish_job.reason || jobs.publish_job.error || "success",metadata:jobs.publish_job});
+    let sourceHealth: any[]=[];
+    try {sourceHealth=await checked(client.from("source_health").select("source_code,status,last_checked_at").gte("last_checked_at",window.start_at));} catch(error) {loggingErrors.push({job:"health_check",error:String(error)});}
+    const error_summary=[...loggingErrors,...Object.values(jobs).filter((x:any)=>["failed","partial"].includes(x.status)).map((x:any)=>({job:x.name,error:x.error || x.result || x.status}))];
+    const metadata={daily_pipeline_version:"17:00-v1",pipeline_run_id:run.id,...window,jobs,error_summary,source_health_summary:sourceHealth,latest_success_at:jobs.publish_job.latest_success_at || previousSuccessAt,...(successful_report ? {successful_report}:{})};
+    const status=loggingErrors.length && overallStatus(Object.values(jobs))==="succeeded" ? "partial" : overallStatus(Object.values(jobs));
+    const finished_at=new Date().toISOString();
+    await checked(client.from("automation_runs").update({status,finished_at,metadata,error_message:error_summary.length?JSON.stringify(error_summary):null}).eq("id",run.id));
+    await checked(client.from("automation_jobs").update({last_run_at:finished_at,last_status:status,...(status==="succeeded"?{last_success_at:finished_at}:{}),last_error:error_summary.length?JSON.stringify(error_summary):null,updated_at:finished_at}).eq("job_code","daily_research_pipeline"));
+    return json({pipeline_run_id:run.id,status,...metadata});
+  } catch(error) {
+    const message=String(error?.message || error);
+    if(runId) await client.from("automation_runs").update({status:"failed",finished_at:new Date().toISOString(),error_message:message}).eq("id",runId);
+    return json({pipeline_run_id:runId,error:message},500);
   }
 });

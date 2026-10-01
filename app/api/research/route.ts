@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import {readDailyPipeline, successfulReports} from "../../../lib/daily-result";
 
 async function readTable(path: string) {
   const url = process.env.SUPABASE_URL;
@@ -16,6 +17,7 @@ async function readTable(path: string) {
 
 export async function GET() {
   try {
+    const dailyPipeline = await readDailyPipeline();
     const [
       companyRows,
       signalRows,
@@ -333,7 +335,8 @@ export async function GET() {
     return NextResponse.json({
       firms,
       sigs,
-      reports: reportRows,
+      reports: successfulReports(reportRows, dailyPipeline),
+      daily_pipeline: dailyPipeline,
       opportunities,
       profitModels,
       valuations,
