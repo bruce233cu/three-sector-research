@@ -63,6 +63,7 @@ class BenchmarkContractTest(unittest.TestCase):
         good=calculate_v221_with_benchmark(v,days)
         self.assertAlmostEqual(good['benchmark_return'],.01)
         self.assertEqual(good['rs_20'],0.)
+        self.assertFalse(good['stage_frozen']) # deferred circ_mv alone cannot freeze
         self.assertEqual(good,calculate_v221_with_benchmark(v,days))
         # Three missing dates in the exact 20-day window must not stretch backward.
         bad_days=days[:-3]+[calculate_benchmark_day(d,u,b.iloc[:94],universe_verified=True,
@@ -73,5 +74,8 @@ class BenchmarkContractTest(unittest.TestCase):
         self.assertEqual(bad['metric_coverage_json']['rs_20'],.85)
         self.assertTrue(bad['stage_frozen'])
         self.assertIsNone(bad['turnover_cap_deviation'])
+        from dataclasses import replace
+        with self.assertRaisesRegex(ValueError,'duplicate membership'):
+            calculate_v221_with_benchmark(replace(v,member_ids=('0','0')),days)
 
 if __name__=='__main__': unittest.main()

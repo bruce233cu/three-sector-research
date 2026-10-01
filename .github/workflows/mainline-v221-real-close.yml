@@ -16,6 +16,12 @@ jobs:
         with: {python-version: '3.12'}
       - run: pip install -r requirements-mainline.txt py-mini-racer==0.6.0
       - run: PYTHONPATH=src python -m unittest discover -s tests/mainline -p test_v221_benchmark.py -v
+      - uses: actions/download-artifact@v4
+        with:
+          name: mainline-v221-real-close
+          run-id: 36888840946
+          github-token: ${{ github.token }}
+          path: .cache/v221-real-close
       - run: python scripts/mainline/v221_real_close.py
       - uses: actions/upload-artifact@v4
         if: always()

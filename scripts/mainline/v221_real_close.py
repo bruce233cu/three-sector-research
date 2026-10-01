@@ -49,6 +49,10 @@ from datetime import datetime,timezone
 audit=[];old=requests.sessions.Session.request
 def request(self,method,url,**kw):
  kw['timeout']=10
+ # AKShare's SH termination view includes B shares and returns COMPANY_CODE.
+ # Filter the OFFICIAL request by stock type, never by collapsed company code.
+ if sys_fn=='stock_info_sh_delist' and kw.get('params',{}).get('STOCK_TYPE')=='1,2,8':
+  kw['params']=dict(kw['params'],STOCK_TYPE='1,8')
  r=old(self,method,url,**kw)
  import hashlib
  audit.append({'url':r.url,'method':method,'request_params':kw.get('params',kw.get('data')),'fetched_at':datetime.now(timezone.utc).isoformat(),'response_checksum':hashlib.sha256(r.content).hexdigest(),'bytes':len(r.content)})
@@ -68,7 +72,7 @@ except Exception as e: print('MASTER_JSON='+json.dumps({'rows':[],'audit':audit,
         rows=[]
         for row in payload['rows']:
             code=str(row.get(cc,'')).split('.')[0].zfill(6)
-            if ex=='SH' and not code.startswith(('60','68')):continue
+            if ex=='SH' and not code.startswith(('60','688')):continue
             if ex=='SZ' and not code.startswith(('00','30')):continue
             ld=pd.to_datetime(row.get(lc),errors='coerce');dd=pd.to_datetime(row.get(dc),errors='coerce') if dc else pd.NaT
             if pd.isna(ld) or (dc and pd.isna(dd)):continue
@@ -119,6 +123,38 @@ def memberships(samples):
         if key not in chosen:chosen[key]=dict(r,artifact_path=path,artifact_character_range=[pos,end]);recovered+=1
         pos=end
     evidence.append({'path':path,'validated_additional_objects':recovered})
+    missing=[s for s in samples if not any(k[:2]==(s['trade_date'],s['taxonomy_code']) for k in chosen)]
+    if missing:
+        # Existing official historical-membership adapter, only missing samples.
+        program='''import requests,json
+from datetime import date
+from mainline.providers.sws_history import SwsEffectivePitProvider
+old=requests.sessions.Session.request
+def bounded(self,method,url,**kw):
+ kw['timeout']=10
+ return old(self,method,url,**kw)
+requests.sessions.Session.request=bounded
+try:
+ p=SwsEffectivePitProvider();output=[]
+ for s in requested:
+  x=p.snapshot(date.fromisoformat(s['trade_date']),s['taxonomy_code'],s['industry_name'])
+  rows=json.loads(x.frame.to_json(orient='records',date_format='iso'))
+  for r in rows:
+   r.update(snapshot_date=s['trade_date'],taxonomy_code=s['taxonomy_code'],taxonomy_version=x.taxonomy_version,artifact_path='reports/milestone-a-final-close/live_membership.json',upstream_source_version=p.source_version)
+   for key in ['effective_from','effective_to']:
+    if r.get(key):r[key]=r[key][:10]
+  output.extend(rows)
+ print('MEMBERSHIP_JSON='+json.dumps(output))
+except Exception as e:print('MEMBERSHIP_ERROR='+type(e).__name__+':'+str(e))
+'''
+        try:
+            r=subprocess.run([sys.executable,'-c','requested='+repr(missing)+'\n'+program],
+                             capture_output=True,text=True,timeout=50,env={**os.environ,'PYTHONPATH':str(ROOT/'src')})
+            live=json.loads(r.stdout.split('MEMBERSHIP_JSON=')[-1]) if 'MEMBERSHIP_JSON=' in r.stdout else []
+            write('live_membership.json',live)
+            evidence.append({'path':'existing_official_SWS_live_missing_membership','rows':len(live),'stdout':r.stdout[-1200:],'stderr':r.stderr[-1200:]})
+            for row in live:chosen[(row['snapshot_date'],row['taxonomy_code'],row['security_id'])]=row
+        except subprocess.TimeoutExpired:evidence.append({'path':'existing_official_SWS_live_missing_membership','error':'bounded_timeout_50_seconds'})
     write('membership_artifact_reads.json',evidence)
     result={}
     for s in samples:
@@ -141,6 +177,15 @@ def main():
     if master_verified:ids.update(master.loc[pd.to_datetime(master.list_date).dt.date<=dates[-1],'security_id'])
     start=min(needed_days)-timedelta(days=7);end=max(dates)
     adapter=SinaWindow({});cache={};audits=[];began=time.monotonic()
+    cached=ROOT/'.cache/v221-real-close/stock_window.json'
+    if cached.exists():
+        old=pd.read_json(cached);old['trade_date']=pd.to_datetime(old.trade_date).dt.date
+        cache={sid:g for sid,g in old.groupby('security_id')}
+        audits=json.loads((cached.parent/'sina_fetch_audit.json').read_text())
+        write('cached_input_provenance.json',{'workflow_run_id':36888840946,'artifact_id':11176066157,
+              'artifact_sha256':'db86ae165ff4edf2d1403dce2e3e10112d8c0cfc9649f62759f44aaf660f4ec9',
+              'input_rows':len(old),'checksum':hashlib.sha256(cached.read_bytes()).hexdigest(),
+              'policy':'reuse real normalized data; preserve original fetched_at and response checksums'})
     def fetch(sid):
         at=now()
         try:
@@ -151,7 +196,7 @@ def main():
                           'request_start':str(start),'request_end':str(end),'row_count':len(f),**a}
         except Exception as e:return sid,None,{'security_id':sid,'fetched_at':at,'status':'failed','request_start':str(start),'request_end':str(end),'error':type(e).__name__+':'+str(e)}
     with ThreadPoolExecutor(max_workers=8) as pool:
-        jobs={pool.submit(fetch,sid):sid for sid in sorted(ids)}
+        jobs={pool.submit(fetch,sid):sid for sid in sorted(ids-cache.keys())}
         for i,fut in enumerate(as_completed(jobs)):
             sid,f,a=fut.result();audits.append(a)
             if f is not None and not f.empty:cache[sid]=f

@@ -75,6 +75,8 @@ def calculate_benchmark_day(trade_date, universe, observations, *,
 
 def calculate_v221_with_benchmark(value, days):
     """Only verified ALL_A outputs enter V2.2.1; legacy 801003 cannot enter."""
+    if len(value.member_ids) != len(set(value.member_ids)):
+        raise ValueError("duplicate membership: reject before metric propagation")
     calendar = sorted(pd.Timestamp(d).date() for d in value.market_trading_dates
                       if pd.Timestamp(d).date() <= value.trade_date)
     if len(calendar) != len(set(calendar)) or not calendar or calendar[-1] != value.trade_date:
