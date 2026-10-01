@@ -19,6 +19,7 @@ class SectorMetricInput:
     benchmark_returns: pd.Series
     all_a_amount: pd.Series | None = None
     all_a_circ_mv: pd.Series | None = None
+    market_trading_dates: tuple[date, ...] | None = None
 
 
 def _ratio(numerator: float, denominator: float) -> float | None:
@@ -67,6 +68,15 @@ def calculate_sector_snapshot(value: SectorMetricInput) -> dict[str, Any]:
     benchmark = pd.to_numeric(value.benchmark_returns, errors="coerce").copy()
     benchmark.index = pd.to_datetime(benchmark.index).date
     benchmark = benchmark.sort_index()
+    calendar = list(value.market_trading_dates) if value.market_trading_dates is not None else list(benchmark.index)
+    calendar = [pd.Timestamp(d).date() for d in calendar if pd.Timestamp(d).date() <= value.trade_date]
+    if len(calendar) != len(set(calendar)):
+        raise ValueError("duplicate market trading-calendar date")
+    calendar = sorted(calendar)
+    if not calendar or calendar[-1] != value.trade_date:
+        raise ValueError("market calendar does not establish target trading day")
+    if bars.duplicated(["security_id", "trade_date"]).any():
+        raise ValueError("duplicate security/date observation")
 
     def rs(window: int) -> tuple[float | None, float]:
         joined = pd.concat([daily["sector_return"], benchmark.rename("benchmark")], axis=1).loc[: value.trade_date].tail(window)
@@ -101,12 +111,16 @@ def calculate_sector_snapshot(value: SectorMetricInput) -> dict[str, Any]:
         group = by_security.get(sid)
         if group is None:
             continue
-        closes = group[group["trade_date"] <= value.trade_date]["close"].dropna()
+        closes = group.set_index("trade_date")["close"]
         for window, key in ((20, "above_ma20"), (60, "above_ma60")):
-            if len(closes) >= window:
-                breadth[key].append(bool(closes.iloc[-1] > closes.tail(window).mean()))
-        if len(closes) >= 60:
-            breadth["new_high_60"].append(bool(closes.iloc[-1] >= closes.tail(60).max()))
+            dates = calendar[-window:]
+            exact = closes.reindex(dates)
+            if len(dates) == window and exact.notna().all():
+                breadth[key].append(bool(exact.iloc[-1] > exact.mean()))
+        dates = calendar[-60:]
+        exact = closes.reindex(dates)
+        if len(dates) == 60 and exact.notna().all():
+            breadth["new_high_60"].append(bool(exact.iloc[-1] >= exact.max()))
 
     breadth_coverage = {key: _ratio(len(vals), member_count) or 0.0 for key, vals in breadth.items()}
     breadth_values = {

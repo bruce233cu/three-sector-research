@@ -4,12 +4,13 @@ on:
     branches: [mainline-phase1e]
     paths:
       - scripts/mainline/phase1f_d1_run.py
+      - scripts/mainline/phase1f_d11_run.py
       - .github/workflows/mainline-phase1fd1-poc.yml
 permissions:
   contents: read
 jobs:
   provider-poc:
-    if: contains(github.event.head_commit.message, '[phase1fd1-run]')
+    if: contains(github.event.head_commit.message, '[phase1fd11-health]') || contains(github.event.head_commit.message, '[phase1fd11-run]')
     runs-on: ubuntu-latest
     timeout-minutes: 110
     env:
@@ -20,17 +21,21 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install pinned Phase C dependencies
-        run: pip install -r scripts/mainline/phase1f_c/requirements-poc.txt
+        run: pip install -r scripts/mainline/phase1f_c/requirements-sina.txt
       - name: Run offline integrity preflight
         run: python scripts/mainline/phase1f_c/run.py --preflight
-      - name: Health first; exactly three samples, two fresh rounds
-        run: python scripts/mainline/phase1f_d1_run.py --prior-tdx-evidence reports/phase1f_d1/tdx_health_evidence.json
+      - name: Small specialized checks only
+        if: contains(github.event.head_commit.message, '[phase1fd11-health]')
+        run: python scripts/mainline/phase1f_d11_run.py --special-only
+      - name: Three fixed sectors; two fresh rounds
+        if: contains(github.event.head_commit.message, '[phase1fd11-run]')
+        run: python scripts/mainline/phase1f_d11_run.py
       - name: Upload evidence only (no ephemeral stock cache)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: phase1f-d1-provider-evidence
+          name: phase1f-d11-provider-evidence
           path: |
-            artifacts/phase1f_d1/*.json
-            artifacts/phase1f_d1/*.csv
+            artifacts/phase1f_d11*/*.json
+            artifacts/phase1f_d11*/*.csv
           retention-days: 7

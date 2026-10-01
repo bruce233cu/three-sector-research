@@ -157,8 +157,8 @@ class SinaWindow:
         import requests
         import py_mini_racer
         from akshare.stock.cons import hk_js_decode, zh_sina_a_stock_hist_url
-        if sid.endswith(".BJ"):
-            raise ValueError("unsupported Sina historic BJ symbol")
+        if not sid.endswith((".BJ", ".SH", ".SZ")):
+            raise ValueError("adapter_unsupported:unknown market suffix")
         # Do NOT call stock_zh_a_daily: its share-history merge ffill may create
         # synthetic OHLC rows. Reuse the SAME raw upstream URL and JS decoder.
         if "finance.sina.com.cn/realstock/company/" not in zh_sina_a_stock_hist_url:
@@ -176,6 +176,9 @@ class SinaWindow:
                 js.close()
         f, audit = normalize(raw, sid, start, end)
         audit.update({"page_requests": 1, "upstream": zh_sina_a_stock_hist_url,
+            "requested_symbol": symbol, "requested_url": zh_sina_a_stock_hist_url.format(symbol),
+            "date_min": min(f.trade_date).isoformat() if len(f) else None,
+            "date_max": max(f.trade_date).isoformat() if len(f) else None,
             "function": "AKShare stock_zh_a_daily raw decode only; no share merge/ffill",
             "raw_payload_checksum": __import__("hashlib").sha256(response.content).hexdigest()})
         return f, audit
