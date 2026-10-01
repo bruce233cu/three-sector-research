@@ -1,0 +1,31 @@
+{
+  "G1": "FAIL",
+  "READY_FOR_PRODUCTION_ENABLEMENT": false,
+  "run_id": "382be957-d400-4d09-b2ac-8507a166a0e8",
+  "recompute_run_id": "2a9c9c7c-62e1-485d-baae-4529630deac6",
+  "code_commit": "eed55fc788896f517b70654e10fa0d09c1657154",
+  "parameter_hash": "9197164aa1cf65d56539618a13712cfd982f8e90598ff4b9a2d31bc7fd0ee358",
+  "parameters": {
+    "benchmark": "ALL_A_EQUAL_WEIGHT",
+    "benchmark_min": 0.95,
+    "rs_min": 0.9,
+    "sector_min": 0.7,
+    "profile_id": "industry_trend_v2_2_1_final_close",
+    "rule_version": "mainline_v2.2.1",
+    "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv"
+  },
+  "counts": {
+    "SUCCESS": 0,
+    "PARTIAL": 15,
+    "FAIL": 0
+  },
+  "master_verified_before_bse": false,
+  "master_conflicts": [],
+  "certified_full_period_universe": false,
+  "successful_sina_securities": 1558,
+  "requested_sina_securities": 1578,
+  "stock_window_rows": 364775,
+  "source_chains_complete": 0,
+  "deterministic_repeatability": true,
+  "effective_membership_pit": 15
+}

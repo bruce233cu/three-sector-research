@@ -1,0 +1,17 @@
+{
+  "start_sha": "25d27a0ff903eee49402832ece6fdad3e121fc89",
+  "user_checkpoint_sha": "52da9346398e4513d4fe0b85ec19030b2c76421e",
+  "calculation_sha": "eed55fc788896f517b70654e10fa0d09c1657154",
+  "final_sha": "recorded_in_final_package_after_delivery_commit",
+  "workflow_run_id": 36889897269,
+  "artifact_id": 11176476748,
+  "artifact_sha256": "8b7c002739504be81d7634fce93be68f15c4811fb6034f8a9995786def9c2b0c",
+  "blocking_issues": [
+    "历史全A股Universe尚未完整验证：深圳在市名单未成功取得，北交所当前名单不能独立证明历史完整资格。无法证明benchmark及全A成交分母的历史覆盖率，benchmark / RS / turnover保持NULL；完整benchmark source链及全Universe PIT仍未通过。"
+  ],
+  "commits": [
+    "ead0282a8d36a7f10593c792e5d802e21ef7e764",
+    "46c3b360d9ce18168c2757f77bab09cf3d664ea2",
+    "eed55fc788896f517b70654e10fa0d09c1657154"
+  ]
+}

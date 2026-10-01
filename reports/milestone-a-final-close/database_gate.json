@@ -1,0 +1,23 @@
+{
+  "formal_snapshots": 15,
+  "critical_pass": 0,
+  "frozen": 15,
+  "sector_and_breadth_available": 15,
+  "benchmark_pass": 0,
+  "dependent_null": 15,
+  "deferred_null": 15,
+  "min_ohlcv_coverage": "0.96",
+  "min_amount_coverage": "0.96",
+  "membership_pit_pass": 15,
+  "dangling_refs": 0,
+  "unregistered_sources": 0,
+  "manifest_count": 2,
+  "repeatable": true,
+  "membership_price_calendar_chains": 15,
+  "new_source_snapshots": 35,
+  "calendar_rows": 3044,
+  "G1": "FAIL",
+  "READY_FOR_PRODUCTION_ENABLEMENT": false,
+  "full_four_role_chains": 0,
+  "benchmark_source_chains": 0
+}
