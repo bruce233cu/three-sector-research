@@ -57,9 +57,25 @@ print('FINAL_UNIVERSE_JSON='+json.dumps(output,ensure_ascii=False))'''
     return evidence
 
 def main():
-    acquisition=acquire_existing_historical_universe()
-    membership_path=ROOT/'reports/phase1d/final-v2/membership_evidence.json'
-    membership=json.loads(membership_path.read_text())
+    acquisition_path=ROOT/'reports/milestone-a-fast-close/universe_acquisition.json'
+    acquisition=json.loads(acquisition_path.read_text()) if acquisition_path.exists() else acquire_existing_historical_universe()
+    write('universe_acquisition.json',acquisition)
+    membership=[]; membership_reads=[]; seen=set()
+    # Read existing artifacts only. No new source restoration or network retry.
+    for relative in ['reports/phase1d/final-v2/membership_evidence.json',
+                     'reports/phase1d/runtime/membership_evidence.json',
+                     'scripts/mainline/phase1f_c/membership.json',
+                     'reports/phase1d/fallback/sws_official_cached_membership.json']:
+        try:
+            payload=json.loads((ROOT/relative).read_text())
+            rows=payload if isinstance(payload,list) else payload['rows']
+            for row in rows:
+                key=(row['snapshot_date'],row['taxonomy_code'],row['security_id'])
+                if key not in seen: membership.append(dict(row,artifact_path=relative));seen.add(key)
+            membership_reads.append({'path':relative,'status':'read','rows':len(rows)})
+        except (ValueError,KeyError,OSError) as error:
+            membership_reads.append({'path':relative,'status':'unavailable','error':str(error)})
+    write('membership_artifact_reads.json',membership_reads)
     calendar=[date.fromisoformat(d) for d in json.loads((ROOT/'reports/milestone-a-fast-close/calendar_input.json').read_text())]
     empty_universe=pd.DataFrame(columns=['security_id','share_type','list_date','delist_date'])
     empty_obs=pd.DataFrame(columns=['security_id','daily_return','amount'])
@@ -73,13 +89,13 @@ def main():
         d=date.fromisoformat(target)
         members=[r for r in membership if r['snapshot_date']==target and r['taxonomy_code']==code]
         members=sorted(members,key=lambda r:r['security_id'])
-        pit=all(r['effective_from']<=target and (not r['effective_to'] or r['effective_to']>=target) for r in members)
-        sid=str(uuid4())
-        sources.append({'source_snapshot_id':sid,'source_id':'sws_official_cached_membership_evidence',
+        pit=bool(members) and all(r['effective_from']<=target and (not r['effective_to'] or r['effective_to']>=target) for r in members)
+        sid=str(uuid4()) if members else None
+        if members: sources.append({'source_snapshot_id':sid,'source_id':'sws_official_cached_membership_evidence',
                         'dataset_code':'membership_snapshot','source_version':'pinned-github-52da934:normalized-membership',
                         'fetched_at':datetime.now(timezone.utc).isoformat(),'available_at':None,
                         'response_checksum':digest(members),'row_count':len(members),
-                        'raw_location':'github://bruce233cu/three-sector-research/52da9346398e4513d4fe0b85ec19030b2c76421e/reports/phase1d/final-v2/membership_evidence.json',
+                        'raw_location':'github://bruce233cu/three-sector-research/52da9346398e4513d4fe0b85ec19030b2c76421e/'+members[0]['artifact_path'],
                         'historical_capability':'historical_partial',
                         'metadata':{'sample_id':target+':'+code,'evidence_grade':'normalized_immutable_artifact',
                                     'pit_level':'effective_pit','knowledge_time_unverified':True,
@@ -102,7 +118,7 @@ def main():
                                           'code_commit':os.getenv('GITHUB_SHA'),'parameter_hash':digest(params),
                                           'recompute_run_id':recompute_id,'repeat_checksum':digest(again),
                                           'benchmark_coverage':None,'snapshot_status':'FORMAL_FROZEN_DATA_UNAVAILABLE'})
-        result.update(source_snapshot_ids=[sid,'243f49a9-32cb-4b72-8205-d91b03498625'],
+        result.update(source_snapshot_ids=([sid] if sid else [])+['243f49a9-32cb-4b72-8205-d91b03498625'],
                       source_snapshot_id=sid,run_id=run_id,recompute_run_id=recompute_id,
                       pit_level='effective_pit',knowledge_time_unverified=True,cache_checksum=digest(result))
         # Optional metadata keys are nested; core schema remains unchanged.

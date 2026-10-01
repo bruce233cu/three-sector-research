@@ -65,9 +65,9 @@ def calculate_benchmark_day(trade_date, universe, observations, *,
     available = returns_verified and coverage >= BENCHMARK_MIN_COVERAGE
     reason = None if available else ("daily_return_semantics_unverified" if not returns_verified
                                      else "benchmark_coverage_below_95_percent")
-    # No new threshold is invented for the separate turnover denominator.
-    # Emit it only when every historical universe member is accounted for.
-    total_amount = float(amount[amount_valid].sum()) if amount_coverage == 1 else None
+    # Original amount definition: sum valid observed A-share amounts. Its
+    # provider/dataset quality gate remains independent of benchmark's 95%.
+    total_amount = float(amount[amount_valid].sum()) if amount_valid.any() else None
     return BenchmarkDay(trade_date, float(returns[valid].mean()) if available else None,
                         coverage, len(ids), int(valid.sum()), total_amount,
                         amount_coverage, reason, tuple(source_snapshot_ids))
