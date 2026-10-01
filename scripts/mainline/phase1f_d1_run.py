@@ -57,7 +57,7 @@ def main():
                 c.write(out / "provider_health.json", health)
                 if not h["health_pass"]:
                     # Only decoded, validated responses can establish objective window failure.
-                    objective = any(call.get("ok") or call.get("error") == "empty"
+                    objective = any(call.get("ok") or call.get("error") in ("empty", "unit_validation_failed")
                                     for p in h["probes"] for call in p["calls"])
                     h["verdict"] = "FAIL" if objective else "BLOCKED"
                     summary.update(status=h["verdict"], reason="historical health window insufficient" if objective else "environment/transport unverified")

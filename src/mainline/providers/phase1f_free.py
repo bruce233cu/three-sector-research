@@ -92,6 +92,7 @@ class TdxWindow:
             raise RuntimeError("TDX_SERVERS_UNREACHABLE:" + json.dumps(self.server_audit))
         self.endpoint = min(candidates, key=lambda x: x[0])[1]
         self.candidates = [h for _, h in sorted(candidates, key=lambda x: x[0])]
+        self.node_cursor = 0
         self.api = None
 
     def connect(self):
@@ -99,7 +100,7 @@ class TdxWindow:
             return
         errors = []
         for attempt in range(self.config["connection_attempts"]):
-            self.endpoint = self.candidates[attempt % len(self.candidates)]
+            self.endpoint = self.candidates[(self.node_cursor + attempt) % len(self.candidates)]
             api = self.factory(raise_exception=True, auto_retry=False)
             try:
                 if not api.connect(self.endpoint["host"], int(self.endpoint["port"]), time_out=3):
@@ -200,9 +201,14 @@ def worker(pipe, name, config, servers):
                 f, audit = provider.get_one(sid, start, end)
                 pipe.send({"ok": True, "frame": f, "audit": audit, "elapsed_time": time.monotonic()-t})
             except Exception as e:
+                cause = getattr(e, "original_exception", None)
+                endpoint = provider.endpoint
                 if name == "TDX" and provider.api:
                     provider.api.disconnect()
                     provider.api = None
-                pipe.send({"ok": False, "error": f"{type(e).__name__}:{e}", "elapsed_time": time.monotonic()-t})
+                    provider.node_cursor += 1
+                pipe.send({"ok": False, "error": f"{type(e).__name__}:{e}",
+                           "original_exception": f"{type(cause).__name__}:{cause}" if cause else None,
+                           "endpoint": endpoint, "elapsed_time": time.monotonic()-t})
     except (EOFError, BrokenPipeError):
         pass
