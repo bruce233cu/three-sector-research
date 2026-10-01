@@ -1,0 +1,2 @@
+-r requirements-poc.txt
+akshare==1.18.97
