@@ -1,0 +1,25 @@
+name: Mainline V2.2.1 final data gate
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths: ['scripts/mainline/v221_final_close.py', '.github/workflows/mainline-v221-final-close.yml']
+permissions:
+  contents: read
+jobs:
+  final-gate:
+    if: contains(github.event.head_commit.message, '[v221-final-close]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install pandas==2.2.3 baostock==0.8.9
+      - run: PYTHONPATH=src python -m unittest discover -s tests/mainline -p test_v221_benchmark.py -v
+      - run: python scripts/mainline/v221_final_close.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-v221-final-close
+          path: reports/milestone-a-fast-close/v221-final/
+          retention-days: 30
