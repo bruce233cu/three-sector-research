@@ -1,0 +1,192 @@
+{
+  "pipeline_run_id": "69ba9ab1-5b05-44f3-aab2-5d3d325fe872",
+  "workflow_run_ids": [
+    "36989296127",
+    "36989524355",
+    "36989952264",
+    "36990602935"
+  ],
+  "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+  "business_date": "2026-09-30",
+  "run_type": "production_validation",
+  "checkpoint_source": "database",
+  "checkpoint_trade_date": "2026-09-29",
+  "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+  "business_completion": "partial",
+  "frozen": 1,
+  "sites_version": 40,
+  "manual_ui_check_required": [
+    "S1-S4标签切换",
+    "行业详情抽屉",
+    "状态时间轴",
+    "指标历史"
+  ],
+  "mainline_live": "READY_WAITING_FIRST_PRODUCTION_RUN",
+  "blocking_issues": [],
+  "final_workflow_run_id": "36990602935",
+  "artifact_id": 11218648611,
+  "partial_latest_success_guard": "PASS",
+  "atomic_step_contract": "succeeded_with_business_partial_metadata",
+  "recovery": "same_parent_failed_to_partial_after_successful_retry",
+  "starting_sha": "388029858e6aa01e4badb16b85dced375661a5a8",
+  "runtime_code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS"
+  },
+  "production_mainline_enabled": true,
+  "milestones": {
+    "A": "CLOSED",
+    "B": "CLOSED",
+    "C": "CLOSED"
+  },
+  "proof": {
+    "rules": 16430,
+    "commits": [
+      {
+        "result": "completed",
+        "run_id": "0f1d2086-ef8b-5388-86da-312955f4a201",
+        "status": "success",
+        "checksum": null,
+        "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+        "business_run_id": null,
+        "business_status": "partial"
+      },
+      {
+        "result": "idempotent",
+        "run_id": "60d1ec0d-8a9f-4bd0-8968-6930c05c7101",
+        "status": "success",
+        "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+        "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+        "business_run_id": "c589a9df-a980-44c9-8c55-50ab07921334",
+        "business_status": "partial"
+      },
+      {
+        "result": "idempotent",
+        "run_id": "7550ba84-cbfd-43fa-9da7-91b17b862b75",
+        "status": "success",
+        "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+        "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+        "business_run_id": "bb37a4d2-a823-4de5-967a-3e5af7102081",
+        "business_status": "partial"
+      }
+    ],
+    "snapshots": 385,
+    "lifecycles": 1351,
+    "checkpoints": 310,
+    "state_checksum": "bc5fe2dce6503acf509c7ea64ef0a3bd",
+    "lifecycle_checksum": "eadf1a8424d5330b42e1b473e46ddfff",
+    "latest_production_success": null
+  },
+  "status": {
+    "cron": [
+      {
+        "jobid": 3,
+        "active": true,
+        "jobname": "v431-stale-run-cleanup",
+        "schedule": "*/15 * * * *"
+      },
+      {
+        "jobid": 1,
+        "active": true,
+        "jobname": "v43-daily-research-pipeline",
+        "schedule": "0 9 * * *"
+      }
+    ],
+    "gates": {
+      "G1": "PASS",
+      "G2": "PASS",
+      "G3": "PASS",
+      "G4": "PASS"
+    },
+    "parent": {
+      "status": "partial",
+      "business": {
+        "phase": "succeeded",
+        "reason": "dispatch_accepted_business_pending",
+        "result": "completed",
+        "run_id": "0f1d2086-ef8b-5388-86da-312955f4a201",
+        "status": "partial",
+        "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+        "run_type": "production_validation",
+        "seed_date": "2026-09-29",
+        "trade_date": "2026-09-30",
+        "finished_at": "2026-10-02T09:35:40.351681+00:00",
+        "child_run_id": "0f1d2086-ef8b-5388-86da-312955f4a201",
+        "business_date": "2026-09-30",
+        "parameter_hash": "85c701a313b6a59529e7b8a7ea52af64d2e708011f56abf5d82d74580fd2384f",
+        "business_run_id": "bb37a4d2-a823-4de5-967a-3e5af7102081",
+        "business_status": "partial",
+        "pipeline_run_id": "69ba9ab1-5b05-44f3-aab2-5d3d325fe872",
+        "snapshot_run_id": "4ce52a35-d7a8-4a81-af5e-29e47b5f8c6d",
+        "workflow_run_id": "36990602935",
+        "checkpoint_evidence": {
+          "source": "database",
+          "checkpoint_run_id": [
+            "21a8f577-5de8-46d4-8e1a-5b30e7fd0a5a"
+          ],
+          "checkpoint_trade_date": "2026-09-29",
+          "checkpoint_rule_version": "mainline_v2.2.1_state_completion_v1",
+          "checkpoint_taxonomy_version": "SW2021",
+          "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv",
+          "checkpoint_parameter_profile": "industry_trend_v221_state_completion_v1"
+        }
+      },
+      "pipeline_run_id": "69ba9ab1-5b05-44f3-aab2-5d3d325fe872"
+    },
+    "business_children": [
+      {
+        "id": "bb37a4d2-a823-4de5-967a-3e5af7102081",
+        "status": "partial",
+        "metadata": {
+          "result": "idempotent",
+          "run_id": "7550ba84-cbfd-43fa-9da7-91b17b862b75",
+          "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+          "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+          "run_type": "production_validation",
+          "rule_version": "mainline_v2.2.1_state_completion_v1",
+          "business_status": "partial",
+          "workflow_run_id": "36990602935",
+          "parameter_profile": "industry_trend_v221_state_completion_v1",
+          "parent_pipeline_run_id": "69ba9ab1-5b05-44f3-aab2-5d3d325fe872"
+        }
+      },
+      {
+        "id": "c589a9df-a980-44c9-8c55-50ab07921334",
+        "status": "partial",
+        "metadata": {
+          "result": "idempotent",
+          "run_id": "60d1ec0d-8a9f-4bd0-8968-6930c05c7101",
+          "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+          "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+          "run_type": "production_validation",
+          "rule_version": "mainline_v2.2.1_state_completion_v1",
+          "business_status": "partial",
+          "workflow_run_id": "36990602935",
+          "parameter_profile": "industry_trend_v221_state_completion_v1",
+          "parent_pipeline_run_id": "69ba9ab1-5b05-44f3-aab2-5d3d325fe872"
+        }
+      }
+    ],
+    "daily_is_scheduled": true,
+    "mainline_is_scheduled": true,
+    "next_verified_session": "2026-10-08",
+    "three_sector_latest_date": "2026-10-02",
+    "three_sector_latest_status": "failed",
+    "formal_production_manifest_count": 0
+  },
+  "sites": {
+    "id": "appgprj_6a9fc01749888191aa90eb53087f13de",
+    "version": 40,
+    "url": "https://sanda-saidao-research.zdrzdrzdr233cu.chatgpt.site",
+    "status": "active",
+    "access": "custom"
+  },
+  "technical_debt": [
+    "首次自然交易日正式production尚待运行",
+    "保留既有历史来源的knowledge_time_unverified与circ_mv deferred约定",
+    "validation复用已有真实证据文件；首次正式production继续使用既有Provider路径"
+  ]
+}

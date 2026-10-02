@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-30",
+  "source": "database_real_historical_panel",
+  "checkpoint": {
+    "source": "database",
+    "checkpoint_trade_date": "2026-09-29",
+    "checkpoint_run_id": [
+      "21a8f577-5de8-46d4-8e1a-5b30e7fd0a5a"
+    ],
+    "checkpoint_rule_version": "mainline_v2.2.1_state_completion_v1",
+    "checkpoint_parameter_profile": "industry_trend_v221_state_completion_v1",
+    "checkpoint_taxonomy_version": "SW2021",
+    "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv"
+  },
+  "actual_membership_artifact_run_id": "36970118460",
+  "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+  "recomputed_checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+  "deterministic": true,
+  "industry_count": 31,
+  "warm_history_dates": 306,
+  "pipeline_run_id": "69ba9ab1-5b05-44f3-aab2-5d3d325fe872",
+  "workflow_run_id": "36990602935",
+  "code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30"
+}

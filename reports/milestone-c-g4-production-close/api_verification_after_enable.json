@@ -1,0 +1,23 @@
+{
+  "data_date": "2026-09-30",
+  "display_run_type": "production_simulation",
+  "production_enabled": true,
+  "latest_success_date": null,
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS"
+  },
+  "state_counts": {
+    "S0_count": 9,
+    "S1_count": 14,
+    "S2_count": 1,
+    "S3_count": 2,
+    "S4_count": 5,
+    "frozen_count": 1
+  },
+  "latest_attempt_code_sha": "8d9537b7737b1e71f234f2f415e60fc2ee296a30",
+  "latest_attempt_run_type": "production_validation",
+  "dispatch_credential_configured": true
+}

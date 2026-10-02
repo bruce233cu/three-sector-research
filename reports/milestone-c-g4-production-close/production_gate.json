@@ -1,0 +1,39 @@
+{
+  "run_type": "production_validation",
+  "dates": [
+    "2026-09-30"
+  ],
+  "daily_checks": [
+    {
+      "date": "2026-09-30",
+      "attempts": [
+        {
+          "date": "2026-09-30",
+          "boards": 31,
+          "frozen": 1,
+          "result": "idempotent",
+          "run_id": "60d1ec0d-8a9f-4bd0-8968-6930c05c7101",
+          "status": "partial",
+          "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+          "pipeline_run_id": "c589a9df-a980-44c9-8c55-50ab07921334"
+        },
+        {
+          "date": "2026-09-30",
+          "boards": 31,
+          "frozen": 1,
+          "result": "idempotent",
+          "run_id": "7550ba84-cbfd-43fa-9da7-91b17b862b75",
+          "status": "partial",
+          "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05",
+          "pipeline_run_id": "bb37a4d2-a823-4de5-967a-3e5af7102081"
+        }
+      ],
+      "member_count": 31,
+      "checksum": "270a7373b1d4e854e7e4ccc7f1d774ecf85f8783d975636c4243da8426a52f05"
+    }
+  ],
+  "five_days_complete": false,
+  "deterministic": true,
+  "production_enabled": false,
+  "g4": "PENDING"
+}
