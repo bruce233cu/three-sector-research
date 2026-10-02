@@ -5,6 +5,7 @@ on:
     paths: ['.github/workflows/mainline-blind-evidence-final.yml']
 permissions:
   contents: write
+  actions: read
 jobs:
   final-isolated-evidence:
     if: contains(github.event.head_commit.message, '[d-evidence-final]')
@@ -23,9 +24,31 @@ jobs:
           python -m py_compile scripts/mainline/backtest_*.py src/mainline/backtest/*.py
           PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_backtest_baseline.py' -v
           PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_warmup_resume.py' -v
-      - name: Versioned cold diagnostic using current statistics only
+      - name: Restore completed immutable business traces from the prior isolated job
+        uses: actions/download-artifact@v4
+        with:
+          name: mainline-blind-final-diagnostic-37009367622
+          run-id: 37009367622
+          github-token: ${{ github.token }}
+          path: temporary_blind_diagnostic
+      - name: Prepare new statistical evidence from completed business only
         run: |
-          python scripts/mainline/backtest_runner.py --run-id historical-blind-v1-20261002-diagnostic-v2 --output "$RESULTS"
+          python - <<'PY'
+          from pathlib import Path
+          import os,shutil
+          source=Path('temporary_blind_diagnostic')
+          roots=list(source.rglob('run_index.json'))
+          assert len(roots)==1
+          source=roots[0].parent
+          target=Path(os.environ['RESULTS'])
+          assert not target.exists()
+          target.mkdir(parents=True)
+          selected=['causal_context.json.gz','run_index.json','run_manifests.json','deterministic_rerun.json']
+          selected += [p.name for p in source.glob('*.json.gz') if p.stem.split('.')[0][0] in 'PNA']
+          for name in sorted(set(selected)):shutil.copyfile(source/name,target/name)
+          PY
+      - name: Evaluate and audit the matching run ID without changing business
+        run: |
           python scripts/mainline/backtest_evaluate.py --results "$RESULTS"
           python scripts/mainline/backtest_report.py --results "$RESULTS"
       - name: Preserve evidence without promoting the failed Baseline

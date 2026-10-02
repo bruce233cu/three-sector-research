@@ -8,6 +8,8 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--results',type=Path,required=True);p.add_argument('--warmup-dir',type=Path);a=p.parse_args()
     d=ROOT/'reports/milestone-d-baseline-v1';book=read(d/'casebook.json');profile,_=baseline_profile(ROOT)
     panel,members,dates,prov=load_inputs(d,profile)
+    index=read(a.results/'run_index.json')
+    for row in panel:row['run_id']=index['backtest_run_id']
     warm=[]
     if a.warmup_dir:
         raw,wm,_=load_warmup(a.warmup_dir,profile,dates[0]);members={**wm,**members}
