@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 import requests
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'src'))
-from mainline.production.daily import day_checksum,evolve
+from mainline.production.daily import day_checksum,evolve,business_payload
 from mainline.production.checkpoints import select_seed
 OUT=ROOT/'reports/mainline-production';OUT.mkdir(parents=True,exist_ok=True)
 def read(path):return json.loads(Path(path).read_text())
@@ -76,11 +76,15 @@ def main():
         for oid,ids in member['members'].items():
             if not ids or digest({'trade_date':target,'taxonomy_version':'SW2021','object_id':oid,'members':sorted(ids)})!=member['checksums'][oid]:
                 raise ValueError('real membership evidence checksum failed')
-        panel=[r['snapshot'] for r in actual['rows']]
+        certified=[r for r in read(locate('temporary_validation_evidence','real_board_states.json')) if r['snapshot']['as_of_date']==target]
+        if len(certified)!=31 or [business_payload(r) for r in sorted(certified,key=lambda r:r['snapshot']['object_id'])]!=[business_payload(r) for r in sorted(actual['rows'],key=lambda r:r['snapshot']['object_id'])]:
+            raise ValueError('database daily facts differ from certified evidence')
+        panel=[r['snapshot'] for r in certified]
         result=evolve(panel,context['calendar'],profile,lambda day:memberships[day],context['warm_history'],seed)
         repeat=evolve(panel,context['calendar'],profile,lambda day:memberships[day],context['warm_history'],seed)
         rows=result['rows'];selected=[target];sources=actual['sources']
-        expected=day_checksum(actual['rows'])
+        expected=day_checksum(certified)
+        if expected!=existing[0]['business_checksum']:raise ValueError('certified input checksum differs from database')
         if day_checksum(rows)!=expected or digest(result)!=digest(repeat):
             raise ValueError('validation continuation differs from certified daily checksum')
         gate={'parameter_profile':profile['profile_id'],'rule_version':profile['rule_version'],'parameter_hash':profile['calculation_parameter_hash']}
@@ -135,6 +139,6 @@ if __name__=='__main__':
     try:main()
     except Exception as e:
         if os.environ.get('MAINLINE_RUN_TYPE') in {'production','production_validation'}:
-            try:gateway('attempt',payload={'phase':'failed','trade_date':os.environ.get('MAINLINE_TARGET_DATE'),'pipeline_run_id':os.environ.get('MAINLINE_PIPELINE_RUN_ID'),'code_sha':os.environ.get('CODE_COMMIT'),'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),'run_type':os.environ.get('MAINLINE_RUN_TYPE'),'reason':str(e)[:1000]})
+            try:gateway('attempt',payload={'phase':'failed','run_id':str(uuid.uuid5(uuid.NAMESPACE_URL,os.environ.get('MAINLINE_PIPELINE_RUN_ID','')+':'+os.environ.get('MAINLINE_TARGET_DATE','')+':attempt')),'trade_date':os.environ.get('MAINLINE_TARGET_DATE'),'pipeline_run_id':os.environ.get('MAINLINE_PIPELINE_RUN_ID'),'code_sha':os.environ.get('CODE_COMMIT'),'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),'run_type':os.environ.get('MAINLINE_RUN_TYPE'),'reason':str(e)[:1000]})
             except Exception as reporting_error:print('failure_reporting_error:'+str(reporting_error),file=sys.stderr)
         write(OUT/'production_error.json',{'error':str(e),'code_sha':os.environ.get('CODE_COMMIT'),'run_type':os.environ.get('MAINLINE_RUN_TYPE')});raise

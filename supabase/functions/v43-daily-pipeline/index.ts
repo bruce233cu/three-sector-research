@@ -1471,10 +1471,17 @@ Deno.serve(async (request) => {
       const pending=await checked(client.from("automation_runs").select("id").eq("job_code","daily_research_pipeline").eq("run_date",runDate).contains("metadata",{run_type:"production_validation"}).eq("status","running").limit(1));
       if(pending.length)return json({status:"running",pipeline_run_id:pending[0].id,reason:"validation_already_running"});
       const jobs:any={mainline_job:{status:"running",business_status:"dispatched",business_date:runDate,run_type:"production_validation"},three_sector_daily_job:{status:"skipped",reason:"isolated_production_validation"},publish_job:{status:"skipped",reason:"validation_cannot_publish_live"}};
-      const run=await checked(client.from("automation_runs").insert({job_code:"daily_research_pipeline",run_date:runDate,trigger_type:"manual",status:"running",metadata:{daily_pipeline_version:"17:00-v1",run_type:"production_validation",...window,jobs}}).select("id").single());
+      let run:any;
+      if(body.pipeline_run_id) {
+        run=await checked(client.from("automation_runs").select("id,run_date,metadata,status").eq("id",body.pipeline_run_id).eq("job_code","daily_research_pipeline").single());
+        if(run.run_date!==runDate || run.metadata?.run_type!=="production_validation" || run.status==="running")throw new Error("invalid_validation_retry_parent");
+        await checked(client.from("automation_runs").update({status:"running",finished_at:null,error_message:null,metadata:{...run.metadata,jobs}}).eq("id",run.id));
+      } else {
+        run=await checked(client.from("automation_runs").insert({job_code:"daily_research_pipeline",run_date:runDate,trigger_type:"manual",status:"running",metadata:{daily_pipeline_version:"17:00-v1",run_type:"production_validation",...window,jobs}}).select("id").single());
+      }
       runId=run.id;
       jobs.mainline_job.pipeline_run_id=run.id;
-      await checked(client.from("automation_run_steps").insert({run_id:run.id,step_code:"mainline_job",step_name:"A股主线隔离生产续跑验收",status:"running",started_at:new Date().toISOString(),finished_at:null,message:"dispatch_pending_business_pending",metadata:jobs.mainline_job}));
+      await checked(client.from("automation_run_steps").upsert({run_id:run.id,step_code:"mainline_job",step_name:"A股主线隔离生产续跑验收",status:"running",started_at:new Date().toISOString(),finished_at:null,message:"dispatch_pending_business_pending",metadata:jobs.mainline_job},{onConflict:"run_id,step_code"}));
       await dispatchMainline(runDate,run.id,"production_validation");
       jobs.mainline_job={...jobs.mainline_job,status:"dispatched",reason:"dispatch_accepted_business_pending"};
       await checked(client.rpc("mainline_pipeline_finish",{p_parent:run.id,p_status:"running",p_metadata:{daily_pipeline_version:"17:00-v1",pipeline_run_id:run.id,run_type:"production_validation",...window,jobs},p_error:null}));
