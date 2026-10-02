@@ -1,5 +1,11 @@
 name: Mainline Baseline V1 historical blind test
 on:
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: 'Run containing persisted mainline-warmup-resume-cache; blank only if no cache exists'
+        required: false
+        type: string
   push:
     branches: [mainline-phase1e]
     paths: ['scripts/mainline/backtest_restore_warmup.py', '.github/workflows/mainline-blind-warmup.yml']
@@ -8,7 +14,7 @@ permissions:
   actions: read
 jobs:
   isolated-historical-blind-test:
-    if: contains(github.event.head_commit.message, '[d-warmup]')
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[d-warmup]')
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
@@ -55,6 +61,16 @@ jobs:
               with zipfile.ZipFile(root/(name+'.zip'),'w',compression=zipfile.ZIP_DEFLATED) as z:
                   for f in files:z.write(root/name/f,arcname=f)
           PY
+      - name: Restore successful cache before provider requests
+        if: github.event.inputs.resume_run_id != '' && github.event.inputs.resume_run_id != null
+        uses: actions/download-artifact@v4
+        with:
+          name: mainline-warmup-resume-cache
+          run-id: ${{ github.event.inputs.resume_run_id }}
+          github-token: ${{ github.token }}
+          path: temporary_warmup/prices
+      - name: Verify classified resume contract
+        run: PYTHONPATH=src python -m unittest discover -s tests/mainline -p test_warmup_resume.py -v
       - name: Recover missing warmup with bounded retry of unfinished sources
         run: >-
           python scripts/mainline/backtest_restore_warmup.py
@@ -63,6 +79,14 @@ jobs:
           --universe-zip temporary_warmup/universe.zip
           --output "$MAINLINE_BLIND_WARMUP"
           --cache temporary_warmup/prices
+      - name: Persist temporary cache on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mainline-warmup-resume-cache
+          path: temporary_warmup/prices/
+          retention-days: 30
+          if-no-files-found: error
       - name: Full frozen Baseline replay and five complete reruns
         run: >-
           python scripts/mainline/backtest_runner.py
@@ -74,6 +98,12 @@ jobs:
           python scripts/mainline/backtest_evaluate.py
           --results "$MAINLINE_BLIND_RESULTS"
           --warmup-dir "$MAINLINE_BLIND_WARMUP"
+      - name: Compare full warmup and cold start with the same evaluator
+        run: >-
+          python scripts/mainline/backtest_warmup_diff.py
+          --cold reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-01
+          --full "$MAINLINE_BLIND_RESULTS"
+          --output "$MAINLINE_BLIND_RESULTS"
       - name: Baseline report first and candidate list second
         run: python scripts/mainline/backtest_report.py --results "$MAINLINE_BLIND_RESULTS"
       - name: Preserve an honest failed gate if full recovery was impossible
