@@ -1,0 +1,158 @@
+{
+  "status": "SPECIFICATION_ONLY_NOT_EXECUTED",
+  "qualification": "DIAGNOSTIC_CALIBRATION_ONLY",
+  "development_set": {
+    "casebook": "casebook_v1_20261002_25",
+    "positive": 10,
+    "negative": 10,
+    "ambiguous": 5,
+    "role": "DEVELOPMENT_DIAGNOSTIC_SET",
+    "may_prove_generalization": false
+  },
+  "baseline": {
+    "positive_event_s2_cases": 5,
+    "positive_full_window_s2_cases": 6,
+    "negative_event_new_s2_cases": 1,
+    "negative_event_new_s2_transitions": 1,
+    "negative_event_s2_case_days": 11,
+    "negative_stable_s2_cases": 2,
+    "positive_event_lags": [-12, -4, -1, 3, 14],
+    "positive_event_lag_median": -1,
+    "positive_event_lag_mean": 0.0,
+    "positive_full_window_lags": [-12, -4, -1, 3, 14, 37],
+    "positive_full_window_lag_median": 1,
+    "positive_full_window_lag_mean": 6.1666666667,
+    "s0_s1_s0_patterns": 117,
+    "s1_s2_s1_or_s0_patterns": 0,
+    "s3_to_s2_recoveries": 4,
+    "transitions": 341,
+    "reversals": 276,
+    "short_reversals": 174,
+    "freeze_days": 63,
+    "g5": "FAIL",
+    "warmup_certified_requests": 5369,
+    "warmup_total_requests": 5382,
+    "warmup_qualified": false
+  },
+  "versions": [
+    {
+      "id": "BASELINE",
+      "arms": ["FROZEN_CURRENT_RULE"],
+      "purpose": "harness control"
+    },
+    {
+      "id": "V1_B_HARD_VETO_RESTRUCTURE",
+      "arms": ["V1_A_HARD_CONTROL", "V1_B_TIERED_EXCEPTION", "V1_C_CORE_PLUS_SUPPORT"],
+      "max_winners": 1
+    },
+    {
+      "id": "V2_MULTI_DAY_PERSISTENCE",
+      "arms": ["V2_P1_CORE_3_OF_5", "V2_P2_BALANCED_3_OF_5", "V2_P3_TWO_STAGE"],
+      "parent": "single V1 winner",
+      "max_winners": 1
+    },
+    {
+      "id": "V3_S1_HYSTERESIS",
+      "arms": ["V3_H1_CONSECUTIVE_2", "V3_H2_ROLLING_2_OF_3"],
+      "parent": "single V2 winner",
+      "max_winners": 1
+    },
+    {
+      "id": "V4_EVIDENCE_DEDUP",
+      "arms": ["V4_D1_NEW_HIGH_SINGLE_VOTE"],
+      "parent": "single V3 winner",
+      "max_winners": 1
+    }
+  ],
+  "execution": {
+    "strategy": "SEQUENTIAL_ELIMINATION",
+    "grid_search": false,
+    "full_factorial": false,
+    "maximum_registered_runs_including_baseline": 10,
+    "deterministic_reruns_per_arm": 2,
+    "stop_when_layer_has_no_winner": true,
+    "runtime_candidate_addition": false
+  },
+  "primary_metrics": [
+    "positive_event_s2_recall",
+    "positive_full_window_s2_recall",
+    "negative_event_new_s2_cases_and_transitions",
+    "negative_event_s2_case_days",
+    "positive_s2_lag_distribution_and_matched_delta",
+    "s0_s1_s0_patterns",
+    "s1_s2_s1_or_s0_illegal_patterns",
+    "s2_s3_s2_recoveries",
+    "reversals_and_short_reversals",
+    "negative_s1_dwell",
+    "null_freeze_qualification"
+  ],
+  "global_advancement_gates": {
+    "positive_event_s2_cases_min": 6,
+    "positive_full_window_s2_cases_min": 7,
+    "baseline_positive_event_hits_may_be_lost": 0,
+    "negative_event_new_s2_cases_max": 1,
+    "negative_event_new_s2_transitions_max": 1,
+    "negative_event_s2_case_days_max": 11,
+    "negative_stable_s2_cases_max": 2,
+    "improved_positive_cases_min": 2,
+    "improved_positive_episodes_min": 2,
+    "new_positive_event_hits_min": 1,
+    "matched_lag_median_delay_max_sessions": 1,
+    "matched_lag_mean_delay_max_sessions": 2,
+    "single_case_delay_max_sessions": 5,
+    "illegal_transitions_max": 0,
+    "future_data_reads_max": 0,
+    "freeze_hard_transitions_max": 0,
+    "null_coercions_max": 0,
+    "deterministic_checksum_mismatches_max": 0
+  },
+  "v3_gates": {
+    "s0_s1_s0_patterns_max": 99,
+    "short_reversals_max": 157,
+    "negative_event_s1_case_days_increase_max_ratio": 0.10,
+    "negative_case_max_s1_run_increase_max_sessions": 3,
+    "ordinary_exit_median_delay_max_eligible_sessions": 2,
+    "hard_failure_exit_delay_max_sessions": 0
+  },
+  "v4_gates": {
+    "duplicate_new_high_votes_max": 0,
+    "positive_recall_may_decline_from_parent": false,
+    "negative_s2_may_increase_from_parent": false,
+    "state_stability_degradation_max_ratio": 0.05
+  },
+  "data_contract": {
+    "null_policy": "PRESERVE_NULL_NEVER_ZERO_NEVER_DEFAULT_PASS",
+    "freeze_policy": "PRESERVE_BASELINE_CONTRACT",
+    "pit_level": "effective_pit",
+    "knowledge_time_unverified": true,
+    "warmup_qualification": "SEPARATE_GATE_NOT_SOLVED_BY_CALIBRATION",
+    "production_writes": 0
+  },
+  "holdout": {
+    "run_in_this_phase": false,
+    "positive_min": 10,
+    "negative_min": 10,
+    "ambiguous_min": 5,
+    "split_unit": "episode",
+    "overlap_with_development_episodes": false,
+    "labels_blind_to_model_output": true,
+    "reveal_once": true,
+    "post_reveal_tuning_invalidates_holdout": true
+  },
+  "forbidden_changes": [
+    "formal_rule_version",
+    "formal_parameter_profile",
+    "formal_thresholds",
+    "formal_state_machine",
+    "casebook",
+    "sample_labels",
+    "production_pipeline",
+    "scheduler",
+    "supabase_production_state",
+    "sites_production",
+    "G1_G2_G3_G4"
+  ],
+  "calibration_executed": false,
+  "holdout_executed": false,
+  "new_rule_version_created": false
+}
