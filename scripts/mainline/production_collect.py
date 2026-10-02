@@ -157,6 +157,7 @@ def main():
         panel.extend(rows)
     # Precompute warmup features and ranks using actual daily board history.
     from mainline.engine.metrics import finalize_metrics,add_cross_section
+    db_warm=json.loads((cached/'trusted_warm_history.json').read_text()) if (cached/'trusted_warm_history.json').exists() else []
     prepared=[];history={}
     for d in dates:
         rows=[r for r in panel if r['as_of_date']==d]
@@ -168,7 +169,7 @@ def main():
     first=next(d for d in dates if d>seed_date)
     # Seed at first actual window day; warmup input explicitly supplied to replay.
     live=[r for r in prepared if r['as_of_date']>=first]
-    warm=[r for r in prepared if r['as_of_date']<first]
+    warm=db_warm or [r for r in prepared if r['as_of_date']<first]
     calls=[]
     def resolver(d):
         # Parse again for the actual target date, not a static extension.
@@ -190,7 +191,7 @@ def main():
             'window_start':first,'window_end':dates[-1],'warmup_days':len({r['as_of_date'] for r in warm}),
             'days':len(first_calls),'industry_count':len(names),'daily_membership_calls':len(first_calls),
             'minimum_valid_cross_section':min(r['valid_ranked_objects'] for r in a['cross_sections']),
-            'seed':'trusted_checkpoint:'+seed_date,'real_transition_counts':kinds,'rows':len(a['rows']),'deterministic':digest(a)==digest(b),
+            'seed':'trusted_checkpoint:'+seed_date,'bootstrap_source':seed.get('bootstrap_source','g3_certification'),'real_transition_counts':kinds,'rows':len(a['rows']),'deterministic':digest(a)==digest(b),
             'repeat_checksum':digest(b),'input_price_checksum':price_sha,'temporary_stock_rows':len(bars),
             'source_snapshot_ids':source_ids,'provider_failures':sum(x['status']=='failed' for x in audit),
             'provider_requests':len(audit),'membership_source_version':provider.source_version,

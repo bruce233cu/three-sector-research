@@ -1,0 +1,55 @@
+{
+  "G1": "PASS",
+  "G2": "PASS",
+  "G3": "PASS",
+  "G4": "FAIL",
+  "MILESTONE_A": "CLOSED",
+  "MILESTONE_B": "CLOSED",
+  "MILESTONE_C": "OPEN",
+  "PRODUCTION_MAINLINE_ENABLED": false,
+  "MAINLINE_LIVE": false,
+  "simulation_rerun": false,
+  "recovered_base_sha": "33e615c39fec195a170b4dbfb932095c47de4824",
+  "edge_versions": {
+    "mainline-status": 5,
+    "mainline-production-gateway": 3,
+    "v43-daily-pipeline": 19
+  },
+  "sites": {
+    "version": 39,
+    "source_commit": "58d9b5274cf622a0476ed47b581fbcb816c732e8",
+    "deployment_id": "appgdep_6abf52fb627081918490130e6dce308e",
+    "status": "succeeded"
+  },
+  "acceptance": {
+    "continuation_pytest_passed": 9,
+    "pipeline_and_ui_contract_node_passed": 18,
+    "real_read_date": "2026-09-30",
+    "real_read_boards": 31,
+    "detail_timeline_dates": 10,
+    "detail_rule_evidence": 53,
+    "db_idempotent": true,
+    "conflicting_backfill_rejected": true,
+    "db_fault_rollback": true,
+    "lifecycle_unchanged": true,
+    "parent_child_trace_rollback_test": true,
+    "dispatch_business_separation_rollback_test": true,
+    "three_sector_metadata_preserved_rollback_test": true,
+    "schedule": "0 9 * * *",
+    "timezone": "Asia/Shanghai",
+    "latest_success_date": null,
+    "authenticated_sites_e2e": "NOT_VERIFIED",
+    "preview_ui": "data read failed; direct API navigation ERR_BLOCKED_BY_CLIENT",
+    "production_dispatch_e2e": "BLOCKED_MISSING_DISPATCH_CREDENTIAL"
+  },
+  "blocking_issues": [
+    {
+      "id": "dispatch_credential",
+      "reason": "MAINLINE_GITHUB_DISPATCH_TOKEN not configured; no live scheduler dispatch / Workflow / business-completion proof."
+    },
+    {
+      "id": "authenticated_sites_e2e",
+      "reason": "Published version and real Edge API verified; authenticated live /mainline interactions not verified. Preview data request failed and browser blocked direct API inspection."
+    }
+  ]
+}

@@ -1470,14 +1470,26 @@ Deno.serve(async (request) => {
         previousSuccessAt=status?.daily_pipeline?.three_sector?.latest_success_at || null;
         if(status?.daily_pipeline?.trading_calendar?.business_date===runDate) calendar=status.daily_pipeline.trading_calendar.is_open;
       } catch(error) {
-        return {...mainlineDecision(null),calendar_error:String(error),provider_status:"pending_provider"};
+        return {status:"failed",reason:"calendar_status_unavailable",calendar_error:String(error)};
       }
-      return {...mainlineDecision(calendar),provider_status:"pending_provider"};
+      if(calendar===null)return {status:"skipped",reason:"trading_calendar_unknown",pipeline_run_id:run.id,business_date:runDate};
+      if(calendar===false)return {status:"skipped",reason:"skipped_non_trading_day",pipeline_run_id:run.id,business_date:runDate};
+      const production=await execution.run({...context,signal},()=>checked(client.rpc("mainline_dispatch_context",{p_date:runDate})));
+      if(!production.enabled)return {status:"skipped",reason:"G4_NOT_PASSED_PRODUCTION_DISABLED",pipeline_run_id:run.id,business_date:runDate};
+      const dispatchToken=Deno.env.get("MAINLINE_GITHUB_DISPATCH_TOKEN");
+      if(!dispatchToken)throw new Error("MAINLINE_DISPATCH_CREDENTIAL_NOT_CONFIGURED");
+      const response=await fetch("https://api.github.com/repos/bruce233cu/three-sector-research/actions/workflows/mainline-production.yml/dispatches",{
+        method:"POST",signal,headers:{Authorization:"Bearer "+dispatchToken,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},
+        body:JSON.stringify({ref:"mainline-phase1e",inputs:{business_date:runDate,run_type:"production",pipeline_run_id:run.id}})
+      });
+      if(response.status!==204)throw new Error("MAINLINE_DISPATCH_FAILED_HTTP_"+response.status);
+      return {status:"dispatched",reason:"dispatch_accepted_business_pending",pipeline_run_id:run.id,business_date:runDate,business_status:"dispatched",rule_version:"mainline_v2.2.1_state_completion_v1",parameter_profile:"industry_trend_v221_state_completion_v1"};
     },10000);
     // Persist immediately; later three-sector failure cannot erase this result.
-    await recordStep({run_id:run.id,step_code:"mainline_job",step_name:"A股主线每日任务（禁用占位）",status:jobs.mainline_job.status,started_at:jobs.mainline_job.started_at,finished_at:jobs.mainline_job.finished_at,message:jobs.mainline_job.reason || jobs.mainline_job.error,metadata:jobs.mainline_job});
+    await recordStep({run_id:run.id,step_code:"mainline_job",step_name:"A股主线每日独立任务",status:jobs.mainline_job.status==="dispatched" ? "running" : jobs.mainline_job.status,started_at:jobs.mainline_job.started_at,finished_at:jobs.mainline_job.status==="dispatched" ? null : jobs.mainline_job.finished_at,message:jobs.mainline_job.reason || jobs.mainline_job.error,metadata:jobs.mainline_job});
     jobs.three_sector_daily_job=await independently("three_sector_daily_job",async(signal)=>execution.run({...context,signal},()=>threeSectorJob(client,run,runDate)),90000);
     const sector=jobs.three_sector_daily_job;
+    sector.child_run_id=run.id;sector.pipeline_run_id=run.id;
     await recordStep({run_id:run.id,step_code:"three_sector_daily_job",step_name:"三大赛道日终研究",status:sector.status==="succeeded" ? "succeeded" : "failed",started_at:sector.started_at,finished_at:sector.finished_at,message:sector.error || sector.status,metadata:{module_status:sector.status,result:sector.result,signal_collection:sector.signal_collection}});
     let successful_report: any=null;
     jobs.publish_job=await independently("publish_job",async(signal)=>execution.run({...context,signal},async()=>{
@@ -1494,7 +1506,7 @@ Deno.serve(async (request) => {
     const metadata={daily_pipeline_version:"17:00-v1",pipeline_run_id:run.id,...window,jobs,error_summary,source_health_summary:sourceHealth,latest_success_at:jobs.publish_job.latest_success_at || previousSuccessAt,...(successful_report ? {successful_report}:{})};
     const status=loggingErrors.length && overallStatus(Object.values(jobs))==="succeeded" ? "partial" : overallStatus(Object.values(jobs));
     const finished_at=new Date().toISOString();
-    await checked(client.from("automation_runs").update({status,finished_at,metadata,error_message:error_summary.length?JSON.stringify(error_summary):null}).eq("id",run.id));
+    await checked(client.rpc("mainline_pipeline_finish",{p_parent:run.id,p_status:status,p_metadata:metadata,p_error:error_summary.length?JSON.stringify(error_summary):null}));
     await checked(client.from("automation_jobs").update({last_run_at:finished_at,last_status:status,...(status==="succeeded"?{last_success_at:finished_at}:{}),last_error:error_summary.length?JSON.stringify(error_summary):null,updated_at:finished_at}).eq("job_code","daily_research_pipeline"));
     return json({pipeline_run_id:run.id,status,...metadata});
   } catch(error) {

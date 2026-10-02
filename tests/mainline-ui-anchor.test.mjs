@@ -11,7 +11,7 @@ test("mainline is a first-level market navigation entry", () => {
 });
 
 test("mainline anchor reads a dedicated real-data endpoint", () => {
-  assert.match(page, /fetch\("\/api\/mainline"/);
+  assert.match(page, /fetch\(['"]\/api\/mainline['"]/);
   assert.match(api, /functions\/v1\/mainline-status/);
 });
 

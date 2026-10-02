@@ -1,0 +1,14 @@
+{
+  "existing_day_idempotent": true,
+  "conflicting_backfill_rejected": true,
+  "db_write_fault_rolled_back": true,
+  "checkpoint_payload_unchanged": true,
+  "lifecycle_count_unchanged": true,
+  "lifecycle_count": 1351,
+  "parent_child_trace": true,
+  "dispatch_is_not_success": true,
+  "late_pipeline_finish_preserves_business_result": true,
+  "three_sector_metadata_preserved": true,
+  "test_writes_rolled_back": true,
+  "live_dispatch_tested": false
+}

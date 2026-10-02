@@ -11,6 +11,7 @@ import requests
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'src'))
 from mainline.production.daily import day_checksum
+from mainline.production.checkpoints import select_seed
 OUT=ROOT/'reports/mainline-production';OUT.mkdir(parents=True,exist_ok=True)
 def read(path):return json.loads(Path(path).read_text())
 def write(path,value):Path(path).parent.mkdir(parents=True,exist_ok=True);Path(path).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n')
@@ -33,6 +34,7 @@ def main():
     context=gateway('context',trade_date=target)
     if typ=='production_simulation' and target==today:
         target=max(d for d in context['calendar'] if d<today)
+        context=gateway('context',trade_date=target)
     if target not in context['calendar']:
         write(OUT/'production_gate.json',{'status':'skipped_non_trading_day','date':target,'calendar':'mainline.trading_calendar'});return
     if typ=='production' and not context['enabled']:raise ValueError('production remains disabled until G4 PASS')
@@ -42,17 +44,32 @@ def main():
     for path in (universe,sources):
         destination=ROOT/'temporary_g3_input'/path.name
         if path!=destination:destination.write_bytes(path.read_bytes())
-    g3=read(locate('temporary_seed','real_board_states.json'))
-    seed_date=max(r['snapshot']['as_of_date'] for r in g3)
-    seed={'date':seed_date,'checkpoints':{r['snapshot']['object_id']:r['state']['checkpoint'] for r in g3 if r['snapshot']['as_of_date']==seed_date}}
-    # Sequential continuation from the certified checkpoint; no invented reset.
+    profile=read(ROOT/'config/parameter_profile_industry_trend_v221_state_completion_v1.json')
+    g3=[]
+    bootstrap=None
+    if not context.get('checkpoints') and os.environ.get('MAINLINE_ALLOW_G3_BOOTSTRAP')=='true':
+        g3=read(locate('temporary_seed','real_board_states.json'))
+        day=max(r['snapshot']['as_of_date'] for r in g3)
+        bootstrap={'date':day,'checkpoints':{r['snapshot']['object_id']:r['state']['checkpoint'] for r in g3 if r['snapshot']['as_of_date']==day}}
+    seed=select_seed(context,profile,target,bootstrap=bootstrap)
+    parent=os.environ.get('MAINLINE_PIPELINE_RUN_ID') or str(uuid.uuid4())
+    attempt={'pipeline_run_id':parent,'trade_date':target,'run_type':typ,'code_sha':os.environ['CODE_COMMIT'],'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),'run_id':str(uuid.uuid5(uuid.NAMESPACE_URL,parent+':'+target+':attempt')),'parameter_hash':profile['calculation_parameter_hash']}
+    if typ=='production':gateway('attempt',payload={**attempt,'phase':'running'})
+    # If this date was already atomically committed, finish the run without providers or state increments.
+    existing=context.get('existing_target') or []
+    if len(existing)==31:
+        if typ=='production':gateway('attempt',payload={**attempt,'phase':'succeeded','result':'already_committed'})
+        write(OUT/'production_gate.json',{'run_type':typ,'date':target,'result':'already_committed','bootstrap_source':seed['bootstrap_source'],'seed_date':seed['date'],'pipeline_run_id':parent})
+        return
     write(ROOT/'temporary_g3_input/trusted_seed.json',seed)
+    write(ROOT/'temporary_g3_input/trusted_warm_history.json',context.get('warm_history') or [])
     env=dict(os.environ,MAINLINE_TARGET_DATE=target,MAINLINE_RUN_ID=str(uuid.uuid4()))
     subprocess.run([sys.executable,str(ROOT/'scripts/mainline/production_collect.py')],env=env,check=True,cwd=ROOT)
     rows=read(OUT/'real_board_states.json');gate=read(OUT/'real_window_gate.json');provenance=read(OUT/'real_input_provenance.json')
     if not gate['deterministic']:raise ValueError('non-deterministic certified engine')
     dates=sorted({r['snapshot']['as_of_date'] for r in rows})
-    selected=dates[-5:] if typ=='production_simulation' else [target]
+    selected=dates[-5:] if typ=='production_simulation' else dates
+    if typ!='production_simulation' and (not selected or selected[-1]!=target):raise ValueError('missing sequential continuation dates')
     if typ=='production_simulation' and len(selected)!=5:raise ValueError('five verified real sessions required')
     sources=[]
     for name,sid in gate['source_snapshot_ids'].items():
@@ -74,17 +91,21 @@ def main():
             if lc:ancestry[lc['lifecycle_id']]=lc
         payload={'trade_date':day,'profile_id':gate['parameter_profile'],'rule_version':gate['rule_version'],
           'parameter_hash':gate['parameter_hash'],'run_type':typ,'code_sha':os.environ['CODE_COMMIT'],
-          'checksum':day_checksum(group),'rows':group,'sources':sources,
+          'checksum':day_checksum(group),'rows':group,'sources':sources,'parent_pipeline_run_id':parent,'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),'business_date':target,'bootstrap_source':seed['bootstrap_source'],'seed_date':seed['date'],
           'lifecycle_ancestry':sorted(ancestry.values(),key=lambda x:(x['candidate_at'],x['lifecycle_id']))}
         attempts=[]
-        for _ in range(2):
+        for _ in range(1 if typ=='production' else 2):
             payload['run_id']=str(uuid.uuid4());payload['pipeline_run_id']=str(uuid.uuid4())
             attempts.append(gateway('commit',payload=payload))
-        if attempts[0]['checksum']!=attempts[1]['checksum'] or attempts[1]['result']!='idempotent':raise ValueError('database idempotency failure')
+        if len(attempts)>1 and (attempts[0]['checksum']!=attempts[1]['checksum'] or attempts[1]['result']!='idempotent'):raise ValueError('database idempotency failure')
         checks.append({'date':day,'attempts':attempts,'member_count':31,'checksum':payload['checksum']})
         write(OUT/'production_gate.json',{'run_type':typ,'dates':selected,'daily_checks':checks,'five_days_complete':len(checks)==5,'deterministic':True,'production_enabled':False,'g4':'PENDING'})
+    if typ=='production':gateway('attempt',payload={**attempt,'phase':'succeeded','result':'completed','seed_date':seed['date']})
     print(json.dumps({'dates':selected,'committed':len(checks),'run_type':typ}),flush=True)
 if __name__=='__main__':
     try:main()
     except Exception as e:
+        if os.environ.get('MAINLINE_RUN_TYPE')=='production':
+            try:gateway('attempt',payload={'phase':'failed','trade_date':os.environ.get('MAINLINE_TARGET_DATE'),'pipeline_run_id':os.environ.get('MAINLINE_PIPELINE_RUN_ID'),'code_sha':os.environ.get('CODE_COMMIT'),'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),'run_type':'production','reason':str(e)[:1000]})
+            except Exception as reporting_error:print('failure_reporting_error:'+str(reporting_error),file=sys.stderr)
         write(OUT/'production_error.json',{'error':str(e),'code_sha':os.environ.get('CODE_COMMIT'),'run_type':os.environ.get('MAINLINE_RUN_TYPE')});raise

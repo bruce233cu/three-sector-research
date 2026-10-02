@@ -1,13 +1,16 @@
 name: Mainline production traceability
 on:
-  push:
-    branches: [mainline-phase1e]
-    paths:
-      - '.github/workflows/mainline-production.yml'
-      - 'scripts/mainline/production_*.py'
-      - 'src/mainline/production/**'
   workflow_dispatch:
     inputs:
+      pipeline_run_id:
+        description: Existing Daily Pipeline parent UUID
+        default: ''
+      business_date:
+        description: Asia/Shanghai business date (trade_date compatibility alias)
+        default: ''
+      allow_g3_bootstrap:
+        type: boolean
+        default: false
       trade_date:
         description: Verified SSE date (empty uses latest completed session)
         default: ''
@@ -28,9 +31,11 @@ jobs:
       cancel-in-progress: false
     env:
       CODE_COMMIT: ${{ github.sha }}
-      MAINLINE_TARGET_DATE: ${{ inputs.trade_date }}
+      MAINLINE_TARGET_DATE: ${{ inputs.business_date || inputs.trade_date }}
       MAINLINE_RUN_TYPE: ${{ inputs.run_type || 'production_simulation' }}
       MAINLINE_GATEWAY: https://pdtlzleqsoftuxdnbdey.supabase.co/functions/v1/mainline-production-gateway
+      MAINLINE_PIPELINE_RUN_ID: ${{ inputs.pipeline_run_id }}
+      MAINLINE_ALLOW_G3_BOOTSTRAP: ${{ inputs.allow_g3_bootstrap }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
@@ -41,6 +46,7 @@ jobs:
       - name: Reuse certified universe ledger
         run: gh run download 36942748135 -n v221-benchmark-universe -D temporary_g3_input
       - name: Reuse certified checkpoint evidence
+        if: inputs.allow_g3_bootstrap == true
         run: gh run download 36961627493 -n mainline-state-completion-acquisition -D temporary_seed
       - name: Run unchanged engine and atomic persistence
         run: python scripts/mainline/production_run.py

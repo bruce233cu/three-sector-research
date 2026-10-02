@@ -1,0 +1,92 @@
+{
+  "summary": {
+    "status": 200,
+    "date": "2026-09-30",
+    "rows": 31,
+    "timeline": 0,
+    "rules": 0,
+    "counts": {
+      "S0_count": 9,
+      "S1_count": 14,
+      "S2_count": 1,
+      "S3_count": 2,
+      "S4_count": 5,
+      "frozen_count": 1
+    },
+    "latest_success": null,
+    "readiness": {
+      "dispatch_credential_configured": false
+    }
+  },
+  "radar": {
+    "status": 200,
+    "date": "2026-09-30",
+    "rows": 31,
+    "timeline": 0,
+    "rules": 0,
+    "counts": {
+      "S0_count": 9,
+      "S1_count": 14,
+      "S2_count": 1,
+      "S3_count": 2,
+      "S4_count": 5,
+      "frozen_count": 1
+    },
+    "latest_success": null,
+    "readiness": {
+      "dispatch_credential_configured": false
+    }
+  },
+  "detail": {
+    "status": 200,
+    "date": "2026-09-30",
+    "rows": 1,
+    "timeline": 10,
+    "rules": 53,
+    "counts": {
+      "S0_count": 9,
+      "S1_count": 14,
+      "S2_count": 1,
+      "S3_count": 2,
+      "S4_count": 5,
+      "frozen_count": 1
+    },
+    "latest_success": null,
+    "readiness": {
+      "dispatch_credential_configured": false
+    },
+    "lifecycle_id": "8d3f5ae7-00c1-5145-b00e-94380efb8011"
+  },
+  "timeline": {
+    "status": 200,
+    "date": "2026-09-30",
+    "rows": 10,
+    "timeline": 10,
+    "rules": 53,
+    "counts": {
+      "S0_count": 9,
+      "S1_count": 14,
+      "S2_count": 1,
+      "S3_count": 2,
+      "S4_count": 5,
+      "frozen_count": 1
+    },
+    "latest_success": null,
+    "readiness": {
+      "dispatch_credential_configured": false
+    }
+  },
+  "invalid": {
+    "status": 400,
+    "date": null,
+    "rows": 0,
+    "timeline": 0,
+    "rules": 0,
+    "counts": null,
+    "latest_success": null,
+    "readiness": null
+  },
+  "unauthorized": {
+    "status": 401
+  }
+}
