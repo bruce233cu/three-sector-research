@@ -1,0 +1,5 @@
+version,s0_s1_s0,delta_s0_s1_s0,s1_s2_s1_or_s0,s2_s3_s2,short_reversals,delta_short_reversals,reversals,delta_reversals,transitions,delta_transitions,negative_s1_days,delta_negative_s1_days
+BASELINE,117,0,0,4,174,0,276,0,341,0,23,0
+V1_A_HARD_CONTROL,117,0,0,4,174,0,276,0,341,0,23,0
+V1_B_TIERED_EXCEPTION,112,-5,0,5,168,-6,272,-4,337,-4,23,0
+V1_C_CORE_PLUS_SUPPORT,77,-40,0,6,135,-39,248,-28,341,0,5,-18

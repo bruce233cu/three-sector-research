@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "checks": {
+    "spec_markdown_checksum": true,
+    "spec_json_checksum": true,
+    "baseline_equivalence": true,
+    "baseline_headline": true,
+    "baseline_state_metrics": true,
+    "v1_control_equivalent": true,
+    "v1_b_failed_preregistered_gates": true,
+    "v1_c_failed_negative_guardrails": true,
+    "stop_rule_honored": true,
+    "final_conclusion_allowed": true,
+    "deterministic_rerun": true,
+    "null_and_freeze_contract": true,
+    "csv_row_counts": true,
+    "production_isolation": true,
+    "qualification_preserved": true
+  },
+  "failed_checks": [],
+  "scope": "independent artifact and frozen-gate verification; no experiment rerun",
+  "production_writes": 0
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "project": "three-sector-research",
+  "table": "public.system_optimization_records",
+  "record_key": "mainline-v221-rule-calibration-execution-20261003",
+  "record_date": "2026-10-03",
+  "acceptance_result": "部分通过",
+  "database_changed": false,
+  "screening_logic_changed": false,
+  "automation_changed": false,
+  "production_state_written": false,
+  "verified_after_insert": true
+}

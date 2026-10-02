@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "reruns_per_arm": 2,
+  "arms": [
+    {
+      "arm": "BASELINE",
+      "checksums": [
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f",
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V1_A_HARD_CONTROL",
+      "checksums": [
+        "b692a16494ec165378c2581e2612a65ae4c04093f7fe2039333c06ed826fee12",
+        "b692a16494ec165378c2581e2612a65ae4c04093f7fe2039333c06ed826fee12"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V1_B_TIERED_EXCEPTION",
+      "checksums": [
+        "6e08b5bfd0bf803b3defc8f40b6877a43237948a469f3f684ab7969500bc5e38",
+        "6e08b5bfd0bf803b3defc8f40b6877a43237948a469f3f684ab7969500bc5e38"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V1_C_CORE_PLUS_SUPPORT",
+      "checksums": [
+        "e4e4e1daa9e390b5bc6a6a9a3a921aa852c4fa623bc76edd8b5ce7280f6ffcd4",
+        "e4e4e1daa9e390b5bc6a6a9a3a921aa852c4fa623bc76edd8b5ce7280f6ffcd4"
+      ],
+      "identical": true
+    }
+  ],
+  "null_default_pass_count": 0,
+  "freeze_transition_violations": 0,
+  "production_writes": 0
+}

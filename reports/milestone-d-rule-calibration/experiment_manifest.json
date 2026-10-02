@@ -1,0 +1,38 @@
+{
+  "experiment": "RULE_CALIBRATION_EXECUTION",
+  "started_at": "2026-10-02T17:00:41.117914+00:00",
+  "finished_at": "2026-10-02T17:00:59.618114+00:00",
+  "start_sha": "9bed4d8ad564f82d2395142792e5f3d437aa8556",
+  "branch": "mainline-phase1e",
+  "spec_sha256": "aa90e64a70f5ddc97ed85a78136f4381bd8d27744455011f8ff52d8dc0de1329",
+  "spec_json_sha256": "9d9e237f8f37e3861f3c5bf3b7abd1f3c530dce051433168a8064579289ea951",
+  "casebook_version": "casebook_v1_20261002_25",
+  "casebook_checksum": "249799d4c82ee067c4450e58d3409c661e2afb0dc7ff0339ae277f0f6d69c47d",
+  "rule_version": "mainline_v2.2.1_state_completion_v1",
+  "parameter_profile": "industry_trend_v221_state_completion_v1",
+  "frozen_code_file_hashes": {
+    "config/parameter_profile_industry_trend_v221_state_completion_v1.json": "844130594ae32196aa46be3926d7ab4e049a630e2b2c9f75c88804f143328c3f",
+    "src/mainline/engine/replay.py": "b2f8d1ba26355432efbcb7df4f1559989a111e82b3b5f03cd5bf5014e78f91f3",
+    "src/mainline/engine/metrics.py": "0f7ac800d5627a1cb27a2e40014ce923bbf3dfea1aab2a05f9edec1b25fd75a8",
+    "src/mainline/engine/completion.py": "e2c2731595f227948228d4d1b9f7793173040899e8132ba3d23612e4ff85d589",
+    "src/mainline/engine/rules.py": "0bb0b6f9c124d0b67b16fcebb15eaa719791fac66714bf8d48adf65fd9425635",
+    "src/mainline/engine/state_machine.py": "a87f08f7cd8513f9b02a2e7920d832762edf471c78b390df93b481acd53acc15",
+    "src/mainline/production/daily.py": "e5516225b7e2a34ff54a89a831ed3b8b8987a93dde1e45ee3dcc24d5acd19f98"
+  },
+  "data_snapshot_version": "board-archive-3ff7ae0a56ab0c65",
+  "pit_level": "effective_pit",
+  "knowledge_time_unverified": true,
+  "warmup_qualified": false,
+  "g5": "FAIL",
+  "execution_order": [
+    "BASELINE",
+    "V1_A_HARD_CONTROL",
+    "V1_B_TIERED_EXCEPTION",
+    "V1_C_CORE_PLUS_SUPPORT"
+  ],
+  "stop_rule_applied": true,
+  "production_writes": 0,
+  "formal_rule_changed": false,
+  "formal_profile_changed": false,
+  "result_checksum": "f625391e87809b3670a5322da133dd38c6a630a32b0623782489d54a3f35490b"
+}
