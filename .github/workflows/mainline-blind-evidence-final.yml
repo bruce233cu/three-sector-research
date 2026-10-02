@@ -1,0 +1,45 @@
+name: Mainline blind-test final isolated evidence
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths: ['.github/workflows/mainline-blind-evidence-final.yml']
+permissions:
+  contents: write
+jobs:
+  final-isolated-evidence:
+    if: contains(github.event.head_commit.message, '[d-evidence-final]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RESULTS: reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-diagnostic-v2
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements-mainline.txt
+      - name: Validate all isolated contracts without provider requests
+        run: |
+          python -m py_compile scripts/mainline/backtest_*.py src/mainline/backtest/*.py
+          PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_backtest_baseline.py' -v
+          PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_warmup_resume.py' -v
+      - name: Versioned cold diagnostic using current statistics only
+        run: |
+          python scripts/mainline/backtest_runner.py --run-id historical-blind-v1-20261002-diagnostic-v2 --output "$RESULTS"
+          python scripts/mainline/backtest_evaluate.py --results "$RESULTS"
+          python scripts/mainline/backtest_report.py --results "$RESULTS"
+      - name: Preserve evidence without promoting the failed Baseline
+        run: |
+          git config user.name "mainline-validation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$RESULTS"
+          git commit -m "Archive revised isolated diagnostic; full warmup gate remains FAIL"
+          git fetch origin mainline-phase1e
+          git merge --no-edit origin/mainline-phase1e
+          git push origin HEAD:mainline-phase1e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-blind-final-diagnostic-${{ github.run_id }}
+          path: ${{ env.RESULTS }}/
+          retention-days: 30
