@@ -20,8 +20,9 @@ def gateway(operation,**kwargs):
     token=requests.get(url,headers={'Authorization':'Bearer '+os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']},timeout=30)
     token.raise_for_status()
     response=requests.post(os.environ['MAINLINE_GATEWAY'],headers={'Authorization':'Bearer '+token.json()['value']},json={'operation':operation,**kwargs},timeout=180)
-    response.raise_for_status();body=response.json()
+    body=response.json()
     if body.get('error'):raise RuntimeError(body['error'])
+    response.raise_for_status()
     return body
 def locate(directory,name):
     hits=list((ROOT/directory).rglob(name))
