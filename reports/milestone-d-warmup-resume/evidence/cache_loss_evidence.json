@@ -1,0 +1,35 @@
+{
+  "prior_run_id": 37004800566,
+  "prior_failure_count": 13,
+  "prior_artifacts_count": 0,
+  "prior_upload_warning": "No files were found with the provided path: reports/mainline-blind-warmup/. No artifacts will be uploaded.",
+  "prior_cache_uploaded": false,
+  "prior_failure_identity_and_error_evidence_available": false,
+  "local_cache_search_found": false,
+  "reconstruction_authority": "user sections 29-30",
+  "fixed_scope": "84 warmup dates; necessary securities; original certified source; no enlarged universe/fields",
+  "source_artifacts": [
+    {
+      "name": "g3",
+      "sha256": "1af05b8228128a6895ce361fa13f82df71ab82fc007b55b1700baec1c9eae519",
+      "file_count": 8,
+      "cached_price_or_retry_entries": []
+    },
+    {
+      "name": "production",
+      "sha256": "a9a344690ead1598af55f2c6acf486de86274dc143a2fe05e7200f32f71b7969",
+      "file_count": 9,
+      "cached_price_or_retry_entries": []
+    },
+    {
+      "name": "universe",
+      "sha256": "0bbeef90e64d24979ccebc6a20f8567e5326d8ac76ee9dac0e2a4975a9cc32ca",
+      "file_count": 172,
+      "cached_price_or_retry_entries": [
+        "temporary_benchmark_window.parquet"
+      ]
+    }
+  ],
+  "universe_parquet_warmup_rows": 0,
+  "universe_parquet_note": "Existing historical sample cache inspected; zero rows in needed warmup interval."
+}

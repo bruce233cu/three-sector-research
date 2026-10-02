@@ -1,0 +1,51 @@
+{
+  "before": [
+    {
+      "object": "snapshots",
+      "rows": 385,
+      "checksum": "9a417f09d33b520bcb3a6af634ba1708"
+    },
+    {
+      "object": "checkpoints",
+      "rows": 310,
+      "checksum": "c05800e2526babfe41d2e0e82590e62b"
+    },
+    {
+      "object": "lifecycles",
+      "rows": 1351,
+      "checksum": "96881a2f122969be1151a289e21ebe69"
+    },
+    {
+      "object": "manifests",
+      "rows": 54,
+      "checksum": "f119dfee985545c23dbe43bbcfb761f7"
+    }
+  ],
+  "after": [
+    {
+      "object": "snapshots",
+      "rows": 385,
+      "checksum": "9a417f09d33b520bcb3a6af634ba1708"
+    },
+    {
+      "object": "checkpoints",
+      "rows": 310,
+      "checksum": "c05800e2526babfe41d2e0e82590e62b"
+    },
+    {
+      "object": "lifecycles",
+      "rows": 1351,
+      "checksum": "96881a2f122969be1151a289e21ebe69"
+    },
+    {
+      "object": "manifests",
+      "rows": 54,
+      "checksum": "f119dfee985545c23dbe43bbcfb761f7"
+    }
+  ],
+  "unchanged": true,
+  "production_writes": 0,
+  "latest_success_before": null,
+  "latest_success_after": null,
+  "latest_success_unchanged": true
+}

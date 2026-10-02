@@ -1,0 +1,26 @@
+{
+  "G1": "PASS",
+  "G2": "PASS",
+  "G3": "PASS",
+  "G4": "PASS",
+  "G1_G4_basis": "existing authorized status; not rerun",
+  "G5": "FAIL",
+  "milestone_d": "OPEN",
+  "baseline_blind_test_closed": false,
+  "enter_rule_calibration": false,
+  "blocking_issues": [
+    "13项当前原始响应校验不等于原认证值；原认证字节未保存，无法恢复原版本。",
+    "既有任务未上传成功价格缓存，不能从现有artifact完成完整认证预热。"
+  ],
+  "full_warmup_baseline": "NOT_RUN",
+  "diff": "NOT_RUN",
+  "full_warmup_deterministic_rerun": "NOT_RUN",
+  "cold_start": "DIAGNOSTIC_ONLY",
+  "pit_level": "effective_pit",
+  "knowledge_time_unverified": true,
+  "production_writes": 0,
+  "rule_version": "mainline_v2.2.1_state_completion_v1",
+  "parameter_profile": "industry_trend_v221_state_completion_v1",
+  "casebook_version": "casebook_v1_20261002_25",
+  "warmup_audit": "warmup_audit.json"
+}

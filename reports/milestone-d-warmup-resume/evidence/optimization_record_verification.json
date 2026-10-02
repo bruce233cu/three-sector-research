@@ -1,0 +1,8 @@
+{
+  "id": "bc18da02-2776-4c69-bee9-654d318bf252",
+  "record_key": "mainline-v221-warmup-resume-20261002-37008036477-final",
+  "acceptance_result": "未通过",
+  "query_verified": true,
+  "recovery_logic_commit": "18623b689fdfe8efa3b14f50a89a10c180db9345",
+  "final_workflow_commit": "1585a1a20a69a86aa81c465504f0811425bb9001"
+}
