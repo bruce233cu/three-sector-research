@@ -7,6 +7,7 @@ export async function GET(request:Request) {
  try{
   const response=await fetch(`${url}/functions/v1/mainline-status?${params}`,{headers:{apikey:key},cache:'no-store'});
   if(!response.ok)return NextResponse.json({error:'mainline status unavailable'},{status:response.status>=500?502:response.status});
-  return new NextResponse(await response.text(),{headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store'}});
+  const data=await response.json();
+  return NextResponse.json({...data,current_milestone:'MILESTONE C',milestone_status:data.gates?.G4==='PASS'?'CLOSED':'OPEN',latest_code_sha:data.latest_attempt?.code_commit??null,...data.gates,...data.state_counts},{headers:{'cache-control':'no-store'}});
  }catch{return NextResponse.json({error:'mainline status unavailable'},{status:502});}
 }
