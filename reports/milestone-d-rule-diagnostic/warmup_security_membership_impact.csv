@@ -1,0 +1,14 @@
+security_id,object_id,industry,first_membership_date,last_membership_date,warmup_member_days,warmup_member_count_min,max_one_security_weight_equal_member,related_cases,status,effect_size,effect_size_reason
+001367.SZ,sw1_classification_370000,医药生物,2024-05-06,2025-06-30,84,491,0.002036659877800407,[],BENCHMARK_INDIRECT_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+002484.SZ,sw1_classification_270000,电子,2024-05-06,2025-06-30,84,469,0.0021321961620469083,"[""P01""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+002780.SZ,sw1_classification_350000,纺织服饰,2024-05-06,2025-06-30,84,106,0.009433962264150943,"[""N06""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+300099.SZ,sw1_classification_640000,机械设备,2024-05-06,2025-06-30,84,572,0.0017482517482517483,"[""P07""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+300190.SZ,sw1_classification_760000,环保,2024-05-06,2025-06-30,84,135,0.007407407407407408,[],BENCHMARK_INDIRECT_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+300218.SZ,sw1_classification_220000,基础化工,2024-05-06,2025-06-30,84,415,0.0024096385542168677,[],BENCHMARK_INDIRECT_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+300285.SZ,sw1_classification_270000,电子,2024-05-06,2025-06-30,84,469,0.0021321961620469083,"[""P01""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+300364.SZ,sw1_classification_720000,传媒,2024-05-06,2025-06-30,84,130,0.007692307692307693,"[""N05"",""A01""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+300872.SZ,sw1_classification_710000,计算机,2024-05-06,2025-06-30,84,355,0.0028169014084507044,"[""P06""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+301220.SZ,sw1_classification_220000,基础化工,2024-05-06,2025-06-30,84,415,0.0024096385542168677,[],BENCHMARK_INDIRECT_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+600583.SH,sw1_classification_750000,石油石化,2024-05-06,2025-06-30,84,46,0.021739130434782608,[],BENCHMARK_INDIRECT_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+603966.SH,sw1_classification_640000,机械设备,2024-05-06,2025-06-30,84,572,0.0017482517482517483,"[""P07""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
+688372.SH,sw1_classification_270000,电子,2024-05-06,2025-06-30,84,469,0.0021321961620469083,"[""P01""]",WARMUP_SENSITIVE,,Missing certified prices/amount; membership share is not price/turnover impact.
