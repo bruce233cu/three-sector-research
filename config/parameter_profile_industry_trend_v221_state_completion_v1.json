@@ -1,0 +1,116 @@
+{
+  "freeze": {
+    "source_conflict_freeze": true,
+    "critical_dataset_failure": true
+  },
+  "labels": {
+    "enabled": false
+  },
+  "retire": {
+    "consecutive_days": 3,
+    "enhancer_min_pass_count": 1,
+    "rs10_cross_section_pct_exit": 0.5,
+    "core_deterioration_group_min": 2
+  },
+  "weaken": {
+    "consecutive_days": 2,
+    "deterioration_group_min": 2,
+    "min_dwell_days_after_confirm": 3
+  },
+  "confirm": {
+    "rs10_min": 0,
+    "win5_min": 0.8,
+    "win10_min": 0.7,
+    "above_ma20_min": 0.6,
+    "turnover_pct60_min": 0.6,
+    "breadth_min_pass_count": 2,
+    "enhancer_min_pass_count": 2,
+    "confirm_consecutive_days": 2,
+    "rs10_cross_section_pct_max": 0.3
+  },
+  "coverage": {
+    "min_breadth": 0.7,
+    "min_rs_window": 0.9,
+    "min_sector_return": 0.7,
+    "min_benchmark_cross_section": 0.95
+  },
+  "benchmark": {
+    "primary": "ALL_A_EQUAL_WEIGHT",
+    "secondary": [
+      "ALL_A_CAP_WEIGHT"
+    ]
+  },
+  "candidate": {
+    "rs10_min": 0,
+    "win5_min": 0.6,
+    "turnover_intensity_min": 1,
+    "candidate_min_pass_count": 3,
+    "rs5_cross_section_pct_max": 0.2
+  },
+  "audit_only": true,
+  "profile_id": "industry_trend_v221_state_completion_v1",
+  "rule_version": "mainline_v2.2.1_state_completion_v1",
+  "mainline_type": "B_industry_trend",
+  "metric_availability": {
+    "circ_mv_status": "deferred",
+    "deferred_metrics": {
+      "turnover_cap_deviation": {
+        "role": "optional_enhancement",
+        "status": "deferred_due_to_unproven_historical_circ_mv",
+        "g1_required": false,
+        "value_policy": "NULL_ONLY",
+        "state_rule_policy": "inactive_when_unavailable"
+      },
+      "top3_return_contribution": {
+        "role": "optional_enhancement",
+        "status": "deferred_due_to_unproven_historical_circ_mv",
+        "g1_required": false,
+        "value_policy": "NULL_ONLY",
+        "state_rule_policy": "inactive_when_unavailable"
+      }
+    },
+    "restore_requires": [
+      "new_rule_version",
+      "new_parameter_profile",
+      "new_metric_availability_version",
+      "source_PIT_and_denominator_acceptance"
+    ],
+    "historical_rewrite": false
+  },
+  "business_thresholds_changed": true,
+  "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv",
+  "benchmark_coverage_clarification": {
+    "document": "docs/V2_2_1_BENCHMARK_COVERAGE_CLARIFICATION.md",
+    "below_threshold": "NULL_AND_FREEZE",
+    "unknown_denominator": "NULL_COVERAGE_AND_FREEZE",
+    "clarification_version": "V2.2.1-ALL_A_EQUAL_WEIGHT-coverage-2026-10-01",
+    "daily_cross_section_min": 0.95,
+    "rs_window_min_unchanged": 0.9,
+    "user_explicit_authorization": true,
+    "benchmark_definition_changed": false,
+    "sector_internal_min_unchanged": 0.7
+  },
+  "clarification_version": "V2.2.1-mainline-state-completion-2026-10-02",
+  "state_completion": {
+    "rs5_ols_window": 5,
+    "rs5_ols_minimum": 4,
+    "rank_direction": "0_strongest_1_weakest",
+    "weaken_rank_operator": ">",
+    "retire_rank_operator": ">",
+    "retire_rank_threshold": 0.5,
+    "breadth_deterioration_lag": 3,
+    "breadth_pass_minimum": 3,
+    "breadth_median_valid_window": 20,
+    "weaken_group_minimum": 2,
+    "retire_group_minimum": 2,
+    "recover_consecutive_days": 2,
+    "freeze_short_gap_max": 3,
+    "freeze_counter_policy": "paused",
+    "freeze_first_resume_day_transition": false,
+    "e4_window": 250,
+    "e4_minimum_valid": 160,
+    "e4_high_percentile": 0.9,
+    "structural_evidence": "enhancement_evidence_deferred"
+  },
+  "calculation_parameter_hash": "85c701a313b6a59529e7b8a7ea52af64d2e708011f56abf5d82d74580fd2384f"
+}

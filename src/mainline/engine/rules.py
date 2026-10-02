@@ -90,26 +90,56 @@ def evaluate_rules(snapshot, profile):
     e1=compare('E1','rs_20',0,'>')
     e2=compare('E2','above_ma60',None,'>','above_ma60_lag3')
     e3=compare('E3','new_high_60',None,'>','new_high_60_lag3')
-    e4=emit('E4','top3_turnover_share',snapshot.get('top3_turnover_share'),.90,'historical_percentile_OR_breadth_improvement',None,
+    completed=profile.get('clarification_version') == 'V2.2.1-mainline-state-completion-2026-10-02'
+    if completed:
+        e4low=compare('E4.not_high','top3_turnover_pct_250',.90,'<')
+        # High concentration requires reliable synchronous-breadth enhancement.
+        # That optional structural evidence stays deferred; do not fill false.
+        e4=emit('E4','top3_turnover_pct_250',snapshot.get('top3_turnover_pct_250'),.90,'NOT_HIGH_OR_ENHANCEMENT',
+                True if e4low is True else None,'passed' if e4low is True else 'enhancement_evidence_deferred' if e4low is False else 'insufficient_evidence')
+    else:
+        e4=emit('E4','top3_turnover_share',snapshot.get('top3_turnover_share'),.90,'historical_percentile_OR_breadth_improvement',None,
             'BUSINESS_RULE_CONFLICT:E4_history_window_and_synchronous_breadth_definition_missing')
     e5=emit('E5','active_subtheme_count',snapshot.get('active_subtheme_count'),None,'increase',None,
-            'family_evidence_unavailable_not_counted')
-    enhancer=group('enhancers',['E1','E2','E3','E4','E5'],at_least([e1,e2,e3,e4,e5],q['enhancer_min_pass_count']),q['enhancer_min_pass_count'],'COUNT')
+            'enhancement_evidence_deferred' if completed else 'family_evidence_unavailable_not_counted')
+    enhancer=group('enhancers',['E1','E2','E3','E4','E5'],at_least([e1,e2,e3,e4] if completed else [e1,e2,e3,e4,e5],q['enhancer_min_pass_count']),q['enhancer_min_pass_count'],'COUNT')
     confirm=group('confirm',['A','B','C','D','enhancers'],tri_all([a,b,cg,d,enhancer]),5,'AND')
-    # V2.2 names these groups but does not quantify their estimator/window or
-    # structural/core/family deterioration. Do not substitute developer guesses.
-    deterioration=[]
-    for name in ['RS','turnover','breadth','structure']:
-        deterioration.append(emit('weaken.'+name,name,None,None,'frozen_contract_group',None,
-            'BUSINESS_RULE_CONFLICT:deterioration_group_executable_definition_incomplete'))
-    weaken=group('weaken',['weaken.RS','weaken.turnover','weaken.breadth','weaken.structure'],
-                 at_least(deterioration,profile['weaken']['deterioration_group_min']),profile['weaken']['deterioration_group_min'],'COUNT')
-    exit_rank=compare('retire.rank','rs_10_pct',profile['retire']['rs10_cross_section_pct_exit'],'>')
-    retire=emit('retire','core_deterioration_groups',None,profile['retire']['core_deterioration_group_min'],'COUNT_AND_ENHANCER',None,
-                'BUSINESS_RULE_CONFLICT:core_group_definition_and_structure_or_family_exit_missing')
-    recover=emit('recover','confirm_recovery',confirm,None,'recover_to_confirmed',None,
-                 'BUSINESS_RULE_CONFLICT:recovery_consecutive_and_debounce_policy_missing')
+    if completed:
+        wa=compare('weaken.slope','rs5_slope',0,'<')
+        wb=compare('weaken.rank','rs10_percentile_deteriorating',True,'==')
+        decline=[]
+        weak_zone=[]
+        fields=['up_ratio','above_ma20','above_ma60','new_high_60']
+        for field in fields:
+            decline.append(compare('weaken.breadth.'+field,field,None,'<',field+'_lag3'))
+            weak_zone.append(compare('retire.breadth.'+field,field,None,'<',field+'_median20'))
+        wc=group('weaken.breadth',['weaken.breadth.'+f for f in fields],at_least(decline,3),3,'COUNT')
+        weaken=group('weaken',['weaken.slope','weaken.rank','weaken.breadth'],at_least([wa,wb,wc],2),2,'COUNT')
+        ra1=compare('retire.rs10','rs_10',0,'<')
+        ra2=compare('retire.rs20','rs_20',0,'<')
+        ra=group('retire.returns',['retire.rs10','retire.rs20'],tri_all([ra1,ra2]),2,'AND')
+        rb=compare('retire.rank','rs_10_pct',.50,'>')
+        rc=group('retire.breadth',['retire.breadth.'+f for f in fields],at_least(weak_zone,3),3,'COUNT')
+        retire=group('retire',['retire.returns','retire.rank','retire.breadth'],at_least([ra,rb,rc],2),2,'COUNT')
+        recover=group('recover',['confirm'],confirm,2,'CONFIRM_CONSECUTIVE_KERNEL')
+        for name in ['core','midcap','family']:
+            emit('enhancement.'+name,name,None,None,'DEFERRED',None,'enhancement_evidence_deferred')
+    else:
+        # V2.2 names these groups but does not quantify their estimator/window or
+        # structural/core/family deterioration. Do not substitute developer guesses.
+        deterioration=[]
+        for name in ['RS','turnover','breadth','structure']:
+            deterioration.append(emit('weaken.'+name,name,None,None,'frozen_contract_group',None,
+                'BUSINESS_RULE_CONFLICT:deterioration_group_executable_definition_incomplete'))
+        weaken=group('weaken',['weaken.RS','weaken.turnover','weaken.breadth','weaken.structure'],
+                     at_least(deterioration,profile['weaken']['deterioration_group_min']),profile['weaken']['deterioration_group_min'],'COUNT')
+        exit_rank=compare('retire.rank','rs_10_pct',profile['retire']['rs10_cross_section_pct_exit'],'>')
+        retire=emit('retire','core_deterioration_groups',None,profile['retire']['core_deterioration_group_min'],'COUNT_AND_ENHANCER',None,
+                    'BUSINESS_RULE_CONFLICT:core_group_definition_and_structure_or_family_exit_missing')
+        recover=emit('recover','confirm_recovery',confirm,None,'recover_to_confirmed',None,
+                     'BUSINESS_RULE_CONFLICT:recovery_consecutive_and_debounce_policy_missing')
     return {'rules':rules,'evidence':{'candidate':candidate,'confirm':confirm,'weaken':weaken,'retire':retire,'recover':recover},
             'trigger_rules':[r['rule_id'] for r in rules if r['passed'] is True],
             'failed_rules':[r['rule_id'] for r in rules if r['passed'] is False],
             'unavailable_rules':[r['rule_id'] for r in rules if r['passed'] is None]}
+

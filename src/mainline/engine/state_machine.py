@@ -35,6 +35,7 @@ class Checkpoint:
     freeze_started_at: str | None = None
     freeze_ended_at: str | None = None
     freeze_active: bool = False
+    counter_policy: str | None = None
 
 
 def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_policy=None):
@@ -45,6 +46,10 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
     A missing previous checkpoint is unknown, never fabricated as historical S0.
     """
     cp=deepcopy(checkpoint)
+    completed=profile.get('clarification_version') == 'V2.2.1-mainline-state-completion-2026-10-02'
+    if completed:
+        cp.consecutive.setdefault('recover',0)
+    resume_day=False
     day=str(snapshot['as_of_date']);calendar=sorted(str(d) for d in market_dates)
     identity=(snapshot['object_id'],snapshot['rule_version'],profile['profile_id'],snapshot['metric_availability_version'])
     if identity!=(cp.object_id,cp.rule_version,cp.parameter_profile,cp.metric_availability_version):
@@ -66,13 +71,24 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
         if not cp.freeze_active or cp.freeze_ended_at is not None:
             cp.freeze_started_at=day
             cp.freeze_ended_at=None
-        cp.freeze_active=True;reason=snapshot.get('freeze_reason') or 'critical_data_unavailable'
+        cp.freeze_active=True
+        if completed: cp.counter_policy='paused'
+        reason=snapshot.get('freeze_reason') or 'critical_data_unavailable'
         debounce_status='paused_by_freeze';debounce_reason='no_new_hard_transition';debounce_days=max(cp.consecutive.values())
     else:
         if cp.freeze_active:
             if cp.freeze_ended_at is None:
                 cp.freeze_ended_at=day
-            if resume_policy is None:
+            if completed:
+                from .replay import verified_freeze_gap
+                gap=calendar[calendar.index(cp.freeze_started_at):calendar.index(day)]
+                proof=snapshot.get('freeze_gap_evidence',[])
+                verified=len(gap)<=3 and verified_freeze_gap(proof,gap,cp)
+                cp.counter_policy='resumed' if verified else 'reset_after_unverifiable_gap'
+                if not verified: cp.consecutive={k:0 for k in cp.consecutive}
+                cp.freeze_active=False;resume_day=True
+                resume_reason=cp.counter_policy
+            elif resume_policy is None:
                 frozen=True;reason='BUSINESS_RULE_CONFLICT:freeze_resume_count_policy_missing'
                 resume_reason='data_restored_state_resume_policy_unresolved'
             elif resume_policy=='reset':
@@ -89,9 +105,12 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
                 frozen=True;reason='rule_evidence_unavailable:'+','.join(k for k in required if evidence[k] is None)
             else:
                 for key in cp.consecutive:
-                    eligible={'confirm':previous=='S1','weaken':previous=='S2','retire':previous=='S3'}[key]
+                    eligible={'confirm':previous=='S1','weaken':previous=='S2','retire':previous=='S3','recover':previous=='S3'}[key]
                     cp.consecutive[key]=(cp.consecutive[key]+1 if eligible and evidence[key] is True else 0)
-                if previous=='S0' and evidence['candidate']:
+                if resume_day:
+                    reason='freeze_recovery_first_session_no_transition'
+                    debounce_status='recovery_first_day_guard';debounce_reason=reason
+                elif previous=='S0' and evidence['candidate']:
                     state='S1';trigger='candidate'
                 elif previous=='S1':
                     if cp.consecutive['confirm']>=profile['confirm']['confirm_consecutive_days']:
@@ -110,7 +129,7 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
                 elif previous=='S3':
                     if cp.consecutive['retire']>=profile['retire']['consecutive_days']:
                         state='S4';trigger='retire'
-                    elif evidence['recover']:
+                    elif (cp.consecutive.get('recover',0)>=2 if completed else evidence['recover']):
                         state='S2';trigger='recover'
                 elif previous=='S4' and evidence['candidate']:
                     state='S1';trigger='new_lifecycle_reentry'
@@ -149,7 +168,9 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
                 debounce_days=max(cp.consecutive.values())
     if frozen and not cp.freeze_active:
         cp.freeze_started_at=day
+        cp.freeze_ended_at=None
         cp.freeze_active=True
+        if completed: cp.counter_policy='paused'
     cp.last_date=day
     if cp.state is not None:
         cp.state_days+=1
@@ -163,8 +184,11 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
         'freeze_ended_at':cp.freeze_ended_at,'resume_reason':resume_reason,
         'rule_version':cp.rule_version,'parameter_profile':cp.parameter_profile,
         'metric_availability_version':cp.metric_availability_version,
+        'clarification_version':profile.get('clarification_version'),
+        'counter_policy':cp.counter_policy,
         'trigger_rules':evaluation.get('trigger_rules',[]),'failed_rules':evaluation.get('failed_rules',[]),
         'unavailable_rules':evaluation.get('unavailable_rules',[]),'reason':reason,'transition':transition,
         'run_id':snapshot.get('run_id'),'source_snapshot_ids':snapshot.get('source_snapshot_ids',[]),
         'reentry_count':cp.reentry_count,'checkpoint':asdict(cp)}
     return result,cp
+
