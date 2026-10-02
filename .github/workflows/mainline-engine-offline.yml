@@ -1,0 +1,35 @@
+name: Mainline Engine offline audit
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths: ['src/mainline/engine/**', 'tests/mainline/test_engine*.py', 'scripts/mainline/milestone_b_offline.py', '.github/workflows/mainline-engine-offline.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  engine-offline:
+    if: contains(github.event.head_commit.message, '[mainline-engine-audit]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements-mainline.txt
+      - run: |
+          PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_engine*.py' -v
+          PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_v221_benchmark.py' -v
+      - uses: actions/download-artifact@v4
+        with:
+          name: mainline-v221-real-close
+          run-id: 36889897269
+          github-token: ${{ github.token }}
+          path: reports/milestone-a-final-close/
+      - run: python scripts/mainline/milestone_b_offline.py
+        env: {CODE_COMMIT: '${{ github.sha }}'}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-engine-offline-audit
+          path: reports/milestone-b-engine/
+          retention-days: 30
