@@ -55,9 +55,10 @@ def main():
     parent=os.environ.get('MAINLINE_PIPELINE_RUN_ID') or str(uuid.uuid4())
     attempt={'pipeline_run_id':parent,'trade_date':target,'run_type':typ,'code_sha':os.environ['CODE_COMMIT'],'workflow_run_id':os.environ.get('GITHUB_RUN_ID'),'run_id':str(uuid.uuid5(uuid.NAMESPACE_URL,parent+':'+target+':attempt')),'parameter_hash':profile['calculation_parameter_hash']}
     if typ=='production':gateway('attempt',payload={**attempt,'phase':'running'})
-    # If this date was already atomically committed, finish the run without providers or state increments.
+    # Reuse a production success only after a genuine production manifest exists.
+    # Simulation checkpoints alone must never promote the date to LIVE.
     existing=context.get('existing_target') or []
-    if len(existing)==31:
+    if len(existing)==31 and (typ!='production' or context.get('latest_success')==target):
         if typ=='production':gateway('attempt',payload={**attempt,'phase':'succeeded','result':'already_committed'})
         write(OUT/'production_gate.json',{'run_type':typ,'date':target,'result':'already_committed','bootstrap_source':seed['bootstrap_source'],'seed_date':seed['date'],'pipeline_run_id':parent})
         return
