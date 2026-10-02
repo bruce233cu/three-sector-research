@@ -1,0 +1,5 @@
+version,s0_s1_s0,delta_s0_s1_s0,s1_s2_s1_or_s0,s2_s3_s2,short_reversals,delta_short_reversals,reversals,delta_reversals,transitions,delta_transitions,negative_s1_days,delta_negative_s1_days
+BASELINE,117,0,0,4,174,0,276,0,341,0,23,0
+V1_B2_BREADTH_QUALIFIED_WEIGHTED,79,-38,0,5,135,-39,247,-29,337,-4,10,-13
+V1_B3_ASYMMETRIC_B_ROLE,97,-20,0,5,154,-20,262,-14,340,-1,21,-2
+V1_B4_THREE_DAY_STAGED_CONFIRMATION,101,-16,0,5,156,-18,260,-16,336,-5,14,-9

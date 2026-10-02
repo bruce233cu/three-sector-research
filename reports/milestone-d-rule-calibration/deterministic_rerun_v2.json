@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "reruns_per_arm": 2,
+  "arms": [
+    {
+      "arm": "BASELINE",
+      "checksums": [
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f",
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V1_B2_BREADTH_QUALIFIED_WEIGHTED",
+      "checksums": [
+        "0c1dfa68663c6f4046620ef055c1926788a43fb461306d3bdd878509438fe4c3",
+        "0c1dfa68663c6f4046620ef055c1926788a43fb461306d3bdd878509438fe4c3"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V1_B3_ASYMMETRIC_B_ROLE",
+      "checksums": [
+        "4bc1182ee7634ca6147ef66a8bfd54e6a0184a469f41302cde306cb7a16fd8f4",
+        "4bc1182ee7634ca6147ef66a8bfd54e6a0184a469f41302cde306cb7a16fd8f4"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V1_B4_THREE_DAY_STAGED_CONFIRMATION",
+      "checksums": [
+        "8cfa3743c26a0fc09485743532d1ac2fc4e2b6d0c6521c24d4c0b7804095d9a5",
+        "8cfa3743c26a0fc09485743532d1ac2fc4e2b6d0c6521c24d4c0b7804095d9a5"
+      ],
+      "identical": true
+    }
+  ],
+  "null_default_pass_count": 0,
+  "null_progress_violations": 0,
+  "freeze_transition_violations": 0,
+  "production_writes": 0
+}
