@@ -14,6 +14,7 @@ export function mainlineDecision(calendar) {
   return {status:'skipped', reason:'pending_provider', provider_enabled:false, gate:'G1_NOT_PASSED'};
 }
 export function overallStatus(jobs) {
+  if (jobs.some(j=>['dispatched','running'].includes(j.status))) return 'running';
   if (jobs.every(j=>['succeeded','skipped'].includes(j.status))) return 'succeeded';
   return jobs.some(j=>j.status==='succeeded') ? 'partial' : 'failed';
 }

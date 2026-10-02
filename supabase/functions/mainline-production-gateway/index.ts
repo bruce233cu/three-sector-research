@@ -13,6 +13,9 @@ Deno.serve(async(req:Request)=>{
   if(b.operation==="context"){
    const {data,error}=await c.rpc("mainline_production_context",{p_date:b.trade_date});if(error)throw error;return respond(data);
   }
+  if(b.operation==="validation_input"){
+   const {data,error}=await c.rpc("mainline_validation_input",{p_date:b.trade_date});if(error)throw error;return respond(data);
+  }
   if(b.operation==="attempt"){
    if(b.payload.code_sha!==payload.sha)return respond({error:"code_sha_mismatch"},403);
    const {data,error}=await c.rpc("mainline_attempt_trace",{p_payload:b.payload});if(error)throw error;return respond(data);

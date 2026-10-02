@@ -1436,6 +1436,15 @@ async function checked(query: any) {
   if(error) throw new Error(error.message);
   return data;
 }
+async function dispatchMainline(runDate: string, pipelineRunId: string, runType: string, signal?: AbortSignal) {
+  const dispatchToken=Deno.env.get("MAINLINE_GITHUB_DISPATCH_TOKEN");
+  if(!dispatchToken)throw new Error("MAINLINE_DISPATCH_CREDENTIAL_NOT_CONFIGURED");
+  const response=await fetch("https://api.github.com/repos/bruce233cu/three-sector-research/actions/workflows/mainline-production.yml/dispatches",{
+    method:"POST",signal,headers:{Authorization:"Bearer "+dispatchToken,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},
+    body:JSON.stringify({ref:"mainline-phase1e",inputs:{business_date:runDate,run_type:runType,pipeline_run_id:pipelineRunId}})
+  });
+  if(response.status!==204)throw new Error("MAINLINE_DISPATCH_FAILED_HTTP_"+response.status);
+}
 Deno.serve(async (request) => {
   if(request.method !== "POST") return json({error:"只接受POST请求"},405);
   const supabaseUrl=Deno.env.get("SUPABASE_URL");
@@ -1454,9 +1463,30 @@ Deno.serve(async (request) => {
     try {await checked(client.from("automation_run_steps").insert(row));}
     catch(error) {loggingErrors.push({job:row.step_code,error:String(error)});}
   };
+  // Historical validation uses this same dispatcher and callback, without executing the independent sector module.
+  if(body.run_type==="production_validation") {
+    try {
+      const validation=await checked(client.rpc("mainline_validation_input",{p_date:runDate}));
+      if(validation.rows.length!==31)throw new Error("validation_panel_incomplete");
+      const pending=await checked(client.from("automation_runs").select("id").eq("job_code","daily_research_pipeline").eq("run_date",runDate).contains("metadata",{run_type:"production_validation"}).eq("status","running").limit(1));
+      if(pending.length)return json({status:"running",pipeline_run_id:pending[0].id,reason:"validation_already_running"});
+      const jobs:any={mainline_job:{status:"running",business_status:"dispatched",business_date:runDate,run_type:"production_validation"},three_sector_daily_job:{status:"skipped",reason:"isolated_production_validation"},publish_job:{status:"skipped",reason:"validation_cannot_publish_live"}};
+      const run=await checked(client.from("automation_runs").insert({job_code:"daily_research_pipeline",run_date:runDate,trigger_type:"manual",status:"running",metadata:{daily_pipeline_version:"17:00-v1",run_type:"production_validation",...window,jobs}}).select("id").single());
+      runId=run.id;
+      jobs.mainline_job.pipeline_run_id=run.id;
+      await checked(client.from("automation_run_steps").insert({run_id:run.id,step_code:"mainline_job",step_name:"A股主线隔离生产续跑验收",status:"running",started_at:new Date().toISOString(),finished_at:null,message:"dispatch_pending_business_pending",metadata:jobs.mainline_job}));
+      await dispatchMainline(runDate,run.id,"production_validation");
+      jobs.mainline_job={...jobs.mainline_job,status:"dispatched",reason:"dispatch_accepted_business_pending"};
+      await checked(client.rpc("mainline_pipeline_finish",{p_parent:run.id,p_status:"running",p_metadata:{daily_pipeline_version:"17:00-v1",pipeline_run_id:run.id,run_type:"production_validation",...window,jobs},p_error:null}));
+      return json({pipeline_run_id:run.id,business_date:runDate,run_type:"production_validation",status:"dispatched",business_status:"dispatched"});
+    } catch(error) {
+      if(runId)await checked(client.rpc("mainline_parent_result",{p_parent:runId,p_result:{status:"failed",business_status:"failed",reason:String(error)}}));
+      return json({pipeline_run_id:runId,error:String(error)},500);
+    }
+  }
   try {
     await checked(client.rpc("close_stale_automation_runs",{p_timeout:"30 minutes"}));
-    const existing=await checked(client.from("automation_runs").select("id,status").eq("job_code","daily_research_pipeline").eq("run_date",runDate).contains("metadata",{daily_pipeline_version:"17:00-v1"}).in("status",["running","succeeded"]).limit(1));
+    const existing=await checked(client.from("automation_runs").select("id,status").eq("job_code","daily_research_pipeline").eq("run_date",runDate).contains("metadata",{daily_pipeline_version:"17:00-v1"}).or("metadata->>run_type.is.null,metadata->>run_type.neq.production_validation").in("status",["running","succeeded"]).limit(1));
     if(existing.length) return json({status:"skipped",reason:"already_running_or_completed",pipeline_run_id:existing[0].id});
     const run=await checked(client.from("automation_runs").insert({job_code:"daily_research_pipeline",run_date:runDate,trigger_type:triggerType,status:"running",metadata:{daily_pipeline_version:"17:00-v1",...window}}).select("id").single());
     runId=run.id;
@@ -1476,13 +1506,7 @@ Deno.serve(async (request) => {
       if(calendar===false)return {status:"skipped",reason:"skipped_non_trading_day",pipeline_run_id:run.id,business_date:runDate};
       const production=await execution.run({...context,signal},()=>checked(client.rpc("mainline_dispatch_context",{p_date:runDate})));
       if(!production.enabled)return {status:"skipped",reason:"G4_NOT_PASSED_PRODUCTION_DISABLED",pipeline_run_id:run.id,business_date:runDate};
-      const dispatchToken=Deno.env.get("MAINLINE_GITHUB_DISPATCH_TOKEN");
-      if(!dispatchToken)throw new Error("MAINLINE_DISPATCH_CREDENTIAL_NOT_CONFIGURED");
-      const response=await fetch("https://api.github.com/repos/bruce233cu/three-sector-research/actions/workflows/mainline-production.yml/dispatches",{
-        method:"POST",signal,headers:{Authorization:"Bearer "+dispatchToken,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28","Content-Type":"application/json"},
-        body:JSON.stringify({ref:"mainline-phase1e",inputs:{business_date:runDate,run_type:"production",pipeline_run_id:run.id}})
-      });
-      if(response.status!==204)throw new Error("MAINLINE_DISPATCH_FAILED_HTTP_"+response.status);
+      await dispatchMainline(runDate,run.id,"production",signal);
       return {status:"dispatched",reason:"dispatch_accepted_business_pending",pipeline_run_id:run.id,business_date:runDate,business_status:"dispatched",rule_version:"mainline_v2.2.1_state_completion_v1",parameter_profile:"industry_trend_v221_state_completion_v1"};
     },10000);
     // Persist immediately; later three-sector failure cannot erase this result.

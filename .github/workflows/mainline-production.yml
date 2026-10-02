@@ -16,7 +16,7 @@ on:
         default: ''
       run_type:
         type: choice
-        options: [production_simulation, production, backfill]
+        options: [production_simulation, production, backfill, production_validation]
         default: production_simulation
 permissions:
   contents: read
@@ -44,7 +44,11 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements-mainline.txt
       - name: Reuse certified universe ledger
+        if: inputs.run_type != 'production_validation'
         run: gh run download 36942748135 -n v221-benchmark-universe -D temporary_g3_input
+      - name: Reuse actual historical membership evidence for isolated validation
+        if: inputs.run_type == 'production_validation'
+        run: gh run download 36970118460 -n mainline-production-evidence -D temporary_validation_evidence
       - name: Reuse certified checkpoint evidence
         if: inputs.allow_g3_bootstrap == true
         run: gh run download 36961627493 -n mainline-state-completion-acquisition -D temporary_seed
@@ -58,4 +62,4 @@ jobs:
           retention-days: 30
       - name: Remove temporary individual inputs
         if: always()
-        run: rm -rf .cache/mainline-production temporary_g3_input temporary_seed
+        run: rm -rf .cache/mainline-production temporary_g3_input temporary_seed temporary_validation_evidence
