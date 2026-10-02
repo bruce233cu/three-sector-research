@@ -35,7 +35,7 @@ def main():
     dates=[d for d in calendar if begin<=d<=target]
     actual_dates=[d for d in dates if d>seed_date]
     start=date.fromisoformat(dates[0]);end=date.fromisoformat(dates[-1])
-    stock_raw=_download(SWS_STOCK_HISTORY_URL,retries=1);code_raw=_download(SWS_CODE_URL,retries=1)
+    stock_raw=_download(SWS_STOCK_HISTORY_URL,retries=3,timeout_seconds=60);code_raw=_download(SWS_CODE_URL,retries=3,timeout_seconds=60)
     provider=SwsEffectivePitProvider(stock_bytes=stock_raw,code_bytes=code_raw)
     codes=pd.read_excel(io.BytesIO(code_raw),dtype=str)
     names=sorted(provider.history.level1_name.unique())
@@ -210,4 +210,3 @@ if __name__=='__main__':
     except Exception as e:
         write('real_window_error.json',{'code_commit':os.environ.get('CODE_COMMIT'),'type':type(e).__name__,'error':str(e),'run_id':RUN})
         raise
-
