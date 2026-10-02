@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "stages": {
+    "validation": "passed",
+    "package": "passed",
+    "verification": "structural_only"
+  },
+  "browserWarning": {
+    "code": "browser_unavailable",
+    "message": "No installed Chromium headless-shell executable found; no browser downloaded."
+  },
+  "sourceDialog": "not_verified",
+  "sourceInteraction": "not_verified",
+  "counts": {
+    "blocks": 38,
+    "charts": 2,
+    "tables": 3
+  }
+}

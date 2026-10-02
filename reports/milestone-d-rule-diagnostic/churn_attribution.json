@@ -1,0 +1,53 @@
+{
+  "positive": {
+    "patterns": {
+      "S0→S1→S0": 49,
+      "S1→S2→S3→S2": 3,
+      "S2→S3→S2→S3": 4,
+      "S4→S1": 6
+    },
+    "candidate_failed": 58,
+    "exit_at_two_pass_groups": 35,
+    "changed_group_counts": {
+      "C2": 19,
+      "C5": 31,
+      "C4": 20,
+      "C1": 16,
+      "C3": 20
+    }
+  },
+  "negative": {
+    "patterns": {
+      "S0→S1→S0": 43,
+      "S1→S2→S3→S2": 0,
+      "S2→S3→S2→S3": 0,
+      "S4→S1": 6
+    },
+    "candidate_failed": 52,
+    "exit_at_two_pass_groups": 26,
+    "changed_group_counts": {
+      "C3": 22,
+      "C5": 33,
+      "C2": 17,
+      "C4": 22,
+      "C1": 11
+    }
+  },
+  "ambiguous": {
+    "patterns": {
+      "S0→S1→S0": 25,
+      "S1→S2→S3→S2": 0,
+      "S2→S3→S2→S3": 0,
+      "S4→S1": 3
+    },
+    "candidate_failed": 28,
+    "exit_at_two_pass_groups": 19,
+    "changed_group_counts": {
+      "C1": 5,
+      "C2": 10,
+      "C4": 8,
+      "C5": 14,
+      "C3": 6
+    }
+  }
+}

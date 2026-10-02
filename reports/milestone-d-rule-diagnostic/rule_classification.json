@@ -1,0 +1,267 @@
+{
+  "C1": {
+    "class": "A",
+    "judgment": "正负差28.0个百分点；保留短期相对排名信息",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C2": {
+    "class": "A",
+    "judgment": "正负差25.5个百分点；与A.return完全重复，保留信息不重复计票",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C3": {
+    "class": "A",
+    "judgment": "候选层有区分；与确认层高胜率门槛应分开研究",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C4.mean20": {
+    "class": "C",
+    "judgment": "高于短期成交均值不等于稳定增量，按多日持续研究",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C4.intensity": {
+    "class": "C",
+    "judgment": "强度大于1可被短时放量触发，不能单独证明持续流入",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C4": {
+    "class": "C",
+    "judgment": "正负差仅6.4个百分点；单日放量易通过，需研究持续性",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C5.up": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C5.ma20": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C5": {
+    "class": "B",
+    "judgment": "正负差22.4个百分点；候选退出时翻转频繁",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "candidate": {
+    "class": "B",
+    "judgment": "发现能力有用；单日失守立刻退出造成候选反复",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "A.return": {
+    "class": "A",
+    "judgment": "相对收益为正有区分，不能重复当独立证据",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "A.rank": {
+    "class": "B",
+    "judgment": "排名门槛可研究，但不少失败远离阈值，单调放宽不能解释全部",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "A": {
+    "class": "B",
+    "judgment": "正负差16.4个百分点；绝对相对收益与横截面排名不同约束",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "B.win5": {
+    "class": "D",
+    "judgment": "五日≥4次跑赢，离散高门槛；也过滤负例，不能直接放宽",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "B.win10": {
+    "class": "D",
+    "judgment": "十日≥7次跑赢，对间歇领涨严格；也过滤负例",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "B": {
+    "class": "D",
+    "judgment": "正例通过仅33.0%；7例25个非S2日唯一阻塞，优先研究否决结构",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C.percentile": {
+    "class": "B",
+    "judgment": "成交活跃有用，但不等于持续净流入；早期40个有效观测门槛敏感",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C.trend": {
+    "class": "C",
+    "judgment": "未连降三日不是持续上升；单日反弹即可恢复，结构需研究",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "C": {
+    "class": "B",
+    "judgment": "有19.9个百分点差异，早期存在NULL；持续成交比单日分位更值得研究",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "D.up": {
+    "class": "B",
+    "judgment": "单日比全A上涨家数多，正负差18.3个百分点",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "D.ma20": {
+    "class": "A",
+    "judgment": "正负差26.3个百分点；保留广度存量信息",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "D.newhigh": {
+    "class": "A",
+    "judgment": "正负差34.0个百分点；新高扩散信息有用",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "D": {
+    "class": "A",
+    "judgment": "组差34.7个百分点且事件窗口无NULL，当前较有价值的确认组",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "E1": {
+    "class": "C",
+    "judgment": "正负差8.8个百分点，确认当天四个误报相关案例全部为正",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "E2": {
+    "class": "A",
+    "judgment": "正负差31.6个百分点；严格增加在100%饱和时须另研究",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "E3": {
+    "class": "C",
+    "judgment": "与D.newhigh完全相同；信息有用，跨组重复计票不提供独立证据",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "E4.not_high": {
+    "class": "C",
+    "judgment": "长期分位在负样本无已知观测，不可据表面差异校准",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "E4": {
+    "class": "C",
+    "judgment": "负样本事件窗口全NULL，不能比较判别力；DATA_LIMITATION",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "E5": {
+    "class": "C",
+    "judgment": "冻结为deferred且不计增强票数，不是正式阻塞项",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "enhancers": {
+    "class": "B",
+    "judgment": "组差37.4个百分点但受NULL与时间分布影响，不能整体视为高可信",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "confirm": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.slope": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.rank": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.breadth.up_ratio": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.breadth.up_ratio": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.breadth.above_ma20": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.breadth.above_ma20": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.breadth.above_ma60": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.breadth.above_ma60": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.breadth.new_high_60": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.breadth.new_high_60": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken.breadth": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "weaken": {
+    "class": "B",
+    "judgment": "退化方向负例触发更多，但无独立退潮日期，不判早退晚退",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.rs10": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.rs20": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.returns": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.rank": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire.breadth": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "retire": {
+    "class": "B",
+    "judgment": "退化规则有方向信息；窗口相关性与迟延参考缺失",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "recover": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "enhancement.core": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "enhancement.midcap": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  },
+  "enhancement.family": {
+    "class": "B",
+    "judgment": "仅描述当前发展集，不据本表直接修改阈值",
+    "status": "DIAGNOSTIC_ONLY"
+  }
+}

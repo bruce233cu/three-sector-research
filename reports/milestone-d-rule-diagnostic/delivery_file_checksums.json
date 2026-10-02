@@ -1,0 +1,30 @@
+{
+  "algorithm": "SHA256",
+  "self_excluded": true,
+  "files": {
+    "reports/milestone-d-rule-diagnostic/FINAL_DELIVERY.json": "3203bf8adce151b5dbd1fa654ed6c2cb7824603fba94e5df7deaf888b9691ef2",
+    "reports/milestone-d-rule-diagnostic/RULE_DIAGNOSTIC_REPORT.html": "e1ef75decb955a832db314f8b8e57b267d5755b40fd4b3f85186a386bf5f15d0",
+    "reports/milestone-d-rule-diagnostic/RULE_DIAGNOSTIC_REPORT.md": "b40de97f8e2c91f8de588fcc9e112922a91012c1e39622a3ffd2387c0449e7b6",
+    "reports/milestone-d-rule-diagnostic/RULE_DIAGNOSTIC_REPRODUCIBLE.ipynb": "23f6cf816a89f4947279dc608899dce553347e59cbe5534d33d1a1883d1c26d1",
+    "reports/milestone-d-rule-diagnostic/artifact.json": "4041e2b78a9ec4d98177761df0131efa5cbc043437668f4e9e5407d810ce638b",
+    "reports/milestone-d-rule-diagnostic/artifact_validation.json": "68ab7d0cf7edcb87faf99adddb22509b3eae2ed40e2e0ee11012609b1c6d6ec6",
+    "reports/milestone-d-rule-diagnostic/atomic_daily_evidence.csv.gz": "6c2d25e02829261074426334f8a2dc0ed1ecb959f43fb6c8794034b682dd5dba",
+    "reports/milestone-d-rule-diagnostic/calibration_candidates.json": "f1c733f80474c73d5de3a8bf13ef3f631535c45f86d8facd9dbf620d24cd08e7",
+    "reports/milestone-d-rule-diagnostic/case_diagnostics.json.gz": "28da28bfa241483900d9d94ab96cacb1dc9b82abf0f363b535efb78a88745c18",
+    "reports/milestone-d-rule-diagnostic/churn_attribution.json": "f6b430eb6971ec26ba0665bff37efc7a00c6c5fe4c580cd997e33ba0e11e043f",
+    "reports/milestone-d-rule-diagnostic/deterministic_analysis_rerun.json": "a0fea2fdb9778444cff87b40f36b437daf080325ecd7075bdd507bdbfad331cd",
+    "reports/milestone-d-rule-diagnostic/diagnostic_queries.sql": "806941d65354357d18948623bf41312d9062a2e9e5d37bb70f7e42eddb5f8f7d",
+    "reports/milestone-d-rule-diagnostic/diagnostic_summary.json": "7b80acfac58989d6cf241894abb2440fec59599bd6dd9fb8a48e672d1d5ec8e0",
+    "reports/milestone-d-rule-diagnostic/event_blockers.csv": "5f7b4f02260d0f61fc726c1e3b5d4f377de4a8e3101be86dcfb415971f963d48",
+    "reports/milestone-d-rule-diagnostic/packaging_receipt.json": "1a091b2254e102fbb38c87968b702241e71de76d67c6020b3afaf1d7fb18d76a",
+    "reports/milestone-d-rule-diagnostic/persistence_summary.json": "5dc3ff7382323b135a7667622c84131a05f4843a79553f3e39d1d324e0a7c03c",
+    "reports/milestone-d-rule-diagnostic/production_isolation.json": "5e36878559fd66113b88140c6d2f145812182fe174eee44419afc5e3665ca6c9",
+    "reports/milestone-d-rule-diagnostic/project_log_verified.json": "0f8938eca2be20ae0e288cb512fcbe65bf1857bcf50d3d1ff5b99eee8c82d499",
+    "reports/milestone-d-rule-diagnostic/report_source_notes.md": "ffdd8ff5d477aaacccbfade2c04b6f6adf323ad71d7859c64e7df8c418e9ba9e",
+    "reports/milestone-d-rule-diagnostic/rule_classification.json": "4f1477b170da285c30ac6097a190c15f5355c25403c2fda54d6faaac41b3f2d1",
+    "reports/milestone-d-rule-diagnostic/rule_discrimination_matrix.csv": "d88b2e18bdaaefcfdb1c08b5e6f4f9404481f0ace68bc70b1cf0d581cfae04c2",
+    "reports/milestone-d-rule-diagnostic/rule_matrix_overlap_sensitivity.csv": "0564d665e03da700ca51f48054993603c094713143f93767c84352228ac405e8",
+    "reports/milestone-d-rule-diagnostic/validation_checks.json": "bef9e36b3a9aee8f57c79774b750767d9574adbb05c2fb11c694efc2aa7ad6cb",
+    "reports/milestone-d-rule-diagnostic/warmup_security_membership_impact.csv": "1d3ef84d4a9c570826e91df7175f2986443b486d9485d7a6c48f8c55da50de33"
+  }
+}

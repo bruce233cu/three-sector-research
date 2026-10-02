@@ -1,0 +1,20 @@
+{
+  "start_sha": "95ba63c6dbc6b1cad82e84a9c3403f7dc353fc35",
+  "initial_diagnostic_commit": "cc8f9aa61626a627e202088ac748ea1a75012268",
+  "verified_evidence_commit": "4e96dcc8eeb3038d41cd89783eb93d9950b0b966",
+  "branch": "mainline-phase1e",
+  "final_sha_resolution": "Git commit that adds this FINAL_DELIVERY.json and the final report; resolve via git log -1 --format=%H -- reports/milestone-d-rule-diagnostic/FINAL_DELIVERY.json. Its SHA is also stated in the user delivery message.",
+  "source_run": "historical-blind-v1-20261002-diagnostic-v2",
+  "qualification": "DIAGNOSTIC_ONLY",
+  "G1": "PASS",
+  "G2": "PASS",
+  "G3": "PASS",
+  "G4": "PASS",
+  "G5": "FAIL",
+  "production_writes": 0,
+  "calibration_executed": false,
+  "holdout_run": false,
+  "project_log_id": "cdf3a395-4c80-4bc9-b82b-657e11aaf800",
+  "html_visual_verification": "NOT_RUN — no installed Chromium",
+  "notebook_execution": "Python cells executed sequentially with real outputs; notebook kernel transport unavailable"
+}
