@@ -1,0 +1,206 @@
+{
+  "spec_id": "rule_calibration_experiment_spec_v2",
+  "system_version": "A股主线识别系统 V2.2.1",
+  "status": "SPECIFICATION_ONLY",
+  "executed": false,
+  "qualification": [
+    "CALIBRATION_ONLY",
+    "DIAGNOSTIC_ONLY"
+  ],
+  "g5": "FAIL",
+  "parent_execution_head": "d49679cf67278408dca02674effe8951cfc2a361",
+  "parent_conclusion": "NO CANDIDATE PASSED",
+  "development_set": {
+    "casebook_version": "casebook_v1_20261002_25",
+    "positive_cases": 10,
+    "negative_cases": 10,
+    "ambiguous_cases": 5,
+    "holdout_eligible": false
+  },
+  "baseline_contract": {
+    "positive_event_s2": 5,
+    "positive_full_window_s2": 6,
+    "negative_event_new_confirm_cases": 1,
+    "negative_event_new_confirm_transitions": 1,
+    "negative_event_s2_exposure_days": 11,
+    "s0_s1_s0": 117,
+    "short_reversals": 174,
+    "reversals": 276,
+    "transitions": 341
+  },
+  "design_question": "能否用绝对广度质量与多日确认，在V1-B安全性和V1-C召回之间建立有限中间结构？",
+  "shared_contract": {
+    "standard_path": {
+      "condition": "A AND B AND C AND D AND Enhancer",
+      "consecutive_effective_days": 2,
+      "changed": false
+    },
+    "alternative_path_prerequisites": {
+      "prior_state": "S1",
+      "A": true,
+      "D": true,
+      "above_ma20_min": 0.6,
+      "above_ma20_threshold_source": "existing formal profile confirm.above_ma20_min",
+      "new_threshold_created": false
+    },
+    "null_policy": "NULL never counts as TRUE and never advances qualification",
+    "freeze_policy": "Freeze pauses counters and cannot trigger a hard transition",
+    "unchanged": [
+      "formal atomic definitions and thresholds",
+      "candidate entry",
+      "S2/S3/S4",
+      "casebook and labels",
+      "rule_version and parameter_profile",
+      "Production, scheduler and Sites"
+    ]
+  },
+  "candidates": [
+    {
+      "order": 1,
+      "id": "V1_B2_BREADTH_QUALIFIED_WEIGHTED",
+      "name": "Breadth-qualified weighted evidence",
+      "comparison_parent": "BASELINE",
+      "structure": "shared prerequisites AND at_least_2(B,C,Enhancer), 2 consecutive effective days",
+      "b_role": "one strong support; if B is FALSE, C and Enhancer must both be TRUE",
+      "a_role": "hard core on every qualifying day",
+      "d_role": "hard core plus existing above_ma20 absolute breadth floor",
+      "persistence_role": "2 consecutive effective days",
+      "secondary_confirmation": true,
+      "likely_benefit": "restore persistent high-breadth cases without admitting low-base breadth expansion",
+      "main_risk": "two-day high-breadth rotation pulse",
+      "n08_filter": "above_ma20 absolute breadth floor",
+      "latency_risk": "low",
+      "overfit_risk": "medium"
+    },
+    {
+      "order": 2,
+      "id": "V1_B3_ASYMMETRIC_B_ROLE",
+      "name": "Asymmetric B role",
+      "comparison_parent": "BASELINE",
+      "structure": {
+        "b_present": "shared prerequisites AND B AND at_least_1(C,Enhancer), 2 consecutive effective days",
+        "b_waived": "shared prerequisites AND NOT B AND C AND Enhancer, 3 consecutive effective days",
+        "counter_mixing": false,
+        "b_null_allowed": false
+      },
+      "b_role": "B controls evidence and time cost rather than acting as universal veto",
+      "a_role": "hard core on every qualifying day",
+      "d_role": "hard core plus existing above_ma20 absolute breadth floor",
+      "persistence_role": "2 days with B, 3 days without B",
+      "secondary_confirmation": true,
+      "likely_benefit": "cover B-recovered and persistently B-weak true trends with asymmetric risk control",
+      "main_risk": "path switching can delay confirmation",
+      "n08_filter": "above_ma20 floor; no mixed-path streak",
+      "latency_risk": "medium",
+      "overfit_risk": "medium_low"
+    },
+    {
+      "order": 3,
+      "id": "V1_B4_THREE_DAY_STAGED_CONFIRMATION",
+      "name": "Three-day staged confirmation",
+      "comparison_parent": "BASELINE",
+      "structure": {
+        "pending_day_1": "shared prerequisites AND at_least_2(B,C,Enhancer)",
+        "validation_days": 2,
+        "daily_requirement": "shared prerequisites AND at_least_2(B,C,Enhancer)",
+        "three_day_support": "B TRUE at least once OR (B FALSE all three days AND C and Enhancer TRUE all three days)",
+        "pending_expiry_nonfreeze_sessions": 5,
+        "formal_state_added": false
+      },
+      "b_role": "may arrive late or be replaced by complete C+Enhancer persistence",
+      "a_role": "hard core for all three qualifying days",
+      "d_role": "hard core plus existing above_ma20 absolute breadth floor for all three days",
+      "persistence_role": "explicit pending plus two forward validations",
+      "secondary_confirmation": true,
+      "likely_benefit": "reject two-day pulses while giving sustained evidence a second chance",
+      "main_risk": "confirmation latency and pending-state implementation complexity",
+      "n08_filter": "absolute breadth floor and failure to sustain A/D after the pulse",
+      "latency_risk": "high",
+      "overfit_risk": "medium"
+    }
+  ],
+  "execution_order": [
+    "BASELINE",
+    "V1_B2_BREADTH_QUALIFIED_WEIGHTED",
+    "V1_B3_ASYMMETRIC_B_ROLE",
+    "V1_B4_THREE_DAY_STAGED_CONFIRMATION"
+  ],
+  "parallel_comparison": true,
+  "failed_candidate_can_be_parent": false,
+  "maximum_arms": 4,
+  "success_criteria": {
+    "positive_event_s2_min": 6,
+    "positive_event_s2_target_range": [
+      7,
+      8
+    ],
+    "positive_full_window_s2_min": 7,
+    "negative_event_new_confirm_cases_max": 1,
+    "negative_event_new_confirm_transitions_max": 1,
+    "negative_event_s2_exposure_days_max": 11,
+    "negative_stable_s2_cases_max": 2,
+    "baseline_positive_event_hits_must_be_retained": 5,
+    "positive_improvement_cases_min": 2,
+    "positive_improvement_episodes_min": 2,
+    "event_miss_to_hit_min": 1,
+    "matched_lag_median_delta_max": 1,
+    "matched_lag_mean_delta_max": 2,
+    "matched_lag_single_case_delay_max": 5,
+    "s0_s1_s0_max": 117,
+    "short_reversals_max": 174,
+    "reversals_max": 276,
+    "transitions_max": 341,
+    "churn_must_not_increase": true,
+    "null_freeze_contract_must_hold": true,
+    "deterministic_reruns_per_arm_min": 2,
+    "deterministic_checksum_mismatches_max": 0,
+    "null_coercions_max": 0,
+    "freeze_hard_transitions_max": 0,
+    "future_reads_max": 0,
+    "illegal_transitions_max": 0
+  },
+  "candidate_failure_guardrails": [
+    "negative new confirmation exceeds 1 case or 1 transition",
+    "negative S2 exposure exceeds 11 case-industry days",
+    "any original positive event hit is lost",
+    "full-window recall remains below 7 of 10",
+    "improvement depends on one case or one episode",
+    "matched latency, churn or negative S1 dwell guardrail fails",
+    "NULL, Freeze, future-read, legal-transition or determinism contract fails",
+    "improvement depends only on direct warmup-sensitive cases",
+    "case id, industry, event date, label or future information is used"
+  ],
+  "stop_rule": {
+    "baseline_drift": "HARNESS_FAIL; execute no candidates",
+    "candidate_failure": "record failure and continue to next independent candidate without modification",
+    "shared_input_drift": "BLOCKED_BY_DATA_OR_BASELINE_DRIFT; stop remaining candidates",
+    "none_pass": "NO CANDIDATE PASSED",
+    "one_or_more_pass": "CALIBRATION CANDIDATE FOUND — HOLDOUT REQUIRED",
+    "automatic_holdout": false
+  },
+  "winner_tiebreak_order": [
+    "fewer negative new confirmations",
+    "fewer negative S2 exposure days",
+    "higher positive event recall then full-window recall",
+    "better matched latency",
+    "lower churn and negative S1 dwell",
+    "smaller change surface: V1-B2 then V1-B3 then V1-B4"
+  ],
+  "warmup": {
+    "qualified": false,
+    "direct_sensitive_cases": [
+      "P01",
+      "P06",
+      "P07",
+      "N05",
+      "N06",
+      "A01"
+    ],
+    "sensitivity_table_required": true,
+    "direct_sensitive_only_improvement_can_advance": false
+  },
+  "formal_rule_changed": false,
+  "formal_profile_changed": false,
+  "production_changed": false,
+  "holdout_executed": false
+}
