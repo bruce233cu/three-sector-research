@@ -1,0 +1,249 @@
+{
+  "spec_id": "rule_calibration_experiment_spec_v3",
+  "system_version": "A股主线识别系统 V2.2.1",
+  "status": "SPECIFICATION_ONLY",
+  "executed": false,
+  "qualification": [
+    "CALIBRATION_ONLY",
+    "DIAGNOSTIC_ONLY"
+  ],
+  "g5": "FAIL",
+  "parent_head": "0266897c1165de477d02624c1efc5dd2fca94baf",
+  "parent_attribution": "CONFIRMATION_LOGIC_ISSUE",
+  "base_candidate": {
+    "id": "V1_B3_ASYMMETRIC_B_ROLE",
+    "status": "EXPERIMENT_BASE_NOT_FORMAL_RULE",
+    "reference_metrics": {
+      "positive_event_s2": 9,
+      "positive_full_window_s2": 9,
+      "negative_event_new_confirm_cases": 1,
+      "negative_event_s2_exposure_days": 12,
+      "s0_s1_s0": 97,
+      "short_reversals": 154,
+      "reversals": 262,
+      "transitions": 340
+    },
+    "standard_path": {
+      "condition": "A AND B AND C AND D AND Enhancer",
+      "effective_days": 2,
+      "changed": false
+    },
+    "b_present": {
+      "condition": "S1 AND A AND D AND above_ma20>=0.60 AND B AND (C OR Enhancer)",
+      "effective_days": 2
+    },
+    "b_waived": {
+      "condition": "S1 AND A AND D AND above_ma20>=0.60 AND B=FALSE AND C AND Enhancer",
+      "effective_days": 3
+    },
+    "branch_counters_independent": true
+  },
+  "baseline_contract": {
+    "positive_event_s2": 5,
+    "positive_full_window_s2": 6,
+    "negative_event_new_confirm_cases": 1,
+    "negative_event_new_confirm_transitions": 1,
+    "negative_event_s2_exposure_days": 11,
+    "s0_s1_s0": 117,
+    "short_reversals": 174,
+    "reversals": 276,
+    "transitions": 341
+  },
+  "required_known_contract": {
+    "group_level_evidence": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "Enhancer"
+    ],
+    "numeric_evidence": [
+      "above_ma20"
+    ],
+    "eligibility_prerequisites": {
+      "prior_state": "S1",
+      "critical_data_ok": true,
+      "formal_freeze": false
+    },
+    "atomic_subrules_all_known_required": false,
+    "null_fill_allowed": false,
+    "null_precedence": "FORMAL_FREEZE_THEN_REQUIRED_KNOWN_NULL_THEN_BRANCH_TRUE_FALSE",
+    "null_counter_action": "PAUSE_PRESERVE_NO_INCREMENT_NO_RESET",
+    "false_counter_action_when_all_known": "RESET_RELEVANT_COUNTER",
+    "null_creates_global_freeze": false,
+    "pause_timeout_added": false,
+    "formal_freeze_contract_changed": false
+  },
+  "persistence_contract": {
+    "branch_ids": {
+      "STANDARD": 2,
+      "B_PRESENT": 2,
+      "B_WAIVED": 3
+    },
+    "evidence_signatures": {
+      "STANDARD_ALL": "formal five-group AND",
+      "B_PRESENT_C": "shared core AND B TRUE AND C TRUE",
+      "B_PRESENT_ENHANCER": "shared core AND B TRUE AND Enhancer TRUE",
+      "B_WAIVED_C_ENHANCER": "shared core AND B FALSE AND C TRUE AND Enhancer TRUE"
+    },
+    "counter_scope": "PER_EVIDENCE_SIGNATURE",
+    "cross_signature_accumulation_allowed": false,
+    "multiple_signatures_same_day_allowed": true,
+    "confirmation_condition": "one signature independently reaches its registered effective-day threshold",
+    "formal_state_added": false
+  },
+  "candidates": [
+    {
+      "order": 1,
+      "id": "V3_A_NULL_GATING_ONLY",
+      "comparison_parent": "BASELINE",
+      "structural_parent": "V1_B3_ASYMMETRIC_B_ROLE",
+      "changes": [
+        "required_known_contract"
+      ],
+      "same_branch_signature_added": false,
+      "expected_n02": "blocked while C is NULL",
+      "main_risk": "calendar latency from paused counters",
+      "overfit_risk": "medium_low"
+    },
+    {
+      "order": 2,
+      "id": "V3_B_SAME_BRANCH_ONLY",
+      "comparison_parent": "BASELINE",
+      "structural_parent": "V1_B3_ASYMMETRIC_B_ROLE",
+      "changes": [
+        "persistence_contract"
+      ],
+      "required_known_gate_added": false,
+      "expected_n02": "may still confirm through stable B_PRESENT_ENHANCER and therefore fail the N02 sentinel",
+      "main_risk": "latency or misses when true-trend support rotates",
+      "overfit_risk": "medium_low"
+    },
+    {
+      "order": 3,
+      "id": "V3_C_NULL_GATING_AND_SAME_BRANCH",
+      "comparison_parent": "BASELINE",
+      "structural_parent": "V1_B3_ASYMMETRIC_B_ROLE",
+      "changes": [
+        "required_known_contract",
+        "persistence_contract"
+      ],
+      "expected_n02": "blocked while C is NULL",
+      "main_risk": "largest confirmation latency and recall loss",
+      "overfit_risk": "medium"
+    }
+  ],
+  "sentinel_cases": {
+    "P10": {
+      "rule_input_allowed": false,
+      "required_behavior": "positive event S2 retained",
+      "event_lag_max": 5,
+      "reference_b3_event_lag": 4
+    },
+    "N02": {
+      "rule_input_allowed": false,
+      "required_behavior": "no confirmation while C is NULL and no candidate-added event S2 exposure",
+      "null_day_confirm_counter_increment_max": 0,
+      "event_s2_exposure_days_max": 0
+    },
+    "N04": {
+      "rule_input_allowed": false,
+      "required_behavior": "retain B3 containment",
+      "full_window_s2": false
+    },
+    "N08": {
+      "rule_input_allowed": false,
+      "required_behavior": "retain absolute-breadth containment",
+      "event_s2": false,
+      "full_window_s2": false
+    }
+  },
+  "success_criteria": {
+    "positive_event_s2_min": 6,
+    "positive_event_s2_target_range": [
+      7,
+      8
+    ],
+    "positive_full_window_s2_min": 7,
+    "negative_event_new_confirm_cases_max": 1,
+    "negative_event_new_confirm_transitions_max": 1,
+    "negative_event_s2_exposure_days_max": 11,
+    "negative_stable_s2_cases_max": 2,
+    "baseline_positive_event_hits_must_be_retained": 5,
+    "positive_improvement_cases_min": 2,
+    "positive_improvement_episodes_min": 2,
+    "event_miss_to_hit_min": 1,
+    "matched_lag_median_delta_max": 1,
+    "matched_lag_mean_delta_max": 2,
+    "matched_lag_single_case_delay_max": 5,
+    "s0_s1_s0_max": 117,
+    "short_reversals_max": 174,
+    "reversals_max": 276,
+    "transitions_max": 341,
+    "negative_single_s1_run_increase_max": 3,
+    "null_freeze_contract_must_hold": true,
+    "deterministic_reruns_per_arm_min": 2,
+    "deterministic_checksum_mismatches_max": 0,
+    "null_coercions_max": 0,
+    "freeze_hard_transitions_max": 0,
+    "future_reads_max": 0,
+    "illegal_transitions_max": 0,
+    "required_known_null_counter_increment_max": 0,
+    "cross_signature_accumulations_max": 0,
+    "sentinel_contract_must_pass": true
+  },
+  "unchanged": [
+    "formal rule_version and parameter_profile",
+    "all formal atomic definitions and thresholds",
+    "candidate entry",
+    "weaken and retire",
+    "recover",
+    "S2 to S3 and S3 to S2",
+    "S4",
+    "casebook and labels",
+    "Production, scheduler and Sites",
+    "G1, G2, G3 and G4"
+  ],
+  "warmup": {
+    "qualified": false,
+    "direct_sensitive_cases": [
+      "P01",
+      "P06",
+      "P07",
+      "N05",
+      "N06",
+      "A01"
+    ],
+    "sensitivity_table_required": true,
+    "direct_sensitive_only_improvement_can_advance": false
+  },
+  "execution_order": [
+    "BASELINE_EQUIVALENCE",
+    "V1_B3_REFERENCE_EQUIVALENCE",
+    "V3_A_NULL_GATING_ONLY",
+    "V3_B_SAME_BRANCH_ONLY",
+    "V3_C_NULL_GATING_AND_SAME_BRANCH",
+    "SELECT_AT_MOST_ONE",
+    "STOP"
+  ],
+  "parallel_candidates": true,
+  "stop_rules": {
+    "baseline_drift": "STOP_ALL",
+    "b3_reference_drift": "STOP_ALL",
+    "data_or_contract_drift": "STOP_ALL",
+    "single_candidate_failure": "RECORD_AND_CONTINUE_NEXT_PARALLEL_CANDIDATE",
+    "all_candidates_fail": "NO CANDIDATE PASSED",
+    "any_candidate_passes": "CALIBRATION CANDIDATE FOUND — HOLDOUT REQUIRED",
+    "auto_holdout": false
+  },
+  "prohibited": [
+    "grid search",
+    "random or Bayesian search",
+    "new candidates beyond V3-A, V3-B and V3-C",
+    "case, industry, label or date conditions in rule inputs",
+    "threshold changes",
+    "formal state-machine changes",
+    "production writes",
+    "holdout execution"
+  ]
+}
