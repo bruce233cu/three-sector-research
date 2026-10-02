@@ -1,0 +1,18 @@
+{
+  "engine_audit_rows": 15,
+  "unknown_state_preserved": 15,
+  "core_metrics_unchanged": 15,
+  "deferred_null": 15,
+  "dangling_sources": 0,
+  "unregistered_sources": 0,
+  "state_quality_audits": 15,
+  "lifecycle_rows": 0,
+  "original_g1_success": 15,
+  "engine_manifests": 2,
+  "persisted_stock_rows": 0,
+  "persisted_security_rows": 0,
+  "calendar_rows": 3044,
+  "g2": "PASS",
+  "g3": "FAIL",
+  "optimization_summary": "完成明确规则与安全状态内核，真实验收未通过，不启用每日生产任务。"
+}

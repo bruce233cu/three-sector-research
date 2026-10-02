@@ -1,0 +1,467 @@
+[
+  {
+    "quality_id": "b463d142-6071-52c6-92d0-d70d94fda5d8",
+    "as_of_date": "2019-06-28",
+    "dataset_code": "engine_state:sw1_801080",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "2f96579f-1489-5423-a11c-6379bfce43ac",
+    "as_of_date": "2019-06-28",
+    "dataset_code": "engine_state:sw1_801120",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "9958fc9b-af03-59f9-a3ac-84241e4e5f72",
+    "as_of_date": "2019-06-28",
+    "dataset_code": "engine_state:sw1_801790",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "b1fe1317-989b-5ffd-9982-0fe09f829fbf",
+    "as_of_date": "2020-06-30",
+    "dataset_code": "engine_state:sw1_801050",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "fb4decf6-7cea-5e52-a65a-f57f14620696",
+    "as_of_date": "2020-06-30",
+    "dataset_code": "engine_state:sw1_801120",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "5c90332f-aaca-573f-b5bf-00110223ec4b",
+    "as_of_date": "2020-06-30",
+    "dataset_code": "engine_state:sw1_801790",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "b45130c2-892c-5ab9-8f7f-42833cff9d50",
+    "as_of_date": "2021-12-31",
+    "dataset_code": "engine_state:sw1_801080",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "db0b91be-d3ff-5de8-9b74-280822752ae9",
+    "as_of_date": "2021-12-31",
+    "dataset_code": "engine_state:sw1_801780",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "3f5dac7d-6279-5a3e-85cd-28e7f6d06e1d",
+    "as_of_date": "2021-12-31",
+    "dataset_code": "engine_state:sw1_801890",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "544208bb-eff8-5ffc-ae13-635e134c45bb",
+    "as_of_date": "2023-06-30",
+    "dataset_code": "engine_state:sw1_801050",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "5db6dde2-12c8-529c-a6e8-64cb9b973000",
+    "as_of_date": "2023-06-30",
+    "dataset_code": "engine_state:sw1_801120",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "4cb0185a-bf0e-5156-9aee-0f0d7e854ec1",
+    "as_of_date": "2023-06-30",
+    "dataset_code": "engine_state:sw1_801890",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "aafbfe34-5e57-5974-8479-e8eb11986be3",
+    "as_of_date": "2025-06-30",
+    "dataset_code": "engine_state:sw1_801080",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "e7faa517-d8f8-52cf-b190-a742b110553b",
+    "as_of_date": "2025-06-30",
+    "dataset_code": "engine_state:sw1_801780",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  },
+  {
+    "quality_id": "997e8e26-ca70-5975-bea7-25f05e3572f5",
+    "as_of_date": "2025-06-30",
+    "dataset_code": "engine_state:sw1_801890",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "expected_count": 1,
+    "actual_count": 0,
+    "missing_count": 1,
+    "duplicate_count": 0,
+    "completeness_ratio": 0.0,
+    "stale_days": 0,
+    "schema_valid": true,
+    "source_conflict_flag": false,
+    "pit_violation_count": 0,
+    "critical_data_ok": false,
+    "stage_frozen": true,
+    "freeze_reason": [
+      "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT"
+    ],
+    "warnings": {
+      "scope": "state acceptance; G1 provider/metrics remain valid",
+      "missing_state": "trusted previous state unknown",
+      "rank_valid_objects": 3
+    },
+    "source_used": "mainline_offline_board_deriver",
+    "source_version": "mainline_v2.2.1:ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "fetched_at": "2026-10-02T00:36:29.085712+00:00",
+    "available_at": null
+  }
+]

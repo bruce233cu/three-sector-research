@@ -1,0 +1,11 @@
+{
+  "real_board_rows": 900,
+  "windows": 15,
+  "sessions_per_window": 60,
+  "deterministic_rows": 900,
+  "certified_state_transitions": 0,
+  "certified_intermediate_membership": false,
+  "real_price_and_benchmark_inputs": true,
+  "false_zero_fills": 0,
+  "historical_seed_state": "unknown_preserved_NULL"
+}

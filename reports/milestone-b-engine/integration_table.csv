@@ -1,0 +1,16 @@
+trade_date,object_id,state,previous_state,state_days,stage_frozen,freeze_reason,run_id
+2019-06-28,sw1_801080,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2019-06-28,sw1_801120,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2019-06-28,sw1_801790,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2020-06-30,sw1_801050,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2020-06-30,sw1_801120,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2020-06-30,sw1_801790,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2021-12-31,sw1_801080,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2021-12-31,sw1_801780,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2021-12-31,sw1_801890,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2023-06-30,sw1_801050,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2023-06-30,sw1_801120,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2023-06-30,sw1_801890,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2025-06-30,sw1_801080,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2025-06-30,sw1_801780,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd
+2025-06-30,sw1_801890,,,0,True,trusted_previous_state_missing,354edd71-af9e-5d7f-9864-6f54545ddefd

@@ -1,0 +1,20 @@
+{
+  "version": "V2.2.1 MILESTONE B",
+  "date": "2026-10-02",
+  "summary": "完成明确规则与安全状态内核，真实验收未通过，不启用每日生产任务。",
+  "problem": "冻结说明里转弱、恢复的关键量化定义不完整；现有单日样本不足证明连续状态。",
+  "changes": "补齐公式与合同附件，完成指标可用性、独立规则、合法转移、连续计数、生命周期和冻结保护。",
+  "expected_result": "空值保持未知，坏数据不产生假升级或降级，规则与原因可追溯。",
+  "database_changed": true,
+  "screening_logic_changed": false,
+  "automation_changed": false,
+  "old_data_impact": "旧G1结果全部保留，另写审计profile，不生成伪造生命周期。",
+  "acceptance": "指标通过；完整状态机未通过。",
+  "unresolved": [
+    "S3/S4恶化组与E4历史集中度/同步广度条件缺少可执行的窗口、估计方法及量化判据",
+    "Freeze恢复后的连续计数处理以及S3恢复S2的连续确认/防抖合同缺失",
+    "真实样本每日期3个行业不足横截面最小10；全A广度参照及可信上一状态/连续membership完整性未具备"
+  ],
+  "next": "显式补齐冻结业务判据和真实状态验收输入；不开展Provider研究。",
+  "decision": "不改阈值，不自行发明转弱/恢复规则，不启用生产任务。"
+}

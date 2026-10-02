@@ -1,0 +1,52 @@
+{
+  "record_key": "mainline-v221-milestone-b-354edd71-engine-audit",
+  "version": "V2.2.1 — 主线识别引擎",
+  "record_date": "2026-10-02",
+  "change_types": [
+    "指标",
+    "规则",
+    "状态",
+    "测试"
+  ],
+  "one_line_summary": "指标验收通过，完整状态验收未通过；保留真实缺口，不启用生产任务。",
+  "why_changed": "数据底座已验收，但每天的主线阶段还没有可追溯的规则和状态记录，需要补齐主线识别发动机。",
+  "problems_found": [
+    "冻结说明没有完整量化转弱、退潮和恢复判据。",
+    "现有固定样本没有足够行业横截面或可信连续历史状态。"
+  ],
+  "main_changes": [
+    "补齐冻结合同附件及指标可用性，保持空值与延期指标语义。",
+    "完成独立规则和合法转移内核，加入连续计数、防抖、生命周期与冻结保护。",
+    "运行64项测试和真实15样本、900行连续窗口诊断，保存审计结果。"
+  ],
+  "expected_result": "避免坏数据导致假升级或降级；任意规则和状态结果都能查到指标、版本及原因。",
+  "database_changed": true,
+  "database_change_summary": "仅新增主线审计参数、来源、运行清单、15条审计快照和15条质量记录；不修改核心表结构。",
+  "screening_logic_changed": false,
+  "screening_logic_summary": "没有改三大赛道的公司筛选或研究规则。",
+  "automation_changed": false,
+  "automation_change_summary": "只增加隔离离线审计，不启用生产任务，不改现有日报。",
+  "old_data_impact": "原数据底座15条成功事实保持不变，另存审计版本；没有生成伪造的生命周期。",
+  "acceptance_result": "部分通过",
+  "unresolved_issues": [
+    "转弱与退潮的完整量化判据。",
+    "冻结恢复和转弱恢复的连续计数合同。",
+    "足够行业横截面与完整可信连续状态验收输入。"
+  ],
+  "next_step": "显式补齐冻结业务判据和真实状态验收输入，再完成状态验收；不返回数据源研究。",
+  "important_decisions": [
+    "不修改冻结阈值，不把未知当失败，不伪造历史状态。",
+    "保持每日生产任务关闭，不开发页面。"
+  ],
+  "technical_details": {
+    "G2": "PASS",
+    "G3": "FAIL",
+    "READY_FOR_DAILY_MAINLINE": false,
+    "branch": "mainline-phase1e",
+    "code_commit": "ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+    "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+    "workflow_run": 36946510935,
+    "engine_profile": "industry_trend_v2_2_1_engine_audit"
+  },
+  "is_version_summary": true
+}

@@ -1,0 +1,76 @@
+{
+  "G1": "PASS_UNCHANGED",
+  "G2": "PASS",
+  "G3": "FAIL",
+  "MILESTONE_B": "OPEN",
+  "READY_FOR_DAILY_MAINLINE": false,
+  "production_mainline_job_enabled": false,
+  "code_commit": "ed453deb1aab5cccd0fcfd798f5c8f101645c2c4",
+  "parameter_profile": "industry_trend_v2_2_1_engine_audit",
+  "parameter_hash": "3fdcbcdf79090dc640cc0d609aa0e8368e36c34e321e0d5ea4a3060463614b06",
+  "metric_availability_version": "mainline_metric_availability_v2.2.1_deferred_circ_mv",
+  "unit_tests": {
+    "engine_tests": 58,
+    "benchmark_tests": 6,
+    "total_passed": 64,
+    "failed": 0,
+    "kernel_fixtures_are_not_business_rule_acceptance": true
+  },
+  "integration": {
+    "real_samples": 15,
+    "core_unchanged": 15,
+    "repeat_identical": 15,
+    "rules_repeat_identical": 15
+  },
+  "time_series": {
+    "real_board_rows": 900,
+    "windows": 15,
+    "sessions_per_window": 60,
+    "deterministic_rows": 900,
+    "certified_state_transitions": 0,
+    "certified_intermediate_membership": false,
+    "real_price_and_benchmark_inputs": true,
+    "false_zero_fills": 0,
+    "historical_seed_state": "unknown_preserved_NULL"
+  },
+  "blocking_issues": [
+    {
+      "code": "BUSINESS_RULE_CONFLICT_DETERIORATION",
+      "reason": "S3/S4恶化组与E4历史集中度/同步广度条件缺少可执行的窗口、估计方法及量化判据",
+      "source": "V2.2 p12 §9.2–9.4"
+    },
+    {
+      "code": "BUSINESS_RULE_CONFLICT_RECOVERY",
+      "reason": "Freeze恢复后的连续计数处理以及S3恢复S2的连续确认/防抖合同缺失",
+      "source": "V2.2 p10–12 §8–9"
+    },
+    {
+      "code": "STATE_ACCEPTANCE_EVIDENCE_INSUFFICIENT",
+      "reason": "真实样本每日期3个行业不足横截面最小10；全A广度参照及可信上一状态/连续membership完整性未具备",
+      "source": "V2.2 p8 §6; actual DB input and real window audit"
+    }
+  ],
+  "run_id": "354edd71-af9e-5d7f-9864-6f54545ddefd",
+  "recompute_run_id": "cbbe3b07-dd05-5c69-a105-f05edf7df206",
+  "g2_checks": {
+    "formulas": true,
+    "unit_tests": true,
+    "boundaries": true,
+    "null_semantics": true,
+    "deferred_metrics": true,
+    "freeze": true,
+    "deterministic": true
+  },
+  "g3_checks": {
+    "legal_transition_kernel": true,
+    "consecutive_kernel": true,
+    "debounce_kernel": true,
+    "lifecycle_kernel": true,
+    "reentry_kernel": true,
+    "freeze_hold_kernel": true,
+    "deterministic_kernel": true,
+    "frozen_business_group_definitions": false,
+    "frozen_recovery_policy": false,
+    "real_certified_transition_window": false
+  }
+}
