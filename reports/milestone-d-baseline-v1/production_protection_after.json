@@ -1,0 +1,43 @@
+{
+  "verified_at": "2026-10-02T13:04:18.805Z",
+  "evidence_sha": "0f916083dd44c94585e16f866e69f90fa85726b8",
+  "starting_sha": "4e38d4e16f84fb047380f8339135eefe536979ff",
+  "production_database_writes": 0,
+  "snapshots": 385,
+  "checkpoints": 310,
+  "lifecycles": 1351,
+  "rule_evidence": 16430,
+  "checkpoint_checksum": "f905199028df1e133673eead0a5aba14",
+  "lifecycle_checksum": "341da32ba884705d4dd394b58c713586",
+  "counts_and_checkpoint_lifecycle_checksums_unchanged": true,
+  "mainline_job": {
+    "is_scheduled": true,
+    "last_status": "skipped"
+  },
+  "cron": {
+    "job_name": "v43-daily-research-pipeline",
+    "expression": "0 9 * * *",
+    "timezone": "UTC",
+    "active": true,
+    "shanghai_time": "17:00"
+  },
+  "protected_baseline_files_unchanged": true,
+  "production_workflow_unchanged": true,
+  "three_sector_logic_unchanged": true,
+  "sites_version": 41,
+  "edge_versions": {
+    "daily_pipeline": 22,
+    "production_gateway": 5,
+    "status_api": 6
+  },
+  "MAINLINE_LIVE": "READY_WAITING_FIRST_PRODUCTION_RUN",
+  "MANUAL_UI_CHECK_REQUIRED": true,
+  "validation_job": {
+    "run_id": 37010023384,
+    "job_id": 110847265658,
+    "conclusion": "success"
+  },
+  "G5": "FAIL",
+  "MILESTONE_D": "OPEN",
+  "rule_calibration_started": false
+}
