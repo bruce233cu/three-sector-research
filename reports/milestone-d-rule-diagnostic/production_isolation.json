@@ -1,0 +1,52 @@
+{
+  "production_writes": 0,
+  "scope": "market snapshots, production checkpoints, lifecycles and manifests",
+  "before": [
+    {
+      "object": "snapshots",
+      "rows": 385,
+      "checksum": "9a417f09d33b520bcb3a6af634ba1708"
+    },
+    {
+      "object": "checkpoints",
+      "rows": 310,
+      "checksum": "c05800e2526babfe41d2e0e82590e62b"
+    },
+    {
+      "object": "lifecycles",
+      "rows": 1351,
+      "checksum": "96881a2f122969be1151a289e21ebe69"
+    },
+    {
+      "object": "manifests",
+      "rows": 54,
+      "checksum": "f119dfee985545c23dbe43bbcfb761f7"
+    }
+  ],
+  "after": [
+    {
+      "object": "snapshots",
+      "rows": 385,
+      "checksum": "9a417f09d33b520bcb3a6af634ba1708"
+    },
+    {
+      "object": "checkpoints",
+      "rows": 310,
+      "checksum": "c05800e2526babfe41d2e0e82590e62b"
+    },
+    {
+      "object": "lifecycles",
+      "rows": 1351,
+      "checksum": "96881a2f122969be1151a289e21ebe69"
+    },
+    {
+      "object": "manifests",
+      "rows": 54,
+      "checksum": "f119dfee985545c23dbe43bbcfb761f7"
+    }
+  ],
+  "unchanged": true,
+  "before_provenance": "Initial task read of complete production objects",
+  "after_provenance": "Supabase read-only complete-object checksum query, 2026-10-02",
+  "project_record_log_is_separate": true
+}

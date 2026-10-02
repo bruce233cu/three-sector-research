@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "rows": [
+    {
+      "id": "cdf3a395-4c80-4bc9-b82b-657e11aaf800",
+      "record_key": "mainline-v221-rule-diagnostic-20261002",
+      "version": "V2.2.1（只读规则体检，正式版本不变）",
+      "record_date": "2026-10-02",
+      "one_line_summary": "把现有25个历史案例拆成可追溯的规则诊断，提出五个待测方向与新的独立验证设计，不改正式规则。",
+      "acceptance_result": "部分通过",
+      "database_changed": false,
+      "screening_logic_changed": false,
+      "automation_changed": false,
+      "production_writes": "0"
+    }
+  ]
+}

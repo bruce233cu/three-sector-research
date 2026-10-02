@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "scope": "independent arithmetic on original frozen case archives; no rule or production replay",
+  "casebook": "casebook_v1_20261002_25",
+  "headline_recomputed": {
+    "positive_event_days": 244,
+    "positive_full_window_S1": 10,
+    "positive_full_window_S2": 6,
+    "positive_event_window_S2": 5,
+    "case_days": 1631,
+    "transitions": 341,
+    "freeze_days": 63,
+    "negative_event_days": 88,
+    "negative_any_event_S2_cases": 4,
+    "negative_false_S2_days": 11,
+    "ambiguous_event_days": 118
+  },
+  "new_negative_confirmations": [
+    "N10"
+  ],
+  "sole_blocker_days": {
+    "C": 7,
+    "C_eligible": 2,
+    "B": 25,
+    "B_eligible": 8,
+    "A": 2,
+    "A_eligible": 1,
+    "enhancers": 1
+  },
+  "B_sole_cases": [
+    "P03",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10"
+  ],
+  "case_equal_rates": {
+    "positive_B": 0.32953373015873016,
+    "positive_D": 0.6792261904761905,
+    "positive_C4": 0.8137698412698413,
+    "positive_D.newhigh": 0.5973611111111111,
+    "positive_E3": 0.5973611111111111,
+    "negative_B": 0.18079365079365078,
+    "negative_D": 0.3322222222222222,
+    "negative_C4": 0.7498412698412699,
+    "negative_D.newhigh": 0.2571428571428571,
+    "negative_E3": 0.2571428571428571,
+    "ambiguous_B": 0.2473202614379085,
+    "ambiguous_D": 0.5354575163398693,
+    "ambiguous_C4": 0.7781699346405229,
+    "ambiguous_D.newhigh": 0.4873529411764706,
+    "ambiguous_E3": 0.4873529411764706
+  },
+  "D_newhigh_E3_identical_event_rows": 450,
+  "candidate_failure_votes": {
+    "0": 10,
+    "2": 80,
+    "1": 48
+  },
+  "previous_candidate_votes": {
+    "1": 1,
+    "4": 37,
+    "3": 92,
+    "0": 1,
+    "5": 4
+  },
+  "frozen_files_verified": 7,
+  "production_writes": 0,
+  "calibration_executed": false
+}

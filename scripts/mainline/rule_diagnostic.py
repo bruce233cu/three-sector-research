@@ -232,7 +232,9 @@ def build(output, production_membership=None):
                 'false_longest_streak': streak([v is False for v in values]),
                 'first_pass_in_event': next((date(row) for row in event if rules(row)[g]['passed'] is True), None),
                 'sole_blocker_nonS2_days': sum(b['last_blocker'] == g for b in own),
-                'sole_blocker_eligible_S1_days': sum(b['last_blocker'] == g and b['eligible_S1'] for b in own)}
+                'sole_blocker_eligible_S1_days': sum(b['last_blocker'] == g and b['eligible_S1'] for b in own),
+                'blocker_frequency_all_event_days': (values.count(False) + values.count(None)) / len(values),
+                'sole_blocker_frequency_nonS2_days': sum(b['last_blocker'] == g for b in own) / len(own) if own else None}
         atomic_info = {}
         for rid in [i for g in GROUPS for i in CHILDREN[g]]:
             failed_rows = [row for row in event if rules(row)[rid]['passed'] is False]

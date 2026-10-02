@@ -1,0 +1,41 @@
+{
+  "scope": "read-only diagnostic arithmetic, not state/production replay",
+  "status": "PASS",
+  "files": [
+    {
+      "path": "diagnostic_summary.json",
+      "same": true,
+      "sha256": "7b80acfac58989d6cf241894abb2440fec59599bd6dd9fb8a48e672d1d5ec8e0"
+    },
+    {
+      "path": "warmup_security_membership_impact.csv",
+      "same": true,
+      "sha256": "1d3ef84d4a9c570826e91df7175f2986443b486d9485d7a6c48f8c55da50de33"
+    },
+    {
+      "path": "rule_matrix_overlap_sensitivity.csv",
+      "same": true,
+      "sha256": "0564d665e03da700ca51f48054993603c094713143f93767c84352228ac405e8"
+    },
+    {
+      "path": "rule_discrimination_matrix.csv",
+      "same": true,
+      "sha256": "d88b2e18bdaaefcfdb1c08b5e6f4f9404481f0ace68bc70b1cf0d581cfae04c2"
+    },
+    {
+      "path": "event_blockers.csv",
+      "same": true,
+      "sha256": "5f7b4f02260d0f61fc726c1e3b5d4f377de4a8e3101be86dcfb415971f963d48"
+    },
+    {
+      "path": "atomic_daily_evidence.csv.gz",
+      "same": true,
+      "sha256": "6c2d25e02829261074426334f8a2dc0ed1ecb959f43fb6c8794034b682dd5dba"
+    },
+    {
+      "path": "case_diagnostics.json.gz",
+      "same": true,
+      "sha256": "28da28bfa241483900d9d94ab96cacb1dc9b82abf0f363b535efb78a88745c18"
+    }
+  ]
+}
