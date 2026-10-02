@@ -163,6 +163,10 @@ def advance(checkpoint, snapshot, evaluation, profile, market_dates, *, resume_p
                     reason=trigger
                 elif not frozen:
                     reason=reason or 'no_legal_transition_triggered'
+                    if completed and previous=='S3' and (evidence['recover'] or evidence['retire']):
+                        debounce_status='waiting_consecutive_days'
+                        debounce_reason='recover_requires_two_or_retire_requires_three_sessions'
+                        reason=debounce_reason
                     if previous=='S1' and evidence['confirm']:
                         debounce_status='waiting_consecutive_days';debounce_reason='confirm_requires_two_consecutive_sessions'
                 debounce_days=max(cp.consecutive.values())

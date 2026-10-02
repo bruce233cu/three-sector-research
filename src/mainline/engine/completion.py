@@ -32,8 +32,8 @@ def completion_features(snapshot, history, market_dates):
         d = str(r['as_of_date'])
         if d in rows:
             raise ValueError('duplicate history date')
-        rows[d] = r
-    rows[day] = snapshot
+        rows[d] = r if r.get('critical_data_ok') is True and not r.get('stage_frozen') else {}
+    rows[day] = snapshot if snapshot.get('critical_data_ok') is True and not snapshot.get('stage_frozen') else {}
     def window(field, n):
         return [number(rows.get(d, {}).get(field)) for d in dates[-n:]]
     rs5 = window('rs_5', 5)

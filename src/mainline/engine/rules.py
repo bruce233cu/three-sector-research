@@ -40,6 +40,7 @@ class RuleResult:
     reason: str | None
     parameter_profile: str
     metric_availability_version: str
+    clarification_version: str | None = None
 
 
 def evaluate_rules(snapshot, profile):
@@ -48,7 +49,7 @@ def evaluate_rules(snapshot, profile):
         result=RuleResult(rid,snapshot['rule_version'],snapshot['object_id'],snapshot['as_of_date'],
             metric,actual,threshold,op,passed,reason if reason else ('passed' if passed is True else
             'threshold_not_met' if passed is False else 'insufficient_evidence'),profile['profile_id'],
-            snapshot['metric_availability_version'])
+            snapshot['metric_availability_version'],profile.get('clarification_version'))
         rules.append(asdict(result))
         return passed
     def compare(rid, metric, threshold, op, threshold_metric=None):

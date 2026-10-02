@@ -6,7 +6,7 @@ The source read does not itself certify a real state transition.
 import json,hashlib,urllib.request,time,os
 from pathlib import Path
 from datetime import date
-from mainline.providers.sws_history import SwsEffectivePitProvider,SWS_STOCK_HISTORY_URL,SWS_CODE_URL
+from mainline.providers.sws_history import SwsEffectivePitProvider,SWS_STOCK_HISTORY_URL,SWS_CODE_URL,_download
 
 out=Path('reports/g3-state-completion');out.mkdir(parents=True,exist_ok=True)
 result={'code_commit':os.environ.get('CODE_COMMIT'),'source':'existing_official_SWS',
@@ -22,7 +22,16 @@ for url in [SWS_STOCK_HISTORY_URL,SWS_CODE_URL]:
         result['reads'].append({'url':url,'http_status':status,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
         payload.append(b)
     except Exception as e:
-        result['reads'].append({'url':url,'error_type':type(e).__name__,'error':str(e)[:400]})
+        initial={'url':url,'error_type':type(e).__name__,'error':str(e)[:400]}
+        result['reads'].append(initial)
+        # Reuse the already-approved adapter's existing transport compatibility.
+        # Its verify=False is explicit in source; flag it, never claim verified TLS.
+        try:
+            b=_download(url,retries=1,timeout_seconds=20)
+            result['reads'].append({'url':url,'transport':'existing_adapter','tls_verified':False,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+            payload.append(b)
+        except Exception as fallback:
+            result['reads'].append({'url':url,'transport':'existing_adapter','tls_verified':False,'error_type':type(fallback).__name__,'error':str(fallback)[:400]})
 if len(payload)==2:
     try:
         p=SwsEffectivePitProvider(stock_bytes=payload[0],code_bytes=payload[1])
@@ -35,6 +44,8 @@ if len(payload)==2:
             for d in days for name in result['ledger']['level1_names']]
     except Exception as e:
         result['parse_error']={'type':type(e).__name__,'error':str(e)[:400]}
+cache=Path('temporary_g3_input')
+result['temporary_cache_inventory']=[{'path':str(p.relative_to(cache)),'bytes':p.stat().st_size} for p in cache.rglob('*') if p.is_file()] if cache.exists() else []
 result['complete_board_panel_available']=False
 (out/'source_acquisition.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:v for k,v in result.items() if k!='daily_member_counts'},ensure_ascii=False))
