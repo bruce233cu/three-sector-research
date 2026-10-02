@@ -35,6 +35,10 @@ for url in [SWS_STOCK_HISTORY_URL,SWS_CODE_URL]:
 if len(payload)==2:
     try:
         p=SwsEffectivePitProvider(stock_bytes=payload[0],code_bytes=payload[1])
+        import pandas as pd,io
+        codeframe=pd.read_excel(io.BytesIO(payload[1]),dtype=str).fillna('')
+        result['taxonomy_columns']=list(codeframe.columns)
+        result['taxonomy_examples']=codeframe.head(8).to_dict('records')
         result['ledger']={'rows':len(p.history),'level1_names':sorted(p.history.level1_name.unique().tolist()),
                           'effective_from_min':str(p.history.effective_from.min()),'source_version':p.source_version}
         # Resolve each actual session from existing calendar; no target-day extension.

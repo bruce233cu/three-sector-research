@@ -2,7 +2,7 @@ name: Mainline State Completion validation
 on:
   push:
     branches: [mainline-phase1e]
-    paths: ['src/mainline/engine/**', 'tests/mainline/test_engine*.py', 'scripts/mainline/state_completion_acquisition.py', '.github/workflows/mainline-state-completion.yml']
+    paths: ['src/mainline/engine/**', 'tests/mainline/test_engine*.py', 'scripts/mainline/state_completion_acquisition.py', 'scripts/mainline/g3_real_window.py', '.github/workflows/mainline-state-completion.yml']
 permissions:
   contents: read
   actions: read
@@ -10,12 +10,12 @@ jobs:
   state-completion:
     if: contains(github.event.head_commit.message, '[mainline-state-completion]')
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: pip install pandas==2.2.3 numpy requests==2.32.5 xlrd==2.0.1
+      - run: pip install -r requirements-mainline.txt
       - run: |
           PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_engine*.py' -v
           PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_v221_benchmark.py' -v
@@ -26,6 +26,8 @@ jobs:
           github-token: ${{ github.token }}
           path: temporary_g3_input/
       - run: PYTHONPATH=src python scripts/mainline/state_completion_acquisition.py
+        env: {CODE_COMMIT: '${{ github.sha }}'}
+      - run: python scripts/mainline/g3_real_window.py
         env: {CODE_COMMIT: '${{ github.sha }}'}
       - uses: actions/upload-artifact@v4
         if: always()

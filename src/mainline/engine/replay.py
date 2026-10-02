@@ -33,7 +33,7 @@ def verified_freeze_gap(proof, gap, cp):
     return True
 
 
-def replay(panel, market_dates, profile, membership_resolver):
+def replay(panel, market_dates, profile, membership_resolver, *, warmup_panel=()):
     """Resolver is called for every day, including frozen days; fail closed.
 
     It returns a certified daily mapping object_id -> member IDs with versions
@@ -52,6 +52,14 @@ def replay(panel, market_dates, profile, membership_resolver):
         raise ValueError('invalid board dates')
     first,last=min(daily),max(daily)
     history=defaultdict(list);checkpoints={};outputs=[];counts=[]
+    seen_warmup=set()
+    for r in warmup_panel:
+        d=str(r['as_of_date']);key=(r['object_id'],r['taxonomy_version'])
+        if r.get('evidence_kind')!='real_historical_board' or d>=first or d not in dates:
+            raise ValueError('invalid/future warmup board row')
+        if (d,key) in seen_warmup:raise ValueError('duplicate warmup board row')
+        seen_warmup.add((d,key));history[key].append(dict(r))
+    for h in history.values():h.sort(key=lambda r:r['as_of_date'])
     for day in dates[dates.index(first):dates.index(last)+1]:
         member=membership_resolver(day)
         if member.get('trade_date') != day or member.get('complete') is not True:
