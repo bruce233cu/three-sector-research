@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from mainline.engine.replay import replay, digest
 from mainline.production.daily import evolve
+from mainline.engine.metrics import finalize_metrics,add_cross_section
 
 BASE_SHA = '4e38d4e16f84fb047380f8339135eefe536979ff'
 RULE = 'mainline_v2.2.1_state_completion_v1'
@@ -94,13 +95,36 @@ def load_inputs(directory, profile):
     if dates!=sorted(members):raise ValueError('membership calendar gap')
     return panel, members, dates, prov
 
-def context_replay(panel, dates, profile, members, end):
+def prepare_warmup(panel, dates):
+    history={};prepared=[]
+    for day in sorted({r['as_of_date'] for r in panel}):
+        group=[r for r in panel if r['as_of_date']==day]
+        group=add_cross_section([finalize_metrics(r,history.get(r['object_id'],[]),dates) for r in group])
+        for r in group:history.setdefault(r['object_id'],[]).append(r)
+        prepared.extend(group)
+    return prepared
+
+def load_warmup(directory, profile, live_start):
+    raw=read(directory/'warmup_board_inputs.json.gz');m=read(directory/'warmup_memberships.json.gz')
+    p=read(directory/'warmup_provenance.json')
+    if digest(raw)!=p['warmup_checksum'] or digest(m)!=p['membership_checksum']:
+        raise ValueError('warmup evidence changed')
+    if not p['original_raw_response_checksum_matching'] or len(raw)!=84*31:
+        raise ValueError('warmup not certified')
+    if any(r['as_of_date']>=live_start for r in raw):raise ValueError('future warmup')
+    for day in sorted(m):resolver_for(m)(day)
+    for r in raw:
+        if r['membership_checksum']!=m[r['as_of_date']]['checksums'][r['object_id']]:raise ValueError('warmup membership mismatch')
+        r.update(rule_version=profile['rule_version'],metric_availability_version=profile['metric_availability_version'])
+    return raw,m,p
+
+def context_replay(panel, dates, profile, members, end, *, warmup_panel=()):
     # No prior states, case labels or post-cutoff facts enter this function.
     chosen=[deepcopy(r) for r in panel if r['as_of_date']<=end]
     calendar=[d for d in dates if d<=end]
-    return replay(chosen,calendar,profile,resolver_for(members))
+    return replay(chosen,calendar,profile,resolver_for(members),warmup_panel=warmup_panel)
 
-def case_replay(case, context, panel, dates, profile, members):
+def case_replay(case, context, panel, dates, profile, members, *, warmup_panel=()):
     start,end=case['pre_window_start'],case['post_window_end']
     prior=[r for r in context['rows'] if r['snapshot']['as_of_date']<start]
     actual=[deepcopy(r) for r in panel if start<=r['as_of_date']<=end]
@@ -109,11 +133,11 @@ def case_replay(case, context, panel, dates, profile, members):
         seed_day=max(r['snapshot']['as_of_date'] for r in prior)
         seed={'date':seed_day,'checkpoints':{r['snapshot']['object_id']:r['state']['checkpoint']
               for r in prior if r['snapshot']['as_of_date']==seed_day}}
-        result=evolve(actual,calendar,profile,resolver_for(members),[r['snapshot'] for r in prior],seed)
+        result=evolve(actual,calendar,profile,resolver_for(members),list(warmup_panel)+[r['snapshot'] for r in prior],seed)
         seed_kind='isolated_causal_prefix_checkpoint'
     else:
         seed_day=None;seed={'checkpoints':{}}
-        result=replay(actual,calendar,profile,resolver_for(members))
+        result=replay(actual,calendar,profile,resolver_for(members),warmup_panel=warmup_panel)
         seed_kind='explicit_S0_archive_anchor'
     rows=[r for r in result['rows'] if r['snapshot']['object_id']==case['object_id']]
     # Resume must equal the independent uninterrupted prefix; no planted states.
@@ -132,45 +156,53 @@ def case_replay(case, context, panel, dates, profile, members):
         'lifecycles':digest(business['lifecycles']),
         'full_business':digest(business)}
     ancestry={'checkpoint_date':seed_day,'checkpoint_source':seed_kind,
-              'checkpoint_checksum':digest(seed),'warm_history_rows':len(prior),
+              'checkpoint_checksum':digest(seed),'warm_history_rows':len(prior)+len(warmup_panel),
               'warm_history_max_date':seed_day,'full_cross_section_industries':31,
               'continuation_matches_uninterrupted':True}
     return business,component,ancestry
 
-def run(root, directory, output, run_id, repeat_ids=('P03','P06','N04','N05','A02')):
+def run(root, directory, output, run_id, repeat_ids=('P03','P06','N04','N05','A02'), *, warmup_directory=None):
     started=utc();profile,hashes=baseline_profile(root)
     panel,members,dates,prov=load_inputs(directory,profile)
     book=read(directory/'casebook.json');validate_book(book,dates)
+    warm_raw=[];warm=[];warm_prov=None
+    if warmup_directory:
+        warm_raw,wm,warm_prov=load_warmup(warmup_directory,profile,dates[0])
+        dates=sorted(set(dates)|set(wm));members={**wm,**members};warm=prepare_warmup(warm_raw,dates)
+    data_version=('full-warmup-'+digest({'live':prov['panel_checksum'],'warm':warm_prov['warmup_checksum']})[:20]) if warm_prov else prov['data_snapshot_version']
+    qualification='FULL_CERTIFIED_WARMUP_RESTORED' if warm else 'DATA_GAP_MISSING_84_WARMUP_DAYS'
     if book['selection_frozen_at']>=started:raise ValueError('selection was not frozen before execution')
     if output.exists():raise ValueError('result version already exists')
     output.mkdir(parents=True)
     cutoff=max(c['post_window_end'] for c in book['cases'])
-    context=context_replay(panel,dates,profile,members,cutoff)
+    context=context_replay(panel,dates,profile,members,cutoff,warmup_panel=warm)
     write(output/'causal_context.json.gz',context)
     manifests=[];checks=[]
     runner_sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
     for c in book['cases']:
-        case_started=utc();business,components,ancestry=case_replay(c,context,panel,dates,profile,members)
+        case_started=utc();business,components,ancestry=case_replay(c,context,panel,dates,profile,members,warmup_panel=warm)
         manifest={'backtest_run_id':run_id+':'+c['case_id'],'parent_backtest_run_id':run_id,
             'run_type':'historical_blind_test','baseline':'Baseline V1','case_id':c['case_id'],
             'casebook_version':book['casebook_version'],'casebook_checksum':book['checksum'],
             'rule_version':RULE,'parameter_profile':PROFILE,'code_sha':BASE_SHA,'runner_code_sha':runner_sha,
-            'frozen_code_file_hashes':hashes,'data_snapshot_version':prov['data_snapshot_version'],
+            'frozen_code_file_hashes':hashes,'data_snapshot_version':data_version,
+            'casebook_selected_live_data_snapshot_version':book['data_snapshot_version'],'warmup_provenance':warm_prov,
             'pit_level':prov['pit_level'],'knowledge_time_unverified':True,
             'membership_source':prov['original_provenance']['membership_source_version'],
             'source_snapshot_ids':prov['original_provenance']['source_ids'],
             'available_at':{'universe':prov['available_at'],'membership':None,'stock_price':None},
             'start_date':c['pre_window_start'],'end_date':c['post_window_end'],
-            'archive_anchor':dates[0],'archived_warmup_available':False,
-            'initialization_qualification':'cold-start reconstitution, not certified full-warmup equivalence',
+            'archive_anchor':min(r['as_of_date'] for r in panel),'archived_warmup_available':bool(warm),
+            'initialization_qualification':qualification,
             'checkpoint':ancestry,'checksum':components['full_business'],'component_checksums':components,
             'started_at':case_started,'finished_at':utc(),'execution_status':'succeeded',
-            'baseline_equivalence_status':'DATA_GAP_MISSING_84_WARMUP_DAYS','production_writes':0}
+            'baseline_equivalence_status':qualification,'production_writes':0}
         write(output/(c['case_id']+'.json.gz'),{**business,'manifest':manifest});manifests.append(manifest)
         if c['case_id'] in repeat_ids:
             # Complete cold anchor -> post-window rerun; not just rereading cached case files.
-            repeated_context=context_replay(panel,dates,profile,members,c['post_window_end'])
-            _,again,_=case_replay(c,repeated_context,panel,dates,profile,members)
+            repeated_warm=prepare_warmup(warm_raw,dates) if warm_raw else []
+            repeated_context=context_replay(panel,dates,profile,members,c['post_window_end'],warmup_panel=repeated_warm)
+            _,again,_=case_replay(c,repeated_context,panel,dates,profile,members,warmup_panel=repeated_warm)
             checks.append({'case_id':c['case_id'],'full_anchor_replayed':True,'components_equal':components==again,
                            'original':components,'rerun':again})
             if components!=again:raise ValueError('nondeterministic replay')
@@ -178,8 +210,8 @@ def run(root, directory, output, run_id, repeat_ids=('P03','P06','N04','N05','A0
     write(output/'run_manifests.json',manifests)
     write(output/'deterministic_rerun.json',checks)
     write(output/'run_index.json',{'backtest_run_id':run_id,'started_at':started,'finished_at':utc(),
-        'casebook_checksum':book['checksum'],'data_snapshot_version':prov['data_snapshot_version'],
+        'casebook_checksum':book['checksum'],'data_snapshot_version':data_version,
         'manifests_checksum':digest(manifests),'context_checksum':digest(context),'case_count':len(manifests),
         'production_writes':0,'execution_status':'succeeded',
-        'baseline_equivalence_status':'DATA_GAP_MISSING_84_WARMUP_DAYS'})
+        'baseline_equivalence_status':qualification})
     return manifests

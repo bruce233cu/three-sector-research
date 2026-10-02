@@ -134,7 +134,7 @@ def evaluate_case(case, business, calendar, stable_min=3, short_interval=5):
         'freeze_reason':dict(frozen_reason),'freeze_before_transition_count':len(frozen_changes),
         'freeze_resume_mode':dict(resume),'freeze_transition_violations':freeze_violations,
         'coverage':coverage,'data_gap_days':len(missing_core),
-        'baseline_equivalence':'DATA_GAP_MISSING_84_WARMUP_DAYS',
+        'baseline_equivalence':business['manifest'].get('baseline_equivalence_status','DATA_GAP_MISSING_84_WARMUP_DAYS'),
         'top_confirm_blockers':dict(confirm_failures.most_common()),
         'top_failed_rule_evidence':dict(transition_evidence.most_common(12)),
         'checksum':business['manifest']['checksum'],'post_confirmation_diagnostics':post_confirmation,
@@ -164,7 +164,7 @@ def aggregate(results):
             'freeze_transition_violations':sum(r['freeze_transition_violations'] for r in rs),
             'duplicate_lifecycles':sum(r['duplicate_lifecycle_count'] for r in rs),
             'knowledge_time_unverified_ratio':1.0,'strict_pit_coverage':0.0,
-            'qualification':'相关案例、冷启动归档重构；不等于独立样本准确率或完整预热Baseline性能。'}
+            'qualification':'相关案例，不等于独立样本准确率；完整预热资格见每个case manifest。'}
     output={'overall':group(results),'strata':{}}
     for field in ['case_type','market_style','market_regime','mainline_type','episode_cluster']:
         groups=defaultdict(list)

@@ -4,15 +4,16 @@ import math
 from mainline.engine.replay import digest
 from mainline.backtest.runner import context_replay, resolver_for
 
-def audit(panel,members,dates,profile,context,cutoff='2024-11-15'):
+def audit(panel,members,dates,profile,context,cutoff='2024-11-15', *, warmup_panel=()):
     bydate={}
-    for r in panel:
+    all_board=list(warmup_panel)+panel
+    for r in all_board:
         key=(r['as_of_date'],r['object_id'])
         if key in bydate:raise ValueError('duplicate input')
         bydate[key]=r
     for d in dates:
         m=resolver_for(members)(d)
-        if set(m['members'])!={r['object_id'] for r in panel if r['as_of_date']==d}:
+        if set(m['members'])!={r['object_id'] for r in all_board if r['as_of_date']==d}:
             raise ValueError('future/static universe mismatch')
     future_checkpoint=0;frozen_change=0;rank_date=0
     for r in context['rows']:
@@ -35,7 +36,7 @@ def audit(panel,members,dates,profile,context,cutoff='2024-11-15'):
                 expected=math.prod(1+a for a,b in pairs)-math.prod(1+b for a,b in pairs) if len(pairs)/n>=.9 else None
                 actual=r['rs_'+str(n)];rs_checks+=1
                 if (expected is None)!=(actual is None) or (expected is not None and abs(expected-actual)>1e-12):rs_mismatch+=1
-    prefix=context_replay(panel,dates,profile,members,cutoff)
+    prefix=context_replay(panel,dates,profile,members,cutoff,warmup_panel=warmup_panel)
     checks=[]
     # Each variant changes post-cutoff information only. Prefix states/rules/checkpoints
     # must equal an independently truncated uninterrupted run for all 31 industries.
@@ -57,7 +58,7 @@ def audit(panel,members,dates,profile,context,cutoff='2024-11-15'):
             elif name=='percentile':row['rs_10_pct']=999.
             elif name=='lifecycle':row['lifecycle']={'state':'S2','confirmed_at':'2099-01-01'}
             elif name=='case_labels':row['expected_behavior']='always S2'
-        result=context_replay(p,dates,profile,m,cutoff)
+        result=context_replay(p,dates,profile,m,cutoff,warmup_panel=warmup_panel)
         checks.append({'input':name,'cutoff':cutoff,'prefix_state_rule_checkpoint_lifecycle_unchanged':digest(result)==digest(prefix)})
     return {'scope':'certified BOARD archive + frozen adapter temporal contract; not independent stock-bar recalc',
         'pit_level':'effective_pit','knowledge_time_unverified':True,

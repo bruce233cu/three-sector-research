@@ -8,4 +8,5 @@ if __name__=='__main__':
     a.add_argument('--casebook-dir',type=Path,default=ROOT/'reports/milestone-d-baseline-v1')
     a.add_argument('--output',type=Path,required=True)
     a.add_argument('--run-id',required=True)
-    args=a.parse_args();run(ROOT,args.casebook_dir,args.output,args.run_id)
+    a.add_argument('--warmup-dir',type=Path)
+    args=a.parse_args();run(ROOT,args.casebook_dir,args.output,args.run_id,warmup_directory=args.warmup_dir)

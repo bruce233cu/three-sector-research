@@ -1,0 +1,62 @@
+name: Mainline blind-test missing warmup recovery
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths: ['scripts/mainline/backtest_restore_warmup.py', '.github/workflows/mainline-blind-warmup.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  recover-missing-warmup:
+    if: contains(github.event.head_commit.message, '[d-warmup]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements-mainline.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: mainline-state-completion-acquisition
+          run-id: 36961627493
+          github-token: ${{ github.token }}
+          path: temporary_warmup/g3
+      - uses: actions/download-artifact@v4
+        with:
+          name: mainline-production-evidence
+          run-id: 36970118460
+          github-token: ${{ github.token }}
+          path: temporary_warmup/production
+      - uses: actions/download-artifact@v4
+        with:
+          name: v221-benchmark-universe
+          run-id: 36942748135
+          github-token: ${{ github.token }}
+          path: temporary_warmup/universe
+      - name: Select existing source evidence only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          root=Path('temporary_warmup')
+          selected={'g3':['real_fetch_manifest.json','real_input_provenance.json','real_benchmark.json'],
+                    'production':['real_memberships.json'], 'universe':['temporary_universe_intervals.json']}
+          for name,files in selected.items():
+              with zipfile.ZipFile(root/(name+'.zip'),'w',compression=zipfile.ZIP_DEFLATED) as z:
+                  for f in files:z.write(root/name/f,arcname=f)
+          PY
+      - name: Recover the missing 84 days only
+        run: >-
+          python scripts/mainline/backtest_restore_warmup.py
+          --g3-zip temporary_warmup/g3.zip
+          --production-zip temporary_warmup/production.zip
+          --universe-zip temporary_warmup/universe.zip
+          --output reports/mainline-blind-warmup
+          --cache temporary_warmup/prices
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-blind-test-warmup
+          path: reports/mainline-blind-warmup/
+          retention-days: 30
