@@ -1,0 +1,1118 @@
+{
+  "casebook_version": "casebook_v1_20261002_25",
+  "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+  "baseline": "Baseline V1",
+  "rule_version": "mainline_v2.2.1_state_completion_v1",
+  "parameter_profile": "industry_trend_v221_state_completion_v1",
+  "code_sha": "4e38d4e16f84fb047380f8339135eefe536979ff",
+  "data_snapshot_version": "board-archive-3ff7ae0a56ab0c65",
+  "selection_protocol": "公开复盘预选行业事件，再用行业收益及广度核对标签。白名单不读取S0-S4、rule evidence、checkpoint或lifecycle。后验标签只用于评估。保留负例和代理争议，不根据系统输出修改。",
+  "holdout_status": "first_calibration_casebook; prior engineering aggregate exposure; not untouched final holdout",
+  "expected_negative_stable_s2_min_sessions": 3,
+  "short_reversal_max_sessions": 5,
+  "primary_evaluation_window": "event",
+  "secondary_evaluation_window": "pre+event+post; positives full-window MISS; inherited/left-censored separately",
+  "cases": [
+    {
+      "case_id": "P01",
+      "case_name": "电子：秋季科技行情",
+      "case_type": "positive",
+      "sector": "电子",
+      "object_id": "sw1_classification_270000",
+      "start_date": "2024-10-18",
+      "end_date": "2024-11-12",
+      "pre_window_start": "2024-09-02",
+      "post_window_end": "2024-12-10",
+      "pre_market_days": 27,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "公开科技行情中的一级行业窗口；等权相对收益可能弱于官方指数，保留代理差异。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://www.oushinet.com/static/content/china/chinanews/2024-11-13/1306390212012171663.html",
+          "date": "2024-11-13",
+          "summary": "公开复盘记录九月末至十一月的科技、金融及制造板块行情。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "科技成长",
+      "market_regime": "高波动",
+      "mainline_type": "中期产业趋势",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.2549985372806898,
+        "relative_return": 0.048920577939054244,
+        "relative_win_rate": 0.5555555555555556,
+        "mean_above_ma20": 0.8902645773219297,
+        "observed_days": 18
+      },
+      "episode_cluster": "秋季政策行情"
+    },
+    {
+      "case_id": "P02",
+      "case_name": "电力设备：秋季制造行情",
+      "case_type": "positive",
+      "sector": "电力设备",
+      "object_id": "sw1_classification_630000",
+      "start_date": "2024-10-18",
+      "end_date": "2024-11-12",
+      "pre_window_start": "2024-09-02",
+      "post_window_end": "2024-12-10",
+      "pre_market_days": 27,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "制造行业持续涨幅和行业广度均可观察，不以规则状态筛选。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://www.oushinet.com/static/content/china/chinanews/2024-11-13/1306390212012171663.html",
+          "date": "2024-11-13",
+          "summary": "公开复盘记录九月末至十一月的科技、金融及制造板块行情。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "制造",
+      "market_regime": "普涨",
+      "mainline_type": "中期产业趋势",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.2666466466147379,
+        "relative_return": 0.060568687273102384,
+        "relative_win_rate": 0.6111111111111112,
+        "mean_above_ma20": 0.8923691820162408,
+        "observed_days": 18
+      },
+      "episode_cluster": "秋季政策行情"
+    },
+    {
+      "case_id": "P03",
+      "case_name": "银行：年末红利价值",
+      "case_type": "positive",
+      "sector": "银行",
+      "object_id": "sw1_classification_480000",
+      "start_date": "2024-11-18",
+      "end_date": "2024-12-31",
+      "pre_window_start": "2024-09-30",
+      "post_window_end": "2025-02-06",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "红利行业持续相对表现，避免仅测试高弹性科技。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://finance.sina.com.cn/jjxw/2024-12-31/doc-ineckert2475766.shtml",
+          "date": "2024-12-31",
+          "summary": "新华财经银行年度复盘用于确定红利价值观察窗口。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "金融价值",
+      "market_regime": "低波动",
+      "mainline_type": "中期产业趋势",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.05400586277242314,
+        "relative_return": 0.07834946126207487,
+        "relative_win_rate": 0.5,
+        "mean_above_ma20": 0.703125,
+        "observed_days": 32
+      },
+      "episode_cluster": "秋季及消费红利"
+    },
+    {
+      "case_id": "P04",
+      "case_name": "商贸零售：消费政策扩散",
+      "case_type": "positive",
+      "sector": "商贸零售",
+      "object_id": "sw1_classification_450000",
+      "start_date": "2024-11-25",
+      "end_date": "2024-12-16",
+      "pre_window_start": "2024-10-14",
+      "post_window_end": "2025-01-14",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "零售政策及板块扩散，行业等权收益核对正例窗口。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://www.stcn.com/article/detail/1450831.html",
+          "date": "2024-12-13",
+          "summary": "公开复盘记录十二月消费板块和零售、社服扩散。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "轮动",
+      "mainline_type": "高弹性主题",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.23573155779608723,
+        "relative_return": 0.16143697002814328,
+        "relative_win_rate": 0.75,
+        "mean_above_ma20": 0.8328050917336631,
+        "observed_days": 16
+      },
+      "episode_cluster": "秋季及消费红利"
+    },
+    {
+      "case_id": "P05",
+      "case_name": "社会服务：消费扩散",
+      "case_type": "positive",
+      "sector": "社会服务",
+      "object_id": "sw1_classification_460000",
+      "start_date": "2024-11-25",
+      "end_date": "2024-12-16",
+      "pre_window_start": "2024-10-14",
+      "post_window_end": "2025-01-14",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "酒店旅游等消费扩散在一级行业层面的观察窗口。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://www.stcn.com/article/detail/1450831.html",
+          "date": "2024-12-13",
+          "summary": "公开复盘记录十二月消费板块和零售、社服扩散。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "轮动",
+      "mainline_type": "中期产业趋势",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.16009968093673455,
+        "relative_return": 0.08580509316879059,
+        "relative_win_rate": 0.5625,
+        "mean_above_ma20": 0.7091762404262404,
+        "observed_days": 16
+      },
+      "episode_cluster": "秋季及消费红利"
+    },
+    {
+      "case_id": "P06",
+      "case_name": "计算机：春节后AI",
+      "case_type": "positive",
+      "sector": "计算机",
+      "object_id": "sw1_classification_710000",
+      "start_date": "2025-02-05",
+      "end_date": "2025-03-14",
+      "pre_window_start": "2024-12-16",
+      "post_window_end": "2025-04-14",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "AI应用行情持续多周，相对收益和广度提供独立支持。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://paper.cnstock.com/html/2025-02/06/content_2025028.htm",
+          "date": "2025-02-06",
+          "summary": "春节后AI和机器人事件起点，后续持续性由行业收益核对。"
+        },
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "科技成长",
+      "market_regime": "高波动",
+      "mainline_type": "高弹性主题",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.2775146437769458,
+        "relative_return": 0.1281783072533731,
+        "relative_win_rate": 0.5714285714285714,
+        "mean_above_ma20": 0.782058654564672,
+        "observed_days": 28
+      },
+      "episode_cluster": "春节AI与机器人"
+    },
+    {
+      "case_id": "P07",
+      "case_name": "机械设备：机器人制造",
+      "case_type": "positive",
+      "sector": "机械设备",
+      "object_id": "sw1_classification_640000",
+      "start_date": "2025-02-05",
+      "end_date": "2025-03-18",
+      "pre_window_start": "2024-12-16",
+      "post_window_end": "2025-04-16",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "机器人产业共识及机械行业持续表现。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://paper.cnstock.com/html/2025-02/06/content_2025028.htm",
+          "date": "2025-02-06",
+          "summary": "春节后AI和机器人事件起点，后续持续性由行业收益核对。"
+        },
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "制造",
+      "market_regime": "高波动",
+      "mainline_type": "中期产业趋势",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.23967545335038043,
+        "relative_return": 0.07631591731186549,
+        "relative_win_rate": 0.6,
+        "mean_above_ma20": 0.8127068587332903,
+        "observed_days": 30
+      },
+      "episode_cluster": "春节AI与机器人"
+    },
+    {
+      "case_id": "P08",
+      "case_name": "汽车：机器人与智能化代理",
+      "case_type": "positive",
+      "sector": "汽车",
+      "object_id": "sw1_classification_280000",
+      "start_date": "2025-02-05",
+      "end_date": "2025-03-18",
+      "pre_window_start": "2024-12-16",
+      "post_window_end": "2025-04-16",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "汽车及零部件的行业表现；主题代理误差需保留。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://paper.cnstock.com/html/2025-02/06/content_2025028.htm",
+          "date": "2025-02-06",
+          "summary": "春节后AI和机器人事件起点，后续持续性由行业收益核对。"
+        },
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "制造",
+      "market_regime": "高波动",
+      "mainline_type": "高弹性主题",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.24598854375680834,
+        "relative_return": 0.0826290077182934,
+        "relative_win_rate": 0.5666666666666667,
+        "mean_above_ma20": 0.802302046396432,
+        "observed_days": 30
+      },
+      "episode_cluster": "春节AI与机器人"
+    },
+    {
+      "case_id": "P09",
+      "case_name": "有色金属：五月周期回升",
+      "case_type": "positive",
+      "sector": "有色金属",
+      "object_id": "sw1_classification_240000",
+      "start_date": "2025-05-06",
+      "end_date": "2025-06-13",
+      "pre_window_start": "2025-03-19",
+      "post_window_end": "2025-06-30",
+      "pre_market_days": 30,
+      "post_market_days": 11,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "周期行业而非仅黄金子主题，行业等权相对收益核对。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "周期",
+      "market_regime": "轮动",
+      "mainline_type": "中期产业趋势",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.11540869324916359,
+        "relative_return": 0.056918143652740394,
+        "relative_win_rate": 0.5714285714285714,
+        "mean_above_ma20": 0.687985899080527,
+        "observed_days": 28
+      },
+      "episode_cluster": "二季度轮动"
+    },
+    {
+      "case_id": "P10",
+      "case_name": "国防军工：二季度行业行情",
+      "case_type": "positive",
+      "sector": "国防军工",
+      "object_id": "sw1_classification_650000",
+      "start_date": "2025-05-06",
+      "end_date": "2025-06-13",
+      "pre_window_start": "2025-03-19",
+      "post_window_end": "2025-06-30",
+      "pre_market_days": 30,
+      "post_market_days": 11,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "二季度军工行业行情，细分兵装与整个行业差异仍需报告。",
+      "expected_behavior": "应出现S1，并至少一次S2；后期转弱或关闭需观察，仍强的右截断生命周期不强制关闭。",
+      "source_notes": [
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "制造",
+      "market_regime": "轮动",
+      "mainline_type": "高弹性主题",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.11234247095102057,
+        "relative_return": 0.053851921354597376,
+        "relative_win_rate": 0.39285714285714285,
+        "mean_above_ma20": 0.6463572686535423,
+        "observed_days": 28
+      },
+      "episode_cluster": "二季度轮动"
+    },
+    {
+      "case_id": "N01",
+      "case_name": "美容护理：节后单日冲高",
+      "case_type": "negative",
+      "sector": "美容护理",
+      "object_id": "sw1_classification_770000",
+      "start_date": "2024-10-08",
+      "end_date": "2024-10-11",
+      "pre_window_start": "2024-09-02",
+      "post_window_end": "2024-11-08",
+      "pre_market_days": 19,
+      "post_market_days": 20,
+      "pre_window_truncated": true,
+      "post_window_truncated": false,
+      "selection_reason": "首日热闹随后回落，非持续行业相对趋势。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.cs.com.cn/gppd/gsyj/202410/t20241015_6446061.html",
+          "date": "2024-10-15",
+          "summary": "十月初大成交及普涨后调整，作为脉冲对照。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "普涨",
+      "mainline_type": "单日大涨",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.06369171286864939,
+        "relative_return": -0.012443762164362715,
+        "relative_win_rate": 0.25,
+        "mean_above_ma20": 0.9924242424242424,
+        "observed_days": 4
+      },
+      "episode_cluster": "秋季政策行情"
+    },
+    {
+      "case_id": "N02",
+      "case_name": "房地产：节后普涨脉冲",
+      "case_type": "negative",
+      "sector": "房地产",
+      "object_id": "sw1_classification_430000",
+      "start_date": "2024-10-08",
+      "end_date": "2024-10-11",
+      "pre_window_start": "2024-09-02",
+      "post_window_end": "2024-11-08",
+      "pre_market_days": 19,
+      "post_market_days": 20,
+      "pre_window_truncated": true,
+      "post_window_truncated": false,
+      "selection_reason": "普涨冲高后的短窗回撤对照。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.cs.com.cn/gppd/gsyj/202410/t20241015_6446061.html",
+          "date": "2024-10-15",
+          "summary": "十月初大成交及普涨后调整，作为脉冲对照。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "金融价值",
+      "market_regime": "普涨",
+      "mainline_type": "普涨行情",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.09136161533389386,
+        "relative_return": -0.04011366462960719,
+        "relative_win_rate": 0.25,
+        "mean_above_ma20": 0.9801980198019802,
+        "observed_days": 4
+      },
+      "episode_cluster": "秋季政策行情"
+    },
+    {
+      "case_id": "N03",
+      "case_name": "食品饮料：巨量事件脉冲",
+      "case_type": "negative",
+      "sector": "食品饮料",
+      "object_id": "sw1_classification_340000",
+      "start_date": "2024-10-08",
+      "end_date": "2024-10-11",
+      "pre_window_start": "2024-09-02",
+      "post_window_end": "2024-11-08",
+      "pre_market_days": 19,
+      "post_market_days": 20,
+      "pre_window_truncated": true,
+      "post_window_truncated": false,
+      "selection_reason": "共同巨量交易日并不直接证明行业主线。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.cs.com.cn/gppd/gsyj/202410/t20241015_6446061.html",
+          "date": "2024-10-15",
+          "summary": "十月初大成交及普涨后调整，作为脉冲对照。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "普涨",
+      "mainline_type": "事件驱动脉冲/成交放大持续性差",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.07669338139792503,
+        "relative_return": -0.02544543069363836,
+        "relative_win_rate": 0.5,
+        "mean_above_ma20": 0.9763779527559056,
+        "observed_days": 4
+      },
+      "episode_cluster": "秋季政策行情"
+    },
+    {
+      "case_id": "N04",
+      "case_name": "食品饮料：三日冲高回落",
+      "case_type": "negative",
+      "sector": "食品饮料",
+      "object_id": "sw1_classification_340000",
+      "start_date": "2024-12-10",
+      "end_date": "2024-12-27",
+      "pre_window_start": "2024-10-29",
+      "post_window_end": "2025-01-27",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "12月10至12日上涨，后续多个交易日回落，保留完整退潮窗口。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.stcn.com/article/detail/1450831.html",
+          "date": "2024-12-13",
+          "summary": "公开复盘记录十二月消费板块和零售、社服扩散。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "轮动",
+      "mainline_type": "两三天冲高后退潮",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.014580073111874259,
+        "relative_return": 0.031055162863290797,
+        "relative_win_rate": 0.5,
+        "mean_above_ma20": 0.5641169853768279,
+        "observed_days": 14
+      },
+      "episode_cluster": "消费退潮及年末调整"
+    },
+    {
+      "case_id": "N05",
+      "case_name": "传媒：电影龙头未扩散",
+      "case_type": "negative",
+      "sector": "传媒",
+      "object_id": "sw1_classification_720000",
+      "start_date": "2025-02-17",
+      "end_date": "2025-03-07",
+      "pre_window_start": "2024-12-26",
+      "post_window_end": "2025-04-07",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "电影龙头强势不等于传媒全行业持续强势；本窗口等权行业弱于基准。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.stcn.com/article/detail/1529929.html",
+          "date": "2025-02-17",
+          "summary": "影视龙头与传媒一级行业扩散差异，结合等权行业数据确定负例。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "科技成长",
+      "market_regime": "轮动",
+      "mainline_type": "龙头强但板块不扩散",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.05215412042328893,
+        "relative_return": -0.10127265654795115,
+        "relative_win_rate": 0.13333333333333333,
+        "mean_above_ma20": 0.5012722646310432,
+        "observed_days": 15
+      },
+      "episode_cluster": "春节AI与机器人"
+    },
+    {
+      "case_id": "N06",
+      "case_name": "纺织服饰：消费轮动退潮",
+      "case_type": "negative",
+      "sector": "纺织服饰",
+      "object_id": "sw1_classification_350000",
+      "start_date": "2024-12-16",
+      "end_date": "2024-12-27",
+      "pre_window_start": "2024-11-04",
+      "post_window_end": "2025-01-27",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "消费热度后相对走弱；不将前期合法确认自动算成新误报。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.stcn.com/article/detail/1450831.html",
+          "date": "2024-12-13",
+          "summary": "公开复盘记录十二月消费板块和零售、社服扩散。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "轮动",
+      "mainline_type": "多板块轮动",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.09283526429143907,
+        "relative_return": -0.03498562188352061,
+        "relative_win_rate": 0.3,
+        "mean_above_ma20": 0.3612490664675131,
+        "observed_days": 10
+      },
+      "episode_cluster": "消费退潮及年末调整"
+    },
+    {
+      "case_id": "N07",
+      "case_name": "社会服务：消费突破回撤",
+      "case_type": "negative",
+      "sector": "社会服务",
+      "object_id": "sw1_classification_460000",
+      "start_date": "2024-12-16",
+      "end_date": "2024-12-27",
+      "pre_window_start": "2024-11-04",
+      "post_window_end": "2025-01-27",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "消费扩散高点后的弱势窗，分别统计继承确认与新增确认。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.stcn.com/article/detail/1450831.html",
+          "date": "2024-12-13",
+          "summary": "公开复盘记录十二月消费板块和零售、社服扩散。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "轮动",
+      "mainline_type": "假突破",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.0970387862959795,
+        "relative_return": -0.03918914388806105,
+        "relative_win_rate": 0.2,
+        "mean_above_ma20": 0.37272727272727274,
+        "observed_days": 10
+      },
+      "episode_cluster": "消费退潮及年末调整"
+    },
+    {
+      "case_id": "N08",
+      "case_name": "煤炭：年初防御切换",
+      "case_type": "negative",
+      "sector": "煤炭",
+      "object_id": "sw1_classification_740000",
+      "start_date": "2024-12-30",
+      "end_date": "2025-01-10",
+      "pre_window_start": "2024-11-18",
+      "post_window_end": "2025-02-17",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "下跌较少不自动等于新上升主线；相对强度规则可能与此标签冲突，需如实报告。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.cs.com.cn/gppd/gsyj/202501/t20250104_6466060.html",
+          "date": "2025-01-04",
+          "summary": "年末年初行业普遍下跌与防御轮动的独立复盘。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "周期",
+      "market_regime": "低波动",
+      "mainline_type": "防御切换",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.0705479897990543,
+        "relative_return": 0.020828900604320855,
+        "relative_win_rate": 0.5555555555555556,
+        "mean_above_ma20": 0.08253968253968254,
+        "observed_days": 9
+      },
+      "episode_cluster": "消费退潮及年末调整"
+    },
+    {
+      "case_id": "N09",
+      "case_name": "通信：年初无明确主线",
+      "case_type": "negative",
+      "sector": "通信",
+      "object_id": "sw1_classification_730000",
+      "start_date": "2024-12-30",
+      "end_date": "2025-01-10",
+      "pre_window_start": "2024-11-18",
+      "post_window_end": "2025-02-17",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "全面调整及主题轮动中的通信弱势窗。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.cs.com.cn/gppd/gsyj/202501/t20250104_6466060.html",
+          "date": "2025-01-04",
+          "summary": "年末年初行业普遍下跌与防御轮动的独立复盘。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "科技成长",
+      "market_regime": "高波动",
+      "mainline_type": "无明确主线阶段",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.12083892394912765,
+        "relative_return": -0.029462033545752497,
+        "relative_win_rate": 0.3333333333333333,
+        "mean_above_ma20": 0.18687419250645995,
+        "observed_days": 9
+      },
+      "episode_cluster": "消费退潮及年末调整"
+    },
+    {
+      "case_id": "N10",
+      "case_name": "房地产：十一月放量假突破",
+      "case_type": "negative",
+      "sector": "房地产",
+      "object_id": "sw1_classification_430000",
+      "start_date": "2024-11-05",
+      "end_date": "2024-11-15",
+      "pre_window_start": "2024-09-13",
+      "post_window_end": "2024-12-13",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "三日冲高后连续回落，行业相对表现未持续。",
+      "expected_behavior": "允许短暂S1，原则上不应稳定S2；继承前期确认单列，不预设某天必须退出。",
+      "source_notes": [
+        {
+          "url": "https://www.oushinet.com/static/content/china/chinanews/2024-11-13/1306390212012171663.html",
+          "date": "2024-11-13",
+          "summary": "公开复盘记录九月末至十一月的科技、金融及制造板块行情。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "金融价值",
+      "market_regime": "普涨",
+      "mainline_type": "成交放大但持续性差/假突破",
+      "selection_only_price_diagnostics": {
+        "sector_return": -0.006694297493397228,
+        "relative_return": -0.04276822232358812,
+        "relative_win_rate": 0.4444444444444444,
+        "mean_above_ma20": 0.8586839266450917,
+        "observed_days": 9
+      },
+      "episode_cluster": "秋季及消费红利"
+    },
+    {
+      "case_id": "A01",
+      "case_name": "传媒：春节后多主题共振",
+      "case_type": "ambiguous",
+      "sector": "传媒",
+      "object_id": "sw1_classification_720000",
+      "start_date": "2025-02-05",
+      "end_date": "2025-02-28",
+      "pre_window_start": "2024-12-16",
+      "post_window_end": "2025-03-28",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "AI和影视主题混合，一级行业持续性与龙头涨幅分化。",
+      "expected_behavior": "不判简单对错，关注识别滞后、反复、退潮处理及主题代理差异。",
+      "source_notes": [
+        {
+          "url": "https://paper.cnstock.com/html/2025-02/06/content_2025028.htm",
+          "date": "2025-02-06",
+          "summary": "春节后AI和机器人事件起点，后续持续性由行业收益核对。"
+        },
+        {
+          "url": "https://www.stcn.com/article/detail/1529929.html",
+          "date": "2025-02-17",
+          "summary": "影视龙头与传媒一级行业扩散差异，结合等权行业数据确定负例。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "科技成长",
+      "market_regime": "轮动",
+      "mainline_type": "多个候选并存",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.04205796374912163,
+        "relative_return": -0.04162537398130439,
+        "relative_win_rate": 0.4444444444444444,
+        "mean_above_ma20": 0.773960983884648,
+        "observed_days": 18
+      },
+      "episode_cluster": "春节AI与机器人"
+    },
+    {
+      "case_id": "A02",
+      "case_name": "通信：二季度成长轮动",
+      "case_type": "ambiguous",
+      "sector": "通信",
+      "object_id": "sw1_classification_730000",
+      "start_date": "2025-04-15",
+      "end_date": "2025-06-13",
+      "pre_window_start": "2025-03-03",
+      "post_window_end": "2025-06-30",
+      "pre_market_days": 30,
+      "post_market_days": 11,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "算力主题强，但整个行业等权相对优势并不均匀。",
+      "expected_behavior": "不判简单对错，关注识别滞后、反复、退潮处理及主题代理差异。",
+      "source_notes": [
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "科技成长",
+      "market_regime": "轮动",
+      "mainline_type": "产业强但资金扩散不均",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.08785270924004962,
+        "relative_return": 0.01653275076824312,
+        "relative_win_rate": 0.475,
+        "mean_above_ma20": 0.568987302563054,
+        "observed_days": 40
+      },
+      "episode_cluster": "关税冲击后轮动"
+    },
+    {
+      "case_id": "A03",
+      "case_name": "非银金融：秋季政策后半段",
+      "case_type": "ambiguous",
+      "sector": "非银金融",
+      "object_id": "sw1_classification_490000",
+      "start_date": "2024-10-18",
+      "end_date": "2024-11-12",
+      "pre_window_start": "2024-09-02",
+      "post_window_end": "2024-12-10",
+      "pre_market_days": 27,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "官方加权指数很强，但当前等权基准下后半段相对收益较弱。",
+      "expected_behavior": "不判简单对错，关注识别滞后、反复、退潮处理及主题代理差异。",
+      "source_notes": [
+        {
+          "url": "https://www.oushinet.com/static/content/china/chinanews/2024-11-13/1306390212012171663.html",
+          "date": "2024-11-13",
+          "summary": "公开复盘记录九月末至十一月的科技、金融及制造板块行情。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "金融价值",
+      "market_regime": "普涨",
+      "mainline_type": "快速切换",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.17063516863266703,
+        "relative_return": -0.0354427907089685,
+        "relative_win_rate": 0.4444444444444444,
+        "mean_above_ma20": 0.8633694670280037,
+        "observed_days": 18
+      },
+      "episode_cluster": "秋季政策行情"
+    },
+    {
+      "case_id": "A04",
+      "case_name": "有色金属：黄金主题与行业",
+      "case_type": "ambiguous",
+      "sector": "有色金属",
+      "object_id": "sw1_classification_240000",
+      "start_date": "2025-02-17",
+      "end_date": "2025-04-03",
+      "pre_window_start": "2024-12-26",
+      "post_window_end": "2025-05-07",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "黄金强势与一级有色的广度及相对表现可能不同。",
+      "expected_behavior": "不判简单对错，关注识别滞后、反复、退潮处理及主题代理差异。",
+      "source_notes": [
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "周期",
+      "market_regime": "轮动",
+      "mainline_type": "主题与行业代理差异",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.06123439009796372,
+        "relative_return": 0.03632731534222189,
+        "relative_win_rate": 0.5,
+        "mean_above_ma20": 0.6125646274848249,
+        "observed_days": 34
+      },
+      "episode_cluster": "春节AI与机器人"
+    },
+    {
+      "case_id": "A05",
+      "case_name": "食品饮料：四月政策反弹",
+      "case_type": "ambiguous",
+      "sector": "食品饮料",
+      "object_id": "sw1_classification_340000",
+      "start_date": "2025-04-08",
+      "end_date": "2025-04-17",
+      "pre_window_start": "2025-02-24",
+      "post_window_end": "2025-05-20",
+      "pre_market_days": 30,
+      "post_market_days": 20,
+      "pre_window_truncated": false,
+      "post_window_truncated": false,
+      "selection_reason": "大跌后的政策反弹，尚不足以预设稳定中期主线。",
+      "expected_behavior": "不判简单对错，关注识别滞后、反复、退潮处理及主题代理差异。",
+      "source_notes": [
+        {
+          "url": "https://www.yicai.com/news/102696176.html",
+          "date": "2025-06-29",
+          "summary": "半年复盘区分成长、周期及价值行情；一级行业与细分主题不可混同。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        },
+        {
+          "url": "github-actions://36961627493/artifacts/11207954126#real_board_states.json:snapshot.source-fields-only",
+          "date": "2026-10-02",
+          "summary": "白名单提取每日行业收益、基准收益、成交占比及广度，不读取原状态、规则或生命周期。"
+        }
+      ],
+      "selection_frozen_at": "2026-10-02T11:34:13.199071+00:00",
+      "casebook_version": "casebook_v1_20261002_25",
+      "market_style": "消费",
+      "market_regime": "高波动",
+      "mainline_type": "事件反弹持续性争议",
+      "selection_only_price_diagnostics": {
+        "sector_return": 0.14815629443441658,
+        "relative_return": 0.06112629539603032,
+        "relative_win_rate": 0.625,
+        "mean_above_ma20": 0.5954724409448819,
+        "observed_days": 8
+      },
+      "episode_cluster": "关税冲击后轮动"
+    }
+  ],
+  "checksum": "249799d4c82ee067c4450e58d3409c661e2afb0dc7ff0339ae277f0f6d69c47d"
+}

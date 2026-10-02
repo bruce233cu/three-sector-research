@@ -1,0 +1,1455 @@
+{
+  "data_snapshot_version": "board-archive-3ff7ae0a56ab0c65",
+  "panel_checksum": "3ff7ae0a56ab0c65550fdbd42ba447fb6f40bb27900e4643766eb9402d73142c",
+  "membership_checksum": "6cb7883a4a4918b86a32b890fe93583b5cfbf0d9b86a1c188eea24f47d9341e0",
+  "board_input_fields": [
+    "as_of_date",
+    "object_id",
+    "object_type",
+    "taxonomy_code",
+    "taxonomy_version",
+    "industry_name",
+    "member_count",
+    "valid_member_count",
+    "sector_return",
+    "benchmark_return",
+    "turnover_share",
+    "up_ratio",
+    "all_a_up_ratio",
+    "all_a_above_ma20",
+    "above_ma20",
+    "above_ma60",
+    "new_high_60",
+    "top3_turnover_share",
+    "turnover_intensity",
+    "rs_5",
+    "rs_10",
+    "rs_20",
+    "critical_data_ok",
+    "stage_frozen",
+    "freeze_reason",
+    "membership_checksum",
+    "source_snapshot_ids",
+    "evidence_kind",
+    "metric_coverage_json"
+  ],
+  "g3_artifact_id": 11207954126,
+  "g3_artifact_run_id": 36961627493,
+  "g3_zip_sha256": "1af05b8228128a6895ce361fa13f82df71ab82fc007b55b1700baec1c9eae519",
+  "membership_artifact_id": 11212051107,
+  "membership_artifact_run_id": 36970118460,
+  "membership_zip_sha256": "a9a344690ead1598af55f2c6acf486de86274dc143a2fe05e7200f32f71b7969",
+  "start_date": "2024-09-02",
+  "end_date": "2025-06-30",
+  "days": 197,
+  "rows": 6107,
+  "industry_count": 31,
+  "warmup_archive_available": false,
+  "missing_archived_warmup_days": 84,
+  "pit_level": "effective_pit",
+  "knowledge_time_unverified": true,
+  "available_at": null,
+  "stock_price_available_at": null,
+  "membership_available_at": null,
+  "original_provenance": {
+    "universe_source": {
+      "source_snapshot_id": "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "source_id": "official_exchange_listing_events",
+      "dataset_code": "historical_benchmark_universe",
+      "source_version": "v221-benchmark-resume:3b3cd5f53d7028fc33dfb9804b3a4e70e6cbff109b36368a0502d4b0c19ad1b9",
+      "fetched_at": "2026-10-01T23:49:07.518867+00:00",
+      "available_at": null,
+      "response_checksum": "3b3cd5f53d7028fc33dfb9804b3a4e70e6cbff109b36368a0502d4b0c19ad1b9",
+      "row_count": 6157,
+      "raw_location": "github-actions://bruce233cu/three-sector-research/runs/36942748135/artifacts/v221-benchmark-universe#historical_benchmark_universe",
+      "historical_capability": "historical_partial",
+      "metadata": {
+        "upstream": "reused SSE/SZSE ledgers + official SZ full pages + official BSE mapping/listing/exit documents",
+        "request_parameters": {
+          "fixed_dates": [
+            "2019-06-28",
+            "2020-06-30",
+            "2021-12-31",
+            "2023-06-30",
+            "2025-06-30"
+          ]
+        },
+        "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+        "code_commit": "46e581fa7649134fdf2a879090a715f414b386ca",
+        "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+        "knowledge_time_unverified": true,
+        "evidence_grade": "official_event_intervals_plus_response_checksums",
+        "upstream_audit": [
+          {
+            "label": "sz_json",
+            "url": "https://www.szse.cn/api/report/ShowReport/data",
+            "error": "ConnectionError:('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+          },
+          {
+            "label": "sz_json_query",
+            "url": "https://query.szse.cn/api/report/ShowReport/data",
+            "error": "ConnectionError:HTTPSConnectionPool(host='query.szse.cn', port=443): Max retries exceeded with url: /api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=1&PAGESIZE=10000 (Caused by NameResolutionError(\"HTTPSConnection(host='query.szse.cn', port=443): Failed to resolve 'query.szse.cn' ([Errno -2] Name or service not known)\"))"
+          },
+          {
+            "label": "bj_mapping",
+            "url": "https://www.bse.cn/service/code_mapping.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:03.720101+00:00",
+            "checksum": "95d43bba3b5ca2d6e5a2654755ea732ef52fa8d2c39fe667b5d4eab533a3b877",
+            "bytes": 459945
+          },
+          {
+            "label": "bj_mapping_info",
+            "url": "https://www.bseinfo.net/service/code_mapping.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:04.007799+00:00",
+            "checksum": "95d43bba3b5ca2d6e5a2654755ea732ef52fa8d2c39fe667b5d4eab533a3b877",
+            "bytes": 459945
+          },
+          {
+            "label": "bj_listing_page",
+            "url": "https://www.bse.cn/nq/listedcompany.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:04.757016+00:00",
+            "checksum": "2a6bef02f4870b4fab8a959db522248f7e950f689959f691109ba71cb5b04db0",
+            "bytes": 9167
+          },
+          {
+            "label": "bj_pilot",
+            "url": "https://www.bse.cn/important_news/200025603.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:05.835904+00:00",
+            "checksum": "01856bf1a2049714253f469fe6c11efad00a62006bac6f5821b99264e89932b7",
+            "bytes": 31007
+          },
+          {
+            "label": "sz_http",
+            "url": "http://www.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=1&PAGESIZE=10000",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:06.527735+00:00",
+            "checksum": "5385340d5d464a8f890d3d3f7f7b86697a9509841e1a05888aeb272a948ac59a",
+            "bytes": 21476
+          },
+          {
+            "label": "sz_fund_backend",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=1&PAGESIZE=10000",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:07.606323+00:00",
+            "checksum": "5385340d5d464a8f890d3d3f7f7b86697a9509841e1a05888aeb272a948ac59a",
+            "bytes": 21476
+          },
+          {
+            "label": "bj_listing_js",
+            "url": "https://www.bse.cn/template/6/bluewise/_files/js/products/companies_name.min.js",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:35:07.790324+00:00",
+            "checksum": "ff5257650f67aad93bd36a09d6a367dc47278e962eecb7da0c052dbe2a396c2b",
+            "bytes": 6316
+          },
+          {
+            "label": "sz_full_xlsx",
+            "url": "https://fund.szse.cn/api/report/ShowReport",
+            "error": "ConnectionError:('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+          },
+          {
+            "label": "bj_2021_count",
+            "url": "https://www.bse.cn/important_news/200011669.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:36.871873+00:00",
+            "checksum": "d1ddd3f6cfdb520dcb3531052a5797801fabb057236ebc40ac80392ea0b6874d",
+            "bytes": 27964
+          },
+          {
+            "label": "bj_guandian_exit",
+            "url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=8062882",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:39.385428+00:00",
+            "checksum": "5ed483a6791e788f722b23de4ae1e609741f90b4bd0a7f4300e53eace4390934",
+            "bytes": 29661
+          },
+          {
+            "label": "bj_taixiang_exit",
+            "url": "https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=8365150&stockid=301192",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:40.386396+00:00",
+            "checksum": "bdcdc56fabe7f8657f0eb62f4fcefcee6c15e6797cb9cfcff51eaa15a596c48e",
+            "bytes": 25155
+          },
+          {
+            "label": "bj_guangdao_exit",
+            "url": "https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=11894718&stockid=920680",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:41.222835+00:00",
+            "checksum": "7a4bafa82d156eb840d1ad5fc913acba7eea0290ae260350e67e2961567564c0",
+            "bytes": 28677
+          },
+          {
+            "label": "bj_hanbo_report",
+            "url": "https://vip.stock.finance.sina.com.cn/corp/view/vISSUE_MarketBulletinDetail.php?id=8426680&stockid=301321",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:43.202702+00:00",
+            "checksum": "bee76e905fddcf5fd4cb0a1be4e47460c4109f23d101ec2fbcea6085348efe8f",
+            "bytes": 1044348
+          },
+          {
+            "label": "bj_pilot_names",
+            "url": "https://www.bse.cn/important_news/200025487.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:44.303673+00:00",
+            "checksum": "4ee4e1b8573fa83e9e01644834abdbe459ffe8add1db0b2e80e5f9e028bb3df4",
+            "bytes": 22263
+          },
+          {
+            "label": "bj_full_switch",
+            "url": "https://www.bse.cn/important_news/200026735.html",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:37:45.239558+00:00",
+            "checksum": "a027a70eb499d3e8d31ede2b5045ecf3aee3ba02f221743f996fed261a6cc125",
+            "bytes": 16485
+          },
+          {
+            "label": "sz_http_full_xlsx",
+            "url": "http://www.szse.cn/api/report/ShowReport",
+            "error": "ConnectionError:('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+          },
+          {
+            "label": "sz_page_1",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=1",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:55.606399+00:00",
+            "checksum": "5385340d5d464a8f890d3d3f7f7b86697a9509841e1a05888aeb272a948ac59a",
+            "bytes": 21476
+          },
+          {
+            "label": "sz_page_2",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=2",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:55.621597+00:00",
+            "checksum": "a60423e44f743628ed601cb5eb58425ff9736e40542e71b663288595401de9fa",
+            "bytes": 21497
+          },
+          {
+            "label": "sz_page_3",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=3",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:55.622050+00:00",
+            "checksum": "a38e37d00cabb15e697df20620afd674f85cd9764cff061c3d1dd983609f2ce1",
+            "bytes": 21518
+          },
+          {
+            "label": "sz_page_4",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=4",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:55.696644+00:00",
+            "checksum": "34abf1964dc98b72d661cf0dc665c8efc80968d7c4e3c3e99f92aa2bd326c803",
+            "bytes": 21506
+          },
+          {
+            "label": "sz_page_5",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=5",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.222996+00:00",
+            "checksum": "3092250668c6b336aee64fd3c002ed3d54f31833b9d86b78e822f5b57766e60d",
+            "bytes": 21483
+          },
+          {
+            "label": "sz_page_6",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=6",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.235256+00:00",
+            "checksum": "470e65b523dbf5eae71c97f474a473a73fb744998409befeca803fb7efe5e1f9",
+            "bytes": 21487
+          },
+          {
+            "label": "sz_page_7",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=7",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.249384+00:00",
+            "checksum": "2711a248003444ba03aa21c36b0fa505361b6f77a4d0a88e5b4d47f1bcdcae18",
+            "bytes": 21504
+          },
+          {
+            "label": "sz_page_8",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=8",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.338462+00:00",
+            "checksum": "b407b6f5390b0056bc1b969d0c817a9d34f878c89a9eff81eb15c61d59662d4e",
+            "bytes": 21489
+          },
+          {
+            "label": "sz_page_10",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=10",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.826274+00:00",
+            "checksum": "30c343cec29f7574cc9ffc8bc573cd842c8dd46680fd675484755ff4d22b9a3a",
+            "bytes": 21487
+          },
+          {
+            "label": "sz_page_9",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=9",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.832153+00:00",
+            "checksum": "2535236640aeeaef60373b30e2e9f957646e679c77694e9734719de61422d2b9",
+            "bytes": 21488
+          },
+          {
+            "label": "sz_page_11",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=11",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.921404+00:00",
+            "checksum": "d14078dac7df38fe19200f03c687d65198b500801fc311fc832dff9d1a4d2862",
+            "bytes": 21497
+          },
+          {
+            "label": "sz_page_12",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=12",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:56.943551+00:00",
+            "checksum": "cda9bd82dcc76274a00763cf7d96635c8d0fcedb9230d83de3324c6513dae5c1",
+            "bytes": 21505
+          },
+          {
+            "label": "sz_page_14",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=14",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:57.417878+00:00",
+            "checksum": "0df40653759415563373901702a3508f8e51e36aa01e9b499ea34a2b492e40ad",
+            "bytes": 21490
+          },
+          {
+            "label": "sz_page_13",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=13",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:57.430077+00:00",
+            "checksum": "addbe93e44ae645862ad1c36f6563cd4636534e3e90a4c63ffa068fc50a2b888",
+            "bytes": 21496
+          },
+          {
+            "label": "sz_page_15",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=15",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:57.503817+00:00",
+            "checksum": "506a71f7ce43cf413e08159512546e5353ef10660096e1b318d3679a788aa2a5",
+            "bytes": 21485
+          },
+          {
+            "label": "sz_page_16",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=16",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:57.592811+00:00",
+            "checksum": "6dc2f7610fdf7939146fa6b142bfb3b25771148919f50e53c4814775dbb496fb",
+            "bytes": 21491
+          },
+          {
+            "label": "sz_page_17",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=17",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.000734+00:00",
+            "checksum": "d52a4684a709f424ee72aaccd5e2d07afcf82c490709508c9f3b3c7857fbfb40",
+            "bytes": 21501
+          },
+          {
+            "label": "sz_page_18",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=18",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.016961+00:00",
+            "checksum": "30c8716701aa154d9658909c585b781d5a2554e58b6d84df0bc5823bd32d3208",
+            "bytes": 21479
+          },
+          {
+            "label": "sz_page_19",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=19",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.074662+00:00",
+            "checksum": "0b05da94fffab1b56004a1f1f477385d18211e90771f40c7442eb29fe009df1e",
+            "bytes": 21494
+          },
+          {
+            "label": "sz_page_20",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=20",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.165591+00:00",
+            "checksum": "fe0c97b72a6fea31967a970d34abc574cb0e32f1860dbc3498b33a07be1854f0",
+            "bytes": 21503
+          },
+          {
+            "label": "sz_page_22",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=22",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.592350+00:00",
+            "checksum": "3415a34125fe141991abb03e234ec5c1f56e69c864dfff51d9db8b9b60e48a22",
+            "bytes": 21489
+          },
+          {
+            "label": "sz_page_23",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=23",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.651559+00:00",
+            "checksum": "0e8a29eeb977f360c41dfc10e4121f8c031fde2439d40498f1e89983bfeb47b5",
+            "bytes": 21515
+          },
+          {
+            "label": "sz_page_21",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=21",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.690467+00:00",
+            "checksum": "98f8970478ea680cacc12ed917d6f2a394f10e366c54418109a4169959401f31",
+            "bytes": 21496
+          },
+          {
+            "label": "sz_page_24",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=24",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:58.733375+00:00",
+            "checksum": "1e1d15d95a2ceb582a9675778b7fe40c9c0a93b23a02e3b223b2bccb6f28669b",
+            "bytes": 21520
+          },
+          {
+            "label": "sz_page_25",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=25",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.209021+00:00",
+            "checksum": "98469f6c070436f468dec0716141df3870ddf37708893c7783cfd70c20569cac",
+            "bytes": 21514
+          },
+          {
+            "label": "sz_page_26",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=26",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.259744+00:00",
+            "checksum": "eeef023864d15571bd0a74c5f1f60de3980527f5fadf0a5cd73d131c03d39519",
+            "bytes": 21556
+          },
+          {
+            "label": "sz_page_28",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=28",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.321040+00:00",
+            "checksum": "9887d5acf9529ef99286701c35d904065c1216f0b5afc0b1e873d27d213de68d",
+            "bytes": 21487
+          },
+          {
+            "label": "sz_page_27",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=27",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.380265+00:00",
+            "checksum": "f0fe51d647b4d9a22c28018a5afdc743edea65f8971cff85e68dc0f7f16e108c",
+            "bytes": 21545
+          },
+          {
+            "label": "sz_page_29",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=29",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.799080+00:00",
+            "checksum": "4708ca892c7d57a6bbc2910c717d7f8ce7f0060de3bc1b6b655745678e8254a2",
+            "bytes": 21486
+          },
+          {
+            "label": "sz_page_30",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=30",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.851939+00:00",
+            "checksum": "35f2bd5750f2d208483d096d2f645e9475ce67d12ddbdb51e2f9efcf1deb129d",
+            "bytes": 21493
+          },
+          {
+            "label": "sz_page_32",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=32",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.952789+00:00",
+            "checksum": "be26b685774e8bc50f296cb2067f767d0fae9c3d84ab2cda21c5a21785300dd3",
+            "bytes": 21471
+          },
+          {
+            "label": "sz_page_31",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=31",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:39:59.982658+00:00",
+            "checksum": "25bfb30b5fed26ca25301898104e2b20321b1d749e29650352b2c507d61585ab",
+            "bytes": 21492
+          },
+          {
+            "label": "sz_page_34",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=34",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:00.487766+00:00",
+            "checksum": "cd88d347d1b85614fc77cf128357ae9580f15c14fe6c0c8a8d9010ed87529bdf",
+            "bytes": 21490
+          },
+          {
+            "label": "sz_page_33",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=33",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:00.491542+00:00",
+            "checksum": "a379664a6de7a73efc6fc8e8597dc2df8dedc67936e110823ff376a0ef71a3ef",
+            "bytes": 21497
+          },
+          {
+            "label": "sz_page_36",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=36",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:00.577458+00:00",
+            "checksum": "f8433ba2320c1e8eb8c801f573e4205da9797bc89f17dad8cf98f6051dfea109",
+            "bytes": 21489
+          },
+          {
+            "label": "sz_page_35",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=35",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:00.604116+00:00",
+            "checksum": "6e92a2f2692091001c39c50a7e29e5e3ad62e10a5e1caf94df076dec9340cb95",
+            "bytes": 21463
+          },
+          {
+            "label": "sz_page_37",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=37",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.092770+00:00",
+            "checksum": "d93a4464d0242b51af6526aaadd1f9da0906d9f1b8c80950ab63cd8ca7f86a1c",
+            "bytes": 21467
+          },
+          {
+            "label": "sz_page_38",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=38",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.096703+00:00",
+            "checksum": "1feb4ed5109ab4ef70172cca3efdac8488f9e6b24e7856c688739941869787a5",
+            "bytes": 21487
+          },
+          {
+            "label": "sz_page_40",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=40",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.176576+00:00",
+            "checksum": "89c9cb251a84dc7c54e92cd88f97fe03600b9a4c0707a83415b64f59caa6d9ef",
+            "bytes": 21497
+          },
+          {
+            "label": "sz_page_39",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=39",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.215461+00:00",
+            "checksum": "49f368fc56624c8140c66a6b3097c5c49b935d9edf875afef0b87d4967fc7ab2",
+            "bytes": 21494
+          },
+          {
+            "label": "sz_page_41",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=41",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.670770+00:00",
+            "checksum": "c8b6f082a84e54f5ffdb7de62d4b3d7f086816a7e78034c315e09620272c9700",
+            "bytes": 21469
+          },
+          {
+            "label": "sz_page_42",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=42",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.691187+00:00",
+            "checksum": "477447b7d2f4ec3c1140bc0499f3f878c1e0f395c002eaf1ec782f33225feb4b",
+            "bytes": 21495
+          },
+          {
+            "label": "sz_page_43",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=43",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.825731+00:00",
+            "checksum": "d03d628f0f09b7f4cfebafcebf9bbeeca41381311e7e1c1f806bc57a1aab7dd5",
+            "bytes": 21462
+          },
+          {
+            "label": "sz_page_44",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=44",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:01.846746+00:00",
+            "checksum": "f9f889c0a9e86b1b7ab10f23975afc3d22804da6873cc54f1b117f39fd5eaf43",
+            "bytes": 21481
+          },
+          {
+            "label": "sz_page_46",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=46",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:02.301527+00:00",
+            "checksum": "1444bb5127ed9b8305c7b05307fb54c3c3a3d229a20054239a56ee884915fdc5",
+            "bytes": 21478
+          },
+          {
+            "label": "sz_page_45",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=45",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:02.336323+00:00",
+            "checksum": "a42ab2f61be1b3a09e2abd2f344c8959923f5beac3f0fdc9582872a8675977c7",
+            "bytes": 21483
+          },
+          {
+            "label": "sz_page_48",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=48",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:02.456702+00:00",
+            "checksum": "dac79579e8446d06f7a7355121bc53179ab0b7ceb4e9ccb08f23169ecb236ed3",
+            "bytes": 21474
+          },
+          {
+            "label": "sz_page_47",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=47",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:02.522394+00:00",
+            "checksum": "89e84c8c8e47581723df19dce65b6e218632d5751a45278d27c48c410554a257",
+            "bytes": 21495
+          },
+          {
+            "label": "sz_page_50",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=50",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:02.919383+00:00",
+            "checksum": "5fb0e85ad4c6032c8182f60149fe53ebb798d6ce9ddfded41d2af133ddd76264",
+            "bytes": 21480
+          },
+          {
+            "label": "sz_page_49",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=49",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:02.958011+00:00",
+            "checksum": "f0af8c8b2d78cf85ccfba57d87ddde68bddce2ef5bee542b2b5296729450aaa1",
+            "bytes": 21492
+          },
+          {
+            "label": "sz_page_51",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=51",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:03.100708+00:00",
+            "checksum": "a35ef782ca9c571d710a195664dee0a3969fb27c6635d13aa0d4356f464ee1d5",
+            "bytes": 21477
+          },
+          {
+            "label": "sz_page_52",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=52",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:03.166393+00:00",
+            "checksum": "f4943af8e6380a691d1bac5f39db63f9b06af7c91b24a77096aef1620fe99606",
+            "bytes": 21465
+          },
+          {
+            "label": "sz_page_53",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=53",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:03.516466+00:00",
+            "checksum": "bd6c1b45bf6ac4a533966fbcdb1a108efdd622d6e25b9f7ec13cf332b016c98e",
+            "bytes": 21481
+          },
+          {
+            "label": "sz_page_54",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=54",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:03.563833+00:00",
+            "checksum": "af1e4eb03019c120fc8e7806a55d633b0dae19e56d8474ce512221e3a7ced0eb",
+            "bytes": 21460
+          },
+          {
+            "label": "sz_page_55",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=55",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:03.699604+00:00",
+            "checksum": "cc49d0c4e56ed815b58c804179034e2cfb4b347a9c57753824da8e5644ea653a",
+            "bytes": 21479
+          },
+          {
+            "label": "sz_page_56",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=56",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:03.747318+00:00",
+            "checksum": "4d79ad84aae496201f6d6724ba0804775b221011e1cef69d8268981e40b79109",
+            "bytes": 21471
+          },
+          {
+            "label": "sz_page_57",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=57",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.105463+00:00",
+            "checksum": "fb5ab9c20cf1cca7b47ab308ae426ceeff5815d64cac24488dcef9fece0eab28",
+            "bytes": 21476
+          },
+          {
+            "label": "sz_page_58",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=58",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.153517+00:00",
+            "checksum": "59e2df02516eb39bfbb4faa74c5f6d5633b01653faf75767f49d68e399fd137c",
+            "bytes": 21463
+          },
+          {
+            "label": "sz_page_59",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=59",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.273381+00:00",
+            "checksum": "cc4122333d40cdeca5ecda41f8604c4f9c230516a003df31cbc2573a286217b3",
+            "bytes": 21467
+          },
+          {
+            "label": "sz_page_60",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=60",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.394160+00:00",
+            "checksum": "bf09d6866dce9025651c66b7f07f5a396a2c0723919aaac98bdbcc4f4046760a",
+            "bytes": 21482
+          },
+          {
+            "label": "sz_page_61",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=61",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.689279+00:00",
+            "checksum": "66a00124241eb1d0b9802ea50837c5c35e32a4fcf5a04cdb29868e331f70e117",
+            "bytes": 21460
+          },
+          {
+            "label": "sz_page_62",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=62",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.806721+00:00",
+            "checksum": "d081cc6ec26e0099ebd9607391e1a96fea910deb1912c9411d012095780e7e37",
+            "bytes": 21459
+          },
+          {
+            "label": "sz_page_63",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=63",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.909161+00:00",
+            "checksum": "c7b6d79d9787b7a6d81fa03288fac65c6c005d7f2ce8da42cafd5238050f8b96",
+            "bytes": 21467
+          },
+          {
+            "label": "sz_page_64",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=64",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:04.985778+00:00",
+            "checksum": "2e73edc29d59d78ee47b8e752f593c4447af88619c5e784e26e3ba578d676d05",
+            "bytes": 21473
+          },
+          {
+            "label": "sz_page_65",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=65",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:05.343714+00:00",
+            "checksum": "3a64aa798076777051bc3ed30861e31396d38d6c642cb9c6d3a9f51266958bbb",
+            "bytes": 21461
+          },
+          {
+            "label": "sz_page_66",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=66",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:05.400873+00:00",
+            "checksum": "5d5fae86b72f13e2ac985c5c661bcb8cf86b53e9314917231f9f60f3dde267e2",
+            "bytes": 21450
+          },
+          {
+            "label": "sz_page_67",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=67",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:05.495603+00:00",
+            "checksum": "409cbed6b40d896ffeb923e2be59566b037155ece7536800c94332b048b0402e",
+            "bytes": 21456
+          },
+          {
+            "label": "sz_page_68",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=68",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:05.568466+00:00",
+            "checksum": "4996a3ee64845d3242af66c043c94de875ef82d185614f899cd5c14037b13271",
+            "bytes": 21464
+          },
+          {
+            "label": "sz_page_69",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=69",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:05.945290+00:00",
+            "checksum": "bf68d8e1ff7e18043e28aa3eeb6ac24dbf932c666d5d5e22017b3760a7d1d6ce",
+            "bytes": 21469
+          },
+          {
+            "label": "sz_page_70",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=70",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:05.981927+00:00",
+            "checksum": "1011ce3e6043a88ba7366caafbffbb992cc6babecc5148aabd2e074bdd380e19",
+            "bytes": 21474
+          },
+          {
+            "label": "sz_page_71",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=71",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:06.146575+00:00",
+            "checksum": "6d7088120a4cb3138e26c0ff170f48a6b9f7137d193c2e9b0a36aed533149211",
+            "bytes": 21465
+          },
+          {
+            "label": "sz_page_72",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=72",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:06.188354+00:00",
+            "checksum": "d5470bbf01c486a5df3b08b0daacd86e4c3681c6c8dbd521b03ce10818afe2d7",
+            "bytes": 21463
+          },
+          {
+            "label": "sz_page_73",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=73",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:06.535109+00:00",
+            "checksum": "483e8d2e901760c680166f32ed1800a298d0ddc4be029c33b2e74b3b9da4f3dd",
+            "bytes": 21478
+          },
+          {
+            "label": "sz_page_74",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=74",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:06.568210+00:00",
+            "checksum": "1435c26b6a24f5cec353ac8754cc312fd51ddf2d32d6f6d1a3c5eeed7c1d59cd",
+            "bytes": 21480
+          },
+          {
+            "label": "sz_page_75",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=75",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:06.743128+00:00",
+            "checksum": "d4f4cbe34a476f75db8a11e6f51774d26c6d7bf8397b7056d0e9d3623f27c148",
+            "bytes": 21494
+          },
+          {
+            "label": "sz_page_76",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=76",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:06.765245+00:00",
+            "checksum": "a63bebef9f1bbd85eeb3a5ff2a4dcd3a2ec3a350b8931562d53b72d47132be4f",
+            "bytes": 21558
+          },
+          {
+            "label": "sz_page_77",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=77",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.121176+00:00",
+            "checksum": "6fe098c9661f22de0a0db8031373de57f5204cad758ef5606b75145852a42586",
+            "bytes": 21539
+          },
+          {
+            "label": "sz_page_78",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=78",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.183580+00:00",
+            "checksum": "fb8d8d201244535109cf4f33307aea38374037e99232a843b18a760e3d017e0c",
+            "bytes": 21538
+          },
+          {
+            "label": "sz_page_79",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=79",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.316811+00:00",
+            "checksum": "fe5b0f781164ba8a1925cebe0ecd68004aa278f9d380b581e7b7e7eee63ecb62",
+            "bytes": 21533
+          },
+          {
+            "label": "sz_page_80",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=80",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.353805+00:00",
+            "checksum": "ed1c1c558c65c851462110a74188880deed43b46218b64bb930183360b254fba",
+            "bytes": 21532
+          },
+          {
+            "label": "sz_page_81",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=81",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.697818+00:00",
+            "checksum": "384a80f0f2cb7f0241e969d56d3f38891b6882423c3375a0142f7bc5c3adc410",
+            "bytes": 21535
+          },
+          {
+            "label": "sz_page_82",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=82",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.825541+00:00",
+            "checksum": "fe37c8a9084565d58f777f6f89e7fd25926541403fe1038b77be0b92f0b0ed16",
+            "bytes": 21539
+          },
+          {
+            "label": "sz_page_83",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=83",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.931119+00:00",
+            "checksum": "2dd62bc0fcc8807dc6100b311deed3d5499ee0902260848beddd33bb022741fb",
+            "bytes": 21531
+          },
+          {
+            "label": "sz_page_84",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=84",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:07.975922+00:00",
+            "checksum": "24695861fb4cab1ae7b99dc82536c5ad6325998de3178facf53856848e851199",
+            "bytes": 21547
+          },
+          {
+            "label": "sz_page_85",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=85",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:08.303310+00:00",
+            "checksum": "be25270d33035d8f939851db93a4dd5e8139ff1b46242f1224795aa2daf017fc",
+            "bytes": 21522
+          },
+          {
+            "label": "sz_page_86",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=86",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:08.422333+00:00",
+            "checksum": "0e43f4c4fe6efd775cf48c26559f36a1319f8ddb721dd34f3d3305f8790171d7",
+            "bytes": 21526
+          },
+          {
+            "label": "sz_page_87",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=87",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:08.509291+00:00",
+            "checksum": "438ec87a0b5e0943d06f1e045cac2801a28070d8d5d256ff8163f93b648efe57",
+            "bytes": 21538
+          },
+          {
+            "label": "sz_page_88",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=88",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:08.550132+00:00",
+            "checksum": "5331633716edb0c6c3a480e46e3c570d86e70c37c0e87b9f0d7a36bed4e98c22",
+            "bytes": 21545
+          },
+          {
+            "label": "sz_page_89",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=89",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:08.945164+00:00",
+            "checksum": "fade4935a0d205ab3010889c2942e1066ceeac2b20b55d38abd0e692d2605abc",
+            "bytes": 21542
+          },
+          {
+            "label": "sz_page_90",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=90",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.039180+00:00",
+            "checksum": "23c9abc5545150b3a64dc3801d21ac712a7a4210b9293130248f5c19e790bf87",
+            "bytes": 21540
+          },
+          {
+            "label": "sz_page_92",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=92",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.127566+00:00",
+            "checksum": "eb689a0b70e1a0cecbee5d7376d649fe5e9ba7f145a3e0f1a59519bcac3a9ed3",
+            "bytes": 21536
+          },
+          {
+            "label": "sz_page_91",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=91",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.153104+00:00",
+            "checksum": "f859df52ccf8ae1afeb9fb2b8cd2db6d5459680642a6803f0d0d9e55ba0b827a",
+            "bytes": 21541
+          },
+          {
+            "label": "sz_page_93",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=93",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.545495+00:00",
+            "checksum": "8ec6f227e4fd26769833f1356e21bad82fda01da55b9eb2eb2abc6ccfb13536a",
+            "bytes": 21527
+          },
+          {
+            "label": "sz_page_94",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=94",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.620507+00:00",
+            "checksum": "f87ee51c5075ae3904d5d839e31a10dbf44edb666828d0125792a2f8bde8664a",
+            "bytes": 21540
+          },
+          {
+            "label": "sz_page_96",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=96",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.731471+00:00",
+            "checksum": "b929934d41e9ffe5020e64c37e479c7186331fd5d04c473b66d323c2de1be4ba",
+            "bytes": 21528
+          },
+          {
+            "label": "sz_page_95",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=95",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:09.816435+00:00",
+            "checksum": "b1de2524c21fc189d88ad029b1a82300531dd21ed55dedfafe0ab3044e845544",
+            "bytes": 21533
+          },
+          {
+            "label": "sz_page_97",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=97",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:10.116748+00:00",
+            "checksum": "01f6ca98ab20648051d1487a9c22bbf4e28f037eda09bd4eda1fc6f6d7f27170",
+            "bytes": 21529
+          },
+          {
+            "label": "sz_page_98",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=98",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:10.186090+00:00",
+            "checksum": "0c408912812be5216cbf23bc779fdaa9137890eaaf0c8e2a66bcffea19597bc9",
+            "bytes": 21534
+          },
+          {
+            "label": "sz_page_99",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=99",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:10.361727+00:00",
+            "checksum": "6ae1c5e83040e9d9f22020cde938a0bba1a31b61602e2eef0744f67ca8ed72f3",
+            "bytes": 21527
+          },
+          {
+            "label": "sz_page_100",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=100",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:10.516737+00:00",
+            "checksum": "b18cf679ae995be27d31149194cd12b8ecbe9c36c64ef4cb262541e6997e07c7",
+            "bytes": 21543
+          },
+          {
+            "label": "sz_page_101",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=101",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:10.711620+00:00",
+            "checksum": "23ed78ef4e98ca45163247689e2c5aa8d5e4382cdc8df5e0b403915ba47185b3",
+            "bytes": 21541
+          },
+          {
+            "label": "sz_page_102",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=102",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:10.808746+00:00",
+            "checksum": "83aa07bdbbc0861577816eff2d9dfa50c09c3502713fd8256b0d57f5f65589f6",
+            "bytes": 21532
+          },
+          {
+            "label": "sz_page_103",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=103",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.005521+00:00",
+            "checksum": "01313e1b8404e3105d29f0c7aefd567813c15ddbc8345657a288b732923c93af",
+            "bytes": 21525
+          },
+          {
+            "label": "sz_page_104",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=104",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.156296+00:00",
+            "checksum": "1b8a9fcad28b6555defe637ab76f7a07bd10196cb6dc7fb2bdb62e5e2f4e6217",
+            "bytes": 21541
+          },
+          {
+            "label": "sz_page_105",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=105",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.297185+00:00",
+            "checksum": "361eed0b124e3483943f7e37df4a4338886e5341702dde079d64aad9515b5764",
+            "bytes": 21534
+          },
+          {
+            "label": "sz_page_106",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=106",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.406693+00:00",
+            "checksum": "f25ffe807160c873386ecd6bc8439d7e5508a3efa37e2528b5096f011300951a",
+            "bytes": 21545
+          },
+          {
+            "label": "sz_page_107",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=107",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.626887+00:00",
+            "checksum": "62cdb85e25f84f572426e4ebec27afafc453c9bc1c8531329220ed9ece9c6294",
+            "bytes": 21539
+          },
+          {
+            "label": "sz_page_108",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=108",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.808731+00:00",
+            "checksum": "5a41ab36319f3a9cf670fa5be77eaf5b1143de1a7fee541f67e134c85acabda7",
+            "bytes": 21525
+          },
+          {
+            "label": "sz_page_109",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=109",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.881759+00:00",
+            "checksum": "59bce27e3e27c5b2bbeb81324b8936f1c3533a78a5e1a38cd2bbd05f146e8cc0",
+            "bytes": 21525
+          },
+          {
+            "label": "sz_page_110",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=110",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:11.982716+00:00",
+            "checksum": "6618dd849688ceeb5aaf6fdddef55b5321720a0d8cba22e6987b3d5dfe6c82f6",
+            "bytes": 21545
+          },
+          {
+            "label": "sz_page_111",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=111",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:12.300284+00:00",
+            "checksum": "a11baf68c20adb66ef03dec24007dd9c67a21bb2ebbd6dc8e0acfa2af7168160",
+            "bytes": 21557
+          },
+          {
+            "label": "sz_page_112",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=112",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:12.401538+00:00",
+            "checksum": "a4c5fdb73c82bc403e87fb740b2fb009a34688e36930e8db88c95bfffd9f8510",
+            "bytes": 21549
+          },
+          {
+            "label": "sz_page_113",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=113",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:12.462916+00:00",
+            "checksum": "fc67f834c5e130cfc8888f2b87948bb69b22c79612e7bd419ac3284864d32c39",
+            "bytes": 21542
+          },
+          {
+            "label": "sz_page_114",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=114",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:12.561272+00:00",
+            "checksum": "b2e8fc65b4935bace759c1533b2d3d139d2efd67ee659c8ba8575b1374390bbc",
+            "bytes": 21530
+          },
+          {
+            "label": "sz_page_115",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=115",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.016175+00:00",
+            "checksum": "20db804a669c0427e056cb3db851a0f3a66aedc1939cf606e789feac91f10957",
+            "bytes": 21570
+          },
+          {
+            "label": "sz_page_116",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=116",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.022493+00:00",
+            "checksum": "bcb6d39242281756322e88b25cb2dac446fb9a5b801c2d1212847d9406c0d41b",
+            "bytes": 21648
+          },
+          {
+            "label": "sz_page_117",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=117",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.038722+00:00",
+            "checksum": "1a6c8e1315fff487562d987d2e554e241b5705b6b4759fbe7a815730831340e4",
+            "bytes": 21645
+          },
+          {
+            "label": "sz_page_118",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=118",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.130376+00:00",
+            "checksum": "811d20b70077e2c8fa22051e50dd84838bcd7927a96c2c270f00eba363462e87",
+            "bytes": 21645
+          },
+          {
+            "label": "sz_page_120",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=120",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.625991+00:00",
+            "checksum": "3318f42ce2e438663f9cee95b1b0708ec5ee92d45597ce19a3424deebf925857",
+            "bytes": 21663
+          },
+          {
+            "label": "sz_page_119",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=119",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.649438+00:00",
+            "checksum": "a21c64c79d5e82dad6a19abb21bcee879172aa0a2d28b7a6b359d32e2b3c689c",
+            "bytes": 21654
+          },
+          {
+            "label": "sz_page_122",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=122",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.702790+00:00",
+            "checksum": "c1ae6099d8f9149da3a88f427a1674a914194fc0ac51870f6973bf8e375b6b0f",
+            "bytes": 21646
+          },
+          {
+            "label": "sz_page_121",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=121",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:13.736864+00:00",
+            "checksum": "38214f8fd16611b147f8caa8d872fd0d46b12d08609801cae6467671171200d9",
+            "bytes": 21668
+          },
+          {
+            "label": "sz_page_123",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=123",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.278792+00:00",
+            "checksum": "2fcf14f6628e073987332652e59ceb0ae4e6c9f7b93b61bce066df7dcf95b550",
+            "bytes": 21648
+          },
+          {
+            "label": "sz_page_124",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=124",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.295142+00:00",
+            "checksum": "7d4bcb51b8e33b02be437b8ce8e17778a235d712e03e00ef3a4ad9c7e97bf6ce",
+            "bytes": 21647
+          },
+          {
+            "label": "sz_page_125",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=125",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.381392+00:00",
+            "checksum": "561b4599c953c1a7c087e3883bf69097379497d90f89ff32e6be4112e30397d7",
+            "bytes": 21651
+          },
+          {
+            "label": "sz_page_126",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=126",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.410651+00:00",
+            "checksum": "dd952803e97cc02bfe1fbfd8231e646afa7b1f2e3d8a33677d9c367089fadb86",
+            "bytes": 21661
+          },
+          {
+            "label": "sz_page_127",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=127",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.855329+00:00",
+            "checksum": "1556db3eab1744a01e7d1528b42a98714263cfe67060a03c33b59d0ced520f75",
+            "bytes": 21659
+          },
+          {
+            "label": "sz_page_128",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=128",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.902253+00:00",
+            "checksum": "97020f58f0a0c8b87dfbbef4bab04d0cf225fff9da811c14424fa9d380317dd9",
+            "bytes": 21654
+          },
+          {
+            "label": "sz_page_129",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=129",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:14.993067+00:00",
+            "checksum": "7c8f9709c949a9b952031146530cb44f6495ab2503435f2944b84cdc0ec1334b",
+            "bytes": 21668
+          },
+          {
+            "label": "sz_page_130",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=130",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:15.101802+00:00",
+            "checksum": "e7a20da319a76a51499b2f28c956212246b4a7650cacebd0ef62532073367e7e",
+            "bytes": 21664
+          },
+          {
+            "label": "sz_page_131",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=131",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:15.484314+00:00",
+            "checksum": "9b0dc737a05f411ee40289a0ef74ce537e3fc0de54f20a855332e0013e9e3852",
+            "bytes": 21663
+          },
+          {
+            "label": "sz_page_132",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=132",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:15.494807+00:00",
+            "checksum": "96c6d27a0871558be3a91975ae8123403b627cdfebe6236afccc5df9539b48aa",
+            "bytes": 21665
+          },
+          {
+            "label": "sz_page_133",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=133",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:15.564505+00:00",
+            "checksum": "94391e7fd1b6e4d0aceecc85013d881d68bf4c577a566a5b3910be13ad82a3cf",
+            "bytes": 21643
+          },
+          {
+            "label": "sz_page_134",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=134",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:15.701338+00:00",
+            "checksum": "56e56bbeda15d51d808f33298ef6110b8038d4f2de7fc8041f74bb17d8279a5f",
+            "bytes": 21642
+          },
+          {
+            "label": "sz_page_135",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=135",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.072900+00:00",
+            "checksum": "85a2f33e8e8040a37df1cfa0424c37fe22e4507e431847f32d44d87f29fec03f",
+            "bytes": 21640
+          },
+          {
+            "label": "sz_page_136",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=136",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.079628+00:00",
+            "checksum": "b37e37e4c6aac38408c89d0de7e1f546ea19ddfdd65267bb015b785f977a65c8",
+            "bytes": 21639
+          },
+          {
+            "label": "sz_page_137",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=137",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.160045+00:00",
+            "checksum": "6bfba6db40add1f91a0579bd68194b314668aaab42b9c7268b66f4e8c9690449",
+            "bytes": 21654
+          },
+          {
+            "label": "sz_page_138",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=138",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.274098+00:00",
+            "checksum": "8290665b6e0b5e01d7a8353ec670b9294b00a942e645814b578ed23409b5e5ea",
+            "bytes": 21654
+          },
+          {
+            "label": "sz_page_140",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=140",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.668530+00:00",
+            "checksum": "debb5bade6340579aa993ee50ae92f980708eac5706a9fe9b853c1575e3616ef",
+            "bytes": 21651
+          },
+          {
+            "label": "sz_page_139",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=139",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.796691+00:00",
+            "checksum": "08c6c15b0eb8f9912cd83ea9cd70d05b26462694ddbb5279834b184abf48a7ec",
+            "bytes": 21648
+          },
+          {
+            "label": "sz_page_141",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=141",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.808630+00:00",
+            "checksum": "d9394fbd054f9a0e7f6144235c4b4e65c4a24fa208796c53569fa4a38f6b0d33",
+            "bytes": 21647
+          },
+          {
+            "label": "sz_page_142",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=142",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:16.845823+00:00",
+            "checksum": "04d845c563ed8f374bf21eb6be9b84b57d5b6ad388ca13335767efd8e5639d63",
+            "bytes": 21654
+          },
+          {
+            "label": "sz_page_143",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=143",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:17.295942+00:00",
+            "checksum": "a7a4dfced7d7b1988fc7c4c663b828fd58645525d1ae904aadc800d6e5e49596",
+            "bytes": 21648
+          },
+          {
+            "label": "sz_page_146",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=146",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:17.430085+00:00",
+            "checksum": "fea03a35ed5f310ae02c2eae3f87963d4427f8cdab88ea2465f6206552d91115",
+            "bytes": 17113
+          },
+          {
+            "label": "sz_page_145",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=145",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:17.481204+00:00",
+            "checksum": "80362fc6b716752d9e923b5cdcaf1c9ef5669a870667b8987b2810727da45c95",
+            "bytes": 21637
+          },
+          {
+            "label": "sz_page_144",
+            "url": "https://fund.szse.cn/api/report/ShowReport/data?SHOWTYPE=JSON&CATALOGID=1110&TABKEY=tab1&PAGENO=144",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:17.501729+00:00",
+            "checksum": "c918137708b8f3f4c2c77b0622bc98bee8322f11c067e4274079d37e29d185d3",
+            "bytes": 21652
+          },
+          {
+            "label": "bj_yunchuang_exit",
+            "url": "https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12467916&stockid=920305",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:40:19.825235+00:00",
+            "checksum": "70a43a8df1585bacc4d673a9265f7b177736ebdd81429a94a0d3b2883c3bde06",
+            "bytes": 28940
+          },
+          {
+            "label": "bj_hanbo_exit_pdf",
+            "url": "https://www.bse.cn/disclosure/2022/2022-07-22/1658483683_879987.pdf",
+            "status": 200,
+            "fetched_at": "2026-10-01T23:49:07.049717+00:00",
+            "checksum": "03c8e87d0b97ab7f7b309712ca9bbe89255d4180c5e3d4a93325f1b591d31a7f",
+            "bytes": 115841
+          }
+        ],
+        "input_source_ids": [
+          "7886124e-b650-48d7-9366-71304188ce6d",
+          "9dfd3cc7-ef23-442b-b183-45bdd3ffc41b",
+          "20d57ace-817c-4bae-bd2f-c7aaf5f2c044",
+          "94c0710f-11f7-47ad-b410-fdfea29996c8",
+          "6d16a873-e4ea-4dec-8e46-a8c9a2a727a7"
+        ],
+        "reused_artifact_run": 36889897269,
+        "certificate": {
+          "SH": {
+            "complete_historical_ledger": true,
+            "method": "official_active_plus_exits_and_code_intervals"
+          },
+          "SZ": {
+            "complete_historical_ledger": true,
+            "method": "official_active_plus_exits_and_code_intervals"
+          },
+          "BJ": {
+            "complete_historical_ledger": true,
+            "method": "official_active_plus_exits_and_code_intervals"
+          }
+        },
+        "coverage": 1.0
+      }
+    },
+    "membership_source_version": "sws-official:39ed243fb4256727bb3691ecdf084c89d9c4b3c0d7be8937209fa19bd4446a9e",
+    "stock_workbook_sha256": "7785da13657bb0f141ab90eab2aab13459c58d106af7c043fb235938adc740af",
+    "taxonomy_workbook_sha256": "983ea32b40b248f5f8aedcae38916e18a85327145753fbd165437d25e8de6d22",
+    "source_ids": {
+      "membership": "23534219-21f3-5fdd-8433-c2569a766d47",
+      "price": "64fa122e-d1ff-5843-9d62-05069b2c4e69",
+      "benchmark": "4e1c5a01-f4ed-533d-9c86-5b913e36fc93",
+      "board": "3ebcf983-0963-5971-baef-89aba0f62795"
+    },
+    "membership_resolution_count": 8711,
+    "temporary_price_checksum": "fba09a636dde39cc512b3b72b0568165f7ca26d769c057e7f4c7c6bc2d1b5a32",
+    "source_evidence_grade": "normalized_temporary_parquet_and_real_response_checksums",
+    "no_individual_longterm_database": true
+  },
+  "price_acquisition_summary": {
+    "requests": 5476,
+    "successful": 5474,
+    "return_basis": "adjacent_observed_close; corporate_action_not_adjusted",
+    "fetched_at_min": "2026-10-02T03:47:27Z",
+    "fetched_at_max": "2026-10-02T03:54:04Z"
+  },
+  "daily_membership_matches_g3": true,
+  "selection_used_existing_state_outputs": false,
+  "initialization": "explicit S0 on first archived date; no inherited lifecycle or future checkpoint",
+  "limitations": [
+    "G3认证时的84天预热板块输入未归档，当前重放为明确标记的冷启动；不得声称与完整预热Baseline等价。",
+    "行业为每日有效成分等权组合，不等于申万官方市值加权指数；主题映射到一级行业有代理误差。",
+    "个股未复权；历史可见时间、停牌真实性、个股窗口不能从板块归档独立重新验算。",
+    "此前工程验收曾看过该窗口汇总状态，第一轮是校准样本，不能声称最终未接触的保留盲测。"
+  ]
+}

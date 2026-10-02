@@ -1,0 +1,14 @@
+{
+  "snapshots": 385,
+  "checkpoints": 310,
+  "lifecycles": 1351,
+  "rule_evidence": 16430,
+  "checkpoint_checksum": "f905199028df1e133673eead0a5aba14",
+  "lifecycle_checksum": "341da32ba884705d4dd394b58c713586",
+  "mainline_job": {
+    "is_scheduled": true,
+    "schedule": "每天17:00 Asia/Shanghai；复用现有 Daily Pipeline"
+  },
+  "sites_version": "v41",
+  "production_writes_from_backtest": false
+}
