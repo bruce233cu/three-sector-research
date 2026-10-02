@@ -1,0 +1,55 @@
+name: Mainline production traceability
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths:
+      - '.github/workflows/mainline-production.yml'
+      - 'scripts/mainline/production_*.py'
+      - 'src/mainline/production/**'
+  workflow_dispatch:
+    inputs:
+      trade_date:
+        description: Verified SSE date (empty uses latest completed session)
+        default: ''
+      run_type:
+        type: choice
+        options: [production_simulation, production, backfill]
+        default: production_simulation
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+jobs:
+  mainline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    concurrency:
+      group: mainline-${{ github.ref }}
+      cancel-in-progress: false
+    env:
+      CODE_COMMIT: ${{ github.sha }}
+      MAINLINE_TARGET_DATE: ${{ inputs.trade_date }}
+      MAINLINE_RUN_TYPE: ${{ inputs.run_type || 'production_simulation' }}
+      MAINLINE_GATEWAY: https://pdtlzleqsoftuxdnbdey.supabase.co/functions/v1/mainline-production-gateway
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-mainline.txt
+      - name: Reuse certified universe ledger
+        run: gh run download 36942748135 -n v221-benchmark-universe -D temporary_g3_input
+      - name: Reuse certified checkpoint evidence
+        run: gh run download 36961627493 -n mainline-state-completion-acquisition -D temporary_seed
+      - name: Run unchanged engine and atomic persistence
+        run: python scripts/mainline/production_run.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mainline-production-evidence
+          path: reports/mainline-production
+          retention-days: 30
+      - name: Remove temporary individual inputs
+        if: always()
+        run: rm -rf .cache/mainline-production temporary_g3_input temporary_seed
