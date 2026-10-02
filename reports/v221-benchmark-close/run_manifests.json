@@ -1,0 +1,685 @@
+[
+  {
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "recompute_run_id": "ae8d6541-5a8f-4797-9542-80cc1917fc20",
+    "parent_run_id": "382be957-d400-4d09-b2ac-8507a166a0e8",
+    "job_name": "G1 DATA GATE — V2.2.1 FINAL benchmark close",
+    "as_of_date": "2025-06-30",
+    "code_commit": "46e581fa7649134fdf2a879090a715f414b386ca",
+    "rule_version": "mainline_v2.2.1",
+    "profile_id": "industry_trend_v2_2_1_benchmark_close",
+    "provider_versions": {
+      "official_exchange_listing_events": "v221-benchmark-resume:3b3cd5f53d7028fc33dfb9804b3a4e70e6cbff109b36368a0502d4b0c19ad1b9",
+      "sina_akshare_existing": "v221-benchmark-resume:b8b369fd7c193971feb17de5ea4943ae05990069ea919e8d27c4beef011c8130",
+      "all_a_equal_weight_calculator": "v221-benchmark-resume:e58ed2c0934b67bf53b45bd5e6e8589927284b1255f799f24c9cd8dc6df647d8"
+    },
+    "source_snapshot_ids": [
+      "0714d896-5788-4a7e-960d-9d58ea17e1ac",
+      "076010be-d7dc-4f65-b1e1-7d1debe411ce",
+      "07b69195-dcd2-4c5b-9520-d4372aad09b9",
+      "07e055bc-ee52-4d87-a82d-d2a1ceec4893",
+      "0d9adab4-ca25-49b0-ae31-b1b0ded6b34d",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73",
+      "1e51e219-621f-47bd-9e4e-e76253e6f847",
+      "20d57ace-817c-4bae-bd2f-c7aaf5f2c044",
+      "243f49a9-32cb-4b72-8205-d91b03498625",
+      "25f9a6fc-ff23-4af9-a7e3-3c6a208187be",
+      "3aac8b55-fb6d-4e06-a42a-fd507abdc207",
+      "3ab65c55-1cd3-4c7e-ab99-dac27c2de24c",
+      "3ceebb11-d9b5-4465-8322-3a60bd8f2d70",
+      "414ba0d5-376f-4903-9569-727ed65d10cb",
+      "479b8400-37b5-457c-81e2-e587d5591554",
+      "4a9479a5-cfd2-4adc-95f6-5f18cbd1992a",
+      "4e73c97c-fa3c-41bb-8240-0333cf51c091",
+      "674e49ba-3bd1-430a-8b21-20975f9fc701",
+      "6b2d342e-d544-4f7c-a4e1-df4b7859814f",
+      "6d16a873-e4ea-4dec-8e46-a8c9a2a727a7",
+      "783f7a20-fece-4e21-b10c-f8ee8b474b0c",
+      "7886124e-b650-48d7-9366-71304188ce6d",
+      "7d05d715-cc7f-40ec-a592-612554b2a69b",
+      "7ea1ef03-b303-4edd-868d-468f1f350279",
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "864afcc6-5347-4cc8-9fc9-6f1ba4f45e04",
+      "94c0710f-11f7-47ad-b410-fdfea29996c8",
+      "96f318ec-23ce-4da4-8538-bff0e656955e",
+      "989b5111-24fc-43a0-a504-b9bd0410a904",
+      "991cd5c9-9d6a-44dd-b8b5-2b08cb8b4291",
+      "9dfd3cc7-ef23-442b-b183-45bdd3ffc41b",
+      "a10442e6-6a2a-4b29-8333-618cf239c8eb",
+      "a22df068-37b6-405b-9704-6c2d68b0dbea",
+      "ae403bd3-084d-4ec8-9c7e-7e1a3db5f06b",
+      "ae95c69b-0cdb-49de-a0ca-30896ec12d55",
+      "d3fd5b29-f0bf-46cb-a61c-2b9e673c78a5",
+      "d53ef789-00d6-4498-9262-2517081ad5ce",
+      "e4c1642d-b904-4176-bf07-c273ed2dfe20",
+      "ea59e7cb-eec8-4214-bb3a-4c78908840b0"
+    ],
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "status": "success",
+    "critical_data_ok": true,
+    "stage_frozen": false,
+    "freeze_reason": [],
+    "row_counts": {
+      "daily_mainline_snapshot": 15,
+      "aggregate_benchmark_days": 300,
+      "temporary_stock_rows_not_persisted": 1366323
+    },
+    "error_summary": {
+      "G1_calculation": {
+        "G1": "PASS",
+        "READY_FOR_PRODUCTION_ENABLEMENT": true,
+        "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+        "recompute_run_id": "ae8d6541-5a8f-4797-9542-80cc1917fc20",
+        "code_commit": "46e581fa7649134fdf2a879090a715f414b386ca",
+        "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+        "parameters": {
+          "benchmark": "ALL_A_EQUAL_WEIGHT",
+          "benchmark_min": 0.95,
+          "rs_window_min": 0.9,
+          "sector_min": 0.7,
+          "return_basis": "exact_previous_market_day_close",
+          "profile_id": "industry_trend_v2_2_1_benchmark_close",
+          "rule_version": "mainline_v2.2.1"
+        },
+        "universe_verified": true,
+        "counts": {
+          "SUCCESS": 15,
+          "PARTIAL": 0,
+          "FAIL": 0
+        },
+        "benchmark_days": 300,
+        "fetched_missing_securities": 4064,
+        "reused_sector_securities": 1558,
+        "temporary_rows": 1366323,
+        "deterministic_repeatability": true,
+        "source_lineage_complete": 15,
+        "fixed_benchmark_rows": [
+          {
+            "trade_date": "2019-06-28",
+            "benchmark_return": -0.014415677467047862,
+            "universe_count": 3631,
+            "valid_return_count": 3607,
+            "benchmark_coverage": 0.993390250619664,
+            "all_a_amount": 415313570467.0,
+            "amount_coverage": 0.9947672817405674,
+            "previous_market_date": "2019-06-27",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2020-06-30",
+            "benchmark_return": 0.014680265373482326,
+            "universe_count": 3876,
+            "valid_return_count": 3830,
+            "benchmark_coverage": 0.9881320949432405,
+            "all_a_amount": 746502408890.0,
+            "amount_coverage": 0.989422084623323,
+            "previous_market_date": "2020-06-29",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2021-12-31",
+            "benchmark_return": 0.0062364765473344975,
+            "universe_count": 4684,
+            "valid_return_count": 4636,
+            "benchmark_coverage": 0.9897523484201537,
+            "all_a_amount": 1062451240209.0,
+            "amount_coverage": 0.990392826643894,
+            "previous_market_date": "2021-12-30",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2023-06-30",
+            "benchmark_return": 0.010949111354118074,
+            "universe_count": 5222,
+            "valid_return_count": 5168,
+            "benchmark_coverage": 0.9896591344312524,
+            "all_a_amount": 919968338346.0,
+            "amount_coverage": 0.9908081194944466,
+            "previous_market_date": "2023-06-29",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2025-06-30",
+            "benchmark_return": 0.013118222920326056,
+            "universe_count": 5419,
+            "valid_return_count": 5371,
+            "benchmark_coverage": 0.9911422771729101,
+            "all_a_amount": 1513654041880.0,
+            "amount_coverage": 0.9918804207418342,
+            "previous_market_date": "2025-06-27",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          }
+        ]
+      },
+      "same_input_repeatability": [
+        {
+          "sample_id": "2019-06-28:801080",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5534f415d007991262f39202bd48bf9e785aff5aef7184ecb118a06e0411ef66",
+          "recompute_checksum": "5534f415d007991262f39202bd48bf9e785aff5aef7184ecb118a06e0411ef66"
+        },
+        {
+          "sample_id": "2019-06-28:801120",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5b9e4422a160d8a4c2a45f0a4deadcc69a1d7d40b16cac3cc91a6f1af2e08bb2",
+          "recompute_checksum": "5b9e4422a160d8a4c2a45f0a4deadcc69a1d7d40b16cac3cc91a6f1af2e08bb2"
+        },
+        {
+          "sample_id": "2019-06-28:801790",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "250d47929a773a6135d2b4072abaf8954a73b3ea8b86e19e33c52057d96b435c",
+          "recompute_checksum": "250d47929a773a6135d2b4072abaf8954a73b3ea8b86e19e33c52057d96b435c"
+        },
+        {
+          "sample_id": "2020-06-30:801050",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "bc1d5160e3f5f3a5682d537035ea0223e9c3ca37e931cf7025a4c582943dee06",
+          "recompute_checksum": "bc1d5160e3f5f3a5682d537035ea0223e9c3ca37e931cf7025a4c582943dee06"
+        },
+        {
+          "sample_id": "2020-06-30:801120",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "c435478c7a1f0c68a648a966178a2a875d3f04a6cfc263e06b7f5e87e7faab7d",
+          "recompute_checksum": "c435478c7a1f0c68a648a966178a2a875d3f04a6cfc263e06b7f5e87e7faab7d"
+        },
+        {
+          "sample_id": "2020-06-30:801790",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "e333ae03038aae2300e9882a962ad1375b60781e2d98e533a20ab38e957dc0a6",
+          "recompute_checksum": "e333ae03038aae2300e9882a962ad1375b60781e2d98e533a20ab38e957dc0a6"
+        },
+        {
+          "sample_id": "2021-12-31:801080",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "0b2bf8b73e1364381721369875ef4186d4e71532a23661497330c44355489744",
+          "recompute_checksum": "0b2bf8b73e1364381721369875ef4186d4e71532a23661497330c44355489744"
+        },
+        {
+          "sample_id": "2021-12-31:801780",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "54300d35720263fc7c32902d270a6b582e197a304042ec41a9f89491b82f1274",
+          "recompute_checksum": "54300d35720263fc7c32902d270a6b582e197a304042ec41a9f89491b82f1274"
+        },
+        {
+          "sample_id": "2021-12-31:801890",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "1bf5826031ac035eecb7d94b25dcc7442320388782d695625202a6e0a5528a80",
+          "recompute_checksum": "1bf5826031ac035eecb7d94b25dcc7442320388782d695625202a6e0a5528a80"
+        },
+        {
+          "sample_id": "2023-06-30:801050",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5b64a83c4fb126ff7b7355d11dba9d0dfcf24078d3e60b44db9b3f975b6d8500",
+          "recompute_checksum": "5b64a83c4fb126ff7b7355d11dba9d0dfcf24078d3e60b44db9b3f975b6d8500"
+        },
+        {
+          "sample_id": "2023-06-30:801120",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5e68069dad70b824cef840dccfc39debd58319ea0755947f2e8788418f9cc7b8",
+          "recompute_checksum": "5e68069dad70b824cef840dccfc39debd58319ea0755947f2e8788418f9cc7b8"
+        },
+        {
+          "sample_id": "2023-06-30:801890",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "311d5995378721b2306cb65b7699116d9e5d96ad52fdac1c82ed9c8d00dec0af",
+          "recompute_checksum": "311d5995378721b2306cb65b7699116d9e5d96ad52fdac1c82ed9c8d00dec0af"
+        },
+        {
+          "sample_id": "2025-06-30:801080",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "1f344e7c8ce9aa2a97b63c560b62f3d0d306275891c441fde9c9cee4e618a055",
+          "recompute_checksum": "1f344e7c8ce9aa2a97b63c560b62f3d0d306275891c441fde9c9cee4e618a055"
+        },
+        {
+          "sample_id": "2025-06-30:801780",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5f244d5fc65a9d3937565a8e8f8dc446072e4b6b6034bf83555c74f110f6440e",
+          "recompute_checksum": "5f244d5fc65a9d3937565a8e8f8dc446072e4b6b6034bf83555c74f110f6440e"
+        },
+        {
+          "sample_id": "2025-06-30:801890",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "10daf65297385688f0a46f58b115b57c20f42005a72d6df108d77ba2b8675348",
+          "recompute_checksum": "10daf65297385688f0a46f58b115b57c20f42005a72d6df108d77ba2b8675348"
+        }
+      ],
+      "raw_payload_retention": "temporary GitHub artifact 11201276345, retention 30 days; permanent aggregate results and checksums only",
+      "artifact_zip_sha256": "0bbeef90e64d24979ccebc6a20f8567e5326d8ac76ee9dac0e2a4975a9cc32ca",
+      "optimization_log": "修复历史全A等权基准和成交额分母；复用已通过板块输入，仅临时解析证券区间；15样本复算一致，95%/90%/70%冻结口径不变。",
+      "test_evidence": {
+        "historical_universe_tests": 4,
+        "benchmark_freeze_null_tests": 6,
+        "passed": true
+      },
+      "PIT_scope": "effective PIT; historical knowledge publication time remains unverified"
+    },
+    "started_at": "2026-10-01T23:49:04Z",
+    "finished_at": "2026-10-01T23:55:11Z"
+  },
+  {
+    "run_id": "ae8d6541-5a8f-4797-9542-80cc1917fc20",
+    "recompute_run_id": null,
+    "parent_run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "job_name": "V2.2.1 same-input deterministic repeat",
+    "as_of_date": "2025-06-30",
+    "code_commit": "46e581fa7649134fdf2a879090a715f414b386ca",
+    "rule_version": "mainline_v2.2.1",
+    "profile_id": "industry_trend_v2_2_1_benchmark_close",
+    "provider_versions": {
+      "official_exchange_listing_events": "v221-benchmark-resume:3b3cd5f53d7028fc33dfb9804b3a4e70e6cbff109b36368a0502d4b0c19ad1b9",
+      "sina_akshare_existing": "v221-benchmark-resume:b8b369fd7c193971feb17de5ea4943ae05990069ea919e8d27c4beef011c8130",
+      "all_a_equal_weight_calculator": "v221-benchmark-resume:e58ed2c0934b67bf53b45bd5e6e8589927284b1255f799f24c9cd8dc6df647d8"
+    },
+    "source_snapshot_ids": [
+      "0714d896-5788-4a7e-960d-9d58ea17e1ac",
+      "076010be-d7dc-4f65-b1e1-7d1debe411ce",
+      "07b69195-dcd2-4c5b-9520-d4372aad09b9",
+      "07e055bc-ee52-4d87-a82d-d2a1ceec4893",
+      "0d9adab4-ca25-49b0-ae31-b1b0ded6b34d",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73",
+      "1e51e219-621f-47bd-9e4e-e76253e6f847",
+      "20d57ace-817c-4bae-bd2f-c7aaf5f2c044",
+      "243f49a9-32cb-4b72-8205-d91b03498625",
+      "25f9a6fc-ff23-4af9-a7e3-3c6a208187be",
+      "3aac8b55-fb6d-4e06-a42a-fd507abdc207",
+      "3ab65c55-1cd3-4c7e-ab99-dac27c2de24c",
+      "3ceebb11-d9b5-4465-8322-3a60bd8f2d70",
+      "414ba0d5-376f-4903-9569-727ed65d10cb",
+      "479b8400-37b5-457c-81e2-e587d5591554",
+      "4a9479a5-cfd2-4adc-95f6-5f18cbd1992a",
+      "4e73c97c-fa3c-41bb-8240-0333cf51c091",
+      "674e49ba-3bd1-430a-8b21-20975f9fc701",
+      "6b2d342e-d544-4f7c-a4e1-df4b7859814f",
+      "6d16a873-e4ea-4dec-8e46-a8c9a2a727a7",
+      "783f7a20-fece-4e21-b10c-f8ee8b474b0c",
+      "7886124e-b650-48d7-9366-71304188ce6d",
+      "7d05d715-cc7f-40ec-a592-612554b2a69b",
+      "7ea1ef03-b303-4edd-868d-468f1f350279",
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "864afcc6-5347-4cc8-9fc9-6f1ba4f45e04",
+      "94c0710f-11f7-47ad-b410-fdfea29996c8",
+      "96f318ec-23ce-4da4-8538-bff0e656955e",
+      "989b5111-24fc-43a0-a504-b9bd0410a904",
+      "991cd5c9-9d6a-44dd-b8b5-2b08cb8b4291",
+      "9dfd3cc7-ef23-442b-b183-45bdd3ffc41b",
+      "a10442e6-6a2a-4b29-8333-618cf239c8eb",
+      "a22df068-37b6-405b-9704-6c2d68b0dbea",
+      "ae403bd3-084d-4ec8-9c7e-7e1a3db5f06b",
+      "ae95c69b-0cdb-49de-a0ca-30896ec12d55",
+      "d3fd5b29-f0bf-46cb-a61c-2b9e673c78a5",
+      "d53ef789-00d6-4498-9262-2517081ad5ce",
+      "e4c1642d-b904-4176-bf07-c273ed2dfe20",
+      "ea59e7cb-eec8-4214-bb3a-4c78908840b0"
+    ],
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "status": "success",
+    "critical_data_ok": true,
+    "stage_frozen": false,
+    "freeze_reason": [],
+    "row_counts": {
+      "compared_samples": 15,
+      "identical_samples": 15
+    },
+    "error_summary": {
+      "G1_calculation": {
+        "G1": "PASS",
+        "READY_FOR_PRODUCTION_ENABLEMENT": true,
+        "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+        "recompute_run_id": "ae8d6541-5a8f-4797-9542-80cc1917fc20",
+        "code_commit": "46e581fa7649134fdf2a879090a715f414b386ca",
+        "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+        "parameters": {
+          "benchmark": "ALL_A_EQUAL_WEIGHT",
+          "benchmark_min": 0.95,
+          "rs_window_min": 0.9,
+          "sector_min": 0.7,
+          "return_basis": "exact_previous_market_day_close",
+          "profile_id": "industry_trend_v2_2_1_benchmark_close",
+          "rule_version": "mainline_v2.2.1"
+        },
+        "universe_verified": true,
+        "counts": {
+          "SUCCESS": 15,
+          "PARTIAL": 0,
+          "FAIL": 0
+        },
+        "benchmark_days": 300,
+        "fetched_missing_securities": 4064,
+        "reused_sector_securities": 1558,
+        "temporary_rows": 1366323,
+        "deterministic_repeatability": true,
+        "source_lineage_complete": 15,
+        "fixed_benchmark_rows": [
+          {
+            "trade_date": "2019-06-28",
+            "benchmark_return": -0.014415677467047862,
+            "universe_count": 3631,
+            "valid_return_count": 3607,
+            "benchmark_coverage": 0.993390250619664,
+            "all_a_amount": 415313570467.0,
+            "amount_coverage": 0.9947672817405674,
+            "previous_market_date": "2019-06-27",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2020-06-30",
+            "benchmark_return": 0.014680265373482326,
+            "universe_count": 3876,
+            "valid_return_count": 3830,
+            "benchmark_coverage": 0.9881320949432405,
+            "all_a_amount": 746502408890.0,
+            "amount_coverage": 0.989422084623323,
+            "previous_market_date": "2020-06-29",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2021-12-31",
+            "benchmark_return": 0.0062364765473344975,
+            "universe_count": 4684,
+            "valid_return_count": 4636,
+            "benchmark_coverage": 0.9897523484201537,
+            "all_a_amount": 1062451240209.0,
+            "amount_coverage": 0.990392826643894,
+            "previous_market_date": "2021-12-30",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2023-06-30",
+            "benchmark_return": 0.010949111354118074,
+            "universe_count": 5222,
+            "valid_return_count": 5168,
+            "benchmark_coverage": 0.9896591344312524,
+            "all_a_amount": 919968338346.0,
+            "amount_coverage": 0.9908081194944466,
+            "previous_market_date": "2023-06-29",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          },
+          {
+            "trade_date": "2025-06-30",
+            "benchmark_return": 0.013118222920326056,
+            "universe_count": 5419,
+            "valid_return_count": 5371,
+            "benchmark_coverage": 0.9911422771729101,
+            "all_a_amount": 1513654041880.0,
+            "amount_coverage": 0.9918804207418342,
+            "previous_market_date": "2025-06-27",
+            "freeze_reason": null,
+            "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+            "source_snapshot_ids": [
+              "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+              "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+            ]
+          }
+        ]
+      },
+      "same_input_repeatability": [
+        {
+          "sample_id": "2019-06-28:801080",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5534f415d007991262f39202bd48bf9e785aff5aef7184ecb118a06e0411ef66",
+          "recompute_checksum": "5534f415d007991262f39202bd48bf9e785aff5aef7184ecb118a06e0411ef66"
+        },
+        {
+          "sample_id": "2019-06-28:801120",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5b9e4422a160d8a4c2a45f0a4deadcc69a1d7d40b16cac3cc91a6f1af2e08bb2",
+          "recompute_checksum": "5b9e4422a160d8a4c2a45f0a4deadcc69a1d7d40b16cac3cc91a6f1af2e08bb2"
+        },
+        {
+          "sample_id": "2019-06-28:801790",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "250d47929a773a6135d2b4072abaf8954a73b3ea8b86e19e33c52057d96b435c",
+          "recompute_checksum": "250d47929a773a6135d2b4072abaf8954a73b3ea8b86e19e33c52057d96b435c"
+        },
+        {
+          "sample_id": "2020-06-30:801050",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "bc1d5160e3f5f3a5682d537035ea0223e9c3ca37e931cf7025a4c582943dee06",
+          "recompute_checksum": "bc1d5160e3f5f3a5682d537035ea0223e9c3ca37e931cf7025a4c582943dee06"
+        },
+        {
+          "sample_id": "2020-06-30:801120",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "c435478c7a1f0c68a648a966178a2a875d3f04a6cfc263e06b7f5e87e7faab7d",
+          "recompute_checksum": "c435478c7a1f0c68a648a966178a2a875d3f04a6cfc263e06b7f5e87e7faab7d"
+        },
+        {
+          "sample_id": "2020-06-30:801790",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "e333ae03038aae2300e9882a962ad1375b60781e2d98e533a20ab38e957dc0a6",
+          "recompute_checksum": "e333ae03038aae2300e9882a962ad1375b60781e2d98e533a20ab38e957dc0a6"
+        },
+        {
+          "sample_id": "2021-12-31:801080",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "0b2bf8b73e1364381721369875ef4186d4e71532a23661497330c44355489744",
+          "recompute_checksum": "0b2bf8b73e1364381721369875ef4186d4e71532a23661497330c44355489744"
+        },
+        {
+          "sample_id": "2021-12-31:801780",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "54300d35720263fc7c32902d270a6b582e197a304042ec41a9f89491b82f1274",
+          "recompute_checksum": "54300d35720263fc7c32902d270a6b582e197a304042ec41a9f89491b82f1274"
+        },
+        {
+          "sample_id": "2021-12-31:801890",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "1bf5826031ac035eecb7d94b25dcc7442320388782d695625202a6e0a5528a80",
+          "recompute_checksum": "1bf5826031ac035eecb7d94b25dcc7442320388782d695625202a6e0a5528a80"
+        },
+        {
+          "sample_id": "2023-06-30:801050",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5b64a83c4fb126ff7b7355d11dba9d0dfcf24078d3e60b44db9b3f975b6d8500",
+          "recompute_checksum": "5b64a83c4fb126ff7b7355d11dba9d0dfcf24078d3e60b44db9b3f975b6d8500"
+        },
+        {
+          "sample_id": "2023-06-30:801120",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5e68069dad70b824cef840dccfc39debd58319ea0755947f2e8788418f9cc7b8",
+          "recompute_checksum": "5e68069dad70b824cef840dccfc39debd58319ea0755947f2e8788418f9cc7b8"
+        },
+        {
+          "sample_id": "2023-06-30:801890",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "311d5995378721b2306cb65b7699116d9e5d96ad52fdac1c82ed9c8d00dec0af",
+          "recompute_checksum": "311d5995378721b2306cb65b7699116d9e5d96ad52fdac1c82ed9c8d00dec0af"
+        },
+        {
+          "sample_id": "2025-06-30:801080",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "1f344e7c8ce9aa2a97b63c560b62f3d0d306275891c441fde9c9cee4e618a055",
+          "recompute_checksum": "1f344e7c8ce9aa2a97b63c560b62f3d0d306275891c441fde9c9cee4e618a055"
+        },
+        {
+          "sample_id": "2025-06-30:801780",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "5f244d5fc65a9d3937565a8e8f8dc446072e4b6b6034bf83555c74f110f6440e",
+          "recompute_checksum": "5f244d5fc65a9d3937565a8e8f8dc446072e4b6b6034bf83555c74f110f6440e"
+        },
+        {
+          "sample_id": "2025-06-30:801890",
+          "status": "SUCCESS",
+          "repeat_identical": true,
+          "reused_metrics_unchanged": true,
+          "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+          "same_source_refs": true,
+          "checksum": "10daf65297385688f0a46f58b115b57c20f42005a72d6df108d77ba2b8675348",
+          "recompute_checksum": "10daf65297385688f0a46f58b115b57c20f42005a72d6df108d77ba2b8675348"
+        }
+      ],
+      "raw_payload_retention": "temporary GitHub artifact 11201276345, retention 30 days; permanent aggregate results and checksums only",
+      "artifact_zip_sha256": "0bbeef90e64d24979ccebc6a20f8567e5326d8ac76ee9dac0e2a4975a9cc32ca",
+      "optimization_log": "修复历史全A等权基准和成交额分母；复用已通过板块输入，仅临时解析证券区间；15样本复算一致，95%/90%/70%冻结口径不变。",
+      "test_evidence": {
+        "historical_universe_tests": 4,
+        "benchmark_freeze_null_tests": 6,
+        "passed": true
+      },
+      "PIT_scope": "effective PIT; historical knowledge publication time remains unverified"
+    },
+    "started_at": "2026-10-01T23:49:04Z",
+    "finished_at": "2026-10-01T23:55:11Z"
+  }
+]

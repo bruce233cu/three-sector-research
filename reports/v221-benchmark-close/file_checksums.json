@@ -1,0 +1,15 @@
+{
+  "DELIVERY.md": "2d50488331feb825f8649e4cba6401a25cd33b0f7fa97e0e664741e030d8cc82",
+  "G1_FINAL.json": "7b5590bbff7c3d000fafeaf43ae68d8844dcf82f8a71c8ae9134c73a89f3a980",
+  "all_a_equal_weight_benchmark.json": "522dec1d11c4255aaa1673f3bd708020590dc1c5ae49aa173be04a89997f6c85",
+  "checks.json": "b6590583bdb3065bd1c8a3f409c2a6f47d5f8b08bc9e1c1cfd7cebaba28cf23b",
+  "database_verification.json": "9647bb1a27ce09311cced412cf2fe607179b4d6355b50d1fe3f6c60381f6bd1a",
+  "delivery_meta.json": "a821dd616d7d8e66a6830fa4dfbb82b65d056449ef74b5878e14aebd1d950c94",
+  "final_gate.sql": "33a73faf6445a2543a0f318d529692ec6bd592bdc22df2694b81893800fc25f4",
+  "gate.json": "540c5cd0da81f24e386ac1dd6ca28b31354c3d95cffd7d339b3d6b010887029e",
+  "run_manifests.json": "e1362b7ff309cecac91822a8279ce8145f1175deb168aa263f0b545befcb78ef",
+  "snapshot_table.csv": "3de8ac25be5cff909dc6ec17e413c5bd6c248fe625a565b20af7baa607308e5f",
+  "snapshots.json": "c07c7fbc45b6efe522cfa26577ed60c83d80c85367599733879f841b6cc23ced",
+  "source_snapshots.json": "fb636d175da2743147cf7c0a7b4143f1de6a650d267316d41105e20aeaf47d5a",
+  "universe_validation.json": "7feba92fd49ead5e156b7120a4c1c907954631d00cdc884296130d2be4053f18"
+}

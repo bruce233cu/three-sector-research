@@ -1,0 +1,49 @@
+{
+  "G1": "PASS",
+  "READY_FOR_PRODUCTION_ENABLEMENT": true,
+  "MILESTONE_A": "CLOSED",
+  "database_verified": {
+    "sample_count": 15,
+    "healthy_unfrozen": 15,
+    "dependent_metrics_available": 15,
+    "min_benchmark_coverage": "0.9881320949432405",
+    "min_rs_coverage": "1.0",
+    "deferred_correct": 15,
+    "effective_pit": 15,
+    "dangling_sources": 0,
+    "unregistered_sources": 0,
+    "lineage_datasets": [
+      "all_a_benchmark_price_amount",
+      "all_a_equal_weight_benchmark",
+      "historical_benchmark_universe",
+      "membership_snapshot",
+      "stock_window",
+      "trading_calendar"
+    ],
+    "reused_metrics_unchanged": 15,
+    "old_snapshots_preserved": 15,
+    "valid_manifests": 2,
+    "persisted_stock_rows": 0,
+    "persisted_security_rows": 0,
+    "calendar_rows": 3044,
+    "complete_six_source_chains": 15,
+    "upstream_universe_sources": {
+      "count": 5,
+      "dangling": 0,
+      "bad_checksum": 0,
+      "unregistered": 0
+    },
+    "repeat_metadata_corrected": true
+  },
+  "calculation_run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+  "repeat_run_id": "ae8d6541-5a8f-4797-9542-80cc1917fc20",
+  "code_sha": "46e581fa7649134fdf2a879090a715f414b386ca",
+  "start_sha": "196285581feb9818dfaf48f4aa2aceba7a7030ef",
+  "thresholds": {
+    "benchmark_cross_section": 0.95,
+    "rs_window": 0.9,
+    "sector_internal": 0.7
+  },
+  "blocking_issues": [],
+  "production_enabled_by_this_run": false
+}

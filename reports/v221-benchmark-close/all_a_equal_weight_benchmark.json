@@ -1,0 +1,4802 @@
+[
+  {
+    "trade_date": "2019-04-01",
+    "benchmark_return": null,
+    "universe_count": 3600,
+    "valid_return_count": 2657,
+    "benchmark_coverage": 0.7380555555555556,
+    "all_a_amount": 1043182299976.0,
+    "amount_coverage": 0.9913888888888889,
+    "previous_market_date": "2019-03-29",
+    "freeze_reason": "benchmark_coverage_below_95_percent",
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-02",
+    "benchmark_return": 0.0063307538923787245,
+    "universe_count": 3601,
+    "valid_return_count": 3568,
+    "benchmark_coverage": 0.9908358789225216,
+    "all_a_amount": 1037943443708.0,
+    "amount_coverage": 0.9925020827547903,
+    "previous_market_date": "2019-04-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-03",
+    "benchmark_return": 0.011768323284254504,
+    "universe_count": 3601,
+    "valid_return_count": 3566,
+    "benchmark_coverage": 0.9902804776450986,
+    "all_a_amount": 932817407112.0,
+    "amount_coverage": 0.9902804776450986,
+    "previous_market_date": "2019-04-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-04",
+    "benchmark_return": 0.004216214306286065,
+    "universe_count": 3601,
+    "valid_return_count": 3560,
+    "benchmark_coverage": 0.9886142738128297,
+    "all_a_amount": 1004205065193.0,
+    "amount_coverage": 0.9908358789225216,
+    "previous_market_date": "2019-04-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-08",
+    "benchmark_return": -0.003169210919424112,
+    "universe_count": 3601,
+    "valid_return_count": 3565,
+    "benchmark_coverage": 0.9900027770063872,
+    "all_a_amount": 1066348314135.0,
+    "amount_coverage": 0.9927797833935018,
+    "previous_market_date": "2019-04-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-09",
+    "benchmark_return": 0.004598723083880071,
+    "universe_count": 3601,
+    "valid_return_count": 3567,
+    "benchmark_coverage": 0.9905581782838101,
+    "all_a_amount": 839787979342.0,
+    "amount_coverage": 0.9927797833935018,
+    "previous_market_date": "2019-04-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-10",
+    "benchmark_return": -0.0007146975504154258,
+    "universe_count": 3601,
+    "valid_return_count": 3572,
+    "benchmark_coverage": 0.9919466814773674,
+    "all_a_amount": 898436513241.0,
+    "amount_coverage": 0.9936128853096362,
+    "previous_market_date": "2019-04-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-11",
+    "benchmark_return": -0.017295430765813215,
+    "universe_count": 3601,
+    "valid_return_count": 3574,
+    "benchmark_coverage": 0.9925020827547903,
+    "all_a_amount": 816912273334.0,
+    "amount_coverage": 0.9925020827547903,
+    "previous_market_date": "2019-04-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-12",
+    "benchmark_return": -0.0002322377750845672,
+    "universe_count": 3602,
+    "valid_return_count": 3573,
+    "benchmark_coverage": 0.9919489172681843,
+    "all_a_amount": 656874013915.0,
+    "amount_coverage": 0.9936146585230428,
+    "previous_market_date": "2019-04-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-15",
+    "benchmark_return": -0.00783859125380988,
+    "universe_count": 3604,
+    "valid_return_count": 3576,
+    "benchmark_coverage": 0.9922308546059934,
+    "all_a_amount": 775310446726.0,
+    "amount_coverage": 0.9933407325194229,
+    "previous_market_date": "2019-04-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-16",
+    "benchmark_return": 0.019613413506244307,
+    "universe_count": 3605,
+    "valid_return_count": 3576,
+    "benchmark_coverage": 0.9919556171983357,
+    "all_a_amount": 790674662049.0,
+    "amount_coverage": 0.9927877947295423,
+    "previous_market_date": "2019-04-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-17",
+    "benchmark_return": 0.008795521075146206,
+    "universe_count": 3605,
+    "valid_return_count": 3577,
+    "benchmark_coverage": 0.9922330097087378,
+    "all_a_amount": 829807197540.0,
+    "amount_coverage": 0.9944521497919556,
+    "previous_market_date": "2019-04-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-18",
+    "benchmark_return": -0.005941586504118735,
+    "universe_count": 3605,
+    "valid_return_count": 3585,
+    "benchmark_coverage": 0.9944521497919556,
+    "all_a_amount": 753088264179.0,
+    "amount_coverage": 0.9955617198335645,
+    "previous_market_date": "2019-04-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-19",
+    "benchmark_return": 0.00746501111419355,
+    "universe_count": 3606,
+    "valid_return_count": 3586,
+    "benchmark_coverage": 0.9944536882972823,
+    "all_a_amount": 720098357190.0,
+    "amount_coverage": 0.9947310038824182,
+    "previous_market_date": "2019-04-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-22",
+    "benchmark_return": -0.012758557992633819,
+    "universe_count": 3607,
+    "valid_return_count": 3581,
+    "benchmark_coverage": 0.9927917937344053,
+    "all_a_amount": 803874206060.0,
+    "amount_coverage": 0.9941779872470197,
+    "previous_market_date": "2019-04-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-23",
+    "benchmark_return": -0.018355717779820764,
+    "universe_count": 3607,
+    "valid_return_count": 3580,
+    "benchmark_coverage": 0.9925145550318825,
+    "all_a_amount": 732690978858.0,
+    "amount_coverage": 0.9939007485444968,
+    "previous_market_date": "2019-04-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-24",
+    "benchmark_return": 0.00942519606283972,
+    "universe_count": 3607,
+    "valid_return_count": 3582,
+    "benchmark_coverage": 0.9930690324369282,
+    "all_a_amount": 651998847457.0,
+    "amount_coverage": 0.9944552259495426,
+    "previous_market_date": "2019-04-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-25",
+    "benchmark_return": -0.04051959336256068,
+    "universe_count": 3608,
+    "valid_return_count": 3574,
+    "benchmark_coverage": 0.9905764966740577,
+    "all_a_amount": 733039458642.0,
+    "amount_coverage": 0.9919623059866962,
+    "previous_market_date": "2019-04-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-26",
+    "benchmark_return": -0.012621417539421904,
+    "universe_count": 3609,
+    "valid_return_count": 3564,
+    "benchmark_coverage": 0.9875311720698254,
+    "all_a_amount": 623705037734.0,
+    "amount_coverage": 0.9911332779163203,
+    "previous_market_date": "2019-04-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-29",
+    "benchmark_return": -0.036634754951604356,
+    "universe_count": 3610,
+    "valid_return_count": 3556,
+    "benchmark_coverage": 0.9850415512465374,
+    "all_a_amount": 645424636440.0,
+    "amount_coverage": 0.9883656509695291,
+    "previous_market_date": "2019-04-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-04-30",
+    "benchmark_return": 0.010715989103368186,
+    "universe_count": 3610,
+    "valid_return_count": 3536,
+    "benchmark_coverage": 0.9795013850415513,
+    "all_a_amount": 496305130975.0,
+    "amount_coverage": 0.9839335180055402,
+    "previous_market_date": "2019-04-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-06",
+    "benchmark_return": -0.07467836662388545,
+    "universe_count": 3610,
+    "valid_return_count": 3545,
+    "benchmark_coverage": 0.981994459833795,
+    "all_a_amount": 657286647535.0,
+    "amount_coverage": 0.9903047091412742,
+    "previous_market_date": "2019-04-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-07",
+    "benchmark_return": 0.015064275426836594,
+    "universe_count": 3610,
+    "valid_return_count": 3573,
+    "benchmark_coverage": 0.9897506925207756,
+    "all_a_amount": 537754873039.0,
+    "amount_coverage": 0.9908587257617728,
+    "previous_market_date": "2019-05-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-08",
+    "benchmark_return": -0.0021456598452929266,
+    "universe_count": 3611,
+    "valid_return_count": 3574,
+    "benchmark_coverage": 0.9897535308778732,
+    "all_a_amount": 488542075428.0,
+    "amount_coverage": 0.9905843256715591,
+    "previous_market_date": "2019-05-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-09",
+    "benchmark_return": -0.00859654632443066,
+    "universe_count": 3612,
+    "valid_return_count": 3577,
+    "benchmark_coverage": 0.9903100775193798,
+    "all_a_amount": 433813127978.0,
+    "amount_coverage": 0.9919712070874862,
+    "previous_market_date": "2019-05-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-10",
+    "benchmark_return": 0.03456022369544172,
+    "universe_count": 3613,
+    "valid_return_count": 3582,
+    "benchmark_coverage": 0.9914198726819817,
+    "all_a_amount": 609894374337.0,
+    "amount_coverage": 0.9919734292831442,
+    "previous_market_date": "2019-05-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-13",
+    "benchmark_return": -0.006103847903205557,
+    "universe_count": 3613,
+    "valid_return_count": 3580,
+    "benchmark_coverage": 0.9908663160808192,
+    "all_a_amount": 466044787023.0,
+    "amount_coverage": 0.9911430943814005,
+    "previous_market_date": "2019-05-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-14",
+    "benchmark_return": -0.007844657211643413,
+    "universe_count": 3613,
+    "valid_return_count": 3581,
+    "benchmark_coverage": 0.9911430943814005,
+    "all_a_amount": 455380377097.0,
+    "amount_coverage": 0.9914198726819817,
+    "previous_market_date": "2019-05-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-15",
+    "benchmark_return": 0.02132375538743736,
+    "universe_count": 3614,
+    "valid_return_count": 3580,
+    "benchmark_coverage": 0.9905921416712784,
+    "all_a_amount": 512602769462.0,
+    "amount_coverage": 0.9914222468179302,
+    "previous_market_date": "2019-05-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-16",
+    "benchmark_return": 0.007028560974252581,
+    "universe_count": 3616,
+    "valid_return_count": 3581,
+    "benchmark_coverage": 0.990320796460177,
+    "all_a_amount": 522031519864.0,
+    "amount_coverage": 0.9917035398230089,
+    "previous_market_date": "2019-05-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-17",
+    "benchmark_return": -0.03675122788390845,
+    "universe_count": 3617,
+    "valid_return_count": 3586,
+    "benchmark_coverage": 0.9914293613491844,
+    "all_a_amount": 573470126605.0,
+    "amount_coverage": 0.9922587779928117,
+    "previous_market_date": "2019-05-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-20",
+    "benchmark_return": -0.0044254800602270645,
+    "universe_count": 3617,
+    "valid_return_count": 3584,
+    "benchmark_coverage": 0.9908764169200995,
+    "all_a_amount": 462514632309.0,
+    "amount_coverage": 0.9914293613491844,
+    "previous_market_date": "2019-05-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-21",
+    "benchmark_return": 0.016678519486160465,
+    "universe_count": 3618,
+    "valid_return_count": 3586,
+    "benchmark_coverage": 0.9911553344389166,
+    "all_a_amount": 479310341647.0,
+    "amount_coverage": 0.992260917634052,
+    "previous_market_date": "2019-05-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-22",
+    "benchmark_return": -0.006097186210133585,
+    "universe_count": 3620,
+    "valid_return_count": 3589,
+    "benchmark_coverage": 0.9914364640883978,
+    "all_a_amount": 469158574693.0,
+    "amount_coverage": 0.9922651933701657,
+    "previous_market_date": "2019-05-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-23",
+    "benchmark_return": -0.023154954286432373,
+    "universe_count": 3622,
+    "valid_return_count": 3591,
+    "benchmark_coverage": 0.9914411927112092,
+    "all_a_amount": 464464451580.0,
+    "amount_coverage": 0.9919933738266151,
+    "previous_market_date": "2019-05-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-24",
+    "benchmark_return": -0.007380063366151918,
+    "universe_count": 3621,
+    "valid_return_count": 3593,
+    "benchmark_coverage": 0.992267329466998,
+    "all_a_amount": 380759709633.0,
+    "amount_coverage": 0.9928196630764982,
+    "previous_market_date": "2019-05-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-27",
+    "benchmark_return": 0.02669304948928402,
+    "universe_count": 3621,
+    "valid_return_count": 3591,
+    "benchmark_coverage": 0.9917149958574979,
+    "all_a_amount": 452504059547.0,
+    "amount_coverage": 0.9936481634907484,
+    "previous_market_date": "2019-05-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-28",
+    "benchmark_return": 7.695914395513959e-05,
+    "universe_count": 3621,
+    "valid_return_count": 3596,
+    "benchmark_coverage": 0.9930958298812482,
+    "all_a_amount": 499228940085.0,
+    "amount_coverage": 0.9933719966859983,
+    "previous_market_date": "2019-05-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-29",
+    "benchmark_return": 0.003123352518915603,
+    "universe_count": 3621,
+    "valid_return_count": 3597,
+    "benchmark_coverage": 0.9933719966859983,
+    "all_a_amount": 445801414668.0,
+    "amount_coverage": 0.9942004971002486,
+    "previous_market_date": "2019-05-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-30",
+    "benchmark_return": -0.007405287065518949,
+    "universe_count": 3621,
+    "valid_return_count": 3598,
+    "benchmark_coverage": 0.9936481634907484,
+    "all_a_amount": 453415753107.0,
+    "amount_coverage": 0.9936481634907484,
+    "previous_market_date": "2019-05-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-05-31",
+    "benchmark_return": -0.00016309467469094346,
+    "universe_count": 3622,
+    "valid_return_count": 3597,
+    "benchmark_coverage": 0.9930977360574268,
+    "all_a_amount": 437339514286.0,
+    "amount_coverage": 0.9936499171728327,
+    "previous_market_date": "2019-05-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-03",
+    "benchmark_return": -0.015341774174050575,
+    "universe_count": 3622,
+    "valid_return_count": 3594,
+    "benchmark_coverage": 0.9922694643843181,
+    "all_a_amount": 479023869218.0,
+    "amount_coverage": 0.992545554942021,
+    "previous_market_date": "2019-05-31",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-04",
+    "benchmark_return": -0.01617737140783258,
+    "universe_count": 3622,
+    "valid_return_count": 3594,
+    "benchmark_coverage": 0.9922694643843181,
+    "all_a_amount": 422310103140.0,
+    "amount_coverage": 0.992821645499724,
+    "previous_market_date": "2019-06-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-05",
+    "benchmark_return": 0.0003897408315630604,
+    "universe_count": 3622,
+    "valid_return_count": 3594,
+    "benchmark_coverage": 0.9922694643843181,
+    "all_a_amount": 407643587022.0,
+    "amount_coverage": 0.992821645499724,
+    "previous_market_date": "2019-06-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-06",
+    "benchmark_return": -0.026064763619441496,
+    "universe_count": 3623,
+    "valid_return_count": 3596,
+    "benchmark_coverage": 0.9925476124758488,
+    "all_a_amount": 386545712755.0,
+    "amount_coverage": 0.9933756555340878,
+    "previous_market_date": "2019-06-05",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-10",
+    "benchmark_return": 0.010105623428887963,
+    "universe_count": 3623,
+    "valid_return_count": 3595,
+    "benchmark_coverage": 0.9922715981231024,
+    "all_a_amount": 366598617438.0,
+    "amount_coverage": 0.9922715981231024,
+    "previous_market_date": "2019-06-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-11",
+    "benchmark_return": 0.03529826485385496,
+    "universe_count": 3623,
+    "valid_return_count": 3595,
+    "benchmark_coverage": 0.9922715981231024,
+    "all_a_amount": 565165913899.0,
+    "amount_coverage": 0.9925476124758488,
+    "previous_market_date": "2019-06-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-12",
+    "benchmark_return": -0.0049211185493103285,
+    "universe_count": 3623,
+    "valid_return_count": 3594,
+    "benchmark_coverage": 0.991995583770356,
+    "all_a_amount": 513251720600.0,
+    "amount_coverage": 0.9922715981231024,
+    "previous_market_date": "2019-06-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-13",
+    "benchmark_return": 0.006267400660986235,
+    "universe_count": 3623,
+    "valid_return_count": 3595,
+    "benchmark_coverage": 0.9922715981231024,
+    "all_a_amount": 449653475497.0,
+    "amount_coverage": 0.9922715981231024,
+    "previous_market_date": "2019-06-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-14",
+    "benchmark_return": -0.02261331829230413,
+    "universe_count": 3624,
+    "valid_return_count": 3595,
+    "benchmark_coverage": 0.9919977924944813,
+    "all_a_amount": 448748908647.0,
+    "amount_coverage": 0.9925496688741722,
+    "previous_market_date": "2019-06-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-17",
+    "benchmark_return": 0.00013321745656345746,
+    "universe_count": 3624,
+    "valid_return_count": 3595,
+    "benchmark_coverage": 0.9919977924944813,
+    "all_a_amount": 335588960985.0,
+    "amount_coverage": 0.9922737306843267,
+    "previous_market_date": "2019-06-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-18",
+    "benchmark_return": -0.0018809071218313016,
+    "universe_count": 3625,
+    "valid_return_count": 3593,
+    "benchmark_coverage": 0.9911724137931035,
+    "all_a_amount": 321672329340.0,
+    "amount_coverage": 0.992551724137931,
+    "previous_market_date": "2019-06-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-19",
+    "benchmark_return": 0.013301475342552193,
+    "universe_count": 3626,
+    "valid_return_count": 3595,
+    "benchmark_coverage": 0.9914506343077771,
+    "all_a_amount": 503834288018.0,
+    "amount_coverage": 0.992553778268064,
+    "previous_market_date": "2019-06-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-20",
+    "benchmark_return": 0.014520957187482173,
+    "universe_count": 3627,
+    "valid_return_count": 3597,
+    "benchmark_coverage": 0.9917287014061208,
+    "all_a_amount": 602739109486.0,
+    "amount_coverage": 0.992831541218638,
+    "previous_market_date": "2019-06-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-21",
+    "benchmark_return": 0.018390667097532093,
+    "universe_count": 3628,
+    "valid_return_count": 3600,
+    "benchmark_coverage": 0.9922822491730982,
+    "all_a_amount": 621455938544.0,
+    "amount_coverage": 0.9928335170893055,
+    "previous_market_date": "2019-06-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-24",
+    "benchmark_return": -0.000818528088371227,
+    "universe_count": 3628,
+    "valid_return_count": 3600,
+    "benchmark_coverage": 0.9922822491730982,
+    "all_a_amount": 494858041816.0,
+    "amount_coverage": 0.9936604189636163,
+    "previous_market_date": "2019-06-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-25",
+    "benchmark_return": -0.009423309994654292,
+    "universe_count": 3628,
+    "valid_return_count": 3603,
+    "benchmark_coverage": 0.993109151047409,
+    "all_a_amount": 513137018072.0,
+    "amount_coverage": 0.9936604189636163,
+    "previous_market_date": "2019-06-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-26",
+    "benchmark_return": -0.0004057266053649309,
+    "universe_count": 3629,
+    "valid_return_count": 3603,
+    "benchmark_coverage": 0.9928354918710388,
+    "all_a_amount": 391565852322.0,
+    "amount_coverage": 0.9933866078809589,
+    "previous_market_date": "2019-06-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-27",
+    "benchmark_return": 0.006133180387631078,
+    "universe_count": 3630,
+    "valid_return_count": 3602,
+    "benchmark_coverage": 0.9922865013774105,
+    "all_a_amount": 475605432846.0,
+    "amount_coverage": 0.99366391184573,
+    "previous_market_date": "2019-06-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2019-06-28",
+    "benchmark_return": -0.014415677467047862,
+    "universe_count": 3631,
+    "valid_return_count": 3607,
+    "benchmark_coverage": 0.993390250619664,
+    "all_a_amount": 415313570467.0,
+    "amount_coverage": 0.9947672817405674,
+    "previous_market_date": "2019-06-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-03-31",
+    "benchmark_return": null,
+    "universe_count": 3809,
+    "valid_return_count": 2807,
+    "benchmark_coverage": 0.7369388290889998,
+    "all_a_amount": 561618562106.0,
+    "amount_coverage": 0.9947492780257285,
+    "previous_market_date": "2020-03-30",
+    "freeze_reason": "benchmark_coverage_below_95_percent",
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-01",
+    "benchmark_return": -0.005651913765406199,
+    "universe_count": 3809,
+    "valid_return_count": 3789,
+    "benchmark_coverage": 0.9947492780257285,
+    "all_a_amount": 584733128333.0,
+    "amount_coverage": 0.9952743502231557,
+    "previous_market_date": "2020-03-31",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-02",
+    "benchmark_return": 0.02121104785520815,
+    "universe_count": 3809,
+    "valid_return_count": 3791,
+    "benchmark_coverage": 0.9952743502231557,
+    "all_a_amount": 597610067315.0,
+    "amount_coverage": 0.9952743502231557,
+    "previous_market_date": "2020-04-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-03",
+    "benchmark_return": -0.004918783572428276,
+    "universe_count": 3810,
+    "valid_return_count": 3790,
+    "benchmark_coverage": 0.994750656167979,
+    "all_a_amount": 572220160356.0,
+    "amount_coverage": 0.9952755905511811,
+    "previous_market_date": "2020-04-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-07",
+    "benchmark_return": 0.030858318247744793,
+    "universe_count": 3811,
+    "valid_return_count": 3788,
+    "benchmark_coverage": 0.9939648386250328,
+    "all_a_amount": 731848718121.0,
+    "amount_coverage": 0.9942272369456836,
+    "previous_market_date": "2020-04-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-08",
+    "benchmark_return": 0.004714981186854975,
+    "universe_count": 3812,
+    "valid_return_count": 3786,
+    "benchmark_coverage": 0.9931794333683106,
+    "all_a_amount": 673881946961.0,
+    "amount_coverage": 0.9939664218258132,
+    "previous_market_date": "2020-04-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-09",
+    "benchmark_return": 0.00839151775262,
+    "universe_count": 3814,
+    "valid_return_count": 3787,
+    "benchmark_coverage": 0.9929208180388044,
+    "all_a_amount": 653058873831.0,
+    "amount_coverage": 0.9939695857367593,
+    "previous_market_date": "2020-04-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-10",
+    "benchmark_return": -0.02306608080876878,
+    "universe_count": 3815,
+    "valid_return_count": 3788,
+    "benchmark_coverage": 0.9929226736566186,
+    "all_a_amount": 671939354023.0,
+    "amount_coverage": 0.9939711664482307,
+    "previous_market_date": "2020-04-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-13",
+    "benchmark_return": -0.008427278477756086,
+    "universe_count": 3815,
+    "valid_return_count": 3790,
+    "benchmark_coverage": 0.9934469200524246,
+    "all_a_amount": 498920061940.0,
+    "amount_coverage": 0.9937090432503276,
+    "previous_market_date": "2020-04-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-14",
+    "benchmark_return": 0.017876127349393565,
+    "universe_count": 3815,
+    "valid_return_count": 3789,
+    "benchmark_coverage": 0.9931847968545217,
+    "all_a_amount": 589199882068.0,
+    "amount_coverage": 0.9939711664482307,
+    "previous_market_date": "2020-04-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-15",
+    "benchmark_return": -0.0061191976203415575,
+    "universe_count": 3817,
+    "valid_return_count": 3787,
+    "benchmark_coverage": 0.9921404244170815,
+    "all_a_amount": 640933117230.0,
+    "amount_coverage": 0.9931883678281372,
+    "previous_market_date": "2020-04-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-16",
+    "benchmark_return": 0.0041110734346034294,
+    "universe_count": 3818,
+    "valid_return_count": 3790,
+    "benchmark_coverage": 0.9926663174436878,
+    "all_a_amount": 594869542094.0,
+    "amount_coverage": 0.9944997380827658,
+    "previous_market_date": "2020-04-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-17",
+    "benchmark_return": -0.0005115569580373131,
+    "universe_count": 3820,
+    "valid_return_count": 3796,
+    "benchmark_coverage": 0.993717277486911,
+    "all_a_amount": 740148146486.0,
+    "amount_coverage": 0.9947643979057592,
+    "previous_market_date": "2020-04-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-20",
+    "benchmark_return": 0.011064553029121205,
+    "universe_count": 3821,
+    "valid_return_count": 3795,
+    "benchmark_coverage": 0.9931954985605862,
+    "all_a_amount": 617161472636.0,
+    "amount_coverage": 0.9937189217482334,
+    "previous_market_date": "2020-04-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-21",
+    "benchmark_return": -0.004944924711852536,
+    "universe_count": 3823,
+    "valid_return_count": 3790,
+    "benchmark_coverage": 0.9913680355741564,
+    "all_a_amount": 649179240090.0,
+    "amount_coverage": 0.9934606330107245,
+    "previous_market_date": "2020-04-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-22",
+    "benchmark_return": 0.009154096648782278,
+    "universe_count": 3825,
+    "valid_return_count": 3795,
+    "benchmark_coverage": 0.9921568627450981,
+    "all_a_amount": 605819439977.0,
+    "amount_coverage": 0.9939869281045751,
+    "previous_market_date": "2020-04-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-23",
+    "benchmark_return": -0.0035492038483605484,
+    "universe_count": 3825,
+    "valid_return_count": 3800,
+    "benchmark_coverage": 0.9934640522875817,
+    "all_a_amount": 670402638941.0,
+    "amount_coverage": 0.9942483660130719,
+    "previous_market_date": "2020-04-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-24",
+    "benchmark_return": -0.017522159996155636,
+    "universe_count": 3826,
+    "valid_return_count": 3798,
+    "benchmark_coverage": 0.992681651855724,
+    "all_a_amount": 625068667955.0,
+    "amount_coverage": 0.9937271301620492,
+    "previous_market_date": "2020-04-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-27",
+    "benchmark_return": -0.006930919863652491,
+    "universe_count": 3827,
+    "valid_return_count": 3797,
+    "benchmark_coverage": 0.9921609615887118,
+    "all_a_amount": 556541415458.0,
+    "amount_coverage": 0.9934674679905932,
+    "previous_market_date": "2020-04-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-28",
+    "benchmark_return": -0.021366942336545278,
+    "universe_count": 3829,
+    "valid_return_count": 3787,
+    "benchmark_coverage": 0.9890310786106032,
+    "all_a_amount": 673719560397.0,
+    "amount_coverage": 0.9908592321755028,
+    "previous_market_date": "2020-04-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-29",
+    "benchmark_return": -0.001839351567117857,
+    "universe_count": 3832,
+    "valid_return_count": 3768,
+    "benchmark_coverage": 0.9832985386221295,
+    "all_a_amount": 532637414985.0,
+    "amount_coverage": 0.9877348643006263,
+    "previous_market_date": "2020-04-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-04-30",
+    "benchmark_return": 0.021517666619976287,
+    "universe_count": 3833,
+    "valid_return_count": 3745,
+    "benchmark_coverage": 0.9770414818679886,
+    "all_a_amount": 678854475009.0,
+    "amount_coverage": 0.9838246804069919,
+    "previous_market_date": "2020-04-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-06",
+    "benchmark_return": 0.018170074767111348,
+    "universe_count": 3834,
+    "valid_return_count": 3764,
+    "benchmark_coverage": 0.9817423056859677,
+    "all_a_amount": 720922586076.0,
+    "amount_coverage": 0.9906103286384976,
+    "previous_market_date": "2020-04-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-07",
+    "benchmark_return": -0.002191672364604617,
+    "universe_count": 3836,
+    "valid_return_count": 3798,
+    "benchmark_coverage": 0.9900938477580813,
+    "all_a_amount": 667078342875.0,
+    "amount_coverage": 0.9916579770594369,
+    "previous_market_date": "2020-05-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-08",
+    "benchmark_return": 0.010511130451480727,
+    "universe_count": 3837,
+    "valid_return_count": 3802,
+    "benchmark_coverage": 0.9908782903309877,
+    "all_a_amount": 687297892501.0,
+    "amount_coverage": 0.9919207714360178,
+    "previous_market_date": "2020-05-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-11",
+    "benchmark_return": -3.007784760270593e-05,
+    "universe_count": 3838,
+    "valid_return_count": 3804,
+    "benchmark_coverage": 0.9911412193850964,
+    "all_a_amount": 684561409890.0,
+    "amount_coverage": 0.9919228764981761,
+    "previous_market_date": "2020-05-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-12",
+    "benchmark_return": -0.0005799066457556468,
+    "universe_count": 3839,
+    "valid_return_count": 3804,
+    "benchmark_coverage": 0.9908830424589737,
+    "all_a_amount": 598925686307.0,
+    "amount_coverage": 0.9916644959624902,
+    "previous_market_date": "2020-05-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-13",
+    "benchmark_return": 0.005383788090509051,
+    "universe_count": 3839,
+    "valid_return_count": 3807,
+    "benchmark_coverage": 0.9916644959624902,
+    "all_a_amount": 581033090388.0,
+    "amount_coverage": 0.9924459494660067,
+    "previous_market_date": "2020-05-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-14",
+    "benchmark_return": -0.008134046282873337,
+    "universe_count": 3839,
+    "valid_return_count": 3810,
+    "benchmark_coverage": 0.9924459494660067,
+    "all_a_amount": 609853108355.0,
+    "amount_coverage": 0.9929669184683512,
+    "previous_market_date": "2020-05-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-15",
+    "benchmark_return": 0.0020728232870210776,
+    "universe_count": 3839,
+    "valid_return_count": 3812,
+    "benchmark_coverage": 0.9929669184683512,
+    "all_a_amount": 626674735918.0,
+    "amount_coverage": 0.9932274029695233,
+    "previous_market_date": "2020-05-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-18",
+    "benchmark_return": -0.004486857662509016,
+    "universe_count": 3842,
+    "valid_return_count": 3809,
+    "benchmark_coverage": 0.991410723581468,
+    "all_a_amount": 731447205111.0,
+    "amount_coverage": 0.9921915668922436,
+    "previous_market_date": "2020-05-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-19",
+    "benchmark_return": 0.010584463651552222,
+    "universe_count": 3843,
+    "valid_return_count": 3810,
+    "benchmark_coverage": 0.9914129586260734,
+    "all_a_amount": 641302661436.0,
+    "amount_coverage": 0.9916731720010409,
+    "previous_market_date": "2020-05-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-20",
+    "benchmark_return": -0.008620434104932335,
+    "universe_count": 3844,
+    "valid_return_count": 3809,
+    "benchmark_coverage": 0.990894901144641,
+    "all_a_amount": 686533892525.0,
+    "amount_coverage": 0.9919354838709677,
+    "previous_market_date": "2020-05-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-21",
+    "benchmark_return": -0.010023234992184818,
+    "universe_count": 3845,
+    "valid_return_count": 3812,
+    "benchmark_coverage": 0.9914174252275683,
+    "all_a_amount": 625969283028.0,
+    "amount_coverage": 0.9919375812743824,
+    "previous_market_date": "2020-05-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-22",
+    "benchmark_return": -0.01648862546072533,
+    "universe_count": 3846,
+    "valid_return_count": 3814,
+    "benchmark_coverage": 0.9916796671866874,
+    "all_a_amount": 592519822160.0,
+    "amount_coverage": 0.9924596983879355,
+    "previous_market_date": "2020-05-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-25",
+    "benchmark_return": -0.0017058903944671096,
+    "universe_count": 3848,
+    "valid_return_count": 3814,
+    "benchmark_coverage": 0.9911642411642412,
+    "all_a_amount": 490405773495.0,
+    "amount_coverage": 0.9919438669438669,
+    "previous_market_date": "2020-05-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-26",
+    "benchmark_return": 0.019707333310958218,
+    "universe_count": 3849,
+    "valid_return_count": 3816,
+    "benchmark_coverage": 0.9914263445050663,
+    "all_a_amount": 529738668103.0,
+    "amount_coverage": 0.9916861522473369,
+    "previous_market_date": "2020-05-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-27",
+    "benchmark_return": -0.0026638392148997767,
+    "universe_count": 3849,
+    "valid_return_count": 3811,
+    "benchmark_coverage": 0.9901273057937127,
+    "all_a_amount": 572981122061.0,
+    "amount_coverage": 0.9901273057937127,
+    "previous_market_date": "2020-05-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-28",
+    "benchmark_return": -0.00452708772995396,
+    "universe_count": 3851,
+    "valid_return_count": 3808,
+    "benchmark_coverage": 0.9888340690729681,
+    "all_a_amount": 578079402560.0,
+    "amount_coverage": 0.9903921059465074,
+    "previous_market_date": "2020-05-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-05-29",
+    "benchmark_return": 0.006403124774236785,
+    "universe_count": 3851,
+    "valid_return_count": 3811,
+    "benchmark_coverage": 0.9896130875097378,
+    "all_a_amount": 571544889252.0,
+    "amount_coverage": 0.9901324331342508,
+    "previous_market_date": "2020-05-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-01",
+    "benchmark_return": 0.0265900955640659,
+    "universe_count": 3852,
+    "valid_return_count": 3804,
+    "benchmark_coverage": 0.9875389408099688,
+    "all_a_amount": 761352886489.0,
+    "amount_coverage": 0.9896157840083074,
+    "previous_market_date": "2020-05-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-02",
+    "benchmark_return": 0.004989383498690803,
+    "universe_count": 3854,
+    "valid_return_count": 3808,
+    "benchmark_coverage": 0.9880643487285937,
+    "all_a_amount": 771898583232.0,
+    "amount_coverage": 0.9903995848469123,
+    "previous_market_date": "2020-06-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-03",
+    "benchmark_return": 0.0001946906597924639,
+    "universe_count": 3854,
+    "valid_return_count": 3815,
+    "benchmark_coverage": 0.9898806434872859,
+    "all_a_amount": 777345397580.0,
+    "amount_coverage": 0.9906590555267255,
+    "previous_market_date": "2020-06-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-04",
+    "benchmark_return": 0.0029562784961571814,
+    "universe_count": 3854,
+    "valid_return_count": 3816,
+    "benchmark_coverage": 0.9901401141670991,
+    "all_a_amount": 650442289676.0,
+    "amount_coverage": 0.9906590555267255,
+    "previous_market_date": "2020-06-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-05",
+    "benchmark_return": -0.0009848458136292406,
+    "universe_count": 3856,
+    "valid_return_count": 3815,
+    "benchmark_coverage": 0.9893672199170125,
+    "all_a_amount": 631341459531.0,
+    "amount_coverage": 0.9904045643153527,
+    "previous_market_date": "2020-06-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-08",
+    "benchmark_return": -0.002547508617841274,
+    "universe_count": 3859,
+    "valid_return_count": 3811,
+    "benchmark_coverage": 0.9875615444415652,
+    "all_a_amount": 684018277668.0,
+    "amount_coverage": 0.9906711583311739,
+    "previous_market_date": "2020-06-05",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-09",
+    "benchmark_return": 0.0038398073400163443,
+    "universe_count": 3860,
+    "valid_return_count": 3821,
+    "benchmark_coverage": 0.9898963730569948,
+    "all_a_amount": 620143355825.0,
+    "amount_coverage": 0.9917098445595854,
+    "previous_market_date": "2020-06-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-10",
+    "benchmark_return": -0.002828351725278576,
+    "universe_count": 3862,
+    "valid_return_count": 3823,
+    "benchmark_coverage": 0.9899016053858105,
+    "all_a_amount": 614951195158.0,
+    "amount_coverage": 0.990937338166753,
+    "previous_market_date": "2020-06-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-11",
+    "benchmark_return": -0.003726667266624608,
+    "universe_count": 3862,
+    "valid_return_count": 3823,
+    "benchmark_coverage": 0.9899016053858105,
+    "all_a_amount": 720760632915.0,
+    "amount_coverage": 0.9906784049715174,
+    "previous_market_date": "2020-06-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-12",
+    "benchmark_return": -8.027271056056817e-05,
+    "universe_count": 3863,
+    "valid_return_count": 3822,
+    "benchmark_coverage": 0.9893864871861248,
+    "all_a_amount": 699062155370.0,
+    "amount_coverage": 0.9906808180170852,
+    "previous_market_date": "2020-06-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-15",
+    "benchmark_return": -0.0022536268205978274,
+    "universe_count": 3863,
+    "valid_return_count": 3824,
+    "benchmark_coverage": 0.9899042195185089,
+    "all_a_amount": 759296883023.0,
+    "amount_coverage": 0.9914574165156614,
+    "previous_market_date": "2020-06-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-16",
+    "benchmark_return": 0.015994931690246225,
+    "universe_count": 3865,
+    "valid_return_count": 3829,
+    "benchmark_coverage": 0.9906856403622251,
+    "all_a_amount": 712252999345.0,
+    "amount_coverage": 0.9922380336351876,
+    "previous_market_date": "2020-06-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-17",
+    "benchmark_return": 0.0038717126727021607,
+    "universe_count": 3865,
+    "valid_return_count": 3833,
+    "benchmark_coverage": 0.9917205692108667,
+    "all_a_amount": 738672344599.0,
+    "amount_coverage": 0.9917205692108667,
+    "previous_market_date": "2020-06-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-18",
+    "benchmark_return": -0.001690141070873828,
+    "universe_count": 3867,
+    "valid_return_count": 3832,
+    "benchmark_coverage": 0.990949056115852,
+    "all_a_amount": 758347827336.0,
+    "amount_coverage": 0.9919834497026119,
+    "previous_market_date": "2020-06-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-19",
+    "benchmark_return": 0.0037008473773595717,
+    "universe_count": 3869,
+    "valid_return_count": 3835,
+    "benchmark_coverage": 0.9912121995347635,
+    "all_a_amount": 778602208339.0,
+    "amount_coverage": 0.9919875936934608,
+    "previous_market_date": "2020-06-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-22",
+    "benchmark_return": 0.001550647480608535,
+    "universe_count": 3871,
+    "valid_return_count": 3832,
+    "benchmark_coverage": 0.9899250839576337,
+    "all_a_amount": 828414013669.0,
+    "amount_coverage": 0.9914750710410747,
+    "previous_market_date": "2020-06-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-23",
+    "benchmark_return": -0.0018262704319062923,
+    "universe_count": 3872,
+    "valid_return_count": 3833,
+    "benchmark_coverage": 0.9899276859504132,
+    "all_a_amount": 758189639654.0,
+    "amount_coverage": 0.9909607438016529,
+    "previous_market_date": "2020-06-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-24",
+    "benchmark_return": -0.0030317965790532153,
+    "universe_count": 3872,
+    "valid_return_count": 3830,
+    "benchmark_coverage": 0.9891528925619835,
+    "all_a_amount": 728587370051.0,
+    "amount_coverage": 0.9907024793388429,
+    "previous_market_date": "2020-06-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-29",
+    "benchmark_return": -0.005806320212540897,
+    "universe_count": 3874,
+    "valid_return_count": 3832,
+    "benchmark_coverage": 0.9891584925141972,
+    "all_a_amount": 716164628748.0,
+    "amount_coverage": 0.9912235415591121,
+    "previous_market_date": "2020-06-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2020-06-30",
+    "benchmark_return": 0.014680265373482326,
+    "universe_count": 3876,
+    "valid_return_count": 3830,
+    "benchmark_coverage": 0.9881320949432405,
+    "all_a_amount": 746502408890.0,
+    "amount_coverage": 0.989422084623323,
+    "previous_market_date": "2020-06-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-11",
+    "benchmark_return": null,
+    "universe_count": 4494,
+    "valid_return_count": 3276,
+    "benchmark_coverage": 0.7289719626168224,
+    "all_a_amount": 991675462881.0,
+    "amount_coverage": 0.9973297730307076,
+    "previous_market_date": "2021-10-08",
+    "freeze_reason": "benchmark_coverage_below_95_percent",
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-12",
+    "benchmark_return": -0.015896153092022865,
+    "universe_count": 4494,
+    "valid_return_count": 4482,
+    "benchmark_coverage": 0.9973297730307076,
+    "all_a_amount": 996101257254.0,
+    "amount_coverage": 0.9979973297730307,
+    "previous_market_date": "2021-10-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-13",
+    "benchmark_return": 0.003630334438454766,
+    "universe_count": 4495,
+    "valid_return_count": 4484,
+    "benchmark_coverage": 0.9975528364849833,
+    "all_a_amount": 889298502044.0,
+    "amount_coverage": 0.9979977753058954,
+    "previous_market_date": "2021-10-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-14",
+    "benchmark_return": 0.005876882715872248,
+    "universe_count": 4496,
+    "valid_return_count": 4486,
+    "benchmark_coverage": 0.9977758007117438,
+    "all_a_amount": 860540066888.0,
+    "amount_coverage": 0.9979982206405694,
+    "previous_market_date": "2021-10-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-15",
+    "benchmark_return": -0.007244475095818836,
+    "universe_count": 4498,
+    "valid_return_count": 4486,
+    "benchmark_coverage": 0.997332147621165,
+    "all_a_amount": 988660055671.0,
+    "amount_coverage": 0.9979991107158738,
+    "previous_market_date": "2021-10-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-18",
+    "benchmark_return": 0.007058280959436604,
+    "universe_count": 4501,
+    "valid_return_count": 4489,
+    "benchmark_coverage": 0.9973339257942679,
+    "all_a_amount": 1001835011657.0,
+    "amount_coverage": 0.9984447900466563,
+    "previous_market_date": "2021-10-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-19",
+    "benchmark_return": 0.004789066265661178,
+    "universe_count": 4504,
+    "valid_return_count": 4493,
+    "benchmark_coverage": 0.9975577264653641,
+    "all_a_amount": 973028863969.0,
+    "amount_coverage": 0.9982238010657194,
+    "previous_market_date": "2021-10-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-20",
+    "benchmark_return": -0.002026445414841791,
+    "universe_count": 4507,
+    "valid_return_count": 4494,
+    "benchmark_coverage": 0.9971155979587308,
+    "all_a_amount": 1019669518571.0,
+    "amount_coverage": 0.9980031062791214,
+    "previous_market_date": "2021-10-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-21",
+    "benchmark_return": -0.005240196214718693,
+    "universe_count": 4510,
+    "valid_return_count": 4497,
+    "benchmark_coverage": 0.9971175166297117,
+    "all_a_amount": 992707340992.0,
+    "amount_coverage": 0.9982261640798226,
+    "previous_market_date": "2021-10-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-22",
+    "benchmark_return": -0.008521070376240038,
+    "universe_count": 4510,
+    "valid_return_count": 4501,
+    "benchmark_coverage": 0.9980044345898005,
+    "all_a_amount": 1014956774327.0,
+    "amount_coverage": 0.9984478935698448,
+    "previous_market_date": "2021-10-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-25",
+    "benchmark_return": 0.006997765311276463,
+    "universe_count": 4513,
+    "valid_return_count": 4500,
+    "benchmark_coverage": 0.9971194327498338,
+    "all_a_amount": 1014409824642.0,
+    "amount_coverage": 0.9977841790383337,
+    "previous_market_date": "2021-10-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-26",
+    "benchmark_return": -0.003893391975520829,
+    "universe_count": 4516,
+    "valid_return_count": 4503,
+    "benchmark_coverage": 0.9971213463241807,
+    "all_a_amount": 1081961497555.0,
+    "amount_coverage": 0.9977856510186005,
+    "previous_market_date": "2021-10-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-27",
+    "benchmark_return": -0.016951874037180827,
+    "universe_count": 4521,
+    "valid_return_count": 4505,
+    "benchmark_coverage": 0.9964609599646096,
+    "all_a_amount": 1076445267178.0,
+    "amount_coverage": 0.9980092899800929,
+    "previous_market_date": "2021-10-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-28",
+    "benchmark_return": -0.018081859120011503,
+    "universe_count": 4523,
+    "valid_return_count": 4512,
+    "benchmark_coverage": 0.9975679858500995,
+    "all_a_amount": 1107182878311.0,
+    "amount_coverage": 0.9988945390227725,
+    "previous_market_date": "2021-10-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-10-29",
+    "benchmark_return": 0.015480119830140976,
+    "universe_count": 4524,
+    "valid_return_count": 4518,
+    "benchmark_coverage": 0.9986737400530504,
+    "all_a_amount": 1138074382803.0,
+    "amount_coverage": 0.998894783377542,
+    "previous_market_date": "2021-10-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-01",
+    "benchmark_return": 0.01256022605514734,
+    "universe_count": 4526,
+    "valid_return_count": 4517,
+    "benchmark_coverage": 0.9980114891736632,
+    "all_a_amount": 1222815165274.0,
+    "amount_coverage": 0.9986743261157756,
+    "previous_market_date": "2021-10-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-02",
+    "benchmark_return": -0.012285914781685062,
+    "universe_count": 4528,
+    "valid_return_count": 4520,
+    "benchmark_coverage": 0.9982332155477032,
+    "all_a_amount": 1257745239888.0,
+    "amount_coverage": 0.9988957597173145,
+    "previous_market_date": "2021-11-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-03",
+    "benchmark_return": 0.006766259084317486,
+    "universe_count": 4529,
+    "valid_return_count": 4521,
+    "benchmark_coverage": 0.9982336056524619,
+    "all_a_amount": 999899972468.0,
+    "amount_coverage": 0.9986752042393464,
+    "previous_market_date": "2021-11-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-04",
+    "benchmark_return": 0.014204362340577996,
+    "universe_count": 4529,
+    "valid_return_count": 4523,
+    "benchmark_coverage": 0.9986752042393464,
+    "all_a_amount": 1078379324119.0,
+    "amount_coverage": 0.9988960035327887,
+    "previous_market_date": "2021-11-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-05",
+    "benchmark_return": -0.004103338065660575,
+    "universe_count": 4529,
+    "valid_return_count": 4524,
+    "benchmark_coverage": 0.9988960035327887,
+    "all_a_amount": 1150694217380.0,
+    "amount_coverage": 0.9988960035327887,
+    "previous_market_date": "2021-11-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-08",
+    "benchmark_return": 0.005963474506305088,
+    "universe_count": 4529,
+    "valid_return_count": 4524,
+    "benchmark_coverage": 0.9988960035327887,
+    "all_a_amount": 1038569746705.0,
+    "amount_coverage": 0.9991168028262309,
+    "previous_market_date": "2021-11-05",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-09",
+    "benchmark_return": 0.011230448811363975,
+    "universe_count": 4529,
+    "valid_return_count": 4521,
+    "benchmark_coverage": 0.9982336056524619,
+    "all_a_amount": 1010592499565.0,
+    "amount_coverage": 0.9982336056524619,
+    "previous_market_date": "2021-11-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-10",
+    "benchmark_return": 0.006056070047668236,
+    "universe_count": 4532,
+    "valid_return_count": 4520,
+    "benchmark_coverage": 0.9973521624007061,
+    "all_a_amount": 1079833933390.0,
+    "amount_coverage": 0.9982347749338041,
+    "previous_market_date": "2021-11-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-11",
+    "benchmark_return": 0.010124137195013273,
+    "universe_count": 4534,
+    "valid_return_count": 4521,
+    "benchmark_coverage": 0.9971327745919718,
+    "all_a_amount": 1122761051651.0,
+    "amount_coverage": 0.9975738861932069,
+    "previous_market_date": "2021-11-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-12",
+    "benchmark_return": 0.010082401575793622,
+    "universe_count": 4537,
+    "valid_return_count": 4523,
+    "benchmark_coverage": 0.9969142605245757,
+    "all_a_amount": 1098612276439.0,
+    "amount_coverage": 0.9980163103372273,
+    "previous_market_date": "2021-11-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-15",
+    "benchmark_return": 0.008990858437938606,
+    "universe_count": 4620,
+    "valid_return_count": 4527,
+    "benchmark_coverage": 0.9798701298701299,
+    "all_a_amount": 1164950479509.0,
+    "amount_coverage": 0.9911255411255411,
+    "previous_market_date": "2021-11-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-16",
+    "benchmark_return": -0.0086356370887833,
+    "universe_count": 4623,
+    "valid_return_count": 4579,
+    "benchmark_coverage": 0.9904823707549211,
+    "all_a_amount": 1116688670300.0,
+    "amount_coverage": 0.991131300021631,
+    "previous_market_date": "2021-11-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-17",
+    "benchmark_return": 0.0139881823070984,
+    "universe_count": 4625,
+    "valid_return_count": 4579,
+    "benchmark_coverage": 0.990054054054054,
+    "all_a_amount": 1038775612032.0,
+    "amount_coverage": 0.9909189189189189,
+    "previous_market_date": "2021-11-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-18",
+    "benchmark_return": -0.007236353394891522,
+    "universe_count": 4628,
+    "valid_return_count": 4583,
+    "benchmark_coverage": 0.990276577355229,
+    "all_a_amount": 1125429062420.0,
+    "amount_coverage": 0.9915730337078652,
+    "previous_market_date": "2021-11-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-19",
+    "benchmark_return": 0.011653178040838746,
+    "universe_count": 4629,
+    "valid_return_count": 4589,
+    "benchmark_coverage": 0.9913588248001728,
+    "all_a_amount": 1114123947555.0,
+    "amount_coverage": 0.9917908835601642,
+    "previous_market_date": "2021-11-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-22",
+    "benchmark_return": 0.008817078369932268,
+    "universe_count": 4632,
+    "valid_return_count": 4590,
+    "benchmark_coverage": 0.9909326424870466,
+    "all_a_amount": 1255578738147.0,
+    "amount_coverage": 0.9917962003454232,
+    "previous_market_date": "2021-11-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-23",
+    "benchmark_return": 0.004413655196942208,
+    "universe_count": 4632,
+    "valid_return_count": 4593,
+    "benchmark_coverage": 0.991580310880829,
+    "all_a_amount": 1230021505167.0,
+    "amount_coverage": 0.9920120898100173,
+    "previous_market_date": "2021-11-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-24",
+    "benchmark_return": 0.004101107852485938,
+    "universe_count": 4634,
+    "valid_return_count": 4593,
+    "benchmark_coverage": 0.9911523521795426,
+    "all_a_amount": 1203790506489.0,
+    "amount_coverage": 0.9915839447561502,
+    "previous_market_date": "2021-11-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-25",
+    "benchmark_return": 0.00020606775256391322,
+    "universe_count": 4634,
+    "valid_return_count": 4594,
+    "benchmark_coverage": 0.9913681484678464,
+    "all_a_amount": 1113904684478.0,
+    "amount_coverage": 0.991799741044454,
+    "previous_market_date": "2021-11-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-26",
+    "benchmark_return": -0.0024240706390568486,
+    "universe_count": 4637,
+    "valid_return_count": 4594,
+    "benchmark_coverage": 0.9907267629933146,
+    "all_a_amount": 1102409207707.0,
+    "amount_coverage": 0.9913737330170369,
+    "previous_market_date": "2021-11-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-29",
+    "benchmark_return": -0.0005580528978477043,
+    "universe_count": 4638,
+    "valid_return_count": 4596,
+    "benchmark_coverage": 0.9909443725743855,
+    "all_a_amount": 1178304290435.0,
+    "amount_coverage": 0.9913755929279862,
+    "previous_market_date": "2021-11-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-11-30",
+    "benchmark_return": 0.00782974013499794,
+    "universe_count": 4639,
+    "valid_return_count": 4598,
+    "benchmark_coverage": 0.9911618883380039,
+    "all_a_amount": 1221200638073.0,
+    "amount_coverage": 0.991377452037077,
+    "previous_market_date": "2021-11-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-01",
+    "benchmark_return": 0.009899460742919008,
+    "universe_count": 4641,
+    "valid_return_count": 4598,
+    "benchmark_coverage": 0.9907347554406378,
+    "all_a_amount": 1146750451060.0,
+    "amount_coverage": 0.99116569704805,
+    "previous_market_date": "2021-11-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-02",
+    "benchmark_return": -0.011124550166912262,
+    "universe_count": 4642,
+    "valid_return_count": 4598,
+    "benchmark_coverage": 0.990521327014218,
+    "all_a_amount": 1153696583265.0,
+    "amount_coverage": 0.99138302455838,
+    "previous_market_date": "2021-12-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-03",
+    "benchmark_return": 0.0038499429231010455,
+    "universe_count": 4643,
+    "valid_return_count": 4600,
+    "benchmark_coverage": 0.9907387465001077,
+    "all_a_amount": 1135655961430.0,
+    "amount_coverage": 0.9911695024768469,
+    "previous_market_date": "2021-12-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-06",
+    "benchmark_return": -0.014993001511539768,
+    "universe_count": 4646,
+    "valid_return_count": 4601,
+    "benchmark_coverage": 0.990314248816186,
+    "all_a_amount": 1203988553477.0,
+    "amount_coverage": 0.9916056823073611,
+    "previous_market_date": "2021-12-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-07",
+    "benchmark_return": -0.006527177315801572,
+    "universe_count": 4649,
+    "valid_return_count": 4606,
+    "benchmark_coverage": 0.99075069907507,
+    "all_a_amount": 1200111530363.0,
+    "amount_coverage": 0.9913959991395999,
+    "previous_market_date": "2021-12-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-08",
+    "benchmark_return": 0.011935448816710601,
+    "universe_count": 4650,
+    "valid_return_count": 4609,
+    "benchmark_coverage": 0.9911827956989248,
+    "all_a_amount": 1101793254838.0,
+    "amount_coverage": 0.9913978494623656,
+    "previous_market_date": "2021-12-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-09",
+    "benchmark_return": 0.004780161224562276,
+    "universe_count": 4651,
+    "valid_return_count": 4610,
+    "benchmark_coverage": 0.9911846914642013,
+    "all_a_amount": 1264123976879.0,
+    "amount_coverage": 0.991614706514728,
+    "previous_market_date": "2021-12-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-10",
+    "benchmark_return": 0.003792381974408627,
+    "universe_count": 4654,
+    "valid_return_count": 4611,
+    "benchmark_coverage": 0.9907606360120327,
+    "all_a_amount": 1235449447107.0,
+    "amount_coverage": 0.9916201117318436,
+    "previous_market_date": "2021-12-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-13",
+    "benchmark_return": 0.004266657841848119,
+    "universe_count": 4654,
+    "valid_return_count": 4613,
+    "benchmark_coverage": 0.9911903738719381,
+    "all_a_amount": 1271080781846.0,
+    "amount_coverage": 0.9916201117318436,
+    "previous_market_date": "2021-12-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-14",
+    "benchmark_return": 0.005907435550648319,
+    "universe_count": 4655,
+    "valid_return_count": 4613,
+    "benchmark_coverage": 0.9909774436090225,
+    "all_a_amount": 1141473514554.0,
+    "amount_coverage": 0.99140708915145,
+    "previous_market_date": "2021-12-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-15",
+    "benchmark_return": 0.0015865977449967103,
+    "universe_count": 4659,
+    "valid_return_count": 4611,
+    "benchmark_coverage": 0.9896973599484868,
+    "all_a_amount": 1135836385633.0,
+    "amount_coverage": 0.9907705516205194,
+    "previous_market_date": "2021-12-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-16",
+    "benchmark_return": 0.008550238640665765,
+    "universe_count": 4661,
+    "valid_return_count": 4614,
+    "benchmark_coverage": 0.9899163269684617,
+    "all_a_amount": 1113519695848.0,
+    "amount_coverage": 0.990774511907316,
+    "previous_market_date": "2021-12-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-17",
+    "benchmark_return": -0.007751453568705256,
+    "universe_count": 4662,
+    "valid_return_count": 4616,
+    "benchmark_coverage": 0.9901329901329902,
+    "all_a_amount": 1159361169481.0,
+    "amount_coverage": 0.9905619905619906,
+    "previous_market_date": "2021-12-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-20",
+    "benchmark_return": -0.01019470999873254,
+    "universe_count": 4664,
+    "valid_return_count": 4617,
+    "benchmark_coverage": 0.9899228130360206,
+    "all_a_amount": 1158380218557.0,
+    "amount_coverage": 0.9907804459691252,
+    "previous_market_date": "2021-12-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-21",
+    "benchmark_return": 0.015525018478327112,
+    "universe_count": 4664,
+    "valid_return_count": 4620,
+    "benchmark_coverage": 0.9905660377358491,
+    "all_a_amount": 1000421246345.0,
+    "amount_coverage": 0.9905660377358491,
+    "previous_market_date": "2021-12-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-22",
+    "benchmark_return": 0.004356061498741481,
+    "universe_count": 4668,
+    "valid_return_count": 4618,
+    "benchmark_coverage": 0.9892887746358183,
+    "all_a_amount": 1062400568460.0,
+    "amount_coverage": 0.9905741216795202,
+    "previous_market_date": "2021-12-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-23",
+    "benchmark_return": -0.005350303827526085,
+    "universe_count": 4671,
+    "valid_return_count": 4624,
+    "benchmark_coverage": 0.9899379147934061,
+    "all_a_amount": 1077386106156.0,
+    "amount_coverage": 0.9914365232284308,
+    "previous_market_date": "2021-12-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-24",
+    "benchmark_return": -0.01697854661705604,
+    "universe_count": 4675,
+    "valid_return_count": 4628,
+    "benchmark_coverage": 0.9899465240641712,
+    "all_a_amount": 1132033265939.0,
+    "amount_coverage": 0.9910160427807486,
+    "previous_market_date": "2021-12-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-27",
+    "benchmark_return": 0.00469412478212787,
+    "universe_count": 4676,
+    "valid_return_count": 4631,
+    "benchmark_coverage": 0.9903763900769889,
+    "all_a_amount": 975215336206.0,
+    "amount_coverage": 0.9910179640718563,
+    "previous_market_date": "2021-12-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-28",
+    "benchmark_return": 0.006482790150974234,
+    "universe_count": 4680,
+    "valid_return_count": 4632,
+    "benchmark_coverage": 0.9897435897435898,
+    "all_a_amount": 1003197355456.0,
+    "amount_coverage": 0.9908119658119658,
+    "previous_market_date": "2021-12-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-29",
+    "benchmark_return": -0.0005642221177191349,
+    "universe_count": 4680,
+    "valid_return_count": 4634,
+    "benchmark_coverage": 0.9901709401709402,
+    "all_a_amount": 998107147531.0,
+    "amount_coverage": 0.9910256410256411,
+    "previous_market_date": "2021-12-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-30",
+    "benchmark_return": 0.010157634858109678,
+    "universe_count": 4683,
+    "valid_return_count": 4635,
+    "benchmark_coverage": 0.9897501601537476,
+    "all_a_amount": 1019163983449.0,
+    "amount_coverage": 0.9908178518043989,
+    "previous_market_date": "2021-12-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2021-12-31",
+    "benchmark_return": 0.0062364765473344975,
+    "universe_count": 4684,
+    "valid_return_count": 4636,
+    "benchmark_coverage": 0.9897523484201537,
+    "all_a_amount": 1062451240209.0,
+    "amount_coverage": 0.990392826643894,
+    "previous_market_date": "2021-12-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-03-31",
+    "benchmark_return": null,
+    "universe_count": 5130,
+    "valid_return_count": 3691,
+    "benchmark_coverage": 0.7194931773879142,
+    "all_a_amount": 953162811943.0,
+    "amount_coverage": 0.9933723196881091,
+    "previous_market_date": "2023-03-30",
+    "freeze_reason": "benchmark_coverage_below_95_percent",
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-03",
+    "benchmark_return": 0.009789705029524299,
+    "universe_count": 5131,
+    "valid_return_count": 5094,
+    "benchmark_coverage": 0.992788930033132,
+    "all_a_amount": 1253110923232.0,
+    "amount_coverage": 0.9935685051646852,
+    "previous_market_date": "2023-03-31",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-04",
+    "benchmark_return": -0.00840357702214875,
+    "universe_count": 5135,
+    "valid_return_count": 5098,
+    "benchmark_coverage": 0.992794547224927,
+    "all_a_amount": 1324731224677.0,
+    "amount_coverage": 0.9937682570593963,
+    "previous_market_date": "2023-04-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-06",
+    "benchmark_return": -0.0004466925675566016,
+    "universe_count": 5136,
+    "valid_return_count": 5102,
+    "benchmark_coverage": 0.993380062305296,
+    "all_a_amount": 1193300083328.0,
+    "amount_coverage": 0.9935747663551402,
+    "previous_market_date": "2023-04-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-07",
+    "benchmark_return": 0.009730698725801503,
+    "universe_count": 5137,
+    "valid_return_count": 5101,
+    "benchmark_coverage": 0.9929920186879502,
+    "all_a_amount": 1053940215892.0,
+    "amount_coverage": 0.9931866848355071,
+    "previous_market_date": "2023-04-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-10",
+    "benchmark_return": -0.012064760731574004,
+    "universe_count": 5147,
+    "valid_return_count": 5101,
+    "benchmark_coverage": 0.9910627550029143,
+    "all_a_amount": 1225670176518.0,
+    "amount_coverage": 0.9931999222848261,
+    "previous_market_date": "2023-04-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-11",
+    "benchmark_return": 0.0011955029998217193,
+    "universe_count": 5147,
+    "valid_return_count": 5112,
+    "benchmark_coverage": 0.9931999222848261,
+    "all_a_amount": 1083265928615.0,
+    "amount_coverage": 0.9933942102195453,
+    "previous_market_date": "2023-04-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-12",
+    "benchmark_return": 0.008185572234078885,
+    "universe_count": 5147,
+    "valid_return_count": 5112,
+    "benchmark_coverage": 0.9931999222848261,
+    "all_a_amount": 1132103218618.0,
+    "amount_coverage": 0.9931999222848261,
+    "previous_market_date": "2023-04-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-13",
+    "benchmark_return": -0.004513776146794196,
+    "universe_count": 5148,
+    "valid_return_count": 5112,
+    "benchmark_coverage": 0.993006993006993,
+    "all_a_amount": 1137086186051.0,
+    "amount_coverage": 0.9933954933954934,
+    "previous_market_date": "2023-04-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-14",
+    "benchmark_return": 0.00421023462226641,
+    "universe_count": 5148,
+    "valid_return_count": 5112,
+    "benchmark_coverage": 0.993006993006993,
+    "all_a_amount": 1115164353821.0,
+    "amount_coverage": 0.993006993006993,
+    "previous_market_date": "2023-04-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-17",
+    "benchmark_return": 0.00042160525100089474,
+    "universe_count": 5150,
+    "valid_return_count": 5110,
+    "benchmark_coverage": 0.9922330097087378,
+    "all_a_amount": 1121066187937.0,
+    "amount_coverage": 0.9930097087378641,
+    "previous_market_date": "2023-04-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-18",
+    "benchmark_return": -0.005414081971830862,
+    "universe_count": 5154,
+    "valid_return_count": 5113,
+    "benchmark_coverage": 0.9920450135816842,
+    "all_a_amount": 1060228749562.0,
+    "amount_coverage": 0.9935972060535506,
+    "previous_market_date": "2023-04-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-19",
+    "benchmark_return": -0.003846323719361596,
+    "universe_count": 5156,
+    "valid_return_count": 5119,
+    "benchmark_coverage": 0.9928238944918542,
+    "all_a_amount": 1082986383905.0,
+    "amount_coverage": 0.993211792086889,
+    "previous_market_date": "2023-04-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-20",
+    "benchmark_return": -0.004942777657695451,
+    "universe_count": 5157,
+    "valid_return_count": 5120,
+    "benchmark_coverage": 0.9928252860190033,
+    "all_a_amount": 1139141625552.0,
+    "amount_coverage": 0.9936009307737056,
+    "previous_market_date": "2023-04-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-21",
+    "benchmark_return": -0.026503849054882702,
+    "universe_count": 5158,
+    "valid_return_count": 5122,
+    "benchmark_coverage": 0.9930205506010081,
+    "all_a_amount": 1218382405074.0,
+    "amount_coverage": 0.9932144241954246,
+    "previous_market_date": "2023-04-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-24",
+    "benchmark_return": -0.004952836387352327,
+    "universe_count": 5161,
+    "valid_return_count": 5119,
+    "benchmark_coverage": 0.991862042239876,
+    "all_a_amount": 1084295120572.0,
+    "amount_coverage": 0.9928308467351289,
+    "previous_market_date": "2023-04-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-25",
+    "benchmark_return": -0.02137956676227113,
+    "universe_count": 5163,
+    "valid_return_count": 5122,
+    "benchmark_coverage": 0.9920588804958358,
+    "all_a_amount": 1135038085666.0,
+    "amount_coverage": 0.9926399380205307,
+    "previous_market_date": "2023-04-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-26",
+    "benchmark_return": 0.00854229550592816,
+    "universe_count": 5163,
+    "valid_return_count": 5115,
+    "benchmark_coverage": 0.9907030796048809,
+    "all_a_amount": 1123350012152.0,
+    "amount_coverage": 0.9910904512880109,
+    "previous_market_date": "2023-04-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-27",
+    "benchmark_return": 0.00016111080770633027,
+    "universe_count": 5163,
+    "valid_return_count": 5105,
+    "benchmark_coverage": 0.9887662211892311,
+    "all_a_amount": 1046023157496.0,
+    "amount_coverage": 0.9903157079217509,
+    "previous_market_date": "2023-04-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-04-28",
+    "benchmark_return": 0.01863024584844717,
+    "universe_count": 5163,
+    "valid_return_count": 5090,
+    "benchmark_coverage": 0.9858609335657563,
+    "all_a_amount": 1117796111166.0,
+    "amount_coverage": 0.9877977919814062,
+    "previous_market_date": "2023-04-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-04",
+    "benchmark_return": 0.005088819431014955,
+    "universe_count": 5163,
+    "valid_return_count": 5045,
+    "benchmark_coverage": 0.9771450706953322,
+    "all_a_amount": 1172863060338.0,
+    "amount_coverage": 0.9808251016850669,
+    "previous_market_date": "2023-04-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-05",
+    "benchmark_return": -0.0072953991613180945,
+    "universe_count": 5165,
+    "valid_return_count": 5063,
+    "benchmark_coverage": 0.9802516940948693,
+    "all_a_amount": 1073430507530.0,
+    "amount_coverage": 0.988189738625363,
+    "previous_market_date": "2023-05-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-08",
+    "benchmark_return": 0.005995026456770825,
+    "universe_count": 5166,
+    "valid_return_count": 5103,
+    "benchmark_coverage": 0.9878048780487805,
+    "all_a_amount": 1139126011488.0,
+    "amount_coverage": 0.9881920247773907,
+    "previous_market_date": "2023-05-05",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-09",
+    "benchmark_return": -0.015648101554087992,
+    "universe_count": 5167,
+    "valid_return_count": 5100,
+    "benchmark_coverage": 0.9870330946390555,
+    "all_a_amount": 1223815878719.0,
+    "amount_coverage": 0.9876137023417844,
+    "previous_market_date": "2023-05-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-10",
+    "benchmark_return": 0.0033915608119052297,
+    "universe_count": 5169,
+    "valid_return_count": 5100,
+    "benchmark_coverage": 0.9866511897852582,
+    "all_a_amount": 1021140257201.0,
+    "amount_coverage": 0.987618494873283,
+    "previous_market_date": "2023-05-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-11",
+    "benchmark_return": 0.005398442383726664,
+    "universe_count": 5170,
+    "valid_return_count": 5104,
+    "benchmark_coverage": 0.9872340425531915,
+    "all_a_amount": 897126387909.0,
+    "amount_coverage": 0.9880077369439072,
+    "previous_market_date": "2023-05-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-12",
+    "benchmark_return": -0.009945933149404007,
+    "universe_count": 5172,
+    "valid_return_count": 5108,
+    "benchmark_coverage": 0.9876256767208044,
+    "all_a_amount": 849397688375.0,
+    "amount_coverage": 0.9882057231245166,
+    "previous_market_date": "2023-05-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-15",
+    "benchmark_return": 0.00799262126854586,
+    "universe_count": 5173,
+    "valid_return_count": 5111,
+    "benchmark_coverage": 0.9880146916682776,
+    "all_a_amount": 939554312442.0,
+    "amount_coverage": 0.9882080030929828,
+    "previous_market_date": "2023-05-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-16",
+    "benchmark_return": -0.007785165902087093,
+    "universe_count": 5175,
+    "valid_return_count": 5111,
+    "benchmark_coverage": 0.9876328502415459,
+    "all_a_amount": 867510386572.0,
+    "amount_coverage": 0.988792270531401,
+    "previous_market_date": "2023-05-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-17",
+    "benchmark_return": 0.009455048032795593,
+    "universe_count": 5176,
+    "valid_return_count": 5117,
+    "benchmark_coverage": 0.9886012364760433,
+    "all_a_amount": 782690916379.0,
+    "amount_coverage": 0.9891808346213292,
+    "previous_market_date": "2023-05-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-18",
+    "benchmark_return": 0.004370421772612703,
+    "universe_count": 5179,
+    "valid_return_count": 5119,
+    "benchmark_coverage": 0.9884147518826029,
+    "all_a_amount": 882087463346.0,
+    "amount_coverage": 0.989187101757096,
+    "previous_market_date": "2023-05-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-19",
+    "benchmark_return": 0.0005591553082893207,
+    "universe_count": 5182,
+    "valid_return_count": 5122,
+    "benchmark_coverage": 0.988421458896179,
+    "all_a_amount": 849729928028.0,
+    "amount_coverage": 0.9891933616364338,
+    "previous_market_date": "2023-05-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-22",
+    "benchmark_return": 0.0038860932517532413,
+    "universe_count": 5184,
+    "valid_return_count": 5125,
+    "benchmark_coverage": 0.9886188271604939,
+    "all_a_amount": 797062056360.0,
+    "amount_coverage": 0.9890046296296297,
+    "previous_market_date": "2023-05-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-23",
+    "benchmark_return": -0.008498780089658754,
+    "universe_count": 5186,
+    "valid_return_count": 5126,
+    "benchmark_coverage": 0.9884303895102198,
+    "all_a_amount": 767571539371.0,
+    "amount_coverage": 0.9890088700347088,
+    "previous_market_date": "2023-05-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-24",
+    "benchmark_return": -0.0012854047996940048,
+    "universe_count": 5187,
+    "valid_return_count": 5128,
+    "benchmark_coverage": 0.9886254096780412,
+    "all_a_amount": 804364969839.0,
+    "amount_coverage": 0.9892037786774629,
+    "previous_market_date": "2023-05-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-25",
+    "benchmark_return": -0.001761908091723679,
+    "universe_count": 5189,
+    "valid_return_count": 5130,
+    "benchmark_coverage": 0.9886297937945654,
+    "all_a_amount": 858570072433.0,
+    "amount_coverage": 0.9890152245133937,
+    "previous_market_date": "2023-05-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-26",
+    "benchmark_return": 0.0027797652011045987,
+    "universe_count": 5191,
+    "valid_return_count": 5130,
+    "benchmark_coverage": 0.9882488923136197,
+    "all_a_amount": 822703903849.0,
+    "amount_coverage": 0.9886341745328453,
+    "previous_market_date": "2023-05-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-29",
+    "benchmark_return": -0.005034902418785753,
+    "universe_count": 5191,
+    "valid_return_count": 5128,
+    "benchmark_coverage": 0.9878636100943942,
+    "all_a_amount": 922525645802.0,
+    "amount_coverage": 0.9878636100943942,
+    "previous_market_date": "2023-05-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-30",
+    "benchmark_return": 0.0031282325775033497,
+    "universe_count": 5191,
+    "valid_return_count": 5126,
+    "benchmark_coverage": 0.9874783278751685,
+    "all_a_amount": 934666184081.0,
+    "amount_coverage": 0.9882488923136197,
+    "previous_market_date": "2023-05-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-05-31",
+    "benchmark_return": -0.0033196625523234766,
+    "universe_count": 5192,
+    "valid_return_count": 5129,
+    "benchmark_coverage": 0.9878659476117103,
+    "all_a_amount": 940278362837.0,
+    "amount_coverage": 0.9886363636363636,
+    "previous_market_date": "2023-05-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-01",
+    "benchmark_return": 0.0018753969250583466,
+    "universe_count": 5195,
+    "valid_return_count": 5131,
+    "benchmark_coverage": 0.9876804619826757,
+    "all_a_amount": 987482657969.0,
+    "amount_coverage": 0.9884504331087585,
+    "previous_market_date": "2023-05-31",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-02",
+    "benchmark_return": 0.006786996018054718,
+    "universe_count": 5197,
+    "valid_return_count": 5134,
+    "benchmark_coverage": 0.9878776217048297,
+    "all_a_amount": 940732399623.0,
+    "amount_coverage": 0.9884548778141236,
+    "previous_market_date": "2023-06-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-05",
+    "benchmark_return": 0.003102622062146841,
+    "universe_count": 5198,
+    "valid_return_count": 5135,
+    "benchmark_coverage": 0.9878799538283956,
+    "all_a_amount": 874213900875.0,
+    "amount_coverage": 0.9882647171989226,
+    "previous_market_date": "2023-06-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-06",
+    "benchmark_return": -0.02021662345758623,
+    "universe_count": 5199,
+    "valid_return_count": 5136,
+    "benchmark_coverage": 0.9878822850548182,
+    "all_a_amount": 938346019995.0,
+    "amount_coverage": 0.9882669744181574,
+    "previous_market_date": "2023-06-05",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-07",
+    "benchmark_return": 0.003098038621633092,
+    "universe_count": 5199,
+    "valid_return_count": 5137,
+    "benchmark_coverage": 0.9880746297364877,
+    "all_a_amount": 815238055824.0,
+    "amount_coverage": 0.9882669744181574,
+    "previous_market_date": "2023-06-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-08",
+    "benchmark_return": -0.0059634246677122745,
+    "universe_count": 5201,
+    "valid_return_count": 5136,
+    "benchmark_coverage": 0.9875024033839647,
+    "all_a_amount": 860346001107.0,
+    "amount_coverage": 0.9882714862526437,
+    "previous_market_date": "2023-06-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-09",
+    "benchmark_return": 0.0036770452807857756,
+    "universe_count": 5203,
+    "valid_return_count": 5138,
+    "benchmark_coverage": 0.9875072073803575,
+    "all_a_amount": 990371946447.0,
+    "amount_coverage": 0.9886603882375553,
+    "previous_market_date": "2023-06-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-12",
+    "benchmark_return": 0.006155027598153347,
+    "universe_count": 5204,
+    "valid_return_count": 5141,
+    "benchmark_coverage": 0.9878939277478862,
+    "all_a_amount": 966149651069.0,
+    "amount_coverage": 0.9888547271329746,
+    "previous_market_date": "2023-06-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-13",
+    "benchmark_return": 0.003341899004270237,
+    "universe_count": 5204,
+    "valid_return_count": 5142,
+    "benchmark_coverage": 0.9880860876249039,
+    "all_a_amount": 942997905693.0,
+    "amount_coverage": 0.9888547271329746,
+    "previous_market_date": "2023-06-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-14",
+    "benchmark_return": 0.00011561815738951536,
+    "universe_count": 5205,
+    "valid_return_count": 5142,
+    "benchmark_coverage": 0.9878962536023055,
+    "all_a_amount": 1001293800715.0,
+    "amount_coverage": 0.9882804995196927,
+    "previous_market_date": "2023-06-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-15",
+    "benchmark_return": 0.0030262351748263985,
+    "universe_count": 5206,
+    "valid_return_count": 5142,
+    "benchmark_coverage": 0.9877064925086438,
+    "all_a_amount": 1073249625788.0,
+    "amount_coverage": 0.9886669227814061,
+    "previous_market_date": "2023-06-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-16",
+    "benchmark_return": 0.005234270618749376,
+    "universe_count": 5207,
+    "valid_return_count": 5143,
+    "benchmark_coverage": 0.9877088534664874,
+    "all_a_amount": 1068477661421.0,
+    "amount_coverage": 0.9880929517956597,
+    "previous_market_date": "2023-06-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-19",
+    "benchmark_return": -0.00024132413573978978,
+    "universe_count": 5209,
+    "valid_return_count": 5143,
+    "benchmark_coverage": 0.9873296218084086,
+    "all_a_amount": 1107590776006.0,
+    "amount_coverage": 0.9888654252255711,
+    "previous_market_date": "2023-06-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-20",
+    "benchmark_return": -0.0047228147261984075,
+    "universe_count": 5211,
+    "valid_return_count": 5148,
+    "benchmark_coverage": 0.9879101899827288,
+    "all_a_amount": 1090997327049.0,
+    "amount_coverage": 0.9888696987142583,
+    "previous_market_date": "2023-06-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-21",
+    "benchmark_return": -0.015130162725508914,
+    "universe_count": 5215,
+    "valid_return_count": 5150,
+    "benchmark_coverage": 0.987535953978907,
+    "all_a_amount": 1023516431810.0,
+    "amount_coverage": 0.9890699904122723,
+    "previous_market_date": "2023-06-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-26",
+    "benchmark_return": -0.017718662963369138,
+    "universe_count": 5214,
+    "valid_return_count": 5157,
+    "benchmark_coverage": 0.9890678941311852,
+    "all_a_amount": 978688210198.0,
+    "amount_coverage": 0.9892596854622171,
+    "previous_market_date": "2023-06-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-27",
+    "benchmark_return": 0.017788844209710317,
+    "universe_count": 5219,
+    "valid_return_count": 5155,
+    "benchmark_coverage": 0.9877371143897299,
+    "all_a_amount": 842059809145.0,
+    "amount_coverage": 0.9888867599156926,
+    "previous_market_date": "2023-06-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-28",
+    "benchmark_return": -0.0029960490160751106,
+    "universe_count": 5220,
+    "valid_return_count": 5160,
+    "benchmark_coverage": 0.9885057471264368,
+    "all_a_amount": 889159645160.0,
+    "amount_coverage": 0.9898467432950192,
+    "previous_market_date": "2023-06-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-29",
+    "benchmark_return": 0.008970449941227294,
+    "universe_count": 5220,
+    "valid_return_count": 5167,
+    "benchmark_coverage": 0.9898467432950192,
+    "all_a_amount": 866642905936.0,
+    "amount_coverage": 0.9902298850574712,
+    "previous_market_date": "2023-06-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2023-06-30",
+    "benchmark_return": 0.010949111354118074,
+    "universe_count": 5222,
+    "valid_return_count": 5168,
+    "benchmark_coverage": 0.9896591344312524,
+    "all_a_amount": 919968338346.0,
+    "amount_coverage": 0.9908081194944466,
+    "previous_market_date": "2023-06-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-01",
+    "benchmark_return": null,
+    "universe_count": 5404,
+    "valid_return_count": 3834,
+    "benchmark_coverage": 0.7094744633604737,
+    "all_a_amount": 1150214150247.0,
+    "amount_coverage": 0.9922279792746114,
+    "previous_market_date": "2025-03-31",
+    "freeze_reason": "benchmark_coverage_below_95_percent",
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-02",
+    "benchmark_return": 0.0021189267397890834,
+    "universe_count": 5405,
+    "valid_return_count": 5361,
+    "benchmark_coverage": 0.991859389454209,
+    "all_a_amount": 990542300969.0,
+    "amount_coverage": 0.9924144310823312,
+    "previous_market_date": "2025-04-01",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-03",
+    "benchmark_return": -0.005797364280692244,
+    "universe_count": 5405,
+    "valid_return_count": 5363,
+    "benchmark_coverage": 0.9922294172062904,
+    "all_a_amount": 1155024702036.0,
+    "amount_coverage": 0.9922294172062904,
+    "previous_market_date": "2025-04-02",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-07",
+    "benchmark_return": -0.12093711873177676,
+    "universe_count": 5405,
+    "valid_return_count": 5361,
+    "benchmark_coverage": 0.991859389454209,
+    "all_a_amount": 1613552007772.0,
+    "amount_coverage": 0.991859389454209,
+    "previous_market_date": "2025-04-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-08",
+    "benchmark_return": 0.007715675688486597,
+    "universe_count": 5406,
+    "valid_return_count": 5358,
+    "benchmark_coverage": 0.9911209766925638,
+    "all_a_amount": 1649559387838.0,
+    "amount_coverage": 0.9918608953015169,
+    "previous_market_date": "2025-04-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-09",
+    "benchmark_return": 0.027928430399978204,
+    "universe_count": 5407,
+    "valid_return_count": 5362,
+    "benchmark_coverage": 0.9916774551507306,
+    "all_a_amount": 1736531677241.0,
+    "amount_coverage": 0.9922322914740151,
+    "previous_market_date": "2025-04-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-10",
+    "benchmark_return": 0.028408450719797723,
+    "universe_count": 5407,
+    "valid_return_count": 5364,
+    "benchmark_coverage": 0.9920473460329203,
+    "all_a_amount": 1653272661962.0,
+    "amount_coverage": 0.9922322914740151,
+    "previous_market_date": "2025-04-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-11",
+    "benchmark_return": 0.008452839181903702,
+    "universe_count": 5408,
+    "valid_return_count": 5363,
+    "benchmark_coverage": 0.9916789940828402,
+    "all_a_amount": 1386479954538.0,
+    "amount_coverage": 0.9918639053254438,
+    "previous_market_date": "2025-04-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-14",
+    "benchmark_return": 0.01875070611400535,
+    "universe_count": 5408,
+    "valid_return_count": 5362,
+    "benchmark_coverage": 0.9914940828402367,
+    "all_a_amount": 1309165787614.0,
+    "amount_coverage": 0.9916789940828402,
+    "previous_market_date": "2025-04-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-15",
+    "benchmark_return": 0.00019032321832603068,
+    "universe_count": 5409,
+    "valid_return_count": 5358,
+    "benchmark_coverage": 0.9905712701053799,
+    "all_a_amount": 1106996206875.0,
+    "amount_coverage": 0.9911259012756517,
+    "previous_market_date": "2025-04-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-16",
+    "benchmark_return": -0.014341598034351869,
+    "universe_count": 5410,
+    "valid_return_count": 5360,
+    "benchmark_coverage": 0.9907578558225508,
+    "all_a_amount": 1136916414475.0,
+    "amount_coverage": 0.9916820702402958,
+    "previous_market_date": "2025-04-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-17",
+    "benchmark_return": 0.00660029714990465,
+    "universe_count": 5411,
+    "valid_return_count": 5363,
+    "benchmark_coverage": 0.9911291812973573,
+    "all_a_amount": 1026821624597.0,
+    "amount_coverage": 0.9914987987433007,
+    "previous_market_date": "2025-04-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-18",
+    "benchmark_return": -0.0015021725748206483,
+    "universe_count": 5411,
+    "valid_return_count": 5361,
+    "benchmark_coverage": 0.9907595638514138,
+    "all_a_amount": 944543919067.0,
+    "amount_coverage": 0.9913139900203289,
+    "previous_market_date": "2025-04-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-21",
+    "benchmark_return": 0.017524670035631774,
+    "universe_count": 5411,
+    "valid_return_count": 5360,
+    "benchmark_coverage": 0.9905747551284421,
+    "all_a_amount": 1069235704170.0,
+    "amount_coverage": 0.9913139900203289,
+    "previous_market_date": "2025-04-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-22",
+    "benchmark_return": 0.0009910014932023306,
+    "universe_count": 5411,
+    "valid_return_count": 5357,
+    "benchmark_coverage": 0.9900203289595269,
+    "all_a_amount": 1117465778785.0,
+    "amount_coverage": 0.9909443725743855,
+    "previous_market_date": "2025-04-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-23",
+    "benchmark_return": 0.006580879193010754,
+    "universe_count": 5411,
+    "valid_return_count": 5359,
+    "benchmark_coverage": 0.9903899464054703,
+    "all_a_amount": 1258818395330.0,
+    "amount_coverage": 0.9913139900203289,
+    "previous_market_date": "2025-04-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-24",
+    "benchmark_return": -0.008922506149240193,
+    "universe_count": 5413,
+    "valid_return_count": 5358,
+    "benchmark_coverage": 0.9898392758174764,
+    "all_a_amount": 1135662245857.0,
+    "amount_coverage": 0.99094771845557,
+    "previous_market_date": "2025-04-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-25",
+    "benchmark_return": 0.0016872578200588346,
+    "universe_count": 5414,
+    "valid_return_count": 5355,
+    "benchmark_coverage": 0.9891023272995937,
+    "all_a_amount": 1134445047696.0,
+    "amount_coverage": 0.990579977835242,
+    "previous_market_date": "2025-04-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-28",
+    "benchmark_return": -0.014149546981565234,
+    "universe_count": 5414,
+    "valid_return_count": 5347,
+    "benchmark_coverage": 0.9876246767639453,
+    "all_a_amount": 1074333139435.0,
+    "amount_coverage": 0.9894717399335057,
+    "previous_market_date": "2025-04-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-29",
+    "benchmark_return": 0.008200994016395726,
+    "universe_count": 5414,
+    "valid_return_count": 5316,
+    "benchmark_coverage": 0.9818987809383081,
+    "all_a_amount": 1039378522743.0,
+    "amount_coverage": 0.9846693756926487,
+    "previous_market_date": "2025-04-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-04-30",
+    "benchmark_return": 0.009769711865591519,
+    "universe_count": 5410,
+    "valid_return_count": 5289,
+    "benchmark_coverage": 0.977634011090573,
+    "all_a_amount": 1189672035646.0,
+    "amount_coverage": 0.9852125693160814,
+    "previous_market_date": "2025-04-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-06",
+    "benchmark_return": 0.02834290747437474,
+    "universe_count": 5410,
+    "valid_return_count": 5321,
+    "benchmark_coverage": 0.9835489833641404,
+    "all_a_amount": 1361197610642.0,
+    "amount_coverage": 0.9900184842883549,
+    "previous_market_date": "2025-04-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-07",
+    "benchmark_return": 0.007319882462812822,
+    "universe_count": 5410,
+    "valid_return_count": 5355,
+    "benchmark_coverage": 0.9898336414048059,
+    "all_a_amount": 1500204772899.0,
+    "amount_coverage": 0.9903881700554529,
+    "previous_market_date": "2025-05-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-08",
+    "benchmark_return": 0.010648512535747405,
+    "universe_count": 5410,
+    "valid_return_count": 5358,
+    "benchmark_coverage": 0.9903881700554529,
+    "all_a_amount": 1318234835068.0,
+    "amount_coverage": 0.9905730129390018,
+    "previous_market_date": "2025-05-07",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-09",
+    "benchmark_return": -0.01023927403684392,
+    "universe_count": 5410,
+    "valid_return_count": 5359,
+    "benchmark_coverage": 0.9905730129390018,
+    "all_a_amount": 1218759401820.0,
+    "amount_coverage": 0.9905730129390018,
+    "previous_market_date": "2025-05-08",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-12",
+    "benchmark_return": 0.013892524200312608,
+    "universe_count": 5410,
+    "valid_return_count": 5358,
+    "benchmark_coverage": 0.9903881700554529,
+    "all_a_amount": 1336856057607.0,
+    "amount_coverage": 0.9905730129390018,
+    "previous_market_date": "2025-05-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-13",
+    "benchmark_return": -0.002062787022736756,
+    "universe_count": 5411,
+    "valid_return_count": 5358,
+    "benchmark_coverage": 0.9902051376824986,
+    "all_a_amount": 1322251210929.0,
+    "amount_coverage": 0.9907595638514138,
+    "previous_market_date": "2025-05-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-14",
+    "benchmark_return": 0.0020158134834374255,
+    "universe_count": 5411,
+    "valid_return_count": 5361,
+    "benchmark_coverage": 0.9907595638514138,
+    "all_a_amount": 1345989420664.0,
+    "amount_coverage": 0.9907595638514138,
+    "previous_market_date": "2025-05-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-15",
+    "benchmark_return": -0.00809422201809737,
+    "universe_count": 5411,
+    "valid_return_count": 5360,
+    "benchmark_coverage": 0.9905747551284421,
+    "all_a_amount": 1185650935515.0,
+    "amount_coverage": 0.9905747551284421,
+    "previous_market_date": "2025-05-14",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-16",
+    "benchmark_return": 0.0046097671002744344,
+    "universe_count": 5413,
+    "valid_return_count": 5359,
+    "benchmark_coverage": 0.9900240162571587,
+    "all_a_amount": 1120230485933.0,
+    "amount_coverage": 0.9903934971365231,
+    "previous_market_date": "2025-05-15",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-19",
+    "benchmark_return": 0.008860470282458585,
+    "universe_count": 5415,
+    "valid_return_count": 5354,
+    "benchmark_coverage": 0.9887349953831949,
+    "all_a_amount": 1114358113956.0,
+    "amount_coverage": 0.9894736842105263,
+    "previous_market_date": "2025-05-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-20",
+    "benchmark_return": 0.010347540010628339,
+    "universe_count": 5415,
+    "valid_return_count": 5356,
+    "benchmark_coverage": 0.9891043397968605,
+    "all_a_amount": 1206293562827.0,
+    "amount_coverage": 0.9905817174515236,
+    "previous_market_date": "2025-05-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-21",
+    "benchmark_return": -0.004809830799601598,
+    "universe_count": 5415,
+    "valid_return_count": 5360,
+    "benchmark_coverage": 0.989843028624192,
+    "all_a_amount": 1209602391250.0,
+    "amount_coverage": 0.989843028624192,
+    "previous_market_date": "2025-05-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-22",
+    "benchmark_return": -0.013579717463863524,
+    "universe_count": 5414,
+    "valid_return_count": 5355,
+    "benchmark_coverage": 0.9891023272995937,
+    "all_a_amount": 1135533937901.0,
+    "amount_coverage": 0.9892870336165497,
+    "previous_market_date": "2025-05-21",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-23",
+    "benchmark_return": -0.010961263674868283,
+    "universe_count": 5414,
+    "valid_return_count": 5355,
+    "benchmark_coverage": 0.9891023272995937,
+    "all_a_amount": 1179273421702.0,
+    "amount_coverage": 0.9896564462504618,
+    "previous_market_date": "2025-05-22",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-26",
+    "benchmark_return": 0.009532735450693107,
+    "universe_count": 5414,
+    "valid_return_count": 5352,
+    "benchmark_coverage": 0.9885482083487255,
+    "all_a_amount": 1031201219285.0,
+    "amount_coverage": 0.9891023272995937,
+    "previous_market_date": "2025-05-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-27",
+    "benchmark_return": 0.0014688363465699503,
+    "universe_count": 5412,
+    "valid_return_count": 5354,
+    "benchmark_coverage": 0.9892830746489283,
+    "all_a_amount": 1021014684786.0,
+    "amount_coverage": 0.9894678492239468,
+    "previous_market_date": "2025-05-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-28",
+    "benchmark_return": -0.004165235833588939,
+    "universe_count": 5412,
+    "valid_return_count": 5352,
+    "benchmark_coverage": 0.9889135254988913,
+    "all_a_amount": 1031322692271.0,
+    "amount_coverage": 0.9890983000739099,
+    "previous_market_date": "2025-05-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-29",
+    "benchmark_return": 0.015867528811045965,
+    "universe_count": 5412,
+    "valid_return_count": 5353,
+    "benchmark_coverage": 0.9890983000739099,
+    "all_a_amount": 1210500134575.0,
+    "amount_coverage": 0.9896526237989652,
+    "previous_market_date": "2025-05-28",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-05-30",
+    "benchmark_return": -0.014001358824485785,
+    "universe_count": 5412,
+    "valid_return_count": 5353,
+    "benchmark_coverage": 0.9890983000739099,
+    "all_a_amount": 1161184466512.0,
+    "amount_coverage": 0.9892830746489283,
+    "previous_market_date": "2025-05-29",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-03",
+    "benchmark_return": 0.008127459177240027,
+    "universe_count": 5412,
+    "valid_return_count": 5348,
+    "benchmark_coverage": 0.9881744271988174,
+    "all_a_amount": 1160831827663.0,
+    "amount_coverage": 0.9885439763488544,
+    "previous_market_date": "2025-05-30",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-04",
+    "benchmark_return": 0.009383905722869615,
+    "universe_count": 5412,
+    "valid_return_count": 5348,
+    "benchmark_coverage": 0.9881744271988174,
+    "all_a_amount": 1174595096267.0,
+    "amount_coverage": 0.9896526237989652,
+    "previous_market_date": "2025-06-03",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-05",
+    "benchmark_return": 0.0026226119077370556,
+    "universe_count": 5414,
+    "valid_return_count": 5353,
+    "benchmark_coverage": 0.9887329146656816,
+    "all_a_amount": 1314082262677.0,
+    "amount_coverage": 0.9896564462504618,
+    "previous_market_date": "2025-06-04",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-06",
+    "benchmark_return": -0.0004818710138557226,
+    "universe_count": 5414,
+    "valid_return_count": 5357,
+    "benchmark_coverage": 0.9894717399335057,
+    "all_a_amount": 1173884858802.0,
+    "amount_coverage": 0.9902105652013299,
+    "previous_market_date": "2025-06-05",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-09",
+    "benchmark_return": 0.011995953160202851,
+    "universe_count": 5414,
+    "valid_return_count": 5357,
+    "benchmark_coverage": 0.9894717399335057,
+    "all_a_amount": 1309866871616.0,
+    "amount_coverage": 0.9894717399335057,
+    "previous_market_date": "2025-06-06",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-10",
+    "benchmark_return": -0.007760337253932514,
+    "universe_count": 5415,
+    "valid_return_count": 5353,
+    "benchmark_coverage": 0.9885503231763619,
+    "all_a_amount": 1448051110767.0,
+    "amount_coverage": 0.9907663896583564,
+    "previous_market_date": "2025-06-09",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-11",
+    "benchmark_return": 0.005571544617449582,
+    "universe_count": 5416,
+    "valid_return_count": 5365,
+    "benchmark_coverage": 0.9905834564254062,
+    "all_a_amount": 1283657034154.0,
+    "amount_coverage": 0.9911373707533235,
+    "previous_market_date": "2025-06-10",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-12",
+    "benchmark_return": 0.0018288925377509739,
+    "universe_count": 5417,
+    "valid_return_count": 5366,
+    "benchmark_coverage": 0.9905851947572457,
+    "all_a_amount": 1300169017892.0,
+    "amount_coverage": 0.9909544028059811,
+    "previous_market_date": "2025-06-11",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-13",
+    "benchmark_return": -0.017988872762668653,
+    "universe_count": 5417,
+    "valid_return_count": 5365,
+    "benchmark_coverage": 0.990400590732878,
+    "all_a_amount": 1500023390761.0,
+    "amount_coverage": 0.9909544028059811,
+    "previous_market_date": "2025-06-12",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-16",
+    "benchmark_return": 0.008629938225468266,
+    "universe_count": 5417,
+    "valid_return_count": 5365,
+    "benchmark_coverage": 0.990400590732878,
+    "all_a_amount": 1240716400140.0,
+    "amount_coverage": 0.9913236108547167,
+    "previous_market_date": "2025-06-13",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-17",
+    "benchmark_return": -0.0017261141053329155,
+    "universe_count": 5417,
+    "valid_return_count": 5370,
+    "benchmark_coverage": 0.9913236108547167,
+    "all_a_amount": 1233889224952.0,
+    "amount_coverage": 0.992431235000923,
+    "previous_market_date": "2025-06-16",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-18",
+    "benchmark_return": -0.0038630648913598226,
+    "universe_count": 5417,
+    "valid_return_count": 5376,
+    "benchmark_coverage": 0.992431235000923,
+    "all_a_amount": 1218255011685.0,
+    "amount_coverage": 0.992431235000923,
+    "previous_market_date": "2025-06-17",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-19",
+    "benchmark_return": -0.01795003682549623,
+    "universe_count": 5417,
+    "valid_return_count": 5375,
+    "benchmark_coverage": 0.9922466309765553,
+    "all_a_amount": 1277842086259.0,
+    "amount_coverage": 0.9922466309765553,
+    "previous_market_date": "2025-06-18",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-20",
+    "benchmark_return": -0.007353730325874428,
+    "universe_count": 5419,
+    "valid_return_count": 5373,
+    "benchmark_coverage": 0.9915113489573723,
+    "all_a_amount": 1089373503191.0,
+    "amount_coverage": 0.9922494925262964,
+    "previous_market_date": "2025-06-19",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-23",
+    "benchmark_return": 0.01576568004007067,
+    "universe_count": 5419,
+    "valid_return_count": 5372,
+    "benchmark_coverage": 0.9913268130651411,
+    "all_a_amount": 1144537452040.0,
+    "amount_coverage": 0.9913268130651411,
+    "previous_market_date": "2025-06-20",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-24",
+    "benchmark_return": 0.019702034952481698,
+    "universe_count": 5419,
+    "valid_return_count": 5371,
+    "benchmark_coverage": 0.9911422771729101,
+    "all_a_amount": 1444976079809.0,
+    "amount_coverage": 0.9920649566340654,
+    "previous_market_date": "2025-06-23",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-25",
+    "benchmark_return": 0.009480242989616462,
+    "universe_count": 5419,
+    "valid_return_count": 5376,
+    "benchmark_coverage": 0.9920649566340654,
+    "all_a_amount": 1635611689560.0,
+    "amount_coverage": 0.9922494925262964,
+    "previous_market_date": "2025-06-24",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-26",
+    "benchmark_return": -0.0025201045199816606,
+    "universe_count": 5420,
+    "valid_return_count": 5377,
+    "benchmark_coverage": 0.9920664206642067,
+    "all_a_amount": 1618463687934.0,
+    "amount_coverage": 0.992619926199262,
+    "previous_market_date": "2025-06-25",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-27",
+    "benchmark_return": 0.004767981612321926,
+    "universe_count": 5419,
+    "valid_return_count": 5374,
+    "benchmark_coverage": 0.9916958848496032,
+    "all_a_amount": 1571487166238.0,
+    "amount_coverage": 0.9918804207418342,
+    "previous_market_date": "2025-06-26",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  },
+  {
+    "trade_date": "2025-06-30",
+    "benchmark_return": 0.013118222920326056,
+    "universe_count": 5419,
+    "valid_return_count": 5371,
+    "benchmark_coverage": 0.9911422771729101,
+    "all_a_amount": 1513654041880.0,
+    "amount_coverage": 0.9918804207418342,
+    "previous_market_date": "2025-06-27",
+    "freeze_reason": null,
+    "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+    "source_snapshot_ids": [
+      "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+      "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+    ]
+  }
+]

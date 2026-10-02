@@ -1,0 +1,232 @@
+{
+  "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+  "verified": true,
+  "errors": [],
+  "inventory": {
+    "sz_active_rows": 2904,
+    "sz_active_expected": 2904,
+    "bj_mapping_rows": 248,
+    "bj_active_rows": 348
+  },
+  "dates": [
+    {
+      "trade_date": "2019-06-28",
+      "universe_count": 3631,
+      "SH_count": 1471,
+      "SZ_count": 2160,
+      "BJ_count": 0,
+      "future_listing_excluded": 2177,
+      "already_delisted_excluded": 101,
+      "non_a_excluded": 0,
+      "inactive_code_excluded": 0,
+      "later_delisted_included": 227,
+      "verified": true,
+      "reasons": []
+    },
+    {
+      "trade_date": "2020-06-30",
+      "universe_count": 3876,
+      "SH_count": 1637,
+      "SZ_count": 2239,
+      "BJ_count": 0,
+      "future_listing_excluded": 1921,
+      "already_delisted_excluded": 112,
+      "non_a_excluded": 0,
+      "inactive_code_excluded": 0,
+      "later_delisted_included": 219,
+      "verified": true,
+      "reasons": []
+    },
+    {
+      "trade_date": "2021-12-31",
+      "universe_count": 4684,
+      "SH_count": 2031,
+      "SZ_count": 2571,
+      "BJ_count": 82,
+      "future_listing_excluded": 1080,
+      "already_delisted_excluded": 145,
+      "non_a_excluded": 0,
+      "inactive_code_excluded": 79,
+      "later_delisted_included": 192,
+      "verified": true,
+      "reasons": []
+    },
+    {
+      "trade_date": "2023-06-30",
+      "universe_count": 5222,
+      "SH_count": 2220,
+      "SZ_count": 2798,
+      "BJ_count": 204,
+      "future_listing_excluded": 479,
+      "already_delisted_excluded": 208,
+      "non_a_excluded": 0,
+      "inactive_code_excluded": 204,
+      "later_delisted_included": 130,
+      "verified": true,
+      "reasons": []
+    },
+    {
+      "trade_date": "2025-06-30",
+      "universe_count": 5419,
+      "SH_count": 2283,
+      "SZ_count": 2868,
+      "BJ_count": 268,
+      "future_listing_excluded": 188,
+      "already_delisted_excluded": 302,
+      "non_a_excluded": 0,
+      "inactive_code_excluded": 248,
+      "later_delisted_included": 36,
+      "verified": true,
+      "reasons": []
+    }
+  ],
+  "sample_checks": [
+    {
+      "security_id": "000001.SZ",
+      "historical_code": "000001",
+      "trade_date": "2019-06-28",
+      "listing_date": "1991-04-03",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000002.SZ",
+      "historical_code": "000002",
+      "trade_date": "2019-06-28",
+      "listing_date": "1991-01-29",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000001.SZ",
+      "historical_code": "000001",
+      "trade_date": "2020-06-30",
+      "listing_date": "1991-04-03",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000002.SZ",
+      "historical_code": "000002",
+      "trade_date": "2020-06-30",
+      "listing_date": "1991-01-29",
+      "delisting_date": null
+    },
+    {
+      "security_id": "688001.SH",
+      "historical_code": "688001",
+      "trade_date": "2020-06-30",
+      "listing_date": "2019-07-22",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000001.SZ",
+      "historical_code": "000001",
+      "trade_date": "2021-12-31",
+      "listing_date": "1991-04-03",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000002.SZ",
+      "historical_code": "000002",
+      "trade_date": "2021-12-31",
+      "listing_date": "1991-01-29",
+      "delisting_date": null
+    },
+    {
+      "security_id": "688001.SH",
+      "historical_code": "688001",
+      "trade_date": "2021-12-31",
+      "listing_date": "2019-07-22",
+      "delisting_date": null
+    },
+    {
+      "security_id": "833994.BJ",
+      "historical_code": "833994",
+      "trade_date": "2021-12-31",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2022-07-25"
+    },
+    {
+      "security_id": "920305.BJ",
+      "historical_code": "835305",
+      "trade_date": "2021-12-31",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2026-07-30"
+    },
+    {
+      "security_id": "920680.BJ",
+      "historical_code": "839680",
+      "trade_date": "2021-12-31",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2026-01-05"
+    },
+    {
+      "security_id": "000001.SZ",
+      "historical_code": "000001",
+      "trade_date": "2023-06-30",
+      "listing_date": "1991-04-03",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000002.SZ",
+      "historical_code": "000002",
+      "trade_date": "2023-06-30",
+      "listing_date": "1991-01-29",
+      "delisting_date": null
+    },
+    {
+      "security_id": "688001.SH",
+      "historical_code": "688001",
+      "trade_date": "2023-06-30",
+      "listing_date": "2019-07-22",
+      "delisting_date": null
+    },
+    {
+      "security_id": "920305.BJ",
+      "historical_code": "835305",
+      "trade_date": "2023-06-30",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2026-07-30"
+    },
+    {
+      "security_id": "920680.BJ",
+      "historical_code": "839680",
+      "trade_date": "2023-06-30",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2026-01-05"
+    },
+    {
+      "security_id": "000001.SZ",
+      "historical_code": "000001",
+      "trade_date": "2025-06-30",
+      "listing_date": "1991-04-03",
+      "delisting_date": null
+    },
+    {
+      "security_id": "000002.SZ",
+      "historical_code": "000002",
+      "trade_date": "2025-06-30",
+      "listing_date": "1991-01-29",
+      "delisting_date": null
+    },
+    {
+      "security_id": "688001.SH",
+      "historical_code": "688001",
+      "trade_date": "2025-06-30",
+      "listing_date": "2019-07-22",
+      "delisting_date": null
+    },
+    {
+      "security_id": "920305.BJ",
+      "historical_code": "835305",
+      "trade_date": "2025-06-30",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2026-07-30"
+    },
+    {
+      "security_id": "920680.BJ",
+      "historical_code": "839680",
+      "trade_date": "2025-06-30",
+      "listing_date": "2021-11-15",
+      "delisting_date": "2026-01-05"
+    }
+  ]
+}

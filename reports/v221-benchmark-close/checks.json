@@ -1,0 +1,152 @@
+[
+  {
+    "sample_id": "2019-06-28:801080",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "5534f415d007991262f39202bd48bf9e785aff5aef7184ecb118a06e0411ef66",
+    "recompute_checksum": "5534f415d007991262f39202bd48bf9e785aff5aef7184ecb118a06e0411ef66"
+  },
+  {
+    "sample_id": "2019-06-28:801120",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "5b9e4422a160d8a4c2a45f0a4deadcc69a1d7d40b16cac3cc91a6f1af2e08bb2",
+    "recompute_checksum": "5b9e4422a160d8a4c2a45f0a4deadcc69a1d7d40b16cac3cc91a6f1af2e08bb2"
+  },
+  {
+    "sample_id": "2019-06-28:801790",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "250d47929a773a6135d2b4072abaf8954a73b3ea8b86e19e33c52057d96b435c",
+    "recompute_checksum": "250d47929a773a6135d2b4072abaf8954a73b3ea8b86e19e33c52057d96b435c"
+  },
+  {
+    "sample_id": "2020-06-30:801050",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "bc1d5160e3f5f3a5682d537035ea0223e9c3ca37e931cf7025a4c582943dee06",
+    "recompute_checksum": "bc1d5160e3f5f3a5682d537035ea0223e9c3ca37e931cf7025a4c582943dee06"
+  },
+  {
+    "sample_id": "2020-06-30:801120",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "c435478c7a1f0c68a648a966178a2a875d3f04a6cfc263e06b7f5e87e7faab7d",
+    "recompute_checksum": "c435478c7a1f0c68a648a966178a2a875d3f04a6cfc263e06b7f5e87e7faab7d"
+  },
+  {
+    "sample_id": "2020-06-30:801790",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "e333ae03038aae2300e9882a962ad1375b60781e2d98e533a20ab38e957dc0a6",
+    "recompute_checksum": "e333ae03038aae2300e9882a962ad1375b60781e2d98e533a20ab38e957dc0a6"
+  },
+  {
+    "sample_id": "2021-12-31:801080",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "0b2bf8b73e1364381721369875ef4186d4e71532a23661497330c44355489744",
+    "recompute_checksum": "0b2bf8b73e1364381721369875ef4186d4e71532a23661497330c44355489744"
+  },
+  {
+    "sample_id": "2021-12-31:801780",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "54300d35720263fc7c32902d270a6b582e197a304042ec41a9f89491b82f1274",
+    "recompute_checksum": "54300d35720263fc7c32902d270a6b582e197a304042ec41a9f89491b82f1274"
+  },
+  {
+    "sample_id": "2021-12-31:801890",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "1bf5826031ac035eecb7d94b25dcc7442320388782d695625202a6e0a5528a80",
+    "recompute_checksum": "1bf5826031ac035eecb7d94b25dcc7442320388782d695625202a6e0a5528a80"
+  },
+  {
+    "sample_id": "2023-06-30:801050",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "5b64a83c4fb126ff7b7355d11dba9d0dfcf24078d3e60b44db9b3f975b6d8500",
+    "recompute_checksum": "5b64a83c4fb126ff7b7355d11dba9d0dfcf24078d3e60b44db9b3f975b6d8500"
+  },
+  {
+    "sample_id": "2023-06-30:801120",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "5e68069dad70b824cef840dccfc39debd58319ea0755947f2e8788418f9cc7b8",
+    "recompute_checksum": "5e68069dad70b824cef840dccfc39debd58319ea0755947f2e8788418f9cc7b8"
+  },
+  {
+    "sample_id": "2023-06-30:801890",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "311d5995378721b2306cb65b7699116d9e5d96ad52fdac1c82ed9c8d00dec0af",
+    "recompute_checksum": "311d5995378721b2306cb65b7699116d9e5d96ad52fdac1c82ed9c8d00dec0af"
+  },
+  {
+    "sample_id": "2025-06-30:801080",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "1f344e7c8ce9aa2a97b63c560b62f3d0d306275891c441fde9c9cee4e618a055",
+    "recompute_checksum": "1f344e7c8ce9aa2a97b63c560b62f3d0d306275891c441fde9c9cee4e618a055"
+  },
+  {
+    "sample_id": "2025-06-30:801780",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "5f244d5fc65a9d3937565a8e8f8dc446072e4b6b6034bf83555c74f110f6440e",
+    "recompute_checksum": "5f244d5fc65a9d3937565a8e8f8dc446072e4b6b6034bf83555c74f110f6440e"
+  },
+  {
+    "sample_id": "2025-06-30:801890",
+    "status": "SUCCESS",
+    "repeat_identical": true,
+    "reused_metrics_unchanged": true,
+    "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+    "same_source_refs": true,
+    "checksum": "10daf65297385688f0a46f58b115b57c20f42005a72d6df108d77ba2b8675348",
+    "recompute_checksum": "10daf65297385688f0a46f58b115b57c20f42005a72d6df108d77ba2b8675348"
+  }
+]

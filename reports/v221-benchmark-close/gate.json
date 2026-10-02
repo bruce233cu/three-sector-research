@@ -1,0 +1,111 @@
+{
+  "G1": "PASS",
+  "READY_FOR_PRODUCTION_ENABLEMENT": true,
+  "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+  "recompute_run_id": "ae8d6541-5a8f-4797-9542-80cc1917fc20",
+  "code_commit": "46e581fa7649134fdf2a879090a715f414b386ca",
+  "parameter_hash": "a602e915961235a8ab5cc678548bf5a249f5197707d18d8b32a518af78c5f21b",
+  "parameters": {
+    "benchmark": "ALL_A_EQUAL_WEIGHT",
+    "benchmark_min": 0.95,
+    "rs_window_min": 0.9,
+    "sector_min": 0.7,
+    "return_basis": "exact_previous_market_day_close",
+    "profile_id": "industry_trend_v2_2_1_benchmark_close",
+    "rule_version": "mainline_v2.2.1"
+  },
+  "universe_verified": true,
+  "counts": {
+    "SUCCESS": 15,
+    "PARTIAL": 0,
+    "FAIL": 0
+  },
+  "benchmark_days": 300,
+  "fetched_missing_securities": 4064,
+  "reused_sector_securities": 1558,
+  "temporary_rows": 1366323,
+  "deterministic_repeatability": true,
+  "source_lineage_complete": 15,
+  "fixed_benchmark_rows": [
+    {
+      "trade_date": "2019-06-28",
+      "benchmark_return": -0.014415677467047862,
+      "universe_count": 3631,
+      "valid_return_count": 3607,
+      "benchmark_coverage": 0.993390250619664,
+      "all_a_amount": 415313570467.0,
+      "amount_coverage": 0.9947672817405674,
+      "previous_market_date": "2019-06-27",
+      "freeze_reason": null,
+      "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+      "source_snapshot_ids": [
+        "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+        "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+      ]
+    },
+    {
+      "trade_date": "2020-06-30",
+      "benchmark_return": 0.014680265373482326,
+      "universe_count": 3876,
+      "valid_return_count": 3830,
+      "benchmark_coverage": 0.9881320949432405,
+      "all_a_amount": 746502408890.0,
+      "amount_coverage": 0.989422084623323,
+      "previous_market_date": "2020-06-29",
+      "freeze_reason": null,
+      "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+      "source_snapshot_ids": [
+        "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+        "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+      ]
+    },
+    {
+      "trade_date": "2021-12-31",
+      "benchmark_return": 0.0062364765473344975,
+      "universe_count": 4684,
+      "valid_return_count": 4636,
+      "benchmark_coverage": 0.9897523484201537,
+      "all_a_amount": 1062451240209.0,
+      "amount_coverage": 0.990392826643894,
+      "previous_market_date": "2021-12-30",
+      "freeze_reason": null,
+      "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+      "source_snapshot_ids": [
+        "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+        "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+      ]
+    },
+    {
+      "trade_date": "2023-06-30",
+      "benchmark_return": 0.010949111354118074,
+      "universe_count": 5222,
+      "valid_return_count": 5168,
+      "benchmark_coverage": 0.9896591344312524,
+      "all_a_amount": 919968338346.0,
+      "amount_coverage": 0.9908081194944466,
+      "previous_market_date": "2023-06-29",
+      "freeze_reason": null,
+      "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+      "source_snapshot_ids": [
+        "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+        "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+      ]
+    },
+    {
+      "trade_date": "2025-06-30",
+      "benchmark_return": 0.013118222920326056,
+      "universe_count": 5419,
+      "valid_return_count": 5371,
+      "benchmark_coverage": 0.9911422771729101,
+      "all_a_amount": 1513654041880.0,
+      "amount_coverage": 0.9918804207418342,
+      "previous_market_date": "2025-06-27",
+      "freeze_reason": null,
+      "run_id": "7fe5ad62-ab71-4759-a334-08dffe980d97",
+      "source_snapshot_ids": [
+        "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+        "1e4dd01a-913f-4d99-9d83-779dbab72b73"
+      ]
+    }
+  ]
+}

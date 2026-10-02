@@ -1,0 +1,7 @@
+{
+  "start_sha": "196285581feb9818dfaf48f4aa2aceba7a7030ef",
+  "calculation_sha": "46e581fa7649134fdf2a879090a715f414b386ca",
+  "evidence_export_sha": "b7b862e3a4e3eaaeef94f7bf40b861d3a41bdf8c",
+  "final_sha_resolution": "The Git commit containing this file is the delivery commit; exact resolved SHA is also recorded in the downloadable package.",
+  "branch": "mainline-phase1e"
+}

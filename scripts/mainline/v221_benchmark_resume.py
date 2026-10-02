@@ -133,7 +133,10 @@ def main():
             'parent_run_id':original['run_id'],'source_lineage_complete':True,'benchmark_input_return_basis':'exact_previous_market_day_close'}
         available=all(updated[k] is not None for k in recalculated)
         same=canon(a)==canon(b);status='SUCCESS' if available and updated['critical_data_ok'] else 'PARTIAL'
-        updated['decision_reason']['status']=status;updated['cache_checksum']=sha(updated)
+        updated['decision_reason']['status']=status
+        updated['decision_reason']['parent_repeat_checksum']=original['decision_reason'].get('repeat_checksum')
+        updated['decision_reason']['repeat_checksum']=sha(b)
+        updated['cache_checksum']=sha(updated)
         unchanged=all(updated[k]==original[k] for k in reused)
         checks.append(dict(sample_id=str(d)+':'+code,status=status,repeat_identical=same,reused_metrics_unchanged=unchanged,
            parameter_hash=sha(PARAMS),same_source_refs=True,checksum=sha(a),recompute_checksum=sha(b)))
