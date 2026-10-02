@@ -16,6 +16,78 @@ from mainline.metrics.historical_universe import historical_benchmark_universe_r
 from mainline.engine.replay import digest
 from mainline.backtest.runner import read,write
 
+ACCEPTED = {'success', 'valid_no_trade', 'valid_not_listed', 'valid_delisted'}
+
+def classify_failure(exc):
+    message = str(exc)
+    response = getattr(exc, 'response', None)
+    http = getattr(response, 'status_code', None)
+    if http == 429: category, transient = 'B', True
+    elif http is not None and http >= 500: category, transient = 'A', True
+    elif isinstance(exc, (__import__('requests').exceptions.Timeout,
+                          __import__('requests').exceptions.ConnectionError)):
+        category, transient = 'A', True
+    elif 'amount unit' in message: category, transient = 'H', False
+    elif 'schema' in message or 'OHLC' in message or 'duplicate provider dates' in message:
+        category, transient = 'G', False
+    elif 'unsupported' in message: category, transient = 'F', False
+    elif 'empty response' in message: category, transient = 'C', True
+    else: category, transient = 'J', False
+    return {'category': category, 'transient': transient, 'http_status': http,
+            'error_type': type(exc).__name__, 'provider_error': message}
+
+def recover_one(sid, adapter, approved, cache, prior, end, active_dates,
+                max_attempts=3, backoff=time.sleep):
+    fp=cache/(sid+'.parquet');ap=cache/(sid+'.json');ep=cache/(sid+'.failure.json')
+    attempts=[];cached=fp.exists() and ap.exists()
+    base={'security_id':sid, 'symbol':sid.split('.')[1].lower()+sid.split('.')[0],
+          'provider':'Sina', 'window_start':str(prior), 'window_end':str(end),
+          'partial_cache':fp.exists() or ap.exists(), 'cache_reused':cached,
+          'original_certified_checksum':approved['raw_payload_checksum'],
+          'fallback_provider':None, 'source_snapshot_id':approved.get('source_snapshot_id'),
+          'can_fill_from_existing_artifact':False}
+    for attempt in range(1, (1 if cached else max_attempts)+1):
+        try:
+            if cached:
+                f=pd.read_parquet(fp);a=read(ap)
+                if a.get('cache_scope') not in (None,[str(prior),str(end)]):
+                    raise ValueError('temporary cache scope mismatch')
+                if a.get('normalized_checksum') and a['normalized_checksum']!=digest(f.astype(object).where(pd.notna(f),None).to_dict('records')):
+                    raise ValueError('temporary cache content checksum mismatch')
+            else:
+                f,a=adapter.get_one(sid,prior,end)
+            if a.get('raw_payload_checksum')!=approved['raw_payload_checksum']:
+                raise ValueError('raw response differs from original certification')
+            if not f.empty and not a.get('unit_check_ok'):
+                raise ValueError('amount unit not certified')
+            status='success'
+            if f.empty:
+                if not active_dates: status='valid_not_listed'
+                elif set(active_dates)<=set(a.get('no_trade_dates',[])): status='valid_no_trade'
+                else: raise ValueError('empty response without certified no-trade proof')
+            f=f.drop(columns=['circ_mv'],errors='ignore')
+            f['trade_date']=f['trade_date'].astype(str)
+            if not cached:
+                a.update(cache_scope=[str(prior),str(end)],
+                         normalized_checksum=digest(f.astype(object).where(pd.notna(f),None).to_dict('records')))
+                tmp=fp.with_suffix('.tmp.parquet');f.to_parquet(tmp,index=False);tmp.replace(fp)
+                tmp=ap.with_suffix('.tmp.json');tmp.write_text(json.dumps(a));tmp.replace(ap)
+            result={**a,**base,'status':status,'raw_checksum_matches_original':True,
+                    'attempts':attempts,'request_count':0 if cached else attempt,
+                    'retry_count':0 if cached else attempt-1,
+                    'category':{'valid_no_trade':'D','valid_not_listed':'E'}.get(status),
+                    'valid_no_trade_dates':a.get('no_trade_dates',[])}
+            if ep.exists():ep.unlink()
+            return f,result
+        except Exception as exc:
+            failure=classify_failure(exc);attempts.append({'attempt':attempt,**failure})
+            result={**base,'status':'failed','attempts':attempts,**failure,
+                    'request_count':0 if cached else attempt,'retry_count':0 if cached else attempt-1}
+            ep.write_text(json.dumps(result,ensure_ascii=False))
+            if cached or not failure['transient'] or attempt==max_attempts: return None,result
+            backoff(min(2**attempt,8))
+
+
 def main(g3_zip,production_zip,universe_zip,output,cache):
     started=time.monotonic();cache.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(g3_zip) as z:
@@ -32,50 +104,47 @@ def main(g3_zip,production_zip,universe_zip,output,cache):
     prior=calendar[calendar.index(dates[0])-1]
     universe={d:historical_benchmark_universe_resolver(d,intervals,certificate=certificate) for d in dates}
     if any(not u.verified for u in universe.values()):raise ValueError('uncertified prior universe')
-    approved={r['security_id']:r for r in original if r['status']=='success'}
+    approved={r['security_id']:{**r,'source_snapshot_id':provenance['source_ids']['price']} for r in original if r['status']=='success'}
     requested=sorted({m['security_id'] for u in universe.values() for m in u.members})
     # Preserve original acquisition failures and original universe membership.
     requested=[sid for sid in requested if sid in approved]
     adapter=SinaWindow({});frames=[];audit=[]
+    output.mkdir(parents=True,exist_ok=True)
+    active_by_sid={sid:[] for sid in requested}
+    for d,u in universe.items():
+        for m in u.members:
+            if m['security_id'] in active_by_sid:active_by_sid[m['security_id']].append(d)
     def fetch(sid):
-        fp=cache/(sid+'.parquet');ap=cache/(sid+'.json')
-        try:
-            if fp.exists() and ap.exists():f=pd.read_parquet(fp);a=read(ap)
-            else:
-                f,a=adapter.get_one(sid,date.fromisoformat(prior),date.fromisoformat(dates[-1]))
-                if a.get('unit_check_ok'):
-                    f=f.drop(columns=['circ_mv'],errors='ignore');f.to_parquet(fp,index=False)
-                    ap.write_text(json.dumps(a))
-            if a['raw_payload_checksum']!=approved[sid]['raw_payload_checksum']:
-                raise ValueError('raw response differs from original certification')
-            if not a.get('unit_check_ok'):raise ValueError('amount unit not certified')
-            return f,{'security_id':sid,'status':'success','raw_checksum_matches_original':True,**a}
-        except Exception as e:return None,{'security_id':sid,'status':'failed','error':str(e)}
-    with ThreadPoolExecutor(max_workers=12) as pool:
+        return recover_one(sid,adapter,approved[sid],cache,date.fromisoformat(prior),
+                           date.fromisoformat(dates[-1]),active_by_sid[sid])
+    with ThreadPoolExecutor(max_workers=8) as pool:
         jobs=[pool.submit(fetch,sid) for sid in requested]
         for i,j in enumerate(as_completed(jobs)):
             f,a=j.result();audit.append(a)
             if f is not None:frames.append(f)
             if (i+1)%250==0:print('WARMUP_RECOVERY',i+1,len(requested),'seconds',round(time.monotonic()-started),'failures',sum(a['status']=='failed' for a in audit),flush=True)
-
-    # Retry only unfinished sources, retaining all original checks and successes.
-    by_sid={a['security_id']:a for a in audit};retry_counts=[]
-    for retry_round in range(1,4):
-        pending=[sid for sid,a in by_sid.items() if a['status']!='success']
-        if not pending:break
-        print('WARMUP_RETRY',retry_round,'remaining',len(pending),flush=True)
-        with ThreadPoolExecutor(max_workers=6) as pool:
-            jobs=[pool.submit(fetch,sid) for sid in pending]
-            for j in as_completed(jobs):
-                f,a=j.result();by_sid[a['security_id']]=a
-                if f is not None:frames.append(f)
-        retry_counts.append({'round':retry_round,'remaining':sum(a['status']!='success' for a in by_sid.values())})
-    audit=sorted(by_sid.values(),key=lambda a:a['security_id'])
-    output.mkdir(parents=True,exist_ok=True)
-    write(output/'recovery_attempt_audit.json',{'requested':len(requested),'retry_rounds':retry_counts,
-        'unresolved':[a for a in audit if a['status']!='success']})
-    cache_audit=cache/'recovery_audit.json';cache_audit.write_text(json.dumps(audit,ensure_ascii=False))
-    if any(a['status']!='success' for a in audit):raise ValueError('exact certified warmup recovery incomplete; retry same temporary cache')
+    audit.sort(key=lambda a:a['security_id'])
+    (cache/'recovery_audit.json').write_text(json.dumps(audit,ensure_ascii=False))
+    write(output/'warmup_acquisition_audit.json.gz',audit)
+    failures=[a for a in audit if a['status'] not in ACCEPTED]
+    summary={'total_requests':len(requested),'success_count':sum(a['status']=='success' for a in audit),
+        'valid_missing_count':sum(a['status'] in ACCEPTED-{'success'} for a in audit),
+        'failure_count':len(failures),'unclassified_failure_count':len(failures),
+        'unclassified_definition':'unresolved fetch failure; diagnostic category is not terminal evidence',
+        'provider_retry_count':sum(a['retry_count'] for a in audit),'fallback_count':0,
+        'provider_request_count':sum(a['request_count'] for a in audit),
+        'cache_reused_count':sum(a['cache_reused'] for a in audit),
+        'coverage':sum(a['status'] in ACCEPTED for a in audit)/len(requested),
+        'valid_no_trade_count':sum(a['status']=='valid_no_trade' for a in audit),
+        'valid_no_trade_symbol_dates':sum(len(a.get('valid_no_trade_dates',[])) for a in audit),
+        'audit_checksum':digest(audit),'warmup_checksum':None,'production_writes':0,
+        'prior_run_id':37004800566,'prior_failed_count':13,
+        'prior_failed_identities':'unrecoverable: audit and temporary cache not uploaded',
+        'cache_loss_confirmed':True,'full_history_redownload':False,
+        'scope':'2024-04-30 predecessor plus 84 warmup days 2024-05-06..2024-08-30; unchanged approved securities'}
+    (output/'warmup_recovery_status.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
+    write(output/'failure_items.json',failures)
+    if failures:raise ValueError('exact certified warmup recovery incomplete; retry same persisted temporary cache')
     bars=pd.concat(frames,ignore_index=True);bars['trade_date']=bars.trade_date.astype(str)
     if bars.duplicated(['security_id','trade_date']).any():raise ValueError('duplicate real bars')
     close=bars.pivot(index='trade_date',columns='security_id',values='close').reindex([prior]+dates)
@@ -134,11 +203,9 @@ def main(g3_zip,production_zip,universe_zip,output,cache):
     warm_members={d:members[d] for d in dates}
     for d in dates:warm_members[d]['source_snapshot_ids']=[provenance['source_ids']['membership']]
     write(output/'warmup_memberships.json.gz',warm_members)
-    write(output/'warmup_acquisition_audit.json.gz',audit)
     write(output/'warmup_provenance.json',{'scope':'missing 84-day warmup only',
         'code_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'acquisition_script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-        'retry_rounds':retry_counts,
         'warmup_checksum':digest(panel),'membership_checksum':digest(warm_members),
         'warmup_days':84,'warmup_rows':len(panel),'warmup_start':dates[0],'warmup_end':dates[-1],
         'original_raw_response_checksum_matching':True,'requested_successful_original_sources':len(requested),
@@ -152,6 +219,8 @@ def main(g3_zip,production_zip,universe_zip,output,cache):
         'pit_level':'effective_pit','knowledge_time_unverified':True,'available_at':None,
         'individual_longterm_asset_created':False,'provider_changed':False,'universe_rebuilt':False,
         'rules_changed':False,'production_writes':0,'elapsed_seconds':round(time.monotonic()-started)})
+    summary.update(warmup_checksum=digest(panel),warmup_board_rows=len(panel))
+    (output/'warmup_recovery_status.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
     print('WARMUP_RESTORED',len(panel),flush=True)
 
 if __name__=='__main__':
