@@ -12,11 +12,14 @@ def longest_run(values):
         current=current+1 if v else 0;best=max(best,current)
     return best
 
-def churn(states, dates, max_interval=5):
+def churn(states, dates, max_interval=5, initial_previous_state=None):
     changes=[(i,states[i-1],states[i]) for i in range(1,len(states)) if states[i]!=states[i-1]]
+    if initial_previous_state is not None and initial_previous_state!=states[0]:
+        changes.insert(0,(0,initial_previous_state,states[0]))
     # A reversal revisits any already seen state in the current observed window.
     # Count exact A->B->A separately; do not assume every new lifecycle is wrong.
-    seen={states[0]};reversals=short=0;last_index={states[0]:0}
+    initial=initial_previous_state if initial_previous_state is not None else states[0]
+    seen={initial};reversals=short=0;last_index={initial:-1 if initial_previous_state is not None else 0}
     for i,a,b in changes:
         if b in seen:
             reversals+=1
@@ -80,7 +83,11 @@ def evaluate_case(case, business, calendar, stable_min=3, short_interval=5):
     freeze_violations=sum(r['state']['stage_frozen'] and
         (r['state']['state']!=r['state']['previous_state'] or r['state']['transition'] is not None) for r in rows)
     retire_dates=[x['closed_at'] for x in lc if x.get('closed_at')]
-    reentry=[t for t in transitions if t['from_state']=='S4' and t['to_state']=='S1']
+    retired_reentry=[t for t in transitions if t['from_state']=='S4' and t['to_state']=='S1']
+    prior_closed=business.get('initial_checkpoint',{}).get('lifecycle') or {}
+    if prior_closed.get('closed_at'):retire_dates.append(prior_closed['closed_at'])
+    reentry=[t for t in transitions if t['to_state']=='S1' and
+             next((x.get('prior_lifecycle_id') for x in lc if x['lifecycle_id']==t['lifecycle_id']),None)]
     rapid=sum(any(0<=calendar.index(t['trigger_date'])-calendar.index(d)<=5 for d in retire_dates) for t in reentry)
     first_c=known_first('confirmed_at')
     earliest_cand=known_first('candidate_at')
@@ -122,12 +129,12 @@ def evaluate_case(case, business, calendar, stable_min=3, short_interval=5):
         'stable_false_S2':stable>=stable_min if case['case_type']=='negative' else None,
         'longest_event_S2_run':stable,'inherited_S2_at_event_start':inherited,
         'no_mainline_precision':fraction(len(event)-s2count,len(event)) if case['case_type']=='negative' else None,
-        **churn(states,days,short_interval),
+        **churn(states,days,short_interval,rows[0]['state']['previous_state']),
         'lifecycle_count':len(lc),'new_lifecycle_count':sum(case['pre_window_start']<=x['start_date']<=case['post_window_end'] for x in lc),
         'first_lifecycle_start':earliest_cand,'first_confirmation':first_c,'first_weaken':known_first('weakened_at'),
         'first_retire':min([x['closed_at'] for x in lc if x.get('closed_at') and x.get('close_reason')=='retire'] or [None]),
         'first_closed_lifecycle':known_first('closed_at'),'highest_state':max([x['highest_state'] for x in lc] or states),
-        'reentry_count':len(reentry),'rapid_reentry_count':rapid,'duplicate_lifecycle_count':len(lcids)-len(set(lcids)),
+        'reentry_count':len(reentry),'retired_state_reentry_count':len(retired_reentry),'rapid_reentry_count':rapid,'duplicate_lifecycle_count':len(lcids)-len(set(lcids)),
         'right_censored_open_lifecycles':sum(x.get('closed_at') is None for x in lc),
         'retreat_delay':None,'retreat_delay_reason':'独立结构转弱参考日期未标注，不能编造早退/晚退标准答案。',
         'freeze_days':len(freezes),'event_freeze_days':sum(r['state']['stage_frozen'] for r in event),

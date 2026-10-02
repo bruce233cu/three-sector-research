@@ -57,6 +57,23 @@ def main(g3_zip,production_zip,universe_zip,output,cache):
             f,a=j.result();audit.append(a)
             if f is not None:frames.append(f)
             if (i+1)%250==0:print('WARMUP_RECOVERY',i+1,len(requested),'seconds',round(time.monotonic()-started),'failures',sum(a['status']=='failed' for a in audit),flush=True)
+
+    # Retry only unfinished sources, retaining all original checks and successes.
+    by_sid={a['security_id']:a for a in audit};retry_counts=[]
+    for retry_round in range(1,4):
+        pending=[sid for sid,a in by_sid.items() if a['status']!='success']
+        if not pending:break
+        print('WARMUP_RETRY',retry_round,'remaining',len(pending),flush=True)
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            jobs=[pool.submit(fetch,sid) for sid in pending]
+            for j in as_completed(jobs):
+                f,a=j.result();by_sid[a['security_id']]=a
+                if f is not None:frames.append(f)
+        retry_counts.append({'round':retry_round,'remaining':sum(a['status']!='success' for a in by_sid.values())})
+    audit=sorted(by_sid.values(),key=lambda a:a['security_id'])
+    output.mkdir(parents=True,exist_ok=True)
+    write(output/'recovery_attempt_audit.json',{'requested':len(requested),'retry_rounds':retry_counts,
+        'unresolved':[a for a in audit if a['status']!='success']})
     cache_audit=cache/'recovery_audit.json';cache_audit.write_text(json.dumps(audit,ensure_ascii=False))
     if any(a['status']!='success' for a in audit):raise ValueError('exact certified warmup recovery incomplete; retry same temporary cache')
     bars=pd.concat(frames,ignore_index=True);bars['trade_date']=bars.trade_date.astype(str)
@@ -121,6 +138,7 @@ def main(g3_zip,production_zip,universe_zip,output,cache):
     write(output/'warmup_provenance.json',{'scope':'missing 84-day warmup only',
         'code_sha':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         'acquisition_script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'retry_rounds':retry_counts,
         'warmup_checksum':digest(panel),'membership_checksum':digest(warm_members),
         'warmup_days':84,'warmup_rows':len(panel),'warmup_start':dates[0],'warmup_end':dates[-1],
         'original_raw_response_checksum_matching':True,'requested_successful_original_sources':len(requested),

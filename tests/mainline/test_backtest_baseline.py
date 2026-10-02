@@ -75,7 +75,7 @@ class Contract(unittest.TestCase):
         oid=self.book['cases'][0]['object_id'];rows=deepcopy([r for r in context['rows'] if r['snapshot']['object_id']==oid])
         for i,(r,s) in enumerate(zip(rows,states)):
             prev=states[i-1] if i else s;r['state'].update(state=s,previous_state=prev,stage_frozen=False,transition=None)
-            if s!=prev:r['state']['transition']={'from_state':prev,'to_state':s,'trigger_date':self.dates[i]}
+            if s!=prev:r['state']['transition']={'from_state':prev,'to_state':s,'trigger_date':self.dates[i],'lifecycle_id':'arithmetic-only'}
         case={**self.book['cases'][0],'case_type':typ,'pre_window_start':self.dates[0],
               'post_window_end':self.dates[2],'start_date':self.dates[1],'end_date':self.dates[2]}
         b={'rows':rows,'lifecycles':[],'manifest':{'checksum':'arithmetic-only-fixture'}}
@@ -93,5 +93,10 @@ class Contract(unittest.TestCase):
         self.assertEqual(r['S2_lag_observed'],0);self.assertFalse(r['stable_false_S2'])
         self.assertEqual(r['duplicate_lifecycle_count'],0);self.assertEqual(r['freeze_transition_violations'],0)
         a=aggregate([r]);self.assertEqual(a['overall']['negative_false_S2_days'],2)
+
+    def test_17_first_case_day_transition_is_not_lost(self):
+        r=churn(['S1','S0'],['d0','d1'],initial_previous_state='S0')
+        self.assertEqual(r['transition_count'],2);self.assertEqual(r['reversal_count'],1)
+        self.assertEqual(r['short_interval_reversal_count'],1);self.assertEqual(r['direct_A_B_A_count'],1)
 
 if __name__=='__main__':unittest.main()

@@ -148,7 +148,8 @@ def case_replay(case, context, panel, dates, profile, members, *, warmup_panel=(
     for r in rows:
         lc=r['state']['checkpoint'].get('lifecycle')
         if lc:lifecycles[lc['lifecycle_id']]=lc
-    business={'rows':rows,'lifecycles':sorted(lifecycles.values(),key=lambda x:(x['start_date'],x['lifecycle_id']))}
+    business={'rows':rows,'lifecycles':sorted(lifecycles.values(),key=lambda x:(x['start_date'],x['lifecycle_id'])),
+              'initial_checkpoint':deepcopy(seed['checkpoints'].get(case['object_id'],{}))}
     component={
         'state_path':digest([r['state']['state'] for r in rows]),
         'rule_evidence':digest([r['rules'] for r in rows]),
@@ -157,7 +158,7 @@ def case_replay(case, context, panel, dates, profile, members, *, warmup_panel=(
         'full_business':digest(business)}
     ancestry={'checkpoint_date':seed_day,'checkpoint_source':seed_kind,
               'checkpoint_checksum':digest(seed),'warm_history_rows':len(prior)+len(warmup_panel),
-              'warm_history_max_date':seed_day,'full_cross_section_industries':31,
+              'warm_history_max_date':max([r['as_of_date'] for r in warmup_panel]+[r['snapshot']['as_of_date'] for r in prior],default=None),'full_cross_section_industries':31,
               'continuation_matches_uninterrupted':True}
     return business,component,ancestry
 
@@ -174,6 +175,7 @@ def run(root, directory, output, run_id, repeat_ids=('P03','P06','N04','N05','A0
     if book['selection_frozen_at']>=started:raise ValueError('selection was not frozen before execution')
     if output.exists():raise ValueError('result version already exists')
     output.mkdir(parents=True)
+    for row in panel:row['run_id']=run_id
     cutoff=max(c['post_window_end'] for c in book['cases'])
     context=context_replay(panel,dates,profile,members,cutoff,warmup_panel=warm)
     write(output/'causal_context.json.gz',context)

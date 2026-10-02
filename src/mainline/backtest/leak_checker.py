@@ -63,7 +63,7 @@ def audit(panel,members,dates,profile,context,cutoff='2024-11-15', *, warmup_pan
     return {'scope':'certified BOARD archive + frozen adapter temporal contract; not independent stock-bar recalc',
         'pit_level':'effective_pit','knowledge_time_unverified':True,
         'strict_knowledge_time_verified':False,'stock_level_PIT_independently_recalculated':False,
-        'effective_membership_checks':len(panel),'same_day_rank_and_evidence_violations':rank_date,
+        'effective_membership_checks':len(all_board),'same_day_rank_and_evidence_violations':rank_date,
         'future_checkpoint_lifecycle_violations':future_checkpoint,'freeze_transition_violations':frozen_change,
         'past_only_core_RS_checks':rs_checks,'past_only_core_RS_mismatches':rs_mismatch,
         'future_sensitivity_checks':checks,'future_leakage_detected':future_checkpoint>0 or rank_date>0 or rs_mismatch>0 or not all(c['prefix_state_rule_checkpoint_lifecycle_unchanged'] for c in checks),
