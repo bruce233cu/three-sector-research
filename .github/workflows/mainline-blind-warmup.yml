@@ -20,7 +20,7 @@ jobs:
     env:
       MAINLINE_BLIND_RUN_ID: historical-blind-v1-20261002-full-${{ github.run_id }}
       MAINLINE_BLIND_RESULTS: reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-full-${{ github.run_id }}
-      MAINLINE_BLIND_WARMUP: reports/milestone-d-baseline-v1/warmup-recovery
+      MAINLINE_BLIND_WARMUP: reports/milestone-d-baseline-v1/warmup-recovery/${{ github.run_id }}
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 0}
@@ -109,7 +109,9 @@ jobs:
       - name: Preserve an honest failed gate if full recovery was impossible
         if: failure()
         run: |
-          python scripts/mainline/backtest_report.py --results reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-01
+          if [ ! -f reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-01/G5_FINAL_GATE.json ]; then
+            python scripts/mainline/backtest_report.py --results reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-01
+          fi
           echo "MAINLINE_BLIND_RESULTS=reports/milestone-d-baseline-v1/runs/historical-blind-v1-20261002-01" >> "$GITHUB_ENV"
       - name: Archive only isolated evidence to the authorized branch
         if: always()
