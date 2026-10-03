@@ -1,0 +1,54 @@
+[
+  {
+    "source_snapshot_id": "ecd9b7d3-2c1f-5686-8091-b779d39c653b",
+    "dataset_code": "trading_calendar",
+    "source_id": "sina_sse_trade_calendar",
+    "url": "https://finance.sina.com.cn/realstock/company/klc_td_sh.txt",
+    "fetched_at": "2026-10-03T13:16:35.315752+00:00",
+    "http_status": 200,
+    "response_bytes": 508,
+    "response_checksum": "d5112e08726ecc435092fb63547a34fc514b071b1a4a84f9e2c29fb9023726a9"
+  },
+  {
+    "source_snapshot_id": "209382ef-decc-56b5-a8f7-b29d8188336b",
+    "dataset_code": "membership_history",
+    "source_id": "sws_official_stock_classification",
+    "source_version": "sws-official:a22c059eac547accd459ee5fb22b4c87eb3f41432d7e89b70420d98cf582ddb4",
+    "stock_workbook": {
+      "url": "https://www.swsresearch.com/swindex/pdf/SwClass2021/StockClassifyUse_stock.xls",
+      "fetched_at": "2026-10-03T13:16:35.885993+00:00",
+      "http_status": 200,
+      "response_bytes": 1166336,
+      "response_checksum": "98fe3b4ccccd1639ebee0adcadb338c30736710fab32533c86b69eec971e1283"
+    },
+    "taxonomy_workbook": {
+      "url": "https://www.swsresearch.com/swindex/pdf/SwClass2021/SwClassCode_2021.xls",
+      "fetched_at": "2026-10-03T13:16:38.027618+00:00",
+      "http_status": 200,
+      "response_bytes": 73728,
+      "response_checksum": "f7702079f5292beb376b60471945afffa5ae9100aa8ab80825b56e0ad1fd3595"
+    },
+    "pit_level": "effective_pit",
+    "knowledge_time_unverified": true
+  },
+  {
+    "source_snapshot_id": "0ac4aa5e-70ae-5675-93f3-c4727fba6a44",
+    "dataset_code": "historical_benchmark_universe",
+    "source_id": "official_exchange_listing_events",
+    "source_version": "v221-benchmark-resume:3b3cd5f53d7028fc33dfb9804b3a4e70e6cbff109b36368a0502d4b0c19ad1b9",
+    "response_checksum": "3b3cd5f53d7028fc33dfb9804b3a4e70e6cbff109b36368a0502d4b0c19ad1b9",
+    "parent_source_snapshot_id": "7fa6b543-1631-4ca8-bf76-2a2e329b0353",
+    "pit_level": "effective_pit",
+    "knowledge_time_unverified": true
+  },
+  {
+    "source_snapshot_id": "d27ba02d-61dc-5b2d-94ad-ff4be594870c",
+    "dataset_code": "stock_window",
+    "source_id": "sina_akshare_existing",
+    "source_version": "akshare:1.18.97:SinaWindow",
+    "source_endpoint": "https://finance.sina.com.cn/realstock/company/{symbol}/hisdata_klc2/klc_kl.js",
+    "normalized_checksum": "37dbc4de13b814f35db8c2d3474e8e3582cb412f653aa53ff13371c3a1ea4cd9",
+    "request_count": 5849,
+    "failed_requests": 0
+  }
+]
