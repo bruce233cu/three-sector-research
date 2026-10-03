@@ -1,0 +1,41 @@
+{
+  "draft_version": "holdout_casebook_draft_v1",
+  "status": "BLOCKED_NOT_FROZEN",
+  "created_at": "2026-10-03T19:17:05+08:00",
+  "candidate_id": "v4a_calibration_candidate_v1",
+  "development_casebook_version": "casebook_v1_20261002_25",
+  "development_casebook_file_checksum": "6d29aef9b1ae82b1c72061d065ac6aaf736d0aa729f0e6e200e04049febb44b9",
+  "warmup_data_version": "warmup_data_version_v2_1b7b20d9f8470f29",
+  "success_criteria_checksum": "f142e79f1241df5c6e51a89bb49d5baca45996caae2abe8b1af15da8a78293f2",
+  "planned_counts": {"positive": 10, "negative": 10, "ambiguous": 5},
+  "actual_counts": {"positive": 0, "negative": 0, "ambiguous": 0},
+  "scope_audit": {
+    "certified_board_start": "2024-09-02",
+    "certified_board_end": "2025-06-30",
+    "certified_sessions": 197,
+    "sessions_overlapping_development_case_windows": 197,
+    "clean_sessions": 0,
+    "eligible_candidate_episodes": 0
+  },
+  "freeze_authorized": false,
+  "execution_authorized": false,
+  "v4a_result_seen": false,
+  "cases": [],
+  "blocking_issues": [
+    {
+      "code": "NO_INDEPENDENT_CERTIFIED_DATE",
+      "severity": "CRITICAL",
+      "evidence": "197 of 197 certified board sessions overlap at least one Development case window",
+      "required_resolution": "Extend and recertify a non-overlapping Warmup/board data range before restarting case selection"
+    },
+    {
+      "code": "LABEL_REVIEW_CANNOT_START",
+      "severity": "HIGH",
+      "evidence": "No case passed the candidate-pool independence gate",
+      "required_resolution": "Create a clean candidate pool first; do not label contaminated dates"
+    }
+  ],
+  "casebook_checksum": null,
+  "draft_checksum_basis": "canonical JSON with draft_checksum and draft_checksum_basis removed, sorted keys, compact encoding",
+  "draft_checksum": "92ad51f33f72668ae05fb9687105c0b2484b84f24e98e6fb54a13416c4b74f37"
+}

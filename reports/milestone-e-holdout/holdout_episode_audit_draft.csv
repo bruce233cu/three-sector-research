@@ -1,0 +1,8 @@
+episode_cluster,development_window_start,development_window_end,development_cases,certified_window_overlap,holdout_reusable,status
+秋季政策行情,2024-09-02,2024-12-10,"P01|P02|N01|N02|N03|A03",true,false,DEVELOPMENT_ONLY
+秋季及消费红利,2024-09-13,2025-02-06,"P03|P04|P05|N10",true,false,DEVELOPMENT_ONLY
+消费退潮及年末调整,2024-10-29,2025-02-17,"N04|N06|N07|N08|N09",true,false,DEVELOPMENT_ONLY
+春节AI与机器人,2024-12-16,2025-05-07,"P06|P07|P08|N05|A01|A04",true,false,DEVELOPMENT_ONLY
+关税冲击后轮动,2025-02-24,2025-06-30,"A02|A05",true,false,DEVELOPMENT_ONLY
+二季度轮动,2025-03-19,2025-06-30,"P09|P10",true,false,DEVELOPMENT_ONLY
+CERTIFIED_SCOPE,2024-09-02,2025-06-30,"ALL_25_DEVELOPMENT_CASES",true,false,"197/197 sessions contaminated by window overlap"

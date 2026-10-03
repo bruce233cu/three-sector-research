@@ -1,0 +1,2 @@
+case_id,warmup_data_version,warmup_start_date,required_sessions,available_sessions,membership_ok,market_data_ok,indicator_window_ok,state_initialization_ok,counter_initialization_ok,freeze_ok,deterministic_ok,qualification_status,qualification_reason
+SCOPE_BLOCKER,warmup_data_version_v2_1b7b20d9f8470f29,,84,,,,,,,,,NOT_EVALUATED,"No contamination-clean case reached Warmup Qualification"

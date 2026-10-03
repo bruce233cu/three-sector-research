@@ -1,0 +1,32 @@
+{
+  "artifact": "holdout_casebook_draft_v1",
+  "status": "BLOCKED_NOT_FROZEN",
+  "created_at": "2026-10-03T19:17:05+08:00",
+  "source_commit": "ad3cbb0b3e654a548b0ef9e14c9c4737c2c858f8",
+  "candidate_id": "v4a_calibration_candidate_v1",
+  "candidate_frozen": true,
+  "warmup_data_version": "warmup_data_version_v2_1b7b20d9f8470f29",
+  "development_casebook_file_checksum": "6d29aef9b1ae82b1c72061d065ac6aaf736d0aa729f0e6e200e04049febb44b9",
+  "certified_board_input_checksum": "c350662efb5ef5c8a7a4defcf5fe4b10511356d2532b720bc777acd7dc9e90f6",
+  "success_criteria_checksum": "f142e79f1241df5c6e51a89bb49d5baca45996caae2abe8b1af15da8a78293f2",
+  "scope_result": {
+    "certified_sessions": 197,
+    "development_overlap_sessions": 197,
+    "clean_sessions": 0,
+    "eligible_cases": 0
+  },
+  "label_review_completed": false,
+  "episode_isolation_passed": false,
+  "contamination_all_clean": false,
+  "warmup_all_qualified": false,
+  "v4a_executed": false,
+  "holdout_execution_allowed": false,
+  "production_status": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  },
+  "formal_casebook_version": null,
+  "formal_casebook_checksum": null,
+  "draft_checksum_basis": "canonical holdout_casebook_draft.json with draft_checksum and draft_checksum_basis removed, sorted keys, compact encoding",
+  "draft_checksum": "92ad51f33f72668ae05fb9687105c0b2484b84f24e98e6fb54a13416c4b74f37"
+}

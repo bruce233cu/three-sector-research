@@ -1,0 +1,2 @@
+case_id,reviewer_a_label,reviewer_a_reason,reviewer_b_label,reviewer_b_reason,agreement_status,adjudication_result,status,blocking_reason
+SCOPE_BLOCKER,,,,,,NOT_APPLICABLE,NOT_STARTED,"No candidate passed Development-window independence gate"

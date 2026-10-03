@@ -1,0 +1,2 @@
+case_id,development_overlap,episode_overlap,date_overlap,same_catalyst,same_policy_event,same_market_move,historical_report_reference,calibration_inspiration,v4a_result_seen,label_independent,warmup_eligible,contamination_status,contamination_reason
+SCOPE_BLOCKER,true,NOT_EVALUATED,true,NOT_EVALUATED,NOT_EVALUATED,NOT_EVALUATED,true,NOT_EVALUATED,false,NOT_EVALUATED,NOT_EVALUATED,BLOCKED,"197/197 certified sessions overlap one or more Development case windows; no case may proceed"
