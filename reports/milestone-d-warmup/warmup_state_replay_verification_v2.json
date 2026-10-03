@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "warmup_data_version": "warmup_data_version_v2_1b7b20d9f8470f29",
+  "source_evidence": "reports/milestone-d-warmup/recertification-37100723220/warmup_state_replay_verification_v2.json",
+  "case_count": 25,
+  "qualified_cases": 25,
+  "unqualified_cases": 0,
+  "replay_scope": {"start": "2024-05-06", "end": "2025-03-18", "purpose": "state initialization only"},
+  "state_rows": 6572,
+  "transition_count": 955,
+  "transition_on_freeze_count": 0,
+  "illegal_transition_count": 0,
+  "all_frozen_low_rank_prefix_sessions": 58,
+  "future_membership_backfill_detected": false,
+  "null_filled_with_zero": false,
+  "state_initialization_complete": true,
+  "counter_initialization_complete": true,
+  "deterministic": true,
+  "pit_level": "effective_pit",
+  "knowledge_time_unverified": true,
+  "production_writes": 0
+}

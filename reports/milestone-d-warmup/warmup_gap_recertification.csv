@@ -1,0 +1,14 @@
+old_gap_id,old_missing_item,old_reason,new_data_version,new_source_snapshot,new_status,resolved_by_recertification,still_missing,recovered_original
+gap-01,001367.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-02,002484.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-03,002780.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-04,300099.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-05,300190.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-06,300218.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-07,300285.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-08,300364.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-09,300872.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-10,301220.SZ,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-11,600583.SH,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-12,603966.SH,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false
+gap-13,688372.SH,certified_payload_mismatch,warmup_data_version_v2_1b7b20d9f8470f29,d86583a9-e1e9-5f24-810f-87959662e8bf,success,true,false,false

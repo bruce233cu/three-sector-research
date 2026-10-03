@@ -1,0 +1,31 @@
+{
+  "version_id": "warmup_data_version_v2_1b7b20d9f8470f29",
+  "status": "CERTIFIED_WITH_EFFECTIVE_PIT_BOUNDARY",
+  "certification_relation": "NEW_VERSION_NOT_ORIGINAL_RECOVERY",
+  "source_manifest": "reports/milestone-d-warmup/recertification-37100031176/warmup_data_version_manifest.json",
+  "provider_fetch_audit": "reports/milestone-d-warmup/recertification-37100031176/provider_fetch_audit.json.gz",
+  "provider_fetch_run_id": "github-actions:37100031176",
+  "source_snapshot_ids": {
+    "price": "d86583a9-e1e9-5f24-810f-87959662e8bf",
+    "benchmark": "31291ca3-f2ac-5eb1-8c1d-f69942aff1b0",
+    "membership": "23534219-21f3-5fdd-8433-c2569a766d47",
+    "universe": "7fa6b543-1631-4ca8-bf76-2a2e329b0353"
+  },
+  "trade_date_range": {
+    "predecessor": "2024-04-30",
+    "warmup_start": "2024-05-06",
+    "warmup_end": "2024-08-30",
+    "sessions": 84
+  },
+  "taxonomy_version": "SW2021",
+  "pit_level": "effective_pit",
+  "knowledge_time_verified": false,
+  "security_requests": 5384,
+  "normalized_security_responses": 5382,
+  "preserved_null_securities": ["000416.SZ", "002699.SZ"],
+  "panel_rows": 2604,
+  "panel_checksum": "be151d081e670ea85b5e2bfc5c82f83385b74deb6bb7dd2749e9efe55302630e",
+  "null_filled_with_zero": false,
+  "future_membership_backfill": false,
+  "production_writes": 0
+}
