@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "pre_effective_pit": true,
+  "post_effective_pit": true,
+  "historical_membership_daily": true,
+  "future_membership_backfill": false,
+  "knowledge_time_verified": false
+}

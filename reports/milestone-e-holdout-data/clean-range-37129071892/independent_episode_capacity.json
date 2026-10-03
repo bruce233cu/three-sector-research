@@ -1,0 +1,18 @@
+{
+  "method": "sum of disjoint-range 20-session-spaced anchor upper bounds",
+  "window_overlap_rule": "formal case windows must not overlap",
+  "semantic_episode_rule": "same catalyst, policy event, continuous move or second-wave continuation collapses to one episode",
+  "pre_temporal_anchor_capacity": 14,
+  "post_temporal_anchor_capacity": 12,
+  "combined_temporal_anchor_capacity": 26,
+  "required_case_count": 25,
+  "capacity_margin": 1,
+  "data_space_sufficient": true,
+  "class_quota_status": "TO_BE_CONFIRMED_BLINDLY_DURING_CASEBOOK_FREEZE",
+  "class_quota_target": {
+    "positive": 10,
+    "negative": 10,
+    "ambiguous": 5
+  },
+  "interpretation": "This establishes enough blind data-space slots; it does not pre-label or guarantee the 10/10/5 class mix."
+}

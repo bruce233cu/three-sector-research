@@ -1,0 +1,22 @@
+{
+  "status": "QUALIFIED",
+  "warmup_range": [
+    "2022-11-28",
+    "2023-03-31"
+  ],
+  "required_warmup_sessions": 84,
+  "clean_candidate_range": [
+    "2023-04-03",
+    "2024-04-30"
+  ],
+  "candidate_sessions": 261,
+  "safe_pre_holdout_end_date": "2024-04-30",
+  "development_first_date": "2024-09-02",
+  "quarantine_sessions_before_development": 84,
+  "quarantine_range": [
+    "2024-05-06",
+    "2024-08-30"
+  ],
+  "temporal_anchor_capacity": 14,
+  "case_level_episode_and_catalyst_audit_still_required": true
+}

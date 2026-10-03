@@ -1,0 +1,9 @@
+{
+  "development_first_date": "2024-09-02",
+  "development_last_date": "2025-06-30",
+  "safe_pre_holdout_end_date": "2024-04-30",
+  "safe_post_holdout_start_date": "2025-11-04",
+  "pre_quarantine_sessions": 84,
+  "post_warmup_isolation_sessions": 84,
+  "semantic_episode_audit_required": true
+}

@@ -1,0 +1,118 @@
+{
+  "version_id": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+  "created_at": "2026-10-03T14:29:15.456264+00:00",
+  "purpose": "pre_and_post_development_clean_holdout_selection_space",
+  "code_commit": "97d30dce003baf8072720419e9f89b3d2382ff84",
+  "provider_fetch_run_id": "37129071892",
+  "parent_versions": [
+    "holdout_data_version_v1_d045945d53222691",
+    "holdout_data_version_v1_0caf3bfbd06e202b"
+  ],
+  "parent_manifest_checksums": {
+    "holdout_data_version_v1_d045945d53222691": "e23de19b942e11be71a6d0173f24ae8318b21176d00ec0740fa29fc671cf7698",
+    "holdout_data_version_v1_0caf3bfbd06e202b": "c63d8a46b390df37dc6e39257549f95afc5a84fba927590b588202c6cfad9969"
+  },
+  "clean_ranges": [
+    {
+      "status": "QUALIFIED",
+      "warmup_range": [
+        "2022-11-28",
+        "2023-03-31"
+      ],
+      "required_warmup_sessions": 84,
+      "clean_candidate_range": [
+        "2023-04-03",
+        "2024-04-30"
+      ],
+      "candidate_sessions": 261,
+      "safe_pre_holdout_end_date": "2024-04-30",
+      "development_first_date": "2024-09-02",
+      "quarantine_sessions_before_development": 84,
+      "quarantine_range": [
+        "2024-05-06",
+        "2024-08-30"
+      ],
+      "temporal_anchor_capacity": 14,
+      "case_level_episode_and_catalyst_audit_still_required": true
+    },
+    {
+      "status": "QUALIFIED",
+      "parent_version": "holdout_data_version_v1_d045945d53222691",
+      "warmup_range": [
+        "2025-07-01",
+        "2025-11-03"
+      ],
+      "clean_candidate_range": [
+        "2025-11-04",
+        "2026-09-30"
+      ],
+      "candidate_sessions": 223,
+      "safe_post_holdout_start_date": "2025-11-04",
+      "temporal_anchor_capacity": 12,
+      "case_level_episode_and_catalyst_audit_still_required": true
+    }
+  ],
+  "total_candidate_sessions": 484,
+  "taxonomy_version": "SW2021",
+  "industry_count": 31,
+  "pit_level": "effective_pit",
+  "knowledge_time_verified": false,
+  "knowledge_time_unverified": true,
+  "historical_membership_daily": true,
+  "future_membership_backfill": false,
+  "null_preserved": true,
+  "freeze_semantics": true,
+  "state_initialization": true,
+  "counter_initialization": true,
+  "counters": [
+    "confirm",
+    "recover",
+    "weaken",
+    "retire"
+  ],
+  "deterministic_rerun": true,
+  "independent_episode_capacity": {
+    "method": "sum of disjoint-range 20-session-spaced anchor upper bounds",
+    "window_overlap_rule": "formal case windows must not overlap",
+    "semantic_episode_rule": "same catalyst, policy event, continuous move or second-wave continuation collapses to one episode",
+    "pre_temporal_anchor_capacity": 14,
+    "post_temporal_anchor_capacity": 12,
+    "combined_temporal_anchor_capacity": 26,
+    "required_case_count": 25,
+    "capacity_margin": 1,
+    "data_space_sufficient": true,
+    "class_quota_status": "TO_BE_CONFIRMED_BLINDLY_DURING_CASEBOOK_FREEZE",
+    "class_quota_target": {
+      "positive": 10,
+      "negative": 10,
+      "ambiguous": 5
+    },
+    "interpretation": "This establishes enough blind data-space slots; it does not pre-label or guarantee the 10/10/5 class mix."
+  },
+  "v4a_executed": false,
+  "baseline_executed": false,
+  "holdout_executed": false,
+  "production": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  },
+  "source_trace": {
+    "pre_source_snapshot_ids": [
+      "e920eb53-10d4-52b8-abea-acf1c77515ee",
+      "6fef5812-a881-55d9-a70e-72244ac71525",
+      "19adb27f-2387-5877-b0ec-713d57d8581e",
+      "8df6dab2-b906-562c-b88a-5d1bb052f46f"
+    ],
+    "post_source_snapshot_ids": [
+      "ecd9b7d3-2c1f-5686-8091-b779d39c653b",
+      "209382ef-decc-56b5-a8f7-b29d8188336b",
+      "0ac4aa5e-70ae-5675-93f3-c4727fba6a44",
+      "d27ba02d-61dc-5b2d-94ad-ff4be594870c"
+    ],
+    "pre_response_checksum": "97e6aea836a2c5d29bd41b73b4e23f1d2a75ac4e78a077aebe02c14d6bbbdaaf",
+    "pre_normalized_checksum": "56cffd486c46b7b21c152820f5e895b832c0eba48cb605b998ade32f7fa8f29f",
+    "post_response_checksum": "ad48a120133f037b618c241f17baedc4ac2d5d41b30aa57477935ffe048c0ba2",
+    "post_normalized_checksum": "10b84e22aff9fa7f1b49c09777a110ee6912d43d46c8c5471553049fb65a08f4",
+    "calendar_probe_checksum": "d5112e08726ecc435092fb63547a34fc514b071b1a4a84f9e2c29fb9023726a9"
+  }
+}

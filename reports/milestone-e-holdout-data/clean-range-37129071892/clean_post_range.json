@@ -1,0 +1,16 @@
+{
+  "status": "QUALIFIED",
+  "parent_version": "holdout_data_version_v1_d045945d53222691",
+  "warmup_range": [
+    "2025-07-01",
+    "2025-11-03"
+  ],
+  "clean_candidate_range": [
+    "2025-11-04",
+    "2026-09-30"
+  ],
+  "candidate_sessions": 223,
+  "safe_post_holdout_start_date": "2025-11-04",
+  "temporal_anchor_capacity": 12,
+  "case_level_episode_and_catalyst_audit_still_required": true
+}
