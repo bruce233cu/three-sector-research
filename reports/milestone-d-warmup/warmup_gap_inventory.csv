@@ -1,0 +1,14 @@
+security_id,symbol,industry,related_cases,gap_type,http_status,current_payload_available,original_certified_payload_available,existing_artifact_can_fill,resolved,state_initialization_impact
+001367.SZ,sz001367,医药生物,,certified_payload_mismatch,200,true,false,false,false,benchmark_and_all-market-input-unverified
+002484.SZ,sz002484,电子,P01,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+002780.SZ,sz002780,纺织服饰,N06,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+300099.SZ,sz300099,机械设备,P07,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+300190.SZ,sz300190,环保,,certified_payload_mismatch,200,true,false,false,false,benchmark_and-all-market-input-unverified
+300218.SZ,sz300218,基础化工,,certified_payload_mismatch,200,true,false,false,false,benchmark_and-all-market-input-unverified
+300285.SZ,sz300285,电子,P01,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+300364.SZ,sz300364,传媒,N05;A01,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+300872.SZ,sz300872,计算机,P06,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+301220.SZ,sz301220,基础化工,,certified_payload_mismatch,200,true,false,false,false,benchmark_and-all-market-input-unverified
+600583.SH,sh600583,石油石化,,certified_payload_mismatch,200,true,false,false,false,benchmark_and-all-market-input-unverified
+603966.SH,sh603966,机械设备,P07,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified
+688372.SH,sh688372,电子,P01,certified_payload_mismatch,200,true,false,false,false,direct-industry-and-benchmark-input-unverified

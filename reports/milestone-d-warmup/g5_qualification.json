@@ -1,0 +1,79 @@
+{
+  "gate": "G5",
+  "status": "FAIL",
+  "decision_date": "2026-10-03",
+  "scope": "84 warmup trading sessions from 2024-05-06 through 2024-08-30 plus the 2024-04-30 predecessor",
+  "formal_acceptance_definition": "Every case used for validation must have a complete effective-PIT membership and market-data path sufficient to compute the frozen metrics and replay S0-S4 plus all counters from a legal initialized state; NULL and Freeze semantics, no-future-membership, provenance, and deterministic replay must all pass.",
+  "request_coverage": {
+    "certified": 5369,
+    "required": 5382,
+    "ratio": 0.9975845410628019,
+    "qualifies_as_full_warmup": false
+  },
+  "unresolved_items": 13,
+  "unresolved_type": "CERTIFIED_PAYLOAD_MISMATCH",
+  "unresolved_ids": [
+    "001367.SZ", "002484.SZ", "002780.SZ", "300099.SZ", "300190.SZ",
+    "300218.SZ", "300285.SZ", "300364.SZ", "300872.SZ", "301220.SZ",
+    "600583.SH", "603966.SH", "688372.SH"
+  ],
+  "resolution": {
+    "all_13_resolved": false,
+    "current_http_responses_available": true,
+    "current_http_status": 200,
+    "original_certified_bytes_archived": false,
+    "successful_original_price_cache_archived": false,
+    "existing_artifact_can_reliably_fill": false,
+    "silent_recertification_allowed": false,
+    "zero_or_future_backfill_used": false,
+    "full_system_rerun_performed": false,
+    "minimal_state_replay_performed": false,
+    "minimal_state_replay_reason": "No accepted complete warmup input exists; replaying incomplete or newly substituted payloads would not close G5."
+  },
+  "acceptance_checks": {
+    "A_required_warmup_window_complete": "FAIL",
+    "B_historical_membership_date_effective": "PASS_EXISTING_EVIDENCE",
+    "C_required_security_market_windows_complete": "FAIL",
+    "D_ma20_ma60_new_high60_windows_real": "FAIL_NOT_FULL_PANEL",
+    "E_null_remains_null": "PASS_CONTRACT_NO_SUBSTITUTION",
+    "F_freeze_logic_correct": "NOT_VERIFIED_ON_FULL_WARMUP",
+    "G_state_replay_legal_initial_state": "FAIL_NOT_RUN",
+    "H_all_counter_prehistory_complete": "FAIL_NOT_RUN",
+    "I_membership_effective_pit": "PASS",
+    "J_knowledge_time_verified": "FAIL_UNVERIFIED",
+    "K_deterministic_full_warmup_rerun": "FAIL_NOT_RUN",
+    "L_no_future_membership_backfill": "PASS_NO_BACKFILL_PERFORMED",
+    "M_all_holdout_cases_warmup_qualified": "FAIL"
+  },
+  "state_path_effect": {
+    "complete_initialization_certified": false,
+    "affected_states": ["S0", "S1", "S2", "S3", "S4"],
+    "affected_counters": ["confirm_counter", "recover_counter", "weaken_counter", "retire_counter"],
+    "possible_biases_not_quantified": [
+      "left_truncation", "incorrect inherited state", "early confirmation", "late confirmation", "incorrect Freeze"
+    ],
+    "direct_case_ids": ["P01", "P06", "P07", "N05", "N06", "A01"],
+    "all_25_paths_certified": false
+  },
+  "case_eligibility": {
+    "holdout_eligible_case_ids": [],
+    "holdout_ineligible_case_ids": [
+      "P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10",
+      "N01", "N02", "N03", "N04", "N05", "N06", "N07", "N08", "N09", "N10",
+      "A01", "A02", "A03", "A04", "A05"
+    ],
+    "note": "These 25 cases are also permanently development/diagnostic and cannot be reused as an independent holdout. Future holdout cases require their own complete warmup qualification before execution."
+  },
+  "pit_level": "effective_pit",
+  "knowledge_time_unverified": true,
+  "full_warmup_checksum": null,
+  "full_warmup_state_replay": "NOT_RUN",
+  "full_warmup_deterministic_rerun": "NOT_RUN",
+  "holdout_design_allowed": false,
+  "production_writes": 0,
+  "formal_rules_modified": false,
+  "evidence_sha256": {
+    "failed_items_classified.json": "ac87180155834153a31bf9169921a4a6e274f7de5564b7813906e8730925c792",
+    "warmup_audit.json": "ce065a1b053d613380ca2f48bf234ee170d417f217279e982a395f3b3f3f474c"
+  }
+}

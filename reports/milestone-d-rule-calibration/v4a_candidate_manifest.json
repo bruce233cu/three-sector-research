@@ -1,0 +1,91 @@
+{
+  "candidate_id": "v4a_calibration_candidate_v1",
+  "candidate_name": "V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY",
+  "candidate_status": "CALIBRATION_CANDIDATE",
+  "frozen_at": "2026-10-03T12:50:30+08:00",
+  "source_commit": "7386d04e666ba2ba34d235ec5025ef7bd0466417",
+  "experiment_start_commit": "58217cdfc4f802db503692b98081445c0f7d1ea0",
+  "branch": "mainline-phase1e",
+  "baseline_rule_version": "mainline_v2.2.1_state_completion_v1",
+  "baseline_parameter_profile": "industry_trend_v221_state_completion_v1",
+  "development_casebook_version": "casebook_v1_20261002_25",
+  "development_casebook_checksum": "249799d4c82ee067c4450e58d3409c661e2afb0dc7ff0339ae277f0f6d69c47d",
+  "data_snapshot_version": "board-archive-3ff7ae0a56ab0c65",
+  "candidate_logic": {
+    "structural_parent": "V1_B3_WITH_SAME_BRANCH_AND_REQUIRED_KNOWN",
+    "only_delta": "NULL_BREAKS_CONFIRMATION_CONTINUITY",
+    "required_known": ["A", "B", "C", "D", "Enhancer", "above_ma20"],
+    "null_behavior": "UNKNOWN; no accumulation, no confirmation, and the active confirmation chain is invalidated",
+    "confirm_counter_behavior": "all confirmation signature counters reset to 0 on required-known NULL; the first later eligible known day restarts at 1",
+    "false_behavior": "not treated as NULL and follows the frozen signature failure contract",
+    "freeze_behavior": "does not create global Freeze or alter the formal Freeze contract",
+    "state_behavior": "does not exit S1 and does not alter candidate, weaken, recover, retire, S3, or S4",
+    "evidence_signature_rule": "same-branch counters are independent; days from different branches or signatures cannot be combined",
+    "above_ma20_min": 0.6
+  },
+  "development_results": {
+    "baseline": {
+      "positive_event_s2_cases": 5,
+      "positive_full_window_s2_cases": 6,
+      "negative_event_new_s2_cases": 1,
+      "negative_event_s2_case_days": 11,
+      "s0_s1_s0": 117,
+      "short_reversals": 174,
+      "reversals": 276,
+      "transitions": 341
+    },
+    "candidate": {
+      "positive_event_s2_cases": 8,
+      "positive_full_window_s2_cases": 8,
+      "negative_event_new_s2_cases": 1,
+      "negative_event_s2_case_days": 11,
+      "s0_s1_s0": 106,
+      "short_reversals": 166,
+      "reversals": 267,
+      "transitions": 340,
+      "new_positive_event_hits": ["P03", "P09", "P10"],
+      "lost_positive_event_hits": [],
+      "negative_new_confirmation_ids": ["N10"],
+      "n02_event_s2_exposure": 0,
+      "n04_full_window_s2": false,
+      "n08_event_or_full_window_s2": false
+    }
+  },
+  "guardrails": {
+    "status": "PASS",
+    "all_registered_checks_passed": true,
+    "null_counter_retention_violations": 0,
+    "recovery_first_day_counter_violations": 0,
+    "cross_signature_accumulations": 0,
+    "freeze_transition_violations": 0
+  },
+  "deterministic_rerun": {
+    "status": "PASS",
+    "runs": 2,
+    "checksums": [
+      "2e3c8e9319657300feb9c67058a789463e400aa78ab658b86218319505dd099f",
+      "2e3c8e9319657300feb9c67058a789463e400aa78ab658b86218319505dd099f"
+    ]
+  },
+  "evidence_sha256": {
+    "calibration_results_v4.json": "7ed52169c9e9d1e6f051c5882794c3c5cf303534304a90c0fe999af4a685b9a4",
+    "deterministic_rerun_v4.json": "3cbde3f93421808f370d3a74dbdb86880ca65f18dfebbddd523efb854463bdf9",
+    "experiment_manifest_v4.json": "b6087dd4fc5f2391324225175eeb72d4c9ab41db38cf14148150539b59c94aa8",
+    "RULE_CALIBRATION_EXPERIMENT_SPEC_V4.md": "2993b22e4bfada3ff118fa58c3ce854780286259fc5ff8ed9cc3e171c825b124",
+    "CALIBRATION_EXECUTION_REPORT_V4.md": "5e0b1b91f3b4694e137b1e94af3f06cb0854f0ce670b96e275f87895c25b8cce"
+  },
+  "known_limitations": [
+    "The 25 cases are a development/diagnostic set and cannot prove generalization.",
+    "G5 full 84-session warmup qualification is not certified.",
+    "Strict knowledge-time PIT is unverified.",
+    "No formal rule, parameter profile, or production state is changed by this freeze."
+  ],
+  "g5_status": "FAIL",
+  "holdout_status": "NOT_AUTHORIZED_PENDING_G5",
+  "production_status": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false,
+    "formal_rule_published": false
+  },
+  "current_25_case_tuning_allowed": false
+}
