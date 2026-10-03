@@ -1,0 +1,78 @@
+{
+  "contract_version": "holdout_success_criteria_v1",
+  "status": "FROZEN_BEFORE_CASE_SELECTION_RESULTS",
+  "candidate_id": "v4a_calibration_candidate_v1",
+  "minimum_qualified_sample": {
+    "positive": 10,
+    "negative": 10,
+    "ambiguous": 5,
+    "ambiguous_in_primary_denominators": false
+  },
+  "metric_definitions": {
+    "positive_event_s2_recall": "positive cases with at least one valid S2 in the frozen event window / qualified positive cases",
+    "positive_full_window_s2_recall": "positive cases with at least one valid S2 in the frozen case window / qualified positive cases",
+    "negative_event_new_confirmation_rate": "negative cases whose first new S2 transition occurs in the frozen event window / qualified negative cases; inherited pre-event S2 is not a new confirmation",
+    "negative_event_s2_exposure_rate": "negative event-window case-days in S2 / all qualified negative event-window case-days",
+    "confirmation_lag_sessions": "trading sessions from frozen event_start to first valid event-window S2; misses are reported separately and never imputed",
+    "churn_rates": "S0->S1->S0, short reversal, reversal and total transition counts per 100 eligible case-days"
+  },
+  "minimum_pass": {
+    "positive_event_s2_recall_min": 0.70,
+    "positive_full_window_s2_recall_min": 0.70,
+    "negative_event_new_confirmation_rate_max": 0.10,
+    "negative_event_new_confirmation_count_max_when_n10": 1,
+    "negative_event_s2_exposure_rate_max": 0.10,
+    "negative_single_case_consecutive_s2_days_max": 3,
+    "confirmation_lag_median_sessions_max": 5,
+    "confirmation_lag_mean_sessions_max": 7,
+    "confirmation_lag_p90_sessions_max": 10,
+    "candidate_event_recall_not_below_baseline": true,
+    "candidate_negative_new_confirmations_not_above_baseline": true,
+    "candidate_negative_exposure_not_above_baseline": true,
+    "candidate_churn_rate_max_vs_baseline_multiplier": 1.05,
+    "churn_metrics_not_above_baseline_required_count_of_4": 3,
+    "incremental_value_required": "at least one additional positive event hit versus baseline OR at least 10% reduction in negative exposure or any two churn rates, with no other hard guardrail regression",
+    "positive_hits_min_distinct_sector_style_buckets": 3,
+    "positive_hits_min_distinct_episode_types": 3,
+    "leave_two_positive_cases_out_event_recall_min": 0.60,
+    "null_default_pass_count": 0,
+    "null_filled_zero_count": 0,
+    "freeze_contract_violation_count": 0,
+    "illegal_state_transition_count": 0,
+    "cross_signature_accumulation_count": 0,
+    "future_data_read_count": 0,
+    "deterministic_rerun_required": true
+  },
+  "strong_pass": {
+    "positive_event_s2_recall_min": 0.80,
+    "positive_full_window_s2_recall_min": 0.80,
+    "negative_event_new_confirmation_count": 0,
+    "negative_event_s2_exposure_rate_max": 0.05,
+    "negative_single_case_consecutive_s2_days_max": 2,
+    "confirmation_lag_median_sessions_max": 3,
+    "confirmation_lag_mean_sessions_max": 5,
+    "all_four_churn_rates_not_above_baseline": true,
+    "churn_metrics_improved_by_5pct_required_count_of_4": 2,
+    "leave_two_positive_cases_out_event_recall_min": 0.70
+  },
+  "hard_fail": [
+    "Any minimum_pass threshold or hard contract guardrail is missed on an otherwise valid and independent run",
+    "Performance is poor; poor performance must never be relabeled INCONCLUSIVE",
+    "V4-A loses to baseline on event recall, new false confirmations, or negative exposure beyond the frozen tolerances",
+    "Improvement is attributable only to one or two positive cases under the leave-two-out test",
+    "Any NULL, Freeze, evidence-signature, state-transition, future-read or deterministic contract violation attributable to the candidate"
+  ],
+  "inconclusive_only": [
+    "Frozen case data qualification failure or certified data-version corruption",
+    "External source becomes unavailable and prevents the frozen evidence contract from being verified",
+    "Unresolved label conflict or evidence error discovered after freeze",
+    "Episode independence or result-blindness is shown to have been broken",
+    "Execution infrastructure failure before a valid complete comparison exists"
+  ],
+  "one_time_rule": "Once any formal case result for baseline or V4-A is computed or viewed, the casebook is CONSUMED and cannot be reused for tuning or another formal holdout.",
+  "final_outcomes": [
+    "HOLDOUT PASS",
+    "HOLDOUT FAIL",
+    "HOLDOUT INCONCLUSIVE"
+  ]
+}

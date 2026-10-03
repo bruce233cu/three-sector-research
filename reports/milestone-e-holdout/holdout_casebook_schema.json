@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://three-sector-research.local/schemas/holdout_casebook_v1.schema.json",
+  "title": "A股主线识别系统 V2.2.1 Independent Holdout Casebook",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "casebook_version",
+    "status",
+    "candidate_id",
+    "development_casebook_checksum",
+    "warmup_data_version",
+    "success_criteria_checksum",
+    "created_at",
+    "frozen_at",
+    "cases",
+    "casebook_checksum"
+  ],
+  "properties": {
+    "casebook_version": {"const": "holdout_casebook_v1"},
+    "status": {"enum": ["DRAFT", "FROZEN_NOT_EXECUTED", "CONSUMED", "VOID"]},
+    "candidate_id": {"const": "v4a_calibration_candidate_v1"},
+    "development_casebook_checksum": {"const": "249799d4c82ee067c4450e58d3409c661e2afb0dc7ff0339ae277f0f6d69c47d"},
+    "warmup_data_version": {"const": "warmup_data_version_v2_1b7b20d9f8470f29"},
+    "success_criteria_checksum": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "frozen_at": {"type": ["string", "null"], "format": "date-time"},
+    "consumed_at": {"type": ["string", "null"], "format": "date-time"},
+    "execution_authorized": {"type": "boolean"},
+    "cases": {
+      "type": "array",
+      "minItems": 25,
+      "items": {"$ref": "#/$defs/case"}
+    },
+    "casebook_checksum": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "$defs": {
+    "date": {"type": "string", "format": "date"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id", "label", "sector", "taxonomy_code", "market_style", "market_regime",
+        "episode_id", "episode_type", "event_start", "event_end", "case_window_start",
+        "case_window_end", "warmup_start", "label_reason", "selection_reason",
+        "evidence_sources", "independence_check", "warmup_qualification", "checksum",
+        "created_at", "frozen_at"
+      ],
+      "properties": {
+        "case_id": {"type": "string", "pattern": "^H[PNAX][0-9]{2,3}$"},
+        "label": {"enum": ["positive", "negative", "ambiguous"]},
+        "sector": {"type": "string", "minLength": 1},
+        "taxonomy_code": {"type": "string", "minLength": 1},
+        "market_style": {"enum": ["科技成长", "制造", "消费", "金融", "周期", "其他"]},
+        "market_regime": {"enum": ["强牛", "震荡", "弱市", "快速轮动", "风险偏好下降"]},
+        "episode_id": {"type": "string", "minLength": 8},
+        "episode_type": {"enum": ["快速启动", "慢趋势", "高波动", "连续强趋势", "二波", "回踩再启动", "假突破", "短反弹", "结构性", "其他"]},
+        "event_start": {"$ref": "#/$defs/date"},
+        "event_end": {"$ref": "#/$defs/date"},
+        "case_window_start": {"$ref": "#/$defs/date"},
+        "case_window_end": {"$ref": "#/$defs/date"},
+        "warmup_start": {"$ref": "#/$defs/date"},
+        "label_reason": {"type": "string", "minLength": 30},
+        "selection_reason": {"type": "string", "minLength": 20},
+        "evidence_sources": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["url", "published_at", "source_type", "summary", "checksum"],
+            "properties": {
+              "url": {"type": "string", "format": "uri"},
+              "published_at": {"type": "string", "format": "date"},
+              "source_type": {"enum": ["market_review", "official", "research", "independent_statistics"]},
+              "summary": {"type": "string", "minLength": 10},
+              "checksum": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        },
+        "independence_check": {
+          "type": "object", "additionalProperties": false,
+          "required": ["development_episode_overlap", "calibration_reference_hit", "result_blind", "audit_status", "audit_checksum"],
+          "properties": {
+            "development_episode_overlap": {"const": false},
+            "calibration_reference_hit": {"const": false},
+            "result_blind": {"const": true},
+            "audit_status": {"const": "PASS"},
+            "audit_checksum": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "warmup_qualification": {
+          "type": "object", "additionalProperties": false,
+          "required": ["required_sessions", "available_sessions", "membership_ok", "market_data_ok", "indicator_window_ok", "state_initialization_ok", "counter_initialization_ok", "freeze_ok", "deterministic_ok", "qualification_status", "evidence_checksum"],
+          "properties": {
+            "required_sessions": {"const": 84},
+            "available_sessions": {"type": "integer", "minimum": 84},
+            "membership_ok": {"const": true},
+            "market_data_ok": {"const": true},
+            "indicator_window_ok": {"const": true},
+            "state_initialization_ok": {"const": true},
+            "counter_initialization_ok": {"const": true},
+            "freeze_ok": {"const": true},
+            "deterministic_ok": {"const": true},
+            "qualification_status": {"const": "QUALIFIED"},
+            "evidence_checksum": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "checksum": {"$ref": "#/$defs/sha256"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "frozen_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}
