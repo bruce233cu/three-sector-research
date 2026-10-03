@@ -1,0 +1,15 @@
+{
+  "development_last_date": "2022-06-17",
+  "development_last_episode_end": "2022-06-17",
+  "mechanical_20_session_start": "2022-07-15",
+  "safe_holdout_start_date": "2022-10-24",
+  "safe_start_basis": "first session after 84 complete post-Development sessions; exceeds the 20-session gap and keeps the entire state-initialization window after Development",
+  "same_episode_not_assumed_clean": true,
+  "case_level_episode_and_catalyst_audit_still_required": true,
+  "candidate_end_date": "2023-03-20",
+  "candidate_sessions": 100,
+  "minimum_gap_sessions": 20,
+  "optimistic_max_nonoverlapping_case_anchors": 5,
+  "required_case_count": 25,
+  "sufficient_space": false
+}

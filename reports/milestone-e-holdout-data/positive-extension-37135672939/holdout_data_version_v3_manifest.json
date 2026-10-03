@@ -1,0 +1,38 @@
+{
+  "version_id": "holdout_data_version_v3_100b66d4027b0daf",
+  "created_at": "2026-10-03T16:16:25.672648+00:00",
+  "purpose": "positive_holdout_completion_minimal_pre_extension",
+  "code_commit": "881a0d483fdf41fa2c09d45ca5df880518fb7774",
+  "provider_fetch_run_id": "37135672939",
+  "parent_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+  "parent_manifest_checksum": "db52ddf98fb55d3561485e7a93d654a06cabc993c7970ae69667017ff6796afd",
+  "extension_segment_version": "holdout_data_version_v1_643e6bfedd278635",
+  "extension_manifest_checksum": "d87c0e07cadba7ab724b4c90c13cb6e68730f1ad6b3f7b2c8eafa778af4e6fb7",
+  "extension_warmup_range": [
+    "2022-06-20",
+    "2022-10-21"
+  ],
+  "extension_clean_candidate_range": [
+    "2022-10-24",
+    "2023-03-20"
+  ],
+  "extension_candidate_sessions": 100,
+  "required_warmup_sessions": 84,
+  "minimum_gap_to_locked_case_sessions": 20,
+  "earliest_locked_case_start": "2023-04-18",
+  "pit_level": "effective_pit",
+  "knowledge_time_verified": false,
+  "historical_membership_daily": true,
+  "future_membership_backfill": false,
+  "null_preserved": true,
+  "freeze_semantics": true,
+  "state_initialization": true,
+  "counter_initialization": true,
+  "deterministic_rerun": true,
+  "v4a_executed": false,
+  "holdout_executed": false,
+  "production": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  }
+}
