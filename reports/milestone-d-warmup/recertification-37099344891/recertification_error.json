@@ -1,0 +1,1 @@
+{"status":"FAIL","error_type":"ValueError","error":"effective-PIT universe contains securities absent from frozen acquisition contract: 000416.SZ,002699.SZ","created_at":"2026-10-03T05:17:53.635421+00:00","production_writes":0}
