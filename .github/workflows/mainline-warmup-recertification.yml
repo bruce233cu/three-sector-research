@@ -1,0 +1,106 @@
+name: Mainline G5 warmup data recertification
+
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths:
+      - scripts/mainline/backtest_recertify_warmup.py
+      - scripts/mainline/backtest_verify_warmup_state.py
+      - .github/workflows/mainline-warmup-recertification.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  recertify-warmup-data-version:
+    if: contains(github.event.head_commit.message, '[g5-recert]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      OUTPUT: reports/milestone-d-warmup/recertification-${{ github.run_id }}
+      CACHE: temporary_warmup/recertification-cache
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements-mainline.txt
+      - name: Compile and verify frozen contracts
+        run: |
+          python -m py_compile scripts/mainline/backtest_recertify_warmup.py scripts/mainline/backtest_verify_warmup_state.py
+          PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_backtest_baseline.py' -v
+          PYTHONPATH=src python -m unittest discover -s tests/mainline -p 'test_warmup_recertification.py' -v
+          test "$(jq -r .candidate_id reports/milestone-d-rule-calibration/v4a_candidate_manifest.json)" = "v4a_calibration_candidate_v1"
+          test "$(jq -r .candidate_status reports/milestone-d-rule-calibration/v4a_candidate_manifest.json)" = "CALIBRATION_CANDIDATE"
+      - uses: actions/download-artifact@v4
+        with:
+          name: mainline-state-completion-acquisition
+          run-id: 36961627493
+          github-token: ${{ github.token }}
+          path: temporary_warmup/g3
+      - uses: actions/download-artifact@v4
+        with:
+          name: mainline-production-evidence
+          run-id: 36970118460
+          github-token: ${{ github.token }}
+          path: temporary_warmup/production
+      - uses: actions/download-artifact@v4
+        with:
+          name: v221-benchmark-universe
+          run-id: 36942748135
+          github-token: ${{ github.token }}
+          path: temporary_warmup/universe
+      - name: Select existing membership and universe evidence
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          root=Path('temporary_warmup')
+          selected={'g3':['real_fetch_manifest.json','real_input_provenance.json','real_benchmark.json'],
+                    'production':['real_memberships.json'], 'universe':['temporary_universe_intervals.json']}
+          for name,files in selected.items():
+              with zipfile.ZipFile(root/(name+'.zip'),'w',compression=zipfile.ZIP_DEFLATED) as archive:
+                  for item in files: archive.write(root/name/item,arcname=item)
+          PY
+      - name: Recertify current provider responses as a new data version
+        run: >-
+          python scripts/mainline/backtest_recertify_warmup.py
+          --g3-zip temporary_warmup/g3.zip
+          --production-zip temporary_warmup/production.zip
+          --universe-zip temporary_warmup/universe.zip
+          --output "$OUTPUT"
+          --cache "$CACHE"
+      - name: Replay only the G5 state-initialization prefix twice
+        run: >-
+          python scripts/mainline/backtest_verify_warmup_state.py
+          --recertification-dir "$OUTPUT"
+          --output "$OUTPUT"
+      - name: Preserve raw and normalized provider evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mainline-warmup-recertification-cache-${{ github.run_id }}
+          path: ${{ env.CACHE }}/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Preserve recertification result artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mainline-warmup-recertification-result-${{ github.run_id }}
+          path: ${{ env.OUTPUT }}/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Archive only recertification evidence
+        if: always()
+        run: |
+          test -d "$OUTPUT" || exit 0
+          git config user.name "mainline-validation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUTPUT"
+          git diff --cached --quiet && exit 0
+          git commit -m "Archive warmup data recertification evidence job=${{ github.run_id }}"
+          git fetch origin mainline-phase1e
+          git merge --no-edit origin/mainline-phase1e
+          git push origin HEAD:mainline-phase1e
