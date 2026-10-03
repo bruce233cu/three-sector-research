@@ -1,0 +1,8 @@
+{
+  "artifact": "holdout_casebook_draft_v2",
+  "canonical_payload_sha256": "00f818daf2f5bfd6c6b067e407776ed61fb63c9fa8f7b680a46b84e04b5338b9",
+  "checksum_scope": "canonical JSON payload before embedding draft_checksum",
+  "file_sha256": "1ecb346dc7b436a1b5c98917511451fdce345feddd6e88e0ffb537ef5c89a47a",
+  "formal_casebook_checksum": null,
+  "status": "DRAFT_ONLY"
+}

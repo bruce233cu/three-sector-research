@@ -1,0 +1,36 @@
+{
+  "artifact": "holdout_casebook_draft_v2",
+  "status": "DRAFT_NOT_FROZEN",
+  "created_at": "2026-10-04T00:50:00Z",
+  "source_commit": "c615784783d52a739a8b83f16360b3dbc2dc31cb",
+  "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+  "target_counts": {
+    "positive": 10,
+    "negative": 10,
+    "ambiguous": 5
+  },
+  "draft_counts": {
+    "positive": 8,
+    "negative": 10,
+    "ambiguous": 5
+  },
+  "blocking_issues": [
+    "positive quota is 8/10 after semantic episode de-duplication",
+    "HB_POST_01 and R1 fail positive public-source hard gate",
+    "HB_POST_07 duplicates HB_POST_06 continuous AI/electronics episode"
+  ],
+  "v4a_executed_or_viewed": false,
+  "formal_casebook_version": null,
+  "formal_casebook_checksum": null,
+  "draft_checksum": "00f818daf2f5bfd6c6b067e407776ed61fb63c9fa8f7b680a46b84e04b5338b9",
+  "draft_checksum_scope": "canonical JSON payload before embedding draft_checksum",
+  "draft_file_sha256": "1ecb346dc7b436a1b5c98917511451fdce345feddd6e88e0ffb537ef5c89a47a",
+  "inputs": {
+    "reviewer_a": "6615315e1a165915eefbd5c318828740b787de0c0977c64aafcd90ea32220807",
+    "reviewer_b": "cc2ce5921a06edff5483cbfc35e7ce8b34603f57cee2759f41c37e9bcb0a520e",
+    "reviewer_a_replacements": "18d7d0262209500664af4f1899b84d46748560dc278cf3a82c22715522254d49",
+    "reviewer_b_replacements": "2a60966b2cf0913c1bb52b1f344908ffd7ff347b25806103c39cc9c5d585f5b2",
+    "success_criteria_sha256": "f142e79f1241df5c6e51a89bb49d5baca45996caae2abe8b1af15da8a78293f2",
+    "data_manifest_sha256": "db52ddf98fb55d3561485e7a93d654a06cabc993c7970ae69667017ff6796afd"
+  }
+}

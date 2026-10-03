@@ -1,0 +1,1090 @@
+{
+  "casebook_version": "holdout_casebook_draft_v2",
+  "status": "DRAFT_NOT_FROZEN",
+  "reason": "positive quota shortfall after dual review, adjudication, and semantic episode de-duplication",
+  "source_commit": "c615784783d52a739a8b83f16360b3dbc2dc31cb",
+  "candidate_id": "v4a_calibration_candidate_v1",
+  "candidate_status": "FROZEN_CALIBRATION_CANDIDATE",
+  "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+  "created_at": "2026-10-04T00:50:00Z",
+  "target_counts": {
+    "positive": 10,
+    "negative": 10,
+    "ambiguous": 5
+  },
+  "draft_counts": {
+    "positive": 8,
+    "negative": 10,
+    "ambiguous": 5
+  },
+  "source_range_counts": {
+    "pre": 13,
+    "post": 10
+  },
+  "cases": [
+    {
+      "case_id": "HB_POST_02",
+      "label": "positive",
+      "sector": "国防军工",
+      "taxonomy_code": "650000",
+      "market_style": "制造",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "post_2025-12-02_650000",
+      "source_range": "post",
+      "event_start": "2025-12-02",
+      "event_end": "2025-12-15",
+      "case_window_start": "2025-12-02",
+      "case_window_end": "2025-12-15",
+      "warmup_start": "2025-07-29",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Ten sessions, positive absolute and relative performance (+4.99%, +6.80pp), broad participation and continuous turnover. Timely reports describe commercial aerospace/defense as a persistent cross-year hotspot and identify the theme as a market mainline rather than a one-day impulse.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "未找到两条可核验的独立历史来源证明该窗口为持续主线，而非军工事件驱动的阶段脉冲；缺少合格的及时市场复盘。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Ten sessions, positive absolute and relative performance (+4.99%, +6.80pp), broad participation and continuous turnover. Timely reports describe commercial aerospace/defense as a persistent cross-year hotspot and identify the theme as a market mainline rather than a one-day impulse.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "新浪财经",
+          "published_at": "2025-12-15",
+          "url": "https://finance.sina.com.cn/money/fund/etf/2025-12-15/doc-inhawtsc4005070.shtml",
+          "role": "timely market recap; defense/commercial aerospace remained strong against a weak market"
+        },
+        {
+          "publisher": "连板网",
+          "published_at": "2025-12-15",
+          "url": "https://lianban.net/days/2025-12-15.html",
+          "role": "independent same-day market recap identifying commercial aerospace as a mainline"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "f3fc45e914f32496d9c5d6bf3be195d52108aaf4a86129fde0587ef1fe321fe0"
+    },
+    {
+      "case_id": "HB_POST_03",
+      "label": "positive",
+      "sector": "传媒",
+      "taxonomy_code": "720000",
+      "market_style": "科技成长",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "post_2025-12-30_720000",
+      "source_range": "post",
+      "event_start": "2025-12-30",
+      "event_end": "2026-01-14",
+      "case_window_start": "2025-12-30",
+      "case_window_end": "2026-01-14",
+      "warmup_start": "2025-08-26",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The ten-session episode produced +24.30% and +16.83pp relative return with broad participation and persistent turnover. Independent timely recaps document a sector-wide media surge and continuing AI-application/media leadership, while also recording end-window volatility rather than hiding it.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "未找到两条相互独立且及时的公开复盘确认传媒在该跨年窗口形成持续板块主线；不可由后验涨幅替代标签证据。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "The ten-session episode produced +24.30% and +16.83pp relative return with broad participation and persistent turnover. Independent timely recaps document a sector-wide media surge and continuing AI-application/media leadership, while also recording end-window volatility rather than hiding it.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "证券时报",
+          "published_at": "2026-01-12",
+          "url": "https://www.stcn.com/article/detail/3586403.html",
+          "role": "timely market recap describing the media sector's broad limit-up wave"
+        },
+        {
+          "publisher": "同花顺",
+          "published_at": "2026-01-16",
+          "url": "https://m.10jqka.com.cn/20260116/c674073969.shtml/",
+          "role": "independent weekly recap documenting media's continued gain through the episode"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "2afe98fd8209f62e71852092e5e8f7099da94ca6293d094ff788ff6e13b1fab7"
+    },
+    {
+      "case_id": "HB_POST_04",
+      "label": "negative",
+      "sector": "石油石化",
+      "taxonomy_code": "750000",
+      "market_style": "周期",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "post_2026-01-29_750000",
+      "source_range": "post",
+      "event_start": "2026-01-29",
+      "event_end": "2026-02-05",
+      "case_window_start": "2026-01-29",
+      "case_window_end": "2026-02-05",
+      "warmup_start": "2025-09-23",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The window contains a credible oil/gas price-rise trigger and high breadth/turnover, but the six-session SW1 episode ended negative (-2.17%) with no sustained relative advantage. The end-window recap shows leadership had rotated to consumption/financials, supporting a plausible-but-failed mainline rather than an arbitrary weak sector.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "未找到两条独立公开来源同时记录触发和随后5个交易日内强度消失，无法按hard-negative合同确认。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "The window contains a credible oil/gas price-rise trigger and high breadth/turnover, but the six-session SW1 episode ended negative (-2.17%) with no sustained relative advantage. The end-window recap shows leadership had rotated to consumption/financials, supporting a plausible-but-failed mainline rather than an arbitrary weak sector.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2026-01-29",
+          "url": "https://www.cls.cn/detail/2273575",
+          "role": "timely trigger recap documenting broad oil/gas strength"
+        },
+        {
+          "publisher": "同花顺",
+          "published_at": "2026-02-05",
+          "url": "https://news.10jqka.com.cn/20260205/c674577718.shtml",
+          "role": "independent end-window daily recap and sector rotation evidence"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "3d28c83792fb38de2cbe3052c1e3a7354a08f8c1cb8cf55f49737ad0b00a066a"
+    },
+    {
+      "case_id": "HB_POST_06",
+      "label": "positive",
+      "sector": "电子",
+      "taxonomy_code": "270000",
+      "market_style": "科技成长",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "post_2026-04-03_270000",
+      "source_range": "post",
+      "event_start": "2026-04-03",
+      "event_end": "2026-04-17",
+      "case_window_start": "2026-04-03",
+      "case_window_end": "2026-04-17",
+      "warmup_start": "2025-11-26",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Ten sessions, +14.67% absolute and +9.21pp relative return, persistent RS and broad participation. Independent end-window recaps describe CPO, PCB and consumer electronics as a broad technology-growth leadership cluster rather than an isolated stock move.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "未取得两条独立及时复盘确认该10日以上窗口的电子板块持续主线地位及广泛市场共识。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Ten sessions, +14.67% absolute and +9.21pp relative return, persistent RS and broad participation. Independent end-window recaps describe CPO, PCB and consumer electronics as a broad technology-growth leadership cluster rather than an isolated stock move.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "证券时报",
+          "published_at": "2026-04-17",
+          "url": "https://www.stcn.com/article/detail/3759217.html",
+          "role": "timely market recap; CPO, PCB and consumer electronics active"
+        },
+        {
+          "publisher": "同花顺",
+          "published_at": "2026-04-17",
+          "url": "https://news.10jqka.com.cn/20260417/c676073314.shtml",
+          "role": "independent same-day market recap of technology/electronics leadership"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "e99b61d50151293e2bf1ae10dfb533037e2609b9cfac8a4c35045b5774da1c7e"
+    },
+    {
+      "case_id": "HB_POST_08",
+      "label": "negative",
+      "sector": "煤炭",
+      "taxonomy_code": "740000",
+      "market_style": "周期",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "post_2026-06-04_740000",
+      "source_range": "post",
+      "event_start": "2026-06-04",
+      "event_end": "2026-06-11",
+      "case_window_start": "2026-06-04",
+      "case_window_end": "2026-06-11",
+      "warmup_start": "2026-01-23",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "A strong, broad and well-reported coal trigger on June 4 had sufficient apparent mainline characteristics, but the six-session sector return was -7.80% and lagged the benchmark by 2.98pp. Independent end-window reporting documents the subsequent adjustment and only partial rebound.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "缺少两条独立公开来源覆盖煤炭触发与后续衰退，无法确认其属于hard negative。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "A strong, broad and well-reported coal trigger on June 4 had sufficient apparent mainline characteristics, but the six-session sector return was -7.80% and lagged the benchmark by 2.98pp. Independent end-window reporting documents the subsequent adjustment and only partial rebound.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "东方财富",
+          "published_at": "2026-06-04",
+          "url": "https://finance.eastmoney.com/a/202606043760180787.html",
+          "role": "timely trigger recap documenting a roughly 3% coal-sector surge"
+        },
+        {
+          "publisher": "每日经济新闻",
+          "published_at": "2026-06-11",
+          "url": "https://m.nbd.com.cn/articles/2026-06-11/4423061.html",
+          "role": "independent end-window recap documenting the prior-day coal adjustment"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "7bf45bac1cac2f8f5a9a1061e5ac484af3ebab365b65f0ea287b74a77376bf17"
+    },
+    {
+      "case_id": "HB_POST_09",
+      "label": "positive",
+      "sector": "医药生物",
+      "taxonomy_code": "370000",
+      "market_style": "消费",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "post_2026-07-03_370000",
+      "source_range": "post",
+      "event_start": "2026-07-03",
+      "event_end": "2026-07-16",
+      "case_window_start": "2026-07-03",
+      "case_window_end": "2026-07-16",
+      "warmup_start": "2026-03-02",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Ten sessions, +6.21% while the benchmark fell 5.94%, yielding +12.16pp relative return. RS stayed positive throughout, and independent end-window reports explicitly describe innovative drugs/medicine as a core mainline and continuing strong group.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "未找到两条独立且及时的历史复盘明确将该窗口医药生物定义为阶段主线；不能凭独立行情统计单独标正。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Ten sessions, +6.21% while the benchmark fell 5.94%, yielding +12.16pp relative return. RS stayed positive throughout, and independent end-window reports explicitly describe innovative drugs/medicine as a core mainline and continuing strong group.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "上海证券报（新浪转载）",
+          "published_at": "2026-07-16",
+          "url": "https://finance.sina.com.cn/money/gzqh/futuresyspzx/2026-07-16/doc-inihxnus4590521.shtml",
+          "role": "timely recap explicitly calling innovative drugs a core mainline"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2026-07-16",
+          "url": "https://www.cls.cn/detail/2428544",
+          "role": "independent same-day recap documenting continued medicine strength"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "e063be62aeedec0a8eefeee2aee00be98829749dfcd591ccd123a12074213531"
+    },
+    {
+      "case_id": "HB_POST_11",
+      "label": "ambiguous",
+      "sector": "传媒",
+      "taxonomy_code": "720000",
+      "market_style": "科技成长",
+      "mainline_shape": "boundary/rotation",
+      "episode_id": "post_2026-08-28_720000",
+      "source_range": "post",
+      "event_start": "2026-08-28",
+      "event_end": "2026-09-01",
+      "case_window_start": "2026-08-28",
+      "case_window_end": "2026-09-01",
+      "warmup_start": "2026-04-28",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "A clear three-session burst (+7.78%, +6.28pp relative) with broad turnover and multiple timely reports of media/short-drama activity, but too short to satisfy the ten-session positive contract. This is a genuine boundary case rather than a positive or negative label.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "三交易日边界窗口没有满足双来源及时复盘合同，无法证明是有争议行情而不是普通波动。",
+      "reviewer_b_label": "ambiguous",
+      "reviewer_b_reason": "A clear three-session burst (+7.78%, +6.28pp relative) with broad turnover and multiple timely reports of media/short-drama activity, but too short to satisfy the ten-session positive contract. This is a genuine boundary case rather than a positive or negative label.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "第一财经",
+          "published_at": "2026-09-01",
+          "url": "https://www.yicai.com/news/103341902.html",
+          "role": "timely market recap documenting active media shares"
+        },
+        {
+          "publisher": "每日经济新闻",
+          "published_at": "2026-09-01",
+          "url": "https://www.nbd.com.cn/articles/2026-09-01/4568303.html",
+          "role": "independent same-day recap documenting media/short-drama strength"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "f5d2c097103fff4dc90db0683e8989b32de6aa757f0b06d6539b92e2e8e5854a"
+    },
+    {
+      "case_id": "HB_POST_12",
+      "label": "ambiguous",
+      "sector": "房地产",
+      "taxonomy_code": "430000",
+      "market_style": "金融",
+      "mainline_shape": "boundary/rotation",
+      "episode_id": "post_2026-09-28_430000",
+      "source_range": "post",
+      "event_start": "2026-09-28",
+      "event_end": "2026-09-30",
+      "case_window_start": "2026-09-28",
+      "case_window_end": "2026-09-30",
+      "warmup_start": "2026-05-29",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "A well-documented policy-sensitive three-session real-estate burst (+3.64%, +5.34pp relative) with full RS and turnover, but the window is too short to establish sustained mainline status. It is appropriately ambiguous.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "事件接近数据终点且只有三交易日，未取得两条独立公开资料验证后续持续性和主线争议，存在右截断风险。",
+      "reviewer_b_label": "ambiguous",
+      "reviewer_b_reason": "A well-documented policy-sensitive three-session real-estate burst (+3.64%, +5.34pp relative) with full RS and turnover, but the window is too short to establish sustained mainline status. It is appropriately ambiguous.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2026-09-28",
+          "url": "https://www.cls.cn/detail/2493733",
+          "role": "timely recap documenting the opening real-estate rise"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2026-09-29",
+          "url": "https://www.stcn.com/article/detail/4202575.html",
+          "role": "independent recap documenting broad real-estate strength"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "ce86571d628f7c26a930b079e31a0967ad77de86924c341148e2a8353c082c0f"
+    },
+    {
+      "case_id": "HB_PRE_01",
+      "label": "positive",
+      "sector": "传媒",
+      "taxonomy_code": "720000",
+      "market_style": "科技成长",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "pre_2023-04-18_720000",
+      "source_range": "pre",
+      "event_start": "2023-04-18",
+      "event_end": "2023-05-04",
+      "case_window_start": "2023-04-18",
+      "case_window_end": "2023-05-04",
+      "warmup_start": "2022-12-12",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Ten-session episode with +13.55% and +17.02pp relative return. Timely reports repeatedly identify media/games as a market mainline and document a sector-wide limit-up wave; the end-window pullback is preserved as counterevidence rather than used to relabel the sustained episode.",
+      "reviewer_a_label": "positive",
+      "reviewer_a_reason": "窗口跨10个交易日；独立面板累计相对基准约+16.88个百分点、10日中6日rs_5为正，公开复盘持续将传媒/AI应用描述为市场强势主线，且5月4日传媒再现涨停潮。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Ten-session episode with +13.55% and +17.02pp relative return. Timely reports repeatedly identify media/games as a market mainline and document a sector-wide limit-up wave; the end-window pullback is preserved as counterevidence rather than used to relabel the sustained episode.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2023-04-19",
+          "url": "https://www.cls.cn/detail/1326925",
+          "role": "timely market recap identifying AI/media/games as the mainline"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2023-04-28",
+          "url": "https://www.stcn.com/article/detail/856638.html",
+          "role": "independent recap documenting a broad media limit-up wave"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2023-05-04",
+          "url": "https://www.cls.cn/detail/1340534",
+          "role": "end-window recap and pullback counterevidence"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "2aacb1e9b37fbe2a6bfb9768433b9ab7b72e3b9a25e6b947fb1ce70571536f6b"
+    },
+    {
+      "case_id": "HB_PRE_03",
+      "label": "negative",
+      "sector": "计算机",
+      "taxonomy_code": "710000",
+      "market_style": "科技成长",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2023-06-19_710000",
+      "source_range": "pre",
+      "event_start": "2023-06-19",
+      "event_end": "2023-06-28",
+      "case_window_start": "2023-06-19",
+      "case_window_end": "2023-06-28",
+      "warmup_start": "2023-02-15",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The episode opens with a broad AI/CPO/cloud-computing surge and clear market attention, then fades sharply: six-session computer-sector return -8.50% and -6.19pp relative with poor persistence. This is a contract-valid hard negative.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "6月19日AI/CPO/国产软件形成强触发，但至6月28日计算机、通信、传媒集体领跌；独立面板窗口累计相对基准约-6.29个百分点，符合冲刺后快速退潮。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "The episode opens with a broad AI/CPO/cloud-computing surge and clear market attention, then fades sharply: six-session computer-sector return -8.50% and -6.19pp relative with poor persistence. This is a contract-valid hard negative.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "证券时报",
+          "published_at": "2023-06-19",
+          "url": "https://www.stcn.com/article/detail/896020.html",
+          "role": "timely trigger recap documenting financial-IT/computer-application strength"
+        },
+        {
+          "publisher": "中国基金报",
+          "published_at": "2023-06-19",
+          "url": "https://app-web.chnfund.com/YHHEediting/202306/t20230619_4216976.html",
+          "role": "independent timely market recap of the AI/computing surge"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2023-06-21",
+          "url": "https://www.cls.cn/detail/1384489",
+          "role": "fade counterevidence as AI-related directions declined"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "43555984b9a8ae20a0e07cc26912f664ef62d3d290a2a07aa2c655073b500a47"
+    },
+    {
+      "case_id": "HB_PRE_04",
+      "label": "positive",
+      "sector": "房地产",
+      "taxonomy_code": "430000",
+      "market_style": "金融",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "pre_2023-07-19_430000",
+      "source_range": "pre",
+      "event_start": "2023-07-19",
+      "event_end": "2023-08-01",
+      "case_window_start": "2023-07-19",
+      "case_window_end": "2023-08-01",
+      "warmup_start": "2023-03-15",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Ten sessions, +17.36% and +17.20pp relative, with full RS and very broad participation. Multiple timely reports explicitly call real estate/infrastructure the visible market mainline and document consecutive strength, while noting valuation/logical limits.",
+      "reviewer_a_label": "positive",
+      "reviewer_a_reason": "窗口跨10个交易日，累计相对基准约+16.10个百分点且10/10日rs_5为正；7月政治局会议后地产产业链全线爆发，至8月初仍被多家复盘视为政策主线。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Ten sessions, +17.36% and +17.20pp relative, with full RS and very broad participation. Multiple timely reports explicitly call real estate/infrastructure the visible market mainline and document consecutive strength, while noting valuation/logical limits.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2023-07-26",
+          "url": "https://www.cls.cn/detail/1415113",
+          "role": "timely recap identifying real estate/infrastructure as a mainline"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2023-07-27",
+          "url": "https://www.cls.cn/detail/1416036",
+          "role": "follow-up recap explicitly calling the direction a visible mainline"
+        },
+        {
+          "publisher": "澎湃新闻",
+          "published_at": "2023-07-25",
+          "url": "https://www.thepaper.cn/newsDetail_forward_23992322",
+          "role": "independent public coverage of the policy-driven real-estate rally"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "e525260daed7e69e7c8ec0c5079c3d62c866f2bfd600be9e2c17e30037a3ebb5"
+    },
+    {
+      "case_id": "HB_PRE_05",
+      "label": "negative",
+      "sector": "非银金融",
+      "taxonomy_code": "490000",
+      "market_style": "金融",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2023-08-16_490000",
+      "source_range": "pre",
+      "event_start": "2023-08-16",
+      "event_end": "2023-08-23",
+      "case_window_start": "2023-08-16",
+      "case_window_end": "2023-08-23",
+      "warmup_start": "2023-04-13",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "A visible broker-sector rally provided a credible trigger, but the six-session non-bank episode ended -4.46% and only 33.3% of days retained positive RS. Independent end-window reports document brokers/insurance falling sharply, confirming failed persistence.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "券商在8月16日和22日两次护盘拉升，但窗口累计相对基准约-1.29个百分点、仅2/6日成员上涨过半，属于政策预期驱动的间歇反弹而非持续10日主线。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "A visible broker-sector rally provided a credible trigger, but the six-session non-bank episode ended -4.46% and only 33.3% of days retained positive RS. Independent end-window reports document brokers/insurance falling sharply, confirming failed persistence.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2023-08-16",
+          "url": "https://www.cls.cn/detail/1434135",
+          "role": "timely trigger recap documenting active brokers"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2023-08-23",
+          "url": "https://www.stcn.com/article/detail/954360.html",
+          "role": "independent end-window recap documenting sharp broker/insurance declines"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "54ac038093763b4f1f4b861b8460d4233597796b2ead9ee9185ced46b7488ab1"
+    },
+    {
+      "case_id": "HB_PRE_06",
+      "label": "ambiguous",
+      "sector": "煤炭",
+      "taxonomy_code": "740000",
+      "market_style": "周期",
+      "mainline_shape": "boundary/rotation",
+      "episode_id": "pre_2023-09-13_740000",
+      "source_range": "pre",
+      "event_start": "2023-09-13",
+      "event_end": "2023-09-15",
+      "case_window_start": "2023-09-13",
+      "case_window_end": "2023-09-15",
+      "warmup_start": "2023-05-16",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Coal/high-dividend strength was broad and independently reported, with +3.75% and +5.42pp relative return in three sessions. The move is too short for a positive label yet too strong and consensus-backed for a negative, making it a valid boundary case.",
+      "reviewer_a_label": "ambiguous",
+      "reviewer_a_reason": "三日累计相对基准约+5.41个百分点且煤炭价格受供给收缩和金九银十预期推动，但持续窗口不足10日；属于强度明确、持续性尚未证实的边界行情。",
+      "reviewer_b_label": "ambiguous",
+      "reviewer_b_reason": "Coal/high-dividend strength was broad and independently reported, with +3.75% and +5.42pp relative return in three sessions. The move is too short for a positive label yet too strong and consensus-backed for a negative, making it a valid boundary case.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "每日经济新闻",
+          "published_at": "2023-09-13",
+          "url": "https://www.nbd.com.cn/articles/2023-09-13/3017254.html",
+          "role": "timely recap documenting continued high-dividend coal strength"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2023-09-14",
+          "url": "https://www.cls.cn/detail/1463377",
+          "role": "independent recap documenting coal/high-dividend activity"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "532ca57fed40050dbee372414fc7ecbbd6eac30f8e882c2bea7b757c903b2c6f"
+    },
+    {
+      "case_id": "HB_PRE_07",
+      "label": "negative",
+      "sector": "建筑材料",
+      "taxonomy_code": "610000",
+      "market_style": "周期",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2023-10-25_610000",
+      "source_range": "pre",
+      "event_start": "2023-10-25",
+      "event_end": "2023-11-01",
+      "case_window_start": "2023-10-25",
+      "case_window_end": "2023-11-01",
+      "warmup_start": "2023-06-19",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The special-treasury-bond policy created an independently documented, broad infrastructure/building-materials trigger. Over six sessions the sector gained 3.53% but lagged the benchmark by 0.74pp, with only half the days retaining positive RS, showing weak follow-through after a mainline-like catalyst.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "增发国债、水利基建催化令建材在10月25日领涨，但窗口累计相对基准约-0.66个百分点，未形成持续10日相对强势；行业基本面报告亦显示内部产品和盈利分化。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "The special-treasury-bond policy created an independently documented, broad infrastructure/building-materials trigger. Over six sessions the sector gained 3.53% but lagged the benchmark by 0.74pp, with only half the days retaining positive RS, showing weak follow-through after a mainline-like catalyst.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2023-10-25",
+          "url": "https://www.cls.cn/detail/1495938",
+          "role": "timely trigger recap; special treasury bond ignited infrastructure/building materials"
+        },
+        {
+          "publisher": "上海证券报",
+          "published_at": "2023-10-25",
+          "url": "https://jjb.cnstock.com/jjb/article/aa72be1812eedaebe72edc691e644eda",
+          "role": "independent same-day recap documenting building-materials/index strength"
+        },
+        {
+          "publisher": "发现报告",
+          "published_at": "2023-10-30",
+          "url": "https://www.fxbaogao.com/detail/3979310",
+          "role": "follow-through counterevidence showing only modest weekly excess return"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "e34d435ff909a1cbddb90955c4f9f1190f29291722a00da9cfdc555540ac650c"
+    },
+    {
+      "case_id": "HB_PRE_08",
+      "label": "negative",
+      "sector": "传媒",
+      "taxonomy_code": "720000",
+      "market_style": "科技成长",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2023-11-22_720000",
+      "source_range": "pre",
+      "event_start": "2023-11-22",
+      "event_end": "2023-11-29",
+      "case_window_start": "2023-11-22",
+      "case_window_end": "2023-11-29",
+      "warmup_start": "2023-07-19",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Short-drama stocks had a clear high-attention trigger and continued concept-level heat, but the broad media sector fell 5.35% over six sessions and lagged by 5.53pp. The contrast between narrow concept activity and weak sector breadth is precisely the contract's localized-hype negative type.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "短剧消息刺激传媒在11月22日走强，但独立面板窗口累计相对基准约-5.62个百分点、仅1/6日成员上涨过半，符合事件刺激未形成持续板块共识。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "Short-drama stocks had a clear high-attention trigger and continued concept-level heat, but the broad media sector fell 5.35% over six sessions and lagged by 5.53pp. The contrast between narrow concept activity and weak sector breadth is precisely the contract's localized-hype negative type.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2023-11-22",
+          "url": "https://www.cls.cn/detail/1523986",
+          "role": "timely trigger recap identifying short drama as the core theme"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2023-11-29",
+          "url": "https://www.stcn.com/article/detail/1049660.html",
+          "role": "independent end-window recap showing concept heat remained narrow"
+        },
+        {
+          "publisher": "新浪财经",
+          "published_at": "2023-11-30",
+          "url": "https://finance.sina.cn/2023-11-30/detail-imzwkmiy9966401.d.html",
+          "role": "post-window counterevidence documenting collective jumps and falls in short-drama stocks"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "816396603c45f9a5f3929dc3221f043655c89900baa6d9f2d037fcaba8301f15"
+    },
+    {
+      "case_id": "HB_PRE_10",
+      "label": "positive",
+      "sector": "银行",
+      "taxonomy_code": "480000",
+      "market_style": "金融",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "pre_2024-01-23_480000",
+      "source_range": "pre",
+      "event_start": "2024-01-23",
+      "event_end": "2024-02-05",
+      "case_window_start": "2024-01-23",
+      "case_window_end": "2024-02-05",
+      "warmup_start": "2023-09-18",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Banks gained 3.50% while the benchmark fell 18.76%, a +22.27pp relative result across ten sessions, with sustained breadth. Independent timely reports identify banks as the only rising sector/safe-haven leader during the market break and document the preceding sustained defensive trend.",
+      "reviewer_a_label": "positive",
+      "reviewer_a_reason": "窗口跨10个交易日，累计相对基准约+23.57个百分点且10/10日rs_5为正；公开资料显示银行年初持续取得超额收益，并在千股下跌期间逆市护盘。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Banks gained 3.50% while the benchmark fell 18.76%, a +22.27pp relative result across ten sessions, with sustained breadth. Independent timely reports identify banks as the only rising sector/safe-haven leader during the market break and document the preceding sustained defensive trend.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "第一财经",
+          "published_at": "2024-02-05",
+          "url": "https://www.yicai.com/news/101985089.html",
+          "role": "timely end-window report; banks were the only rising sector and a safe haven"
+        },
+        {
+          "publisher": "21世纪经济报道",
+          "published_at": "2024-02-05",
+          "url": "https://www.21jingji.com/article/20240205/herald/07151fb6f88dae4b5d04e3cb3fd97301.html",
+          "role": "independent report confirming banks alone held positive"
+        },
+        {
+          "publisher": "新京报",
+          "published_at": "2024-01-05",
+          "url": "https://m.bjnews.com.cn/detail/1704443604129057.html",
+          "role": "pre-episode context documenting the sustained safe-haven bank trend"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "bf0cd0197f099945ce9f307faebdb9c5600eb1c7563fd5af996fc45653d5f8de"
+    },
+    {
+      "case_id": "HB_PRE_11",
+      "label": "negative",
+      "sector": "非银金融",
+      "taxonomy_code": "490000",
+      "market_style": "金融",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2024-02-28_490000",
+      "source_range": "pre",
+      "event_start": "2024-02-28",
+      "event_end": "2024-03-06",
+      "case_window_start": "2024-02-28",
+      "case_window_end": "2024-03-06",
+      "warmup_start": "2023-10-24",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The window opens with a conspicuous broker/financial rally amid exceptional turnover, but over six sessions non-bank financials fell 1.11%, delivered only +0.75pp relative return and retained positive RS on only one-third of days. Independent later recaps show leadership rotated elsewhere, so the trigger failed to become a sustained sector mainline.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "2月28日大金融逆势活跃构成触发，但独立面板窗口累计相对基准仅+0.53个百分点、仅2/6日成员上涨过半；3月初复盘显示行情主导仍在TMT修复而非非银持续主线。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "The window opens with a conspicuous broker/financial rally amid exceptional turnover, but over six sessions non-bank financials fell 1.11%, delivered only +0.75pp relative return and retained positive RS on only one-third of days. Independent later recaps show leadership rotated elsewhere, so the trigger failed to become a sustained sector mainline.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "中国基金报",
+          "published_at": "2024-02-28",
+          "url": "https://app-web.chnfund.com/YHHEediting/202402/t20240228_4329140.html",
+          "role": "timely trigger recap documenting active brokers amid a high-turnover selloff"
+        },
+        {
+          "publisher": "澎湃新闻",
+          "published_at": "2024-03-06",
+          "url": "https://m.thepaper.cn/newsDetail_forward_26574635?from=sohu",
+          "role": "independent end-window recap showing market leadership had rotated to renewable-energy equipment"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "7e49cad558765d90940bd9c186075a0f7e2f9fd891e19782413c178db6bd4a4c"
+    },
+    {
+      "case_id": "HB_PRE_12",
+      "label": "positive",
+      "sector": "有色金属",
+      "taxonomy_code": "240000",
+      "market_style": "周期",
+      "mainline_shape": "independent sustained episode",
+      "episode_id": "pre_2024-03-27_240000",
+      "source_range": "pre",
+      "event_start": "2024-03-27",
+      "event_end": "2024-04-11",
+      "case_window_start": "2024-03-27",
+      "case_window_end": "2024-04-11",
+      "warmup_start": "2023-11-21",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Ten sessions, +10.90% and +12.33pp relative return with continuous RS, broad participation and turnover. Multiple independent timely reports identify nonferrous/cyclical stocks as sustained market leaders, with the April 11 source supplying end-window risk counterevidence.",
+      "reviewer_a_label": "positive",
+      "reviewer_a_reason": "窗口跨10个交易日，累计相对基准约+11.88个百分点且10/10日rs_5为正；黄金、铜和周期股连续成为领涨方向，资金与商品价格共振，虽末端出现分歧但不否定此前完整主升episode。",
+      "reviewer_b_label": "positive",
+      "reviewer_b_reason": "Ten sessions, +10.90% and +12.33pp relative return with continuous RS, broad participation and turnover. Multiple independent timely reports identify nonferrous/cyclical stocks as sustained market leaders, with the April 11 source supplying end-window risk counterevidence.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "财联社",
+          "published_at": "2024-04-08",
+          "url": "https://www.cls.cn/detail/1639824",
+          "role": "timely recap identifying cyclical/nonferrous leadership and an intact trend"
+        },
+        {
+          "publisher": "每日经济新闻",
+          "published_at": "2024-04-08",
+          "url": "https://www.nbd.com.cn/articles/2024-04-08/3316445.html",
+          "role": "independent same-day recap documenting nonferrous leadership"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2024-04-11",
+          "url": "https://www.stcn.com/article/detail/1173209.html",
+          "role": "end-window performance and risk counterevidence"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "0dc680fe83df3714abc8073c5f9fadea9f01e6521c4ea90fb7925f214dfbe7e6"
+    },
+    {
+      "case_id": "HB_PRE_13",
+      "label": "ambiguous",
+      "sector": "房地产",
+      "taxonomy_code": "430000",
+      "market_style": "金融",
+      "mainline_shape": "boundary/rotation",
+      "episode_id": "pre_2024-04-26_430000",
+      "source_range": "pre",
+      "event_start": "2024-04-26",
+      "event_end": "2024-04-30",
+      "case_window_start": "2024-04-26",
+      "case_window_end": "2024-04-30",
+      "warmup_start": "2023-12-19",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "Real estate produced a broad policy-driven three-session burst (+8.35%, +4.83pp relative) with more than twenty limit-ups and repeated leadership coverage. It is too short for the positive duration contract, making it a high-quality ambiguous boundary case.",
+      "reviewer_a_label": "ambiguous",
+      "reviewer_a_reason": "房地产受多地政策催化三日累计相对基准约+4.76个百分点并出现涨停潮，但窗口不足10日，且4月30日复盘认为多数品种跟随乏力、缺基本面支撑，符合高关注短主升边界案例。",
+      "reviewer_b_label": "ambiguous",
+      "reviewer_b_reason": "Real estate produced a broad policy-driven three-session burst (+8.35%, +4.83pp relative) with more than twenty limit-ups and repeated leadership coverage. It is too short for the positive duration contract, making it a high-quality ambiguous boundary case.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "界面新闻",
+          "published_at": "2024-04-26",
+          "url": "https://www.jiemian.com/article/11120158.html",
+          "role": "timely trigger recap documenting more than twenty real-estate limit-ups"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2024-04-29",
+          "url": "https://www.stcn.com/article/detail/1192476.html",
+          "role": "independent recap documenting a three-day sector rally"
+        },
+        {
+          "publisher": "中国证券报",
+          "published_at": "2024-04-30",
+          "url": "https://www.cs.com.cn/gppd/gsyj/202404/t20240430_6406433.html",
+          "role": "end-window market recap identifying real estate among leaders"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "2137b0c61dd3bdcef0320485ecd3c575e316905515f14d556c7fd47d471c8ac7"
+    },
+    {
+      "case_id": "HB_R2",
+      "label": "ambiguous",
+      "sector": "计算机",
+      "taxonomy_code": "710000",
+      "market_style": "科技成长",
+      "mainline_shape": "boundary/rotation",
+      "episode_id": "post_2026-03-06_710000",
+      "source_range": "post",
+      "event_start": "2026-03-06",
+      "event_end": "2026-03-10",
+      "case_window_start": "2026-03-06",
+      "case_window_end": "2026-03-10",
+      "warmup_start": "2025-10-29",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "This is a genuine boundary episode: the three-session move has moderate relative strength (+2.51pp), a 1.96pp maximum daily relative move, turnover intensity up to 1.40 and a 32.3pp breadth-difference peak. Timely independent recaps on March 10 describe cloud computing and computing-power themes continuing or breaking out, while the March 2-6 industry review records the computer index as materially weak before that rebound. The move is evident but too short and internally discontinuous for a positive label.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "三日量化表现可构成短期强度候选，但未找到两条独立且及时的公开复盘证明该行情具有可复核的主线争议或市场关注度，不能把普通短期波动直接标为ambiguous。",
+      "reviewer_b_label": "ambiguous",
+      "reviewer_b_reason": "This is a genuine boundary episode: the three-session move has moderate relative strength (+2.51pp), a 1.96pp maximum daily relative move, turnover intensity up to 1.40 and a 32.3pp breadth-difference peak. Timely independent recaps on March 10 describe cloud computing and computing-power themes continuing or breaking out, while the March 2-6 industry review records the computer index as materially weak before that rebound. The move is evident but too short and internally discontinuous for a positive label.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "同花顺",
+          "published_at": "2026-03-10",
+          "url": "https://news.10jqka.com.cn/20260310/c675187002.shtml",
+          "role": "timely market recap; cloud computing and computing-power leasing continued strong"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2026-03-10",
+          "url": "https://www.cls.cn/detail/2308512",
+          "role": "independent same-day recap documenting CPO/computing-hardware breakout and mixed persistence within computing themes"
+        },
+        {
+          "publisher": "上海证券研究（发现报告）",
+          "published_at": "2026-03-06",
+          "url": "https://www.fxbaogao.com/detail/5295527",
+          "role": "counterevidence; the March 2-6 computer index fell 5.29% and ranked near the bottom before the rebound"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "7fc6df7e55444284ce1c030d76ce5edd90fb7676b0133ab6e2e0154ee2bd9f1c"
+    },
+    {
+      "case_id": "HB_R3",
+      "label": "negative",
+      "sector": "传媒",
+      "taxonomy_code": "720000",
+      "market_style": "科技成长",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "post_2026-07-31_720000",
+      "source_range": "post",
+      "event_start": "2026-07-31",
+      "event_end": "2026-08-07",
+      "case_window_start": "2026-07-31",
+      "case_window_end": "2026-08-07",
+      "warmup_start": "2026-03-30",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "July 31 provides a hard-negative trigger: media rose more than 6% intraday with a broad limit-up wave, AI applications led, relative return was +2.39pp and turnover intensity reached 1.66. Over the following five sessions relative return reversed to -3.40pp; independent August 6 reports explicitly list media among the falling/weak sectors. This is a credible mainline-like burst that failed to persist.",
+      "reviewer_a_label": null,
+      "reviewer_a_reason": "量化摘要符合首日脉冲、后5日转弱的hard-negative形态，但未找到两条独立公开来源记录触发与衰退，公开证据合同未满足。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "July 31 provides a hard-negative trigger: media rose more than 6% intraday with a broad limit-up wave, AI applications led, relative return was +2.39pp and turnover intensity reached 1.66. Over the following five sessions relative return reversed to -3.40pp; independent August 6 reports explicitly list media among the falling/weak sectors. This is a credible mainline-like burst that failed to persist.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "证券时报",
+          "published_at": "2026-07-31",
+          "url": "https://www.stcn.com/article/detail/4052035.html",
+          "role": "timely trigger recap; media surged more than 6% intraday with a broad limit-up wave"
+        },
+        {
+          "publisher": "财联社",
+          "published_at": "2026-07-31",
+          "url": "https://www.cls.cn/detail/2442641",
+          "role": "independent trigger recap; AI applications broadly surged"
+        },
+        {
+          "publisher": "东方财富财富号",
+          "published_at": "2026-08-07",
+          "url": "https://caifuhao.eastmoney.com/news/20260807091912762473650",
+          "role": "end-window counterevidence; August 6 media and power equipment had pulled back"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "9287ec55136ac264e447b7387da4f512580403550c225b03dc7987294fddf05f"
+    },
+    {
+      "case_id": "HB_R4",
+      "label": "negative",
+      "sector": "美容护理",
+      "taxonomy_code": "770000",
+      "market_style": "消费",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2023-05-22_770000",
+      "source_range": "pre",
+      "event_start": "2023-05-22",
+      "event_end": "2023-05-29",
+      "case_window_start": "2023-05-22",
+      "case_window_end": "2023-05-29",
+      "warmup_start": "2023-01-11",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The opening day had a credible broad consumer/medical-aesthetics trigger: relative +1.84pp, turnover intensity 1.83, breadth difference 36.6pp, and multiple reports placed medical aesthetics or beauty care among the leaders. The following five sessions lost 2.05pp relative, and the May 31 summary lists beauty care among laggards. It therefore meets the hard-negative trigger-then-fade structure.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "5月22日美容护理领涨，首日相对收益、成交与广度均明显放大；随后5日相对收益转为-2.05个百分点，且5月26日/30日行业资金数据出现多只核心股净流出，符合消费修复脉冲但未形成持续主线的hard negative。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "The opening day had a credible broad consumer/medical-aesthetics trigger: relative +1.84pp, turnover intensity 1.83, breadth difference 36.6pp, and multiple reports placed medical aesthetics or beauty care among the leaders. The following five sessions lost 2.05pp relative, and the May 31 summary lists beauty care among laggards. It therefore meets the hard-negative trigger-then-fade structure.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "澎湃新闻",
+          "published_at": "2023-05-22",
+          "url": "https://m.thepaper.cn/newsDetail_forward_23177070",
+          "role": "timely trigger recap; medical aesthetics and broad consumption were strong"
+        },
+        {
+          "publisher": "证券时报",
+          "published_at": "2023-05-22",
+          "url": "https://stcn.com/article/detail/853647.html",
+          "role": "independent trigger evidence; beauty care was the strongest industry and multiple stocks had large gains"
+        },
+        {
+          "publisher": "新浪财经",
+          "published_at": "2023-05-31",
+          "url": "https://finance.sina.com.cn/money/fund/jjzl/2023-05-31/doc-imyvrtcc3937424.shtml",
+          "role": "counterevidence within two calendar days; beauty care was among the lagging industries"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "67e25b369fa664aa9dd2e3641a9ebb61691317390dec9a398442b16f9b7ce03e"
+    },
+    {
+      "case_id": "HB_R5",
+      "label": "negative",
+      "sector": "纺织服饰",
+      "taxonomy_code": "350000",
+      "market_style": "消费",
+      "mainline_shape": "trigger then fade",
+      "episode_id": "pre_2023-12-21_350000",
+      "source_range": "pre",
+      "event_start": "2023-12-21",
+      "event_end": "2023-12-28",
+      "case_window_start": "2023-12-21",
+      "case_window_end": "2023-12-28",
+      "warmup_start": "2023-08-17",
+      "selection_reason": "blind independent panel screening followed by dual review; no V4-A output used",
+      "label_reason": "The opening day was a credible sector-wide trigger: relative +1.78pp, turnover intensity 1.34, several apparel stocks at limit-up and a leading stock on a six-day/five-limit-up run. Over the following five sessions the sector lost 3.30pp relative; the end-window broad rebound was led by solar, storage and lithium rather than apparel. This is a mainline-like consumer burst that failed to sustain.",
+      "reviewer_a_label": "negative",
+      "reviewer_a_reason": "12月21日纺织服饰多股涨停并领涨，构成清晰触发；后5日累计相对收益-3.30个百分点，12月28日市场核心转为光伏、新能源超跌反弹，纺织服饰未形成10日持续行业主线。",
+      "reviewer_b_label": "negative",
+      "reviewer_b_reason": "The opening day was a credible sector-wide trigger: relative +1.78pp, turnover intensity 1.34, several apparel stocks at limit-up and a leading stock on a six-day/five-limit-up run. Over the following five sessions the sector lost 3.30pp relative; the end-window broad rebound was led by solar, storage and lithium rather than apparel. This is a mainline-like consumer burst that failed to sustain.",
+      "adjudication_result": "ACCEPT",
+      "evidence_sources": [
+        {
+          "publisher": "证券时报",
+          "published_at": "2023-12-21",
+          "url": "https://www.stcn.com/article/detail/1070845.html",
+          "role": "timely trigger report; multiple apparel stocks limit-up and the leader had five limit-ups in six days"
+        },
+        {
+          "publisher": "中国金融信息网（新华财经）",
+          "published_at": "2023-12-21",
+          "url": "https://www.cnfin.com/gs-lb/detail/20231221/3987275_1.html",
+          "role": "independent market recap listing apparel/home-textile among leading themes"
+        },
+        {
+          "publisher": "新浪财经",
+          "published_at": "2023-12-28",
+          "url": "https://finance.sina.com.cn/wm/2023-12-28/doc-imzzqmir7460096.shtml",
+          "role": "end-window counterevidence; the market rebound's limit-ups concentrated in solar, storage and lithium rather than apparel"
+        }
+      ],
+      "independence_check": "CLEAN",
+      "contamination_status": "CLEAN",
+      "warmup_qualification": "QUALIFIED",
+      "warmup_data_version": "holdout_data_version_v2_e3e1ab3c8a78a26d",
+      "created_at": "2026-10-04T00:50:00Z",
+      "frozen_at": null,
+      "checksum": "659900dacc22f5da5446f7c57d0c76498924ad9fbe249f7816329026c66d2537"
+    }
+  ],
+  "v4a_executed_or_viewed": false,
+  "production_enabled": false,
+  "draft_checksum": "00f818daf2f5bfd6c6b067e407776ed61fb63c9fa8f7b680a46b84e04b5338b9"
+}

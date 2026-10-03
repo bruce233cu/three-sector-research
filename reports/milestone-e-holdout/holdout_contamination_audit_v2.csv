@@ -1,0 +1,31 @@
+case_id,development_overlap,episode_overlap,date_overlap,same_catalyst,same_policy_event,same_market_move,historical_report_reference,calibration_inspiration,v4a_result_seen,label_independent,warmup_eligible,contamination_status,contamination_reason
+HB_POST_01,False,False,False,False,False,False,False,False,False,True,True,EXCLUDED_LABEL,label contract rejected
+HB_POST_02,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_03,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_04,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_05,False,False,False,False,False,False,False,False,False,True,True,EXCLUDED_LABEL,label contract rejected
+HB_POST_06,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_07,False,True,False,True,False,True,False,False,False,True,True,EXCLUDED_EPISODE_OVERLAP,same continuous AI/electronics episode as HB_POST_06
+HB_POST_08,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_09,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_10,False,False,False,False,False,False,False,False,False,True,True,EXCLUDED_LABEL,label contract rejected
+HB_POST_11,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_POST_12,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_01,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_02,False,False,False,False,False,False,False,False,False,True,True,EXCLUDED_LABEL,label contract rejected
+HB_PRE_03,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_04,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_05,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_06,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_07,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_08,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_09,False,False,False,False,False,False,False,False,False,True,True,EXCLUDED_LABEL,label contract rejected
+HB_PRE_10,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_11,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_12,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_PRE_13,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_R1,False,False,False,False,False,False,False,False,False,True,True,EXCLUDED_LABEL,label contract rejected
+HB_R2,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_R3,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_R4,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure
+HB_R5,False,False,False,False,False,False,False,False,False,True,True,CLEAN,clean pre/post range; no Development or V4-A result exposure

@@ -1,0 +1,31 @@
+case_id,source_range,sector,event_start,event_end,window_overlap,minimum_20_session_anchor_rule,same_catalyst,same_policy_event,same_market_move,episode_overlap_with,episode_status,episode_reason
+HB_POST_01,post,综合,2025-11-04,2025-11-17,False,PASS_BY_POOL_SLOT,False,False,False,,NOT_EVALUATED_LABEL_REJECT,no same-episode evidence found in sealed packet
+HB_POST_02,post,国防军工,2025-12-02,2025-12-15,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_03,post,传媒,2025-12-30,2026-01-14,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_04,post,石油石化,2026-01-29,2026-02-05,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_05,post,石油石化,2026-03-06,2026-03-10,False,PASS_BY_POOL_SLOT,False,False,False,,NOT_EVALUATED_LABEL_REJECT,no same-episode evidence found in sealed packet
+HB_POST_06,post,电子,2026-04-03,2026-04-17,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_07,post,电子,2026-05-07,2026-05-20,False,PASS_BY_POOL_SLOT,True,False,True,HB_POST_06,EXCLUDE_SAME_CONTINUOUS_AI_ELECTRONICS_EPISODE,May electronics evidence says semiconductor leadership continued from the April AI/electronics move
+HB_POST_08,post,煤炭,2026-06-04,2026-06-11,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_09,post,医药生物,2026-07-03,2026-07-16,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_10,post,银行,2026-07-31,2026-08-07,False,PASS_BY_POOL_SLOT,False,False,False,,NOT_EVALUATED_LABEL_REJECT,no same-episode evidence found in sealed packet
+HB_POST_11,post,传媒,2026-08-28,2026-09-01,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_POST_12,post,房地产,2026-09-28,2026-09-30,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_01,pre,传媒,2023-04-18,2023-05-04,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_02,pre,食品饮料,2023-05-22,2023-05-29,False,PASS_BY_POOL_SLOT,False,False,False,,NOT_EVALUATED_LABEL_REJECT,no same-episode evidence found in sealed packet
+HB_PRE_03,pre,计算机,2023-06-19,2023-06-28,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_04,pre,房地产,2023-07-19,2023-08-01,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_05,pre,非银金融,2023-08-16,2023-08-23,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_06,pre,煤炭,2023-09-13,2023-09-15,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_07,pre,建筑材料,2023-10-25,2023-11-01,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_08,pre,传媒,2023-11-22,2023-11-29,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_09,pre,传媒,2023-12-21,2023-12-28,False,PASS_BY_POOL_SLOT,False,False,False,,NOT_EVALUATED_LABEL_REJECT,no same-episode evidence found in sealed packet
+HB_PRE_10,pre,银行,2024-01-23,2024-02-05,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_11,pre,非银金融,2024-02-28,2024-03-06,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_12,pre,有色金属,2024-03-27,2024-04-11,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_PRE_13,pre,房地产,2024-04-26,2024-04-30,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_R1,post,石油石化,2025-11-04,2025-11-17,False,PASS_BY_POOL_SLOT,False,False,False,,NOT_EVALUATED_LABEL_REJECT,no same-episode evidence found in sealed packet
+HB_R2,post,计算机,2026-03-06,2026-03-10,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_R3,post,传媒,2026-07-31,2026-08-07,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_R4,pre,美容护理,2023-05-22,2023-05-29,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
+HB_R5,pre,纺织服饰,2023-12-21,2023-12-28,False,PASS_BY_POOL_SLOT,False,False,False,,PASS,no same-episode evidence found in sealed packet
