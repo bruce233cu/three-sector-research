@@ -1,0 +1,42 @@
+{
+  "experiment": "RULE_CALIBRATION_EXECUTION_V4_FINAL_BOUNDED",
+  "started_at": "2026-10-03T00:50:04.219596+00:00",
+  "finished_at": "2026-10-03T00:50:24.723391+00:00",
+  "start_sha": "58217cdfc4f802db503692b98081445c0f7d1ea0",
+  "branch": "mainline-phase1e",
+  "spec_sha256": "2993b22e4bfada3ff118fa58c3ce854780286259fc5ff8ed9cc3e171c825b124",
+  "spec_json_sha256": "923bbde75a81a822499950b3930c677702d95820e95d2c99a5b1c0cc43916ad0",
+  "casebook_version": "casebook_v1_20261002_25",
+  "casebook_checksum": "249799d4c82ee067c4450e58d3409c661e2afb0dc7ff0339ae277f0f6d69c47d",
+  "rule_version": "mainline_v2.2.1_state_completion_v1",
+  "parameter_profile": "industry_trend_v221_state_completion_v1",
+  "frozen_code_file_hashes": {
+    "config/parameter_profile_industry_trend_v221_state_completion_v1.json": "844130594ae32196aa46be3926d7ab4e049a630e2b2c9f75c88804f143328c3f",
+    "src/mainline/engine/replay.py": "b2f8d1ba26355432efbcb7df4f1559989a111e82b3b5f03cd5bf5014e78f91f3",
+    "src/mainline/engine/metrics.py": "0f7ac800d5627a1cb27a2e40014ce923bbf3dfea1aab2a05f9edec1b25fd75a8",
+    "src/mainline/engine/completion.py": "e2c2731595f227948228d4d1b9f7793173040899e8132ba3d23612e4ff85d589",
+    "src/mainline/engine/rules.py": "0bb0b6f9c124d0b67b16fcebb15eaa719791fac66714bf8d48adf65fd9425635",
+    "src/mainline/engine/state_machine.py": "a87f08f7cd8513f9b02a2e7920d832762edf471c78b390df93b481acd53acc15",
+    "src/mainline/production/daily.py": "e5516225b7e2a34ff54a89a831ed3b8b8987a93dde1e45ee3dcc24d5acd19f98"
+  },
+  "data_snapshot_version": "board-archive-3ff7ae0a56ab0c65",
+  "pit_level": "effective_pit",
+  "knowledge_time_unverified": true,
+  "warmup_qualified": false,
+  "g5": "FAIL",
+  "execution_order": [
+    "BASELINE",
+    "V1_B3_REFERENCE",
+    "V3_ARCHIVE_VERIFY",
+    "V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY",
+    "V4_B_B_PRESENT_REQUIRES_C_TRUE",
+    "V4_C_COMBINED"
+  ],
+  "parallel_candidates": true,
+  "production_writes": 0,
+  "formal_rule_changed": false,
+  "formal_profile_changed": false,
+  "v1_v2_v3_rerun": false,
+  "holdout_executed": false,
+  "result_checksum": "282f50673af99a5505097c1bd7e646b8de9445c9c0b9da254c2ca7de4b54d90f"
+}

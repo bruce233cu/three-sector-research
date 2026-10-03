@@ -1,0 +1,11 @@
+{
+  "decision": "CALIBRATION CANDIDATE FOUND — HOLDOUT REQUIRED",
+  "primary_candidate": "V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY",
+  "backup_candidate": null,
+  "stop_rule_status": "DEVELOPMENT_SET_TUNING_STOPPED_HOLDOUT_REQUIRED",
+  "current_25_case_calibration_closed": true,
+  "v5_v6_allowed_on_current_25_cases": false,
+  "formal_rule_publish_allowed": false,
+  "holdout_allowed": true,
+  "next_step": "停止开发集调参，先完成数据资格边界并设计独立Holdout。"
+}

@@ -1,0 +1,5 @@
+version,s0_s1_s0,delta_s0_s1_s0,s1_s2_s1_or_s0,s2_s3_s2,short_reversals,delta_short_reversals,reversals,delta_reversals,transitions,delta_transitions,negative_s1_days,delta_negative_s1_days
+BASELINE,117,0,0,4,174,0,276,0,341,0,23,0
+V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY,106,-11,0,5,166,-8,267,-9,340,-1,22,-1
+V4_B_B_PRESENT_REQUIRES_C_TRUE,113,-4,0,5,170,-4,274,-2,339,-2,23,0
+V4_C_COMBINED,113,-4,0,5,170,-4,274,-2,339,-2,23,0

@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "reruns_per_arm": 2,
+  "arms": [
+    {
+      "arm": "BASELINE",
+      "checksums": [
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f",
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY",
+      "checksums": [
+        "2e3c8e9319657300feb9c67058a789463e400aa78ab658b86218319505dd099f",
+        "2e3c8e9319657300feb9c67058a789463e400aa78ab658b86218319505dd099f"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V4_B_B_PRESENT_REQUIRES_C_TRUE",
+      "checksums": [
+        "94504a82439fe2d1c30d102ed79267456a938a13b56725f686089f67fc7fb087",
+        "94504a82439fe2d1c30d102ed79267456a938a13b56725f686089f67fc7fb087"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V4_C_COMBINED",
+      "checksums": [
+        "a5f709f9652de6b82073000a2bfbe99db3ea81ebed7d7a49016d2f6bc5b67685",
+        "a5f709f9652de6b82073000a2bfbe99db3ea81ebed7d7a49016d2f6bc5b67685"
+      ],
+      "identical": true
+    }
+  ],
+  "b3_reference": {
+    "arm": "V1_B3_ASYMMETRIC_B_ROLE",
+    "status": "PASS",
+    "equivalence_note": "9/10、9/10、1、12日及既有checksum全部一致",
+    "checks": {
+      "positive_event_9": true,
+      "positive_full_9": true,
+      "negative_new_1": true,
+      "negative_exposure_12": true,
+      "rerun_checksum_matches_v2": true,
+      "aggregate_checksum_matches_v2": true
+    },
+    "rerun_checksums": [
+      "4bc1182ee7634ca6147ef66a8bfd54e6a0184a469f41302cde306cb7a16fd8f4",
+      "4bc1182ee7634ca6147ef66a8bfd54e6a0184a469f41302cde306cb7a16fd8f4"
+    ]
+  },
+  "v3_archive_verification": {
+    "status": "PASS",
+    "checks": {
+      "v3_complete": true,
+      "v3_deterministic": true,
+      "v3_manifest_result_checksum": true,
+      "V3_A_event_recall": true,
+      "V3_A_negative_new": true,
+      "V3_A_negative_exposure": true,
+      "V3_B_event_recall": true,
+      "V3_B_negative_new": true,
+      "V3_B_negative_exposure": true,
+      "V3_C_event_recall": true,
+      "V3_C_negative_new": true,
+      "V3_C_negative_exposure": true
+    },
+    "artifact_sha256": {
+      "CALIBRATION_EXECUTION_REPORT_V3.md": "3a7952b6394024519ec863241b01d8143af694d14e192e5cdf4738c2cfbb6c1e",
+      "calibration_results_v3.json": "3048f829bb25b80a598a77ff5a57f05c4dbec6f03d89ce93578f96a5d11e2e32",
+      "version_comparison_v3.csv": "e28f4af8456603b90ee8f8aa7d0381a5b9b720617bf3196f862719fe848b6b93",
+      "case_level_delta_v3.csv": "d3dc1a7d2fe751a4f0cc98b26682d6d8e600ac4206d302e26bd385b9445a9e91",
+      "state_transition_delta_v3.csv": "35c63a5443f9fd03f34e2a6c4e954bf5305da3bd6341a0a467c5f17bf68be449",
+      "experiment_manifest_v3.json": "0d2e3b2c1a421940e39143e735465d73173fc1b25a51bb96a7934bb30680aacf",
+      "deterministic_rerun_v3.json": "96af7bb3b2f0563aa70882ec7486a7da3ab0593cc0cc6e2f684f1ba831b955b6"
+    },
+    "v3_rerun_executed": false
+  },
+  "null_default_pass_count": 0,
+  "null_counter_retention_violations": 0,
+  "recovery_first_day_counter_violations": 0,
+  "b_present_c_integrity_violations": 0,
+  "cross_signature_accumulations": 0,
+  "freeze_transition_violations": 0,
+  "production_writes": 0
+}
