@@ -1,0 +1,34 @@
+{
+  "version_id": "holdout_data_version_v1_d045945d53222691",
+  "qualification": {
+    "status": "FAIL",
+    "safe_start": "2025-11-04",
+    "end": "2026-09-30",
+    "optimistic_max_20_session_spaced_anchors": 12,
+    "sufficient_for_25_nonoverlapping_cases": false
+  },
+  "checks": {
+    "historical_membership_daily": false,
+    "all_31_industries": true,
+    "effective_pit": true,
+    "future_membership_backfill": false,
+    "null_preserved": true,
+    "freeze_semantics": true,
+    "state_initialization": true,
+    "counter_initialization": true,
+    "deterministic_rerun": true,
+    "source_traceable": true
+  },
+  "counters": [
+    "confirm",
+    "recover",
+    "weaken",
+    "retire"
+  ],
+  "knowledge_time_unverified": true,
+  "v4a_executed": false,
+  "production": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "COMPLETED",
+  "first_checksum": "31831a5807870635245a65a8068ee037a6dde5a19592869050a85251ee04efa7",
+  "second_checksum": "31831a5807870635245a65a8068ee037a6dde5a19592869050a85251ee04efa7",
+  "deterministic": true,
+  "state_replay_start": "2025-09-19",
+  "safe_holdout_start_date": "2025-11-04",
+  "v4a_executed": false,
+  "production": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  }
+}
