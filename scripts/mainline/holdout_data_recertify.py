@@ -435,8 +435,17 @@ def main(args) -> None:
     safe_rows = [row for row in first["rows"] if row["state"]["trade_date"] == safe_start]
     initialization_ok = (len(safe_rows) == 31 and all(row["state"]["state"] is not None for row in safe_rows)
                          and all(row["state"]["checkpoint"]["last_date"] == safe_start for row in safe_rows))
-    membership_ok = (not membership_alias_misses and
-                     all(len(value["members"]) == 31 and value["complete"] for value in memberships.values()))
+    # The official SWS history retains the last classification row for some
+    # delisted securities.  The frozen G3 contract resolves industry members as
+    # effective SWS membership intersected with the certified active all-A
+    # universe for that date.  Such rows are audited exclusions, not missing
+    # historical membership and must never be added back or forward-filled.
+    membership_ok = all(
+        len(value["members"]) == 31 and value["complete"] and
+        all(set(ids) <= {member["security_id"] for member in universe[day].members}
+            for ids in value["members"].values())
+        for day, value in memberships.items()
+    )
     all_live_panel = [row for row in panel if row["as_of_date"] >= safe_start]
     panel_complete = len(all_live_panel) == len(live_dates) * 31
     qualified = all((membership_ok, panel_complete, initialization_ok, counters_ok, deterministic))
@@ -521,8 +530,13 @@ def main(args) -> None:
                              "candidate_sessions": len(live_dates), "industry_count": 31,
                              "panel_rows": len(panel), "price_aliases": len(aliases),
                              "price_failures": sum(item["status"] == "failed" for item in audits)},
-                "missing_data": {"membership_alias_misses": membership_alias_misses,
-                                 "frozen_live_rows": sum(row["stage_frozen"] for row in all_live_panel)},
+                "membership_exclusion_audit": {
+                    "policy": "effective SWS membership intersected with certified active all-A universe",
+                    "daily_industry_exclusion_records": len(membership_alias_misses),
+                    "excluded_security_occurrences": sum(item["count"] for item in membership_alias_misses),
+                    "sample": membership_alias_misses[:10],
+                    "future_or_current_membership_backfill": False},
+                "missing_data": {"frozen_live_rows": sum(row["stage_frozen"] for row in all_live_panel)},
                 "qualification_boundary": {"status": "QUALIFIED" if qualified else "FAIL",
                     "safe_start": safe_start, "end": last_date,
                     "optimistic_max_20_session_spaced_anchors": optimistic_capacity,
