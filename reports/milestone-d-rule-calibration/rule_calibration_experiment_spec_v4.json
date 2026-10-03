@@ -1,0 +1,280 @@
+{
+  "spec_id": "rule_calibration_experiment_spec_v4_final_bounded",
+  "system_version": "A股主线识别系统 V2.2.1",
+  "status": "FINAL_BOUNDED_SPECIFICATION_ONLY",
+  "executed": false,
+  "qualification": [
+    "CALIBRATION_ONLY",
+    "DIAGNOSTIC_ONLY"
+  ],
+  "g5": "FAIL",
+  "parent_head": "8a14d78b366a45b9c5ff21491a551d7050012106",
+  "development_set": {
+    "positive": 10,
+    "negative": 10,
+    "ambiguous": 5,
+    "permanent_role": "DEVELOPMENT_DIAGNOSTIC_SET",
+    "may_prove_generalization": false
+  },
+  "baseline_contract": {
+    "positive_event_s2": 5,
+    "positive_full_window_s2": 6,
+    "negative_event_new_confirm_cases": 1,
+    "negative_event_new_confirm_transitions": 1,
+    "negative_event_s2_exposure_days": 11,
+    "s0_s1_s0": 117,
+    "short_reversals": 174,
+    "reversals": 276,
+    "transitions": 341
+  },
+  "v3_findings": {
+    "V3_A": {
+      "positive_event_s2": 8,
+      "negative_event_new_confirm_cases": 1,
+      "negative_event_s2_exposure_days": 13,
+      "failure": "NULL pause preserved the old counter and allowed later continuation"
+    },
+    "V3_B": {
+      "positive_event_s2": 9,
+      "negative_event_new_confirm_cases": 1,
+      "negative_event_s2_exposure_days": 12,
+      "failure": "B_PRESENT_ENHANCER confirmed while C was not TRUE"
+    },
+    "V3_C": {
+      "positive_event_s2": 8,
+      "negative_event_new_confirm_cases": 1,
+      "negative_event_s2_exposure_days": 13,
+      "failure": "same signature continued across a NULL pause because the old counter remained"
+    }
+  },
+  "common_base": {
+    "id": "V1_B3_WITH_SAME_BRANCH_AND_REQUIRED_KNOWN",
+    "status": "EXPERIMENT_BASE_NOT_FORMAL_RULE",
+    "above_ma20_min": 0.6,
+    "standard": {
+      "condition": "A AND B AND C AND D AND Enhancer",
+      "effective_days": 2
+    },
+    "b_present_shared_core": "prior_state=S1 AND A AND D AND above_ma20>=0.60 AND B=TRUE",
+    "b_present_effective_days": 2,
+    "b_waived": {
+      "condition": "prior_state=S1 AND A AND D AND above_ma20>=0.60 AND B=FALSE AND C AND Enhancer",
+      "effective_days": 3
+    },
+    "branch_counters_independent": true,
+    "cross_signature_accumulation_allowed": false,
+    "formal_state_added": false
+  },
+  "required_known_contract": {
+    "group_level_evidence": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "Enhancer"
+    ],
+    "numeric_evidence": [
+      "above_ma20"
+    ],
+    "atomic_subrules_all_known_required": false,
+    "null_fill_allowed": false,
+    "null_creates_global_freeze": false,
+    "formal_freeze_contract_changed": false
+  },
+  "evidence_signatures": {
+    "STANDARD_ALL": {
+      "condition": "formal five-group AND",
+      "effective_days": 2
+    },
+    "B_PRESENT_C": {
+      "condition": "shared core AND C=TRUE",
+      "effective_days": 2
+    },
+    "B_PRESENT_ENHANCER": {
+      "condition": "shared core AND Enhancer=TRUE",
+      "effective_days": 2,
+      "v4_a_confirmation_eligible": true,
+      "v4_b_confirmation_eligible": false,
+      "v4_c_confirmation_eligible": false
+    },
+    "B_WAIVED_C_ENHANCER": {
+      "condition": "B-waived full condition",
+      "effective_days": 3
+    }
+  },
+  "candidates": [
+    {
+      "order": 1,
+      "id": "V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY",
+      "comparison_parent": "BASELINE",
+      "structural_parent": "V1_B3_WITH_SAME_BRANCH_AND_REQUIRED_KNOWN",
+      "changes": [
+        "required-known NULL resets every confirmation signature counter to zero"
+      ],
+      "null_counter_action": "BREAK_CHAIN_RESET_ALL_CONFIRM_SIGNATURE_COUNTERS",
+      "first_eligible_day_after_null": 1,
+      "b_present_requires_c_true": false,
+      "main_risk": "true trends with short evidence gaps must rebuild confirmation continuity",
+      "overfit_risk": "medium_low"
+    },
+    {
+      "order": 2,
+      "id": "V4_B_B_PRESENT_REQUIRES_C_TRUE",
+      "comparison_parent": "BASELINE",
+      "structural_parent": "V1_B3_WITH_SAME_BRANCH_AND_REQUIRED_KNOWN",
+      "changes": [
+        "B-present confirmation requires C=TRUE"
+      ],
+      "null_counter_action": "V3_PAUSE_PRESERVE_FOR_SINGLE_VARIABLE_ISOLATION",
+      "b_present_requires_c_true": true,
+      "b_present_enhancer_only_vote_allowed": false,
+      "main_risk": "true trends with slower turnover confirmation may be delayed or missed",
+      "overfit_risk": "medium"
+    },
+    {
+      "order": 3,
+      "id": "V4_C_COMBINED",
+      "comparison_parent": "BASELINE",
+      "structural_parent": "V1_B3_WITH_SAME_BRANCH_AND_REQUIRED_KNOWN",
+      "changes": [
+        "required-known NULL resets every confirmation signature counter to zero",
+        "B-present confirmation requires C=TRUE"
+      ],
+      "null_counter_action": "BREAK_CHAIN_RESET_ALL_CONFIRM_SIGNATURE_COUNTERS",
+      "first_eligible_day_after_null": 1,
+      "b_present_requires_c_true": true,
+      "b_present_enhancer_only_vote_allowed": false,
+      "main_risk": "strictest candidate may lose recall or add lag",
+      "overfit_risk": "medium"
+    }
+  ],
+  "sentinel_cases": {
+    "P10": {
+      "rule_input_allowed": false,
+      "required_behavior": "positive event S2 retained through unchanged B-waived path",
+      "event_lag_max": 5,
+      "delay_vs_b3_max": 1
+    },
+    "N02": {
+      "rule_input_allowed": false,
+      "required_behavior": "no B-present confirmation when C is NULL or FALSE and no continuation of a pre-NULL counter",
+      "event_s2_exposure_days_max": 0,
+      "post_null_first_eligible_counter_max": 1
+    },
+    "N04": {
+      "rule_input_allowed": false,
+      "required_behavior": "retain same-branch containment",
+      "full_window_s2": false
+    },
+    "N08": {
+      "rule_input_allowed": false,
+      "required_behavior": "retain absolute-breadth containment",
+      "event_s2": false,
+      "full_window_s2": false
+    }
+  },
+  "success_criteria": {
+    "positive_event_s2_min": 6,
+    "positive_event_s2_target_range": [
+      7,
+      8
+    ],
+    "positive_full_window_s2_min": 7,
+    "negative_event_new_confirm_cases_max": 1,
+    "negative_event_new_confirm_transitions_max": 1,
+    "negative_event_s2_exposure_days_max": 11,
+    "negative_stable_s2_cases_max": 2,
+    "baseline_positive_event_hits_must_be_retained": 5,
+    "positive_improvement_cases_min": 2,
+    "positive_improvement_episodes_min": 2,
+    "event_miss_to_hit_min": 1,
+    "matched_lag_median_delta_max": 1,
+    "matched_lag_mean_delta_max": 2,
+    "matched_lag_single_case_delay_max": 5,
+    "s0_s1_s0_max": 117,
+    "short_reversals_max": 174,
+    "reversals_max": 276,
+    "transitions_max": 341,
+    "negative_single_s1_run_increase_max": 3,
+    "null_freeze_contract_must_hold": true,
+    "deterministic_reruns_per_arm_min": 2,
+    "deterministic_checksum_mismatches_max": 0,
+    "null_coercions_max": 0,
+    "freeze_hard_transitions_max": 0,
+    "future_reads_max": 0,
+    "illegal_transitions_max": 0,
+    "cross_branch_accumulations_max": 0,
+    "cross_signature_accumulations_max": 0,
+    "sentinel_contract_must_pass": true
+  },
+  "specialized_success_criteria": {
+    "v4_a_c_required_null_resets_all_confirm_counters": true,
+    "v4_a_c_post_null_first_eligible_counter_max": 1,
+    "v4_b_c_b_present_requires_c_true": true,
+    "c_null_b_present_confirmations_max": 0,
+    "c_false_b_present_confirmations_max": 0,
+    "p10_retained": true,
+    "n02_event_s2_exposure_days_max": 0,
+    "n04_full_window_s2": false,
+    "n08_full_window_s2": false
+  },
+  "unchanged": [
+    "formal rule_version and parameter_profile",
+    "all formal atomic definitions and thresholds",
+    "candidate entry and exit",
+    "weaken and retire",
+    "recover",
+    "S2 to S3 and S3 to S2",
+    "S4",
+    "casebook and labels",
+    "Production, scheduler and Sites",
+    "G1, G2, G3 and G4"
+  ],
+  "warmup": {
+    "qualified": false,
+    "direct_sensitive_cases": [
+      "P01",
+      "P06",
+      "P07",
+      "N05",
+      "N06",
+      "A01"
+    ],
+    "direct_sensitive_only_improvement_can_advance": false
+  },
+  "execution_order": [
+    "BASELINE_EQUIVALENCE",
+    "V1_B3_REFERENCE_EQUIVALENCE",
+    "VERIFY_ARCHIVED_V3_WITHOUT_RERUN",
+    "V4_A_NULL_BREAKS_CONFIRMATION_CONTINUITY",
+    "V4_B_B_PRESENT_REQUIRES_C_TRUE",
+    "V4_C_COMBINED",
+    "SELECT_AT_MOST_ONE_PRIMARY_AND_ONE_BACKUP",
+    "FINAL_STOP"
+  ],
+  "parallel_candidates": true,
+  "final_bounded_calibration": true,
+  "stop_rules": {
+    "baseline_or_b3_drift": "STOP_ALL_AND_FIX_EQUIVALENCE_ONLY",
+    "single_candidate_failure": "RECORD_AND_CONTINUE_NEXT_PARALLEL_CANDIDATE",
+    "any_candidate_passes": "CALIBRATION CANDIDATE FOUND — HOLDOUT REQUIRED",
+    "all_candidates_fail": "NO CANDIDATE PASSED — DEVELOPMENT SET CALIBRATION CLOSED",
+    "after_all_fail_prohibit_v5_v6_on_current_25": true,
+    "after_all_fail_allowed_next_tracks": [
+      "DATA_QUALIFICATION",
+      "SAMPLE_EXPANSION",
+      "RULE_FRAMEWORK_REVIEW"
+    ],
+    "auto_holdout": false
+  },
+  "prohibited": [
+    "V4-D or V4-E",
+    "V5 or V6 tuning on the current 25 cases after all V4 candidates fail",
+    "grid, random, Bayesian or threshold search",
+    "new indicators",
+    "case, industry, label or date conditions in rule inputs",
+    "formal rule or state-machine changes",
+    "production writes",
+    "holdout execution"
+  ]
+}
