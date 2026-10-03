@@ -1,0 +1,12 @@
+{
+  "status": "FAIL",
+  "error_type": "KeyError",
+  "error": "'last_date'",
+  "code_commit": "a7b4a553e64ba73da3f6cc10ac6959e7246b9474",
+  "created_at": "2026-10-03T13:07:14.194162+00:00",
+  "v4a_executed": false,
+  "production": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  }
+}
