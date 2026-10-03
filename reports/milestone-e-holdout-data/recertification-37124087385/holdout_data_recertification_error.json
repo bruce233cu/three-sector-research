@@ -1,0 +1,12 @@
+{
+  "status": "FAIL",
+  "error_type": "RuntimeError",
+  "error": "short response: https://finance.sina.com.cn/realstock/company/klc_td_sh.txt: 508",
+  "code_commit": "36f181038b21bc39783e1bf307c141c49966b702",
+  "created_at": "2026-10-03T12:49:15.513848+00:00",
+  "v4a_executed": false,
+  "production": {
+    "PRODUCTION_MAINLINE_ENABLED": false,
+    "MAINLINE_LIVE": false
+  }
+}
