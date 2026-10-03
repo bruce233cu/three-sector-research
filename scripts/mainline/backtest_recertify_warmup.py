@@ -182,7 +182,7 @@ def main(g3_zip, production_zip, universe_zip, output, cache):
     universe = {day: historical_benchmark_universe_resolver(day, intervals, certificate=certificate) for day in dates}
     if any(not value.verified for value in universe.values()):
         raise ValueError("effective-PIT universe not verified")
-    old = {row["security_id"]: row for row in original if row["status"] == "success"}
+    old = {row["security_id"]: row for row in original}
     required = {member["security_id"] for value in universe.values() for member in value.members}
     absent_from_frozen_contract = sorted(required - set(old))
     if absent_from_frozen_contract:
@@ -358,8 +358,11 @@ def main(g3_zip, production_zip, universe_zip, output, cache):
                 "missing_fields": ["circ_mv", "strict_knowledge_time"],
                 "coverage": {"provider_requests": len(requested), "accepted": len(audits), "ratio": 1.0,
                     "panel_days": len(dates), "panel_industries": 31, "panel_rows": len(panel)},
-                "old_version_comparison": {"old_certified_response_matches": sum(item["matches_old_certified_response"] for item in audits),
-                    "old_certified_response_mismatches": sum(not item["matches_old_certified_response"] for item in audits),
+                "old_version_comparison": {"old_certified_checksums_available": sum(bool(item.get("old_certified_response_checksum")) for item in audits),
+                    "old_certified_checksums_unavailable": sum(not bool(item.get("old_certified_response_checksum")) for item in audits),
+                    "old_certified_response_matches": sum(item["matches_old_certified_response"] for item in audits),
+                    "old_certified_response_mismatches": sum(bool(item.get("old_certified_response_checksum")) and
+                        not item["matches_old_certified_response"] for item in audits),
                     "benchmark_dates_changed": changed_benchmark_dates},
                 "raw_response_storage": "workflow artifact mainline-warmup-recertification-cache-" + str(run_id),
                 "normalized_security_storage": "workflow artifact mainline-warmup-recertification-cache-" + str(run_id),

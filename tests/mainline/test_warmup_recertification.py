@@ -68,6 +68,24 @@ class WarmupRecertificationTest(unittest.TestCase):
             self.assertTrue(result["cache_reused"])
             self.assertEqual(result["request_count"], 0)
 
+    def test_old_failed_source_without_checksum_can_enter_new_version(self):
+        with tempfile.TemporaryDirectory() as folder:
+            response = b"newly-certifiable-provider-response"
+            audit = {"unit_check_ok": True, "no_trade_dates": [],
+                     "response_checksum": MODULE.sha_bytes(response)}
+            def fake_parquet(frame, target, **kwargs):
+                Path(target).touch()
+            with patch.object(MODULE, "fetch_decode", return_value=(self.frame(), audit, response)), \
+                    patch.object(pd.DataFrame, "to_parquet", fake_parquet):
+                frame, result = MODULE.recertify_one(
+                    "000001.SZ", {"status": "failed"}, Path(folder),
+                    MODULE.date(2024, 4, 30), MODULE.date(2024, 8, 30), ["2024-05-06"]
+                )
+            self.assertEqual(len(frame), 1)
+            self.assertIsNone(result["old_certified_response_checksum"])
+            self.assertFalse(result["matches_old_certified_response"])
+            self.assertEqual(result["status"], "success")
+
 
 if __name__ == "__main__":
     unittest.main()
