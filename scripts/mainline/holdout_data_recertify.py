@@ -420,6 +420,11 @@ def main(args) -> None:
     deterministic = digest(first) == digest(second) and first_calls == calls
     if not deterministic:
         raise ValueError("state replay is not deterministic")
+    write_json(out / "state_replay_checkpoint.json", {
+        "status": "COMPLETED", "first_checksum": digest(first),
+        "second_checksum": digest(second), "deterministic": deterministic,
+        "state_replay_start": first_state_date, "safe_holdout_start_date": safe_start,
+        "v4a_executed": False, "production": PRODUCTION_FLAGS})
 
     live_outputs = [row for row in first["rows"] if row["state"]["trade_date"] >= safe_start]
     last_by_object = {}
@@ -429,7 +434,7 @@ def main(args) -> None:
                       set(checkpoint["consecutive"]) for checkpoint in last_by_object.values())
     safe_rows = [row for row in first["rows"] if row["state"]["trade_date"] == safe_start]
     initialization_ok = (len(safe_rows) == 31 and all(row["state"]["state"] is not None for row in safe_rows)
-                         and all(row["state"]["last_date"] == safe_start for row in safe_rows))
+                         and all(row["state"]["checkpoint"]["last_date"] == safe_start for row in safe_rows))
     membership_ok = (not membership_alias_misses and
                      all(len(value["members"]) == 31 and value["complete"] for value in memberships.values()))
     all_live_panel = [row for row in panel if row["as_of_date"] >= safe_start]
