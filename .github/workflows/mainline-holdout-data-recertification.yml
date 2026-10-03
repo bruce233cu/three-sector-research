@@ -51,6 +51,14 @@ jobs:
               for name in ('temporary_universe_intervals.json','source_snapshots.json'):
                   archive.write(source/name,arcname=name)
           PY
+      - name: Reuse prior successful Provider cache when available
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: holdout-data-provider-cache-37124185850
+          run-id: 37124185850
+          github-token: ${{ github.token }}
+          path: ${{ env.CACHE }}
       - name: Recertify bounded post-Development range and replay state twice
         run: >-
           python scripts/mainline/holdout_data_recertify.py

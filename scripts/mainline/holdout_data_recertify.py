@@ -387,15 +387,36 @@ def main(args) -> None:
                             "source_snapshot_ids": [source_ids["membership"]]}
         panel.extend(daily_rows)
 
+    # The beginning of the 84-session prefix is metric formation history, not
+    # an eligible state day: RS ranks cannot exist on its first sessions.  Use
+    # the same certified replay contract as G3: materialize metric/rank history,
+    # then start state replay at the first date with a legal cross section.
+    from mainline.engine.metrics import add_cross_section, finalize_metrics
+    prepared, metric_history = [], {}
+    for day in dates:
+        rows = [dict(row) for row in panel if row["as_of_date"] == day]
+        rows = add_cross_section([
+            finalize_metrics(row, metric_history.get((row["object_id"], row["taxonomy_version"]), []), dates)
+            for row in rows
+        ])
+        for row in rows:
+            metric_history.setdefault((row["object_id"], row["taxonomy_version"]), []).append(row)
+        prepared.extend(rows)
+    first_state_date = next(day for day in dates
+                            if sum(row.get("rs_10_pct") is not None for row in prepared
+                                   if row["as_of_date"] == day) >= 10)
+    replay_warmup = [row for row in prepared if row["as_of_date"] < first_state_date]
+    replay_live = [row for row in prepared if row["as_of_date"] >= first_state_date]
+
     calls = []
     def resolver(day):
         calls.append(day)
         return memberships[day]
 
-    first = replay(panel, dates, profile, resolver)
+    first = replay(replay_live, dates, profile, resolver, warmup_panel=replay_warmup)
     first_calls = list(calls)
     calls.clear()
-    second = replay(panel, dates, profile, resolver)
+    second = replay(replay_live, dates, profile, resolver, warmup_panel=replay_warmup)
     deterministic = digest(first) == digest(second) and first_calls == calls
     if not deterministic:
         raise ValueError("state replay is not deterministic")
@@ -475,6 +496,7 @@ def main(args) -> None:
                 "mechanical_20_session_start": mechanical_gap_start,
                 "warmup_start": warmup_dates[0], "warmup_end": warmup_dates[-1],
                 "required_warmup_sessions": REQUIRED_WARMUP_SESSIONS,
+                "state_replay_start": first_state_date,
                 "safe_holdout_start_date": safe_start, "data_end": last_date,
                 "trade_date_range": [warmup_dates[0], last_date], "candidate_session_count": len(live_dates),
                 "taxonomy_version": "SW2021", "membership_version": provider.source_version,
