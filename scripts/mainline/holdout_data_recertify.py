@@ -214,7 +214,9 @@ def main(args) -> None:
 
     # The last complete market day is the last calendar session strictly before
     # the UTC execution date.  This prevents an in-progress target session.
-    raw_calendar, calendar_request = fetch(CALENDAR_URL)
+    # This endpoint is a compact encoded calendar and is legitimately only a
+    # few hundred bytes; the decoder/range checks below provide the validation.
+    raw_calendar, calendar_request = fetch(CALENDAR_URL, minimum_bytes=1)
     calendar = decode_calendar(raw_calendar, datetime.now(timezone.utc).date() - timedelta(days=1))
     development_index = calendar.index(DEVELOPMENT_LAST_DATE)
     post_development = calendar[development_index + 1:]
