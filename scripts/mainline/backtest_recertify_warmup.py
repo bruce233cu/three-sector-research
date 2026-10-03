@@ -30,7 +30,7 @@ from mainline.engine.replay import digest
 from mainline.metrics.historical_universe import historical_benchmark_universe_resolver
 from mainline.providers.phase1f_free import normalize, version
 
-ACCEPTED = {"success", "valid_no_trade", "valid_not_listed"}
+ACCEPTED = {"success", "valid_no_trade", "valid_not_listed", "valid_provider_unavailable_preserved_null"}
 PROVIDER = "Sina"
 ENDPOINT = "https://finance.sina.com.cn/realstock/company/{symbol}/hisdata_klc2/klc_kl.js"
 WINDOW_START = "2024-04-30"
@@ -123,6 +123,11 @@ def recertify_one(sid, old, cache, start, end, active_dates, max_attempts=3):
                     status = "valid_not_listed"
                 elif set(active_dates) <= set(audit.get("no_trade_dates", [])):
                     status = "valid_no_trade"
+                elif old.get("status") == "failed":
+                    # These were already explicit unavailable inputs in the frozen
+                    # G3 contract. Keep them absent/NULL and let the unchanged
+                    # board coverage thresholds decide; never synthesize bars.
+                    status = "valid_provider_unavailable_preserved_null"
                 else:
                     raise ValueError("empty response without certified no-trade proof")
             frame = frame.drop(columns=["circ_mv"], errors="ignore")
@@ -356,7 +361,10 @@ def main(g3_zip, production_zip, universe_zip, output, cache):
                 "response_checksums_recorded": len(audits), "normalized_checksums_recorded": len(audits),
                 "knowledge_time_verified": False, "knowledge_time_unverified": True, "pit_level": "effective_pit",
                 "missing_fields": ["circ_mv", "strict_knowledge_time"],
-                "coverage": {"provider_requests": len(requested), "accepted": len(audits), "ratio": 1.0,
+                "coverage": {"provider_requests": len(requested), "accepted_contract_outcomes": len(audits),
+                    "responses_with_normalized_rows": sum(item["status"] == "success" for item in audits),
+                    "preserved_null_security_count": sum(item["status"] == "valid_provider_unavailable_preserved_null" for item in audits),
+                    "normalized_security_ratio": sum(item["status"] == "success" for item in audits) / len(requested),
                     "panel_days": len(dates), "panel_industries": 31, "panel_rows": len(panel)},
                 "old_version_comparison": {"old_certified_checksums_available": sum(bool(item.get("old_certified_response_checksum")) for item in audits),
                     "old_certified_checksums_unavailable": sum(not bool(item.get("old_certified_response_checksum")) for item in audits),

@@ -86,6 +86,24 @@ class WarmupRecertificationTest(unittest.TestCase):
             self.assertFalse(result["matches_old_certified_response"])
             self.assertEqual(result["status"], "success")
 
+    def test_old_explicit_provider_failure_stays_null_when_current_response_empty(self):
+        with tempfile.TemporaryDirectory() as folder:
+            empty = self.frame().iloc[:0]
+            response = b"current-empty-provider-response"
+            audit = {"unit_check_ok": False, "no_trade_dates": [],
+                     "response_checksum": MODULE.sha_bytes(response)}
+            def fake_parquet(frame, target, **kwargs):
+                Path(target).touch()
+            with patch.object(MODULE, "fetch_decode", return_value=(empty, audit, response)), \
+                    patch.object(pd.DataFrame, "to_parquet", fake_parquet):
+                frame, result = MODULE.recertify_one(
+                    "000416.SZ", {"status": "failed"}, Path(folder),
+                    MODULE.date(2024, 4, 30), MODULE.date(2024, 8, 30), ["2024-05-06"]
+                )
+            self.assertTrue(frame.empty)
+            self.assertEqual(result["status"], "valid_provider_unavailable_preserved_null")
+            self.assertNotEqual(result["status"], "success")
+
 
 if __name__ == "__main__":
     unittest.main()
