@@ -1,0 +1,87 @@
+name: Mainline independent Holdout data recertification
+
+on:
+  push:
+    branches: [mainline-phase1e]
+    paths:
+      - scripts/mainline/holdout_data_recertify.py
+      - .github/workflows/mainline-holdout-data-recertification.yml
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: mainline-holdout-data-recertification
+  cancel-in-progress: false
+
+jobs:
+  recertify:
+    if: contains(github.event.head_commit.message, '[holdout-data-recert]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OUTPUT: reports/milestone-e-holdout-data/recertification-${{ github.run_id }}
+      CACHE: temporary_holdout_data/provider-cache
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -r requirements-mainline.txt py-mini-racer==0.6.0
+      - name: Verify immutable inputs
+        run: |
+          python -m py_compile scripts/mainline/holdout_data_recertify.py
+          test "$(jq -r .candidate_id reports/milestone-d-rule-calibration/v4a_candidate_manifest.json)" = "v4a_calibration_candidate_v1"
+          test "$(jq -r .candidate_status reports/milestone-d-rule-calibration/v4a_candidate_manifest.json)" = "CALIBRATION_CANDIDATE"
+          test "$(jq -r .production_status.PRODUCTION_MAINLINE_ENABLED reports/milestone-d-warmup/g5_final_qualification.json)" = "false"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v221-benchmark-universe
+          run-id: 36942748135
+          github-token: ${{ github.token }}
+          path: temporary_holdout_data/universe
+      - name: Package certified universe contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          source=Path('temporary_holdout_data/universe')
+          with zipfile.ZipFile('temporary_holdout_data/universe.zip','w',compression=zipfile.ZIP_DEFLATED) as archive:
+              for name in ('temporary_universe_intervals.json','source_snapshots.json'):
+                  archive.write(source/name,arcname=name)
+          PY
+      - name: Recertify bounded post-Development range and replay state twice
+        run: >-
+          python scripts/mainline/holdout_data_recertify.py
+          --universe-zip temporary_holdout_data/universe.zip
+          --output "$OUTPUT"
+          --cache "$CACHE"
+      - name: Preserve provider cache
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: holdout-data-provider-cache-${{ github.run_id }}
+          path: ${{ env.CACHE }}/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Preserve recertification result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: holdout-data-recertification-${{ github.run_id }}
+          path: ${{ env.OUTPUT }}/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Archive only isolated recertification evidence
+        if: always()
+        run: |
+          test -d "$OUTPUT" || exit 0
+          git config user.name "mainline-validation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$OUTPUT"
+          git diff --cached --quiet && exit 0
+          git commit -m "Archive independent Holdout data recertification job=${{ github.run_id }}"
+          git fetch origin mainline-phase1e
+          git merge --no-edit origin/mainline-phase1e
+          git push origin HEAD:mainline-phase1e
