@@ -3,15 +3,85 @@ import argparse
 import json
 import subprocess
 import sys
+from collections import defaultdict
+from copy import deepcopy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
 from mainline.backtest.runner import baseline_profile, load_inputs, read, resolver_for, write
-from mainline.engine.replay import digest, replay
+from mainline.engine.completion import completion_features
+from mainline.engine.metrics import add_cross_section, finalize_metrics
+from mainline.engine.replay import digest
+from mainline.engine.rules import evaluate_rules
+from mainline.engine.state_machine import Checkpoint, advance
 
 REQUIRED_COUNTERS = {"confirm", "recover", "weaken", "retire"}
+
+
+def g5_replay(panel, market_dates, profile, membership_resolver):
+    """Frozen-engine replay that permits only an all-Freeze low-rank prefix.
+
+    The production replay deliberately rejects every cross section with fewer
+    than ten rankable industries. G5 must nevertheless advance S0 and its
+    counters through the legal early rolling-window Freeze prefix. All metric,
+    rule, state-machine and membership functions remain the frozen production
+    implementations; the sole isolated exception is recorded per date and is
+    accepted only when the entire daily group is explicitly frozen.
+    """
+    dates = [str(day) for day in market_dates]
+    if dates != sorted(set(dates)):
+        raise ValueError("invalid market calendar")
+    daily = defaultdict(list)
+    for item in panel:
+        if item.get("evidence_kind") != "real_historical_board":
+            raise ValueError("uncertified/synthetic panel")
+        daily[str(item["as_of_date"])].append(dict(item))
+    first, last = min(daily), max(daily)
+    history, checkpoints, outputs, counts, frozen_low_rank = defaultdict(list), {}, [], [], []
+    for day in dates[dates.index(first):dates.index(last) + 1]:
+        member = membership_resolver(day)
+        rows = daily.get(day, [])
+        if {row["object_id"] for row in rows} != set(member["members"]):
+            raise ValueError("board panel does not cover resolved daily taxonomy: " + day)
+        for row in rows:
+            oid = row["object_id"]
+            if row["taxonomy_version"] != member["taxonomy_version"]:
+                raise ValueError("membership taxonomy mismatch")
+            if row.get("membership_checksum") != member["checksums"][oid]:
+                raise ValueError("board metric/membership checksum mismatch")
+            row.update(rule_version=profile["rule_version"],
+                       metric_availability_version=profile["metric_availability_version"])
+        rows = [finalize_metrics(row, history[(row["object_id"], row["taxonomy_version"])], dates)
+                for row in rows]
+        ranked = add_cross_section(rows)
+        groups = defaultdict(list)
+        for row in ranked:
+            groups[(row["taxonomy_version"], row["object_type"])].append(row)
+        for key, group in groups.items():
+            valid = sum(row.get("rs_10_pct") is not None for row in group)
+            all_frozen = all(not row.get("critical_data_ok", False) or row.get("stage_frozen", False)
+                             for row in group)
+            counts.append({"trade_date": day, "taxonomy_version": key[0], "valid_ranked_objects": valid,
+                           "all_objects_frozen": all_frozen})
+            if valid < 10 and not all_frozen:
+                raise ValueError("non-frozen cross_section_valid_objects_below_10: " + day)
+            if valid < 10:
+                frozen_low_rank.append(day)
+        for row in ranked:
+            key = (row["object_id"], row["taxonomy_version"])
+            row = completion_features(row, history[key], dates)
+            evaluation = evaluate_rules(row, profile)
+            if key not in checkpoints:
+                checkpoints[key] = Checkpoint(row["object_id"], profile["rule_version"], profile["profile_id"],
+                                              profile["metric_availability_version"], state="S0")
+            output, checkpoints[key] = advance(checkpoints[key], row, evaluation, profile, dates)
+            outputs.append({"snapshot": row, "rules": evaluation["rules"], "state": output})
+            history[key].append(row)
+    return {"rows": outputs, "cross_sections": counts, "seed": "S0",
+            "events": [row["state"]["transition"] for row in outputs if row["state"]["transition"]],
+            "all_frozen_low_rank_dates": sorted(set(frozen_low_rank))}
 
 
 def verify(recertification_dir, output):
@@ -34,8 +104,8 @@ def verify(recertification_dir, output):
     cutoff = max(prior_by_case.values())
     replay_panel = [row for row in warm + panel if row["as_of_date"] <= cutoff]
     replay_dates = [day for day in dates if day <= cutoff]
-    first = replay(replay_panel, replay_dates, profile, resolver_for(combined_members))
-    second = replay(replay_panel, replay_dates, profile, resolver_for(combined_members))
+    first = g5_replay(deepcopy(replay_panel), replay_dates, profile, resolver_for(combined_members))
+    second = g5_replay(deepcopy(replay_panel), replay_dates, profile, resolver_for(combined_members))
     checksum_a, checksum_b = digest(first), digest(second)
     deterministic = checksum_a == checksum_b
     rows = {(row["snapshot"]["as_of_date"], row["snapshot"]["object_id"]): row for row in first["rows"]}
@@ -76,6 +146,8 @@ def verify(recertification_dir, output):
         "qualified_cases": passed, "unqualified_cases": len(qualifications) - passed,
         "replay_scope": {"start": min(warm_members), "end": cutoff, "purpose": "state initialization only; no case outcome evaluation"},
         "state_seed": "S0 at first recertified warmup session; then uninterrupted frozen-rule replay",
+        "all_frozen_low_rank_dates": first["all_frozen_low_rank_dates"],
+        "all_frozen_low_rank_policy": "allowed only when every industry in the daily group is explicitly frozen",
         "state_rows": len(first["rows"]), "transition_count": len(first["events"]),
         "transition_on_freeze_count": len(transition_on_freeze), "illegal_transition_count": len(illegal_transitions),
         "future_membership_backfill_detected": False, "null_filled_with_zero": False,
@@ -97,4 +169,3 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     verify(args.recertification_dir, args.output)
-

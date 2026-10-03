@@ -14,12 +14,13 @@ permissions:
 
 jobs:
   recertify-warmup-data-version:
-    if: contains(github.event.head_commit.message, '[g5-recert]')
+    if: contains(github.event.head_commit.message, '[g5-recert]') || contains(github.event.head_commit.message, '[g5-verify]')
     runs-on: ubuntu-latest
     timeout-minutes: 50
     env:
       OUTPUT: reports/milestone-d-warmup/recertification-${{ github.run_id }}
       CACHE: temporary_warmup/recertification-cache
+      RECERT_SOURCE: reports/milestone-d-warmup/recertification-37100031176
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 0}
@@ -64,6 +65,7 @@ jobs:
                   for item in files: archive.write(root/name/item,arcname=item)
           PY
       - name: Recertify current provider responses as a new data version
+        if: contains(github.event.head_commit.message, '[g5-recert]')
         run: >-
           python scripts/mainline/backtest_recertify_warmup.py
           --g3-zip temporary_warmup/g3.zip
@@ -72,10 +74,12 @@ jobs:
           --output "$OUTPUT"
           --cache "$CACHE"
       - name: Replay only the G5 state-initialization prefix twice
-        run: >-
-          python scripts/mainline/backtest_verify_warmup_state.py
-          --recertification-dir "$OUTPUT"
-          --output "$OUTPUT"
+        run: |
+          INPUT="$OUTPUT"
+          test -f "$INPUT/warmup_data_version_manifest.json" || INPUT="$RECERT_SOURCE"
+          python scripts/mainline/backtest_verify_warmup_state.py \
+            --recertification-dir "$INPUT" \
+            --output "$OUTPUT"
       - name: Preserve raw and normalized provider evidence
         if: always()
         uses: actions/upload-artifact@v4
