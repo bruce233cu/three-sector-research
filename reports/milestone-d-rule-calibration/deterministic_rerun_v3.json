@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "reruns_per_arm": 2,
+  "arms": [
+    {
+      "arm": "BASELINE",
+      "checksums": [
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f",
+        "29b7f8f4e6e537b8adfe1a66c1ae752fc2c4cfd94147d3b6ad87953d3c73a47f"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V3_A_NULL_GATING_ONLY",
+      "checksums": [
+        "6ea1f8d416d478c34d5bee5bce1e0e7ba5f136da2b0203642dc9c00d1851184b",
+        "6ea1f8d416d478c34d5bee5bce1e0e7ba5f136da2b0203642dc9c00d1851184b"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V3_B_SAME_BRANCH_ONLY",
+      "checksums": [
+        "ac502c0bb805e0cb45343f2d7e456fa0d31e6c811297fbe7a27c320ef72a8764",
+        "ac502c0bb805e0cb45343f2d7e456fa0d31e6c811297fbe7a27c320ef72a8764"
+      ],
+      "identical": true
+    },
+    {
+      "arm": "V3_C_NULL_GATING_AND_SAME_BRANCH",
+      "checksums": [
+        "6ea1f8d416d478c34d5bee5bce1e0e7ba5f136da2b0203642dc9c00d1851184b",
+        "6ea1f8d416d478c34d5bee5bce1e0e7ba5f136da2b0203642dc9c00d1851184b"
+      ],
+      "identical": true
+    }
+  ],
+  "b3_reference": {
+    "arm": "V1_B3_ASYMMETRIC_B_ROLE",
+    "status": "PASS",
+    "equivalence_note": "9/10、9/10、1、12日及既有checksum全部一致",
+    "checks": {
+      "positive_event_9": true,
+      "positive_full_9": true,
+      "negative_new_1": true,
+      "negative_exposure_12": true,
+      "rerun_checksum_matches_v2": true,
+      "aggregate_checksum_matches_v2": true
+    },
+    "rerun_checksums": [
+      "4bc1182ee7634ca6147ef66a8bfd54e6a0184a469f41302cde306cb7a16fd8f4",
+      "4bc1182ee7634ca6147ef66a8bfd54e6a0184a469f41302cde306cb7a16fd8f4"
+    ]
+  },
+  "null_default_pass_count": 0,
+  "required_null_counter_increment_violations": 0,
+  "cross_signature_accumulations": 0,
+  "freeze_transition_violations": 0,
+  "production_writes": 0
+}

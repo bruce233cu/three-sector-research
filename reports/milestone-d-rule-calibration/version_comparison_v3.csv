@@ -1,0 +1,5 @@
+version,status,positive_event_s2,delta_positive_event_s2,positive_full_s2,delta_positive_full_s2,negative_new_s2_cases,delta_negative_new_s2_cases,negative_s2_days,delta_negative_s2_days,matched_lag_mean_delta,matched_lag_median_delta,s0_s1_s0,short_reversals,transitions,negative_s1_days,freeze_days,input_data_freeze_days,rule_or_state_evidence_freeze_days,gate_passed
+BASELINE,PASS,5,0,6,0,1,0,11,0,,,117,174,341,23,63,0,63,True
+V3_A_NULL_GATING_ONLY,FAIL,8,3,8,2,1,0,13,2,-3.4,0,101,160,340,21,21,0,21,False
+V3_B_SAME_BRANCH_ONLY,FAIL,9,4,9,3,1,0,12,1,-3.4,0,97,154,340,21,66,0,66,False
+V3_C_NULL_GATING_AND_SAME_BRANCH,FAIL,8,3,8,2,1,0,13,2,-3.4,0,101,160,340,21,21,0,21,False
